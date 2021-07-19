@@ -1,0 +1,122 @@
+{
+    "products": [
+    {
+        "id": "1",
+        "slug": "hero product",
+        "name": "hero Product",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "hero": "OMG This just came out today!",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },{
+        "id": "2",
+        "slug": "product 1",
+        "name": "Product 1",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "info": "This is the latest and greatest product from Derp corp.",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },{
+        "id": "3",
+        "slug": "product 2",
+        "name": "Product 2",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "offer": "BOGOF",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },{
+        "id": "4",
+        "slug": "product 3",
+        "name": "Product 3",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },{
+        "id": "5",
+        "slug": "product 4",
+        "name": "Product 4",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "offer": "No srsly GTFO",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },{
+        "id": "6",
+        "slug": "product 5",
+        "name": "Product 5",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },{
+        "id": "7",
+        "slug": "product 6",
+        "name": "Product 6",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "info": "This is the latest and greatest product from Derp corp.",
+        "offer": "info with offer",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },
+    {
+        "id": "8",
+        "slug": "product 7",
+        "name": "Product 7",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "info": "This is the latest and greatest product from Derp corp.",
+        "offer": "info with offer",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },
+    {
+        "id": "9",
+        "slug": "product 8",
+        "name": "Product 8",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "info": "This is the latest and greatest product from Derp corp.",
+        "offer": "info with offer",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },
+    {
+        "id": "10",
+        "slug": "product 9",
+        "name": "Product 9",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "info": "This is the latest and greatest product from Derp corp.",
+        "offer": "info with offer",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    },
+    {
+        "id": "11",
+        "slug": "product 10",
+        "name": "Product 10",
+        "detail": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
+        "price": "99",
+        "info": "This is the latest and greatest product from Derp corp.",
+        "offer": "info with offer",
+        "image": "https://images.unsplash.com/photo-1625645207115-3818c67e5830?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "secondImage": "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+        "thirdImage": ""
+    }
+]
+}

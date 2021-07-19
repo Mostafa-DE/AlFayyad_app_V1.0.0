@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10rem 0 10rem 0;
+}
+
+.PropertiesBox {
+    display: flexbox;
+    flex-direction: column;
+    max-width: 25%;
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .PropertiesBox {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}

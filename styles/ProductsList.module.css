@@ -1,0 +1,12 @@
+.cardsProductsList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.h1Text {
+  margin: 6rem 0 2rem 2rem;
+  /* margin-top: 10rem;
+  margin-bottom: 2rem; */
+}

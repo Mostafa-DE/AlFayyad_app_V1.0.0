@@ -1,0 +1,38 @@
+.copyRight {
+  margin: 70px 0 40px;
+  text-align: center;
+}
+.copyRight p {
+  transition: 1s;
+  color: #fff;
+}
+
+.copyRight p a {
+  color: #03c7ff;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  margin-left: 0.4rem;
+}
+
+.copyRight p a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #03c7ff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.copyRight p a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

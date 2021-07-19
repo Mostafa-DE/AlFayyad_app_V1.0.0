@@ -1,0 +1,182 @@
+.navbar {
+  padding-bottom: 2rem;
+}
+
+.FavouriteProducts {
+  font-size: 1.9rem;
+  color: #03c7ff;
+  margin-right: 0.2rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.cart {
+  font-size: 1.9rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/*------Search Field------*/
+.searchField {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputSearch {
+  padding: 0.3rem 3rem;
+  border: 0;
+  border-radius: 5px;
+  background-color: #fafafa41;
+  color: black;
+  font-weight: 600;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.05);
+}
+
+.inputSearch:focus {
+  /* outline: none; */
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4);
+}
+
+.closeIcon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: black;
+}
+
+.searchIcon {
+  color: black;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.storeText {
+  font-weight: 400;
+}
+
+.searchIcon:hover {
+  color: #03c7ff;
+  transform: scale(1.3);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Change style if you scrolling down */
+.searchFieldScroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeIconScroll {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.inputSearchScroll {
+  padding: 0.3rem 3rem;
+  border: 0;
+  border-radius: 5px;
+  background-color: #fafafa41;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 15px 4px rgba(187, 187, 187, 0.05);
+}
+
+.inputSearchScroll:focus {
+  outline: none;
+}
+
+.searchIconScroll {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.storeTextScroll {
+  font-weight: 400;
+}
+
+.searchIconScroll:hover {
+  color: #03c7ff;
+  transition: 0.4s;
+  transform: scale(1.4);
+}
+
+/*---------X-----------*/
+
+/*--------All Link (individual)--------*/
+.link {
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  margin: 0.85rem;
+}
+
+.link:hover {
+  color: #03c7ff;
+  transition: all 0.3s ease-in-out;
+}
+
+/* change Style Link if you scrolling down */
+.linkScroll {
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  margin: 0.85rem;
+}
+
+.linkScroll:hover {
+  color: #03c7ff;
+  transition: all 0.3s ease-in-out;
+}
+
+/*------------------X------------------*/
+
+/*-------Home Link--------*/
+.link1 {
+  font-weight: 700;
+  color: #03c7ff;
+  text-decoration: none;
+  margin: 0.85rem;
+}
+
+.link1:hover {
+  color: #03c7ff;
+}
+/*-----------X-----------*/
+
+/*-----All Link together-------*/
+.menu {
+  margin-left: 1rem;
+}
+/*-------------X---------------*/
+
+/*------Logo (AlFayyad Store)-------*/
+.logo {
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 800;
+}
+
+.logo:hover {
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Change style logo if you scrolling down */
+.logoScroll {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 800;
+}
+
+.logoScroll:hover {
+  color: #fff;
+}
+/*----------------X------------------*/

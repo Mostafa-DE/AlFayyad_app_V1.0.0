@@ -1,0 +1,56 @@
+.textOverview {
+  text-transform: uppercase;
+  margin-top: 8.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, 250px); */
+  grid-auto-rows: auto;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  /* grid-gap: 5rem; */
+}
+
+.divBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnProductsList {
+  border: 1px solid #fff;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 1rem;
+  background: linear-gradient(
+    161deg,
+    rgb(14, 14, 14) 0%,
+    rgba(150, 149, 149, 0.986) 100%
+  );
+}
+
+.btnProductsList:hover {
+  color: #fff;
+}
+
+.fixedImage {
+  width: 100%;
+  height: 30rem;
+  background-image: url('public/images/fayyad/model shopping.jpg');
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+

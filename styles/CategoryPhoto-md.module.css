@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  position: relative;
+}
+
+/*--------------Style for Tools & House paper---------------*/
+
+.paper,
+.paperHouse {
+  width: 100%;
+  margin: 2rem 0 0 3rem;
+  height: 28rem;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  background-image: url('public/images/test/drill.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  cursor: pointer;
+}
+
+.paperHouse {
+  background-image: url('public/images/fayyad/houseware.jpg');
+}
+
+.paperHouse:hover .linkShope {
+  opacity: 1;
+}
+
+.paper:hover .linkShope {
+  opacity: 1;
+}
+
+.linkShope {
+  background-color: #03c7ff;
+  position: absolute;
+  border-radius: 6px;
+  font-weight: 700;
+  opacity: 0;
+  color: white;
+  margin: 5rem 0 0 14rem;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+}
+
+.linkShope:hover {
+  opacity: 1;
+  background-color: white;
+  color: #03c7ff;
+}
+
+.paperText {
+  display: grid;
+  font-size: 2.2rem;
+  margin: 1rem 0 0.5rem 1.5rem;
+  font-weight: 800;
+  color: white;
+  animation: animateText 3s linear infinite;
+}
+
+.paperText span {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+.linkShope::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #03c7ff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.linkShope:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .paper,
+  .paperHouse {
+    width: 90%;
+    height: 24rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .paper,
+  .paperHouse {
+    width: 50%;
+    height: 18rem;
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+  .paper,
+  .paperHouse {
+    width: 87%;
+    height: 24rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+  }
+  .paper,
+  .paperHouse {
+    width: 95%;
+    height: 15.5rem;
+    margin: 0.8rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .paper:hover,
+  .paperHouse:hover .linkShope {
+    opacity: 0;
+  }
+}
+
+/*---------------------X-------------------*/
+
+/* @keyframes animateText {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+} */

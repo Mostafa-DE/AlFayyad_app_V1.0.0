@@ -1,0 +1,127 @@
+.box {
+  width: 340px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem;
+  /* position: absolute; */
+  /* left: 50%;
+  top: 50%; */
+  /* transform: translate(-50%, -50%); */
+}
+
+.box a {
+  text-decoration: none;
+}
+
+.slideImg {
+  height: 320px;
+  padding: relative;
+  cursor: pointer;
+}
+
+.slideImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.detailBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-family: calibri;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+}
+
+.type a {
+  color: #333;
+  margin: 5px 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-right: 8px;
+}
+
+.type a:hover {
+  color: #03c8ff;
+}
+
+.type span {
+  color: rgb(0, 47, 255);
+}
+
+.price {
+  color: black;
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: poppins;
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
+}
+
+.heart {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #03c8ff;
+}
+
+.fillHeart {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #03c8ff;
+}
+
+.overlay {
+  position: relative;
+  left: 50%;
+  top: -160px;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: #03c8ff42;
+  /* transition: all 0.1s ease; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  visibility: hidden;
+}
+
+.slideImg:hover .overlay {
+  visibility: visible;
+  animation: fade 0.9s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* .cards {
+  width: 18rem;
+  margin: 0.9rem;
+  margin-top: 2.5rem;
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem;
+} */
+
+/* .cards img {
+  width: 270px;
+  height: 334px;
+} */
