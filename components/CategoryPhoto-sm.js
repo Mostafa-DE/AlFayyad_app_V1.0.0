@@ -24,12 +24,6 @@ function CategoryPhotoSm() {
                     <a href="#" className={styles.linkShope}>Shope Now</a>
                 </Paper>
             </Link>
-            {/* <Link href="/contact">
-                <Paper className={`${styles.paper4}`}>
-                    <p className={styles.paperText}>Test & more <span>Find out</span></p>
-                    <a href="#" className={styles.linkShope}>Shope Now</a>
-                </Paper>
-            </Link> */}
         </div>
     )
 }

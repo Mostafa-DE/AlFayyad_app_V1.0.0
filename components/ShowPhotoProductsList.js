@@ -13,24 +13,24 @@ function ShowPhotoProductsList() {
 
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="../images/fayyad/grill.png" className="d-block w-100" width={200} height={800} alt="..." />
+                    <img src="../images/fayyad/grill.jpg" className="d-block w-100" width={200} height={750} alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="../images/fayyad/ozito.png" className="d-block w-100" width={200} height={800} alt="..." />
+                    <img src="../images/fayyad/ozito.jpg" className="d-block w-100" width={200} height={750} alt="..." />
                     <div className={`carousel-caption `} style={{color: "black"}}>
                 </div>
                 </div>
                 <div className="carousel-item">
-                    <img src="../images/fayyad/toast.png" className="d-block w-100" width={100} height={750} alt="..." />
+                    <img src="../images/fayyad/toast.jpeg" className="d-block w-100" width={100} height={700} alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="../images/fayyad/duro.png" className="d-block w-100" width={100} height={750} alt="..." />
+                    <img src="../images/fayyad/heater.jpeg" className="d-block w-100" width={100} height={750} alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="../images/fayyad/pan.png" className="d-block w-100" width={100} height={750} alt="..." />
+                    <img src="../images/fayyad/knife set.jpg" className="d-block w-100" width={100} height={700} alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="../images/fayyad/termos.png" className="d-block w-100" width={100} height={750} alt="..." />
+                    <img src="../images/fayyad/changing set.jpg" className="d-block w-100" width={100} height={750} alt="..." />
                 </div>
             </div>
 

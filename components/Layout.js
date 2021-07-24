@@ -5,6 +5,7 @@ import Header from './Header';
 import ShowPhoto from './ShowPhoto';
 import styles from '@/styles/Layout.module.css';
 import ButtonScrollToTop from './ButtonScrollToTop';
+import ButtonWhatsapp from './ButtonWhatsapp';
 
 function Layout({title, description, children}) {
     const router = useRouter();
@@ -23,7 +24,9 @@ function Layout({title, description, children}) {
             </div>
             
             <Footer />
+            <ButtonWhatsapp />
             <ButtonScrollToTop />
+            
             
             
         </div>

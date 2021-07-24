@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+
 .cardsProductsList {
   display: flex;
   flex-direction: row;
@@ -6,7 +8,17 @@
 }
 
 .h1Text {
-  margin: 6rem 0 2rem 2rem;
-  /* margin-top: 10rem;
-  margin-bottom: 2rem; */
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 6rem 0 2rem 0;
+  font-family: 'Otomanopee One', sans-serif;
+}
+
+.h1Text span {
+  color: #03c7ff;
+  font-size: 5rem;
+  margin-top: -2.5rem;
 }

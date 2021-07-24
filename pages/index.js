@@ -8,6 +8,7 @@ import styles from '@/styles/Home.module.css';
 import SliderProducts from '@/components/SliderProducts';
 import Carousel from 'react-elastic-carousel';
 import { breakPoints } from '@/components/SliderProducts';
+import { AiOutlineLine } from "react-icons/ai"
 import Link from 'next/link';
 import SubscripeForm from '@/components/SubscripeForm';
 
@@ -18,7 +19,11 @@ function HomePage({products}) {
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
       <CategoryPhotoMd />
       <CategoryPhotoSm />
-      <h1 className={styles.textOverview}>Store Overview:-</h1>
+      <h1 
+        className={styles.textOverview}
+      >
+        Store Overview <span> <AiOutlineLine /> </span>
+      </h1>
       <div className={styles.container}>
       </div>
       <div className={styles.carousel}>
@@ -40,13 +45,6 @@ function HomePage({products}) {
       </div>
       <PropertiesOurShop />
       <div className={styles.fixedImage} />
-
-      
-      {/* <img 
-        src="./images/fayyad/Ecommernce.png" 
-        className="img-fluid" 
-        style={{marginTop: "-5.5rem", marginBottom: "5rem", }} 
-      /> */}
       <SubscripeForm />
       
 

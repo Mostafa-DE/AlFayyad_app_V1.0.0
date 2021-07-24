@@ -11,7 +11,7 @@ function ButtonScrollToTop() {
     };
 
     useEffect(() => {
-        /*Buuton is display after scrolling for 500 pixels*/
+        /*Buuton is display after scrolling for 400 pixels*/
         const handleVisibility = () => {
             if(window.pageYOffset > 400) {
                 setIsVisisble(true);
@@ -21,7 +21,6 @@ function ButtonScrollToTop() {
         };
         window.addEventListener("scroll", handleVisibility);
         return () => window.removeEventListener("scroll", handleVisibility);
-
     });
 
     return (

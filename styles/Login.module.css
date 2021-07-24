@@ -1,0 +1,41 @@
+.main {
+  margin-top: 11rem;
+}
+
+.loginSocialBtn {
+  padding: 0.4rem 0.8rem;
+  color: #fff;
+  background-color: #03c7ff;
+  border: 1px solid #03c7ff;
+  border-radius: 50%;
+}
+
+.loginSocialBtn:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #03c8ff;
+  transition: all 0.1s ease-in-out;
+}
+
+.linkRegister {
+  color: #03c7ff;
+}
+
+.linkRegister:hover {
+  color: #00aedf;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.hCustom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .hCustom {
+    height: 100%;
+  }
+}

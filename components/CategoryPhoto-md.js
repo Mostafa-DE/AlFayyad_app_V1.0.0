@@ -6,13 +6,13 @@ function CategoryPhotoMd({}) {
 
     return (
         <div className={styles.container}>
-            <Link href="/about">
+            <Link href="/products/productsList">
                 <Paper className={styles.paper}>
                     <p className={styles.paperText}>Tools & more <span>New Collections</span></p>
                     <a href="#" className={styles.linkShope}>Shope Now</a>
                 </Paper>
             </Link>
-            <Link href="/contact">
+            <Link href="/products/productsList">
                 <Paper className={styles.paperHouse}>
                     <p className={styles.paperText}>Houseware<span>New Collections</span></p>
                     <a href="#" className={styles.linkShope}>Shope Now</a>

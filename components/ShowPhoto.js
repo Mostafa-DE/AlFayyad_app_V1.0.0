@@ -57,7 +57,7 @@ function ShowPhoto() {
                 </div>
 
                 <div className="carousel-item">
-                    <img src="./images/fayyad/tools.jpg" className="d-block w-100" width={100} height={800} alt="..." />
+                    <img src="./images/fayyad/tools_new.jpg" className="d-block w-100" width={100} height={800} alt="..." />
                     <div className="carousel-caption" >
                         <p className={styles.tools}>Manual & electrical tools</p>
                     </div>
