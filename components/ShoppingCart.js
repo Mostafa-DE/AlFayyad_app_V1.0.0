@@ -25,10 +25,10 @@ function ShoppingCart() {
         </span>
       </h1>
       <TableContainer>
-        <Table>
+        <Table style={{ minWidth: "750px" }}>
           <TableHead>
             <TableRow>
-              <TableCell></TableCell>
+              <TableCell align="center">Image</TableCell>
               <TableCell align="inherit">Product</TableCell>
               <TableCell align="center">Price</TableCell>
               <TableCell align="center">QTY</TableCell>

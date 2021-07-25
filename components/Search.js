@@ -49,28 +49,50 @@ function Search() {
         onSubmit={handleSubmit}
       >
         {click ? (
-          <div
-            className={`${
-              scrollState === "top"
-                ? styles.searchField
-                : styles.searchFieldScroll
-            }`}
-          >
+          <div className="input-group rounded" style={{ maxWidth: "12.5rem" }}>
             <input
-              type="text"
+              type="search"
+              className="form-control rounded"
               placeholder="Search..."
-              className={`${
-                scrollState === "top"
-                  ? styles.inputSearch
-                  : styles.inputSearchScroll
-              }`}
+              aria-label="Search"
+              aria-describedby="search-addon"
               onChange={handleChange}
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+                border: "none",
+              }}
             />
-            <button type="submit" className="globalBtn">
-              Search
+            <button
+              type="submit"
+              className="input-group-text border-0"
+              id="search-addon"
+              style={{ background: "none" }}
+            >
+              <i className="fas fa-search"></i>
             </button>
           </div>
         ) : (
+          // <div
+          //   className={`${
+          //     scrollState === "top"
+          //       ? styles.searchField
+          //       : styles.searchFieldScroll
+          //   }`}
+          // >
+          //   <input
+          //     type="text"
+          //     placeholder="Search..."
+          //     className={`${
+          //       scrollState === "top"
+          //         ? styles.inputSearch
+          //         : styles.inputSearchScroll
+          //     }`}
+          //     onChange={handleChange}
+          //   />
+          //   <button type="submit" className={styles.searchBtn}>
+          //     Search
+          //   </button>
+          // </div>
           <div
             className={`${
               scrollState === "top"

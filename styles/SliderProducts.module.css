@@ -27,6 +27,16 @@
   transition: all 0.3s ease-out;
 }
 
+.buttonHeartFill {
+  background: none;
+  border: none;
+}
+
+.buttonHeart {
+  background: none;
+  border: none;
+}
+
 .slideImg {
   height: 450px;
   padding: relative;
@@ -117,6 +127,31 @@
 .slideImg:hover .overlay {
   visibility: visible;
   animation: fade 0.9s;
+}
+
+@media only screen and (max-width: 500px) {
+  .slideImg img {
+    width: 100%;
+    height: 100%;
+    /* padding-bottom: -15rem; */
+  }
+  .slideImg {
+    height: 210px;
+    /* padding-bottom: -30rem; */
+    /* cursor: pointer; */
+  }
+}
+@media only screen and (max-width: 340px) {
+  .slideImg img {
+    width: 100%;
+    height: 100%;
+    /* padding-bottom: -15rem; */
+  }
+  .slideImg {
+    height: 150px;
+    /* padding-bottom: -30rem; */
+    /* cursor: pointer; */
+  }
 }
 
 @keyframes fade {

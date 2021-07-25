@@ -45,6 +45,21 @@ a {
   color: black;
 }
 
+@media only screen and (max-width: 370px) {
+  .carousel .rec .rec-arrow {
+    border-radius: 0;
+    font-size: 1rem;
+    background-color: transparent;
+    box-shadow: none;
+    z-index: 1;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .rating {
+    display: none;
+  }
+}
+
 /* .carousel .rec-dot:active {
   box-shadow: 0 0 1px 1px black;
   background-color: #00c3cc;

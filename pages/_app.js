@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../styles/globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
+import { WishProvider } from "@/context/WishContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -75,7 +76,9 @@ function MyApp({ Component, pageProps }) {
       ></link> */}
       <AuthProvider>
         <CartProvider>
-          <Component {...pageProps} />
+          <WishProvider>
+            <Component {...pageProps} />
+          </WishProvider>
         </CartProvider>
       </AuthProvider>
     </>

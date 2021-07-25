@@ -10,6 +10,7 @@ import { FiLogIn } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
 import AuthContext from "@/context/AuthContext";
 import { CartContext } from "@/context/CartContext";
+import { WishContext } from "@/context/WishContext";
 import Badge from "@material-ui/core/Badge";
 
 function Header() {
@@ -19,6 +20,9 @@ function Header() {
 
   /* -----------Cart Shopping context----------------- */
   const { cart } = useContext(CartContext);
+  /* -----------------------X------------------------- */
+  /* -----------Cart Shopping context----------------- */
+  const { wishProduct } = useContext(WishContext);
   /* -----------------------X------------------------- */
 
   const [scrollState, setScrollState] = useState("top");
@@ -59,6 +63,26 @@ function Header() {
               AlFayyad <span className={styles.storeText}>Store</span>{" "}
               <IoStorefrontSharp />
             </a>
+            <div data-bs-toggle="collapse" className="navbar-toggler">
+              <Badge badgeContent={cart.itemsCount} color="error">
+                <Link href="/products/shoppingCart">
+                  <HiOutlineShoppingCart
+                    style={{ fontSize: "1.6rem", color: "#03c7ff" }}
+                    className={`${
+                      scrollState === "top" ? styles.cart : styles.cartScroll
+                    }`}
+                  />
+                </Link>
+              </Badge>
+              <Badge badgeContent={wishProduct.itemsCount} color="error">
+                <Link href="/products/wishList">
+                  <FaRegHeart
+                    style={{ fontSize: "1.6rem" }}
+                    className={styles.FavouriteProducts}
+                  />
+                </Link>
+              </Badge>
+            </div>
             <button
               className="navbar-toggler"
               type="button"
@@ -70,7 +94,6 @@ function Header() {
             >
               <FiMenu style={{ color: "#fff" }} />
             </button>
-
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -96,7 +119,7 @@ function Header() {
                     </a>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/products/discountsList">
                     <a
                       className={`${
@@ -106,7 +129,7 @@ function Header() {
                       Discounts
                     </a>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="/contact">
                     <a
@@ -153,16 +176,24 @@ function Header() {
                   </>
                 )}
               </ul>
-              <Badge badgeContent={cart.itemsCount} color="error">
-                <Link href="/products/shoppingCart">
-                  <HiOutlineShoppingCart
-                    className={`${
-                      scrollState === "top" ? styles.cart : styles.cartScroll
-                    }`}
-                  />
-                </Link>
-              </Badge>
-              <FaRegHeart className={styles.FavouriteProducts} />
+
+              <div style={{ marginRight: "1rem" }}>
+                <Badge badgeContent={cart.itemsCount} color="error">
+                  <Link href="/products/shoppingCart">
+                    <HiOutlineShoppingCart
+                      className={`${
+                        scrollState === "top" ? styles.cart : styles.cartScroll
+                      }`}
+                    />
+                  </Link>
+                </Badge>
+                <Badge badgeContent={wishProduct.itemsCount} color="error">
+                  <Link href="/products/wishList">
+                    <FaRegHeart className={styles.FavouriteProducts} />
+                  </Link>
+                </Badge>
+              </div>
+
               <Search />
             </div>
           </div>

@@ -6,9 +6,10 @@
 .FavouriteProducts {
   font-size: 1.9rem;
   color: #03c7ff;
-  margin-right: 0.2rem;
+  margin-left: 0.9rem;
+  /* margin-right: 0.2rem; */
   cursor: pointer;
-  margin: 0 1.3rem;
+  /* padding-left: 0.8rem; */
 }
 /*-------------X------------*/
 
@@ -17,6 +18,7 @@
   font-size: 1.9rem;
   color: #333;
   cursor: pointer;
+  /* margin-right: 1rem; */
 }
 
 .cartScroll {

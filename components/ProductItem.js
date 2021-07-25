@@ -6,12 +6,16 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import useFavouriteProducts from "@/Hooks/useFavouriteProducts";
 import { CartContext } from "@/context/CartContext";
+import { WishContext } from "@/context/WishContext";
 // import Card from "./PhotoIndexShow";
 
 function ProductsItem({ product }) {
   const [isHeartClicked, handleHeartClicked] = useFavouriteProducts(false);
   /* -----------Cart Shopping context----------------- */
   const { addToCart } = useContext(CartContext);
+  /* -----------------------X------------------------- */
+  /* -----------Wish List context----------------- */
+  const { addToWishList, removeFromWishList } = useContext(WishContext);
   /* -----------------------X------------------------- */
   return (
     <>
@@ -38,22 +42,31 @@ function ProductsItem({ product }) {
             <RatingStar />
           </div>
           {/* ------ price-product ----- */}
-          <div style={{ display: "flex", marginTop: "1.5rem" }}>
-            <p href="#" className={styles.price}>
-              {product.price} JD
-            </p>
-            {isHeartClicked === false ? (
+
+          <p href="#" className={styles.price}>
+            {product.price} JD
+          </p>
+          {isHeartClicked === false ? (
+            <button
+              className={styles.buttonHeart}
+              onClick={() => addToWishList(product)}
+            >
               <AiOutlineHeart
                 className={styles.heart}
                 onClick={handleHeartClicked}
               />
-            ) : (
+            </button>
+          ) : (
+            <button
+              className={styles.buttonHeartFill}
+              onClick={() => removeFromWishList(product)}
+            >
               <AiFillHeart
                 className={styles.fillHeart}
                 onClick={handleHeartClicked}
               />
-            )}
-          </div>
+            </button>
+          )}
         </div>
         <button
           onClick={() => {
