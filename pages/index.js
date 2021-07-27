@@ -16,13 +16,12 @@ function HomePage({ products }) {
   return (
     <Layout title="AL_Fayyad Store">
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
-      {/* <CategoryPhotoMd />
-      <CategoryPhotoSm /> */}
+      <CategoryPhotoMd />
+      <CategoryPhotoSm />
       <h1 className={styles.textOverview}>
-        Store Overview{" "}
+        Store Overview
         <span>
-          {" "}
-          <AiOutlineLine />{" "}
+          <AiOutlineLine />
         </span>
       </h1>
       <div className={styles.container}></div>

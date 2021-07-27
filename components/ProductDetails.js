@@ -1,126 +1,52 @@
-import * as React from "react";
 import { useContext } from "react";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import styles from "@/styles/ProductDetails.module.css";
-import Link from "next/link";
 import { CartContext } from "@/context/CartContext";
-// import RatingStar from '@/components/RatingStar';
+import styles from "@/styles/ProductDetails.module.css";
 
-function ProductDetails({ product }) {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
+function TestProductDetails({ product }) {
   /* -----------Cart Shopping context----------------- */
   const { addToCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
-
   return (
-    <div className={styles.main}>
-      <div className={styles.container}>
-        <img src={product.images[0].url} />
-        <div className={styles.cover}>
-          <div className={styles.content}>
-            <div className={styles.nav}>
-              <span className={styles.logo}>Product Deatails</span>
-              <span>
-                <i
-                  className="fas fa-heart"
-                  style={{ fontSize: "24px", color: "#03c7ff" }}
-                ></i>
-              </span>
-            </div>
-            <div className={styles.contentBody}>
-              <div className={styles.pages}>
-                <span className={styles.active}>
-                  <b>01</b>
-                </span>
-                <span>02</span>
-                <span>03</span>
-                <span>04</span>
-              </div>
-              <div className={styles.blackName}>
-                <span className={styles.title}>
-                  <b>{product.name}</b>
-                </span>
+    <div className={styles.body}>
+      <main className={styles.container}>
+        {/* <!-- Left Column / Headphones Image --> */}
+        <div className={styles.leftColumn}>
+          <img className={styles.image} src={product.images[0].url} alt="" />
+        </div>
 
-                <div>
-                  <Accordion
-                    expanded={expanded === "panel1"}
-                    onChange={handleChange("panel1")}
-                    style={{ backgroundColor: "#efefef", marginTop: "1rem" }}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1bh-content"
-                      id="panel1bh-header"
-                    >
-                      <Typography>
-                        <b>Description</b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>{product.description}</Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel2"}
-                    onChange={handleChange("panel2")}
-                    style={{ backgroundColor: "#efefef", marginTop: "1rem" }}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel2bh-content"
-                      id="panel2bh-header"
-                    >
-                      <Typography>
-                        <b>Additional_Information</b>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>{product.description}</Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
+        {/* <!-- Right Column --> */}
+        <div className={styles.rightColumn}>
+          <div className={styles.navTitle}>
+            <h4>Product Deatails</h4>
+            <i
+              className="fas fa-heart"
+              style={{ fontSize: "24px", color: "#03c7ff" }}
+            ></i>
+          </div>
 
-                <div className={styles.price}>
-                  <span>
-                    <b>{product.price} JD</b>
-                  </span>
-                  <button onClick={() => addToCart(product)}>
-                    Add to card
-                  </button>
-                  {/* <Link href="#">
-                    <a onClick={addToCart(product)} className={styles.btnCard}>
-                      Add To Cart
-                    </a>
-                  </Link> */}
-                </div>
-              </div>
-            </div>
+          {/* <!-- Product Description -->  */}
+          <div className={styles.productDescription}>
+            <h1>{product.name}</h1>
+            <span>Description</span>
+            <p>{product.description}</p>
+            <span>Additional Information</span>
+            <p>{product.additionalInfo}</p>
+          </div>
+
+          {/* <!-- Product Pricing --> */}
+          <div className={styles.productPrice}>
+            <span>{product.price} JD</span>
+            <button
+              onClick={() => addToCart(product)}
+              className={styles.addToCart}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
 
-export default ProductDetails;
-
-{
-  /* <p>
-<a className={styles.description} data-bs-toggle="collapse" href="#multiCollapseProductDetails1" role="button" aria-expanded="false" aria-controls="multiCollapseProductDetails1">Description</a>
-</p>
-<p className={`collapse multi-collapse ${styles.descriptionField}`}  id="multiCollapseProductDetails1">{product.description}</p>
-
-<p>
-<a className={styles.description} data-bs-toggle="collapse" href="#multiCollapseProductDetails2" role="button" aria-expanded="false" aria-controls="multiCollapseProductDetails2">Additional information</a>
-</p>
-<p className="collapse multi-collapse card crad-body" style={{backgroundColor: "#efefef", width: "30rem"}} id="multiCollapseProductDetails2">{product.additionalInfo}</p> */
-}
+export default TestProductDetails;

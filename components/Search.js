@@ -49,7 +49,10 @@ function Search() {
         onSubmit={handleSubmit}
       >
         {click ? (
-          <div className="input-group rounded" style={{ maxWidth: "12.5rem" }}>
+          <div
+            className="input-group rounded mt-3"
+            style={{ maxWidth: "12.5rem" }}
+          >
             <input
               type="search"
               className="form-control rounded"
@@ -72,27 +75,6 @@ function Search() {
             </button>
           </div>
         ) : (
-          // <div
-          //   className={`${
-          //     scrollState === "top"
-          //       ? styles.searchField
-          //       : styles.searchFieldScroll
-          //   }`}
-          // >
-          //   <input
-          //     type="text"
-          //     placeholder="Search..."
-          //     className={`${
-          //       scrollState === "top"
-          //         ? styles.inputSearch
-          //         : styles.inputSearchScroll
-          //     }`}
-          //     onChange={handleChange}
-          //   />
-          //   <button type="submit" className={styles.searchBtn}>
-          //     Search
-          //   </button>
-          // </div>
           <div
             className={`${
               scrollState === "top"

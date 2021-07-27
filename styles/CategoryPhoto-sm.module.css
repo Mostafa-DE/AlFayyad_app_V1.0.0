@@ -18,7 +18,7 @@
   opacity: 1;
   transition: 0.5s ease;
   backface-visibility: hidden;
-  background-image: url('public/images/test/drill.jpg');
+  background-image: url("public/images/test/drill.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: center;
@@ -27,15 +27,15 @@
 }
 
 .paper1 {
-  background-image: url('public/images/fayyad/baby.jpg');
+  background-image: url("public/images/fayyad/baby.jpg");
 }
 
 .paper2 {
-  background-image: url('public/images/fayyad/personal Care.jpg');
+  background-image: url("public/images/fayyad/personal Care.jpg");
 }
 
 .paper3 {
-  background-image: url('public/images/fayyad/kitchenware.jpg');
+  background-image: url("public/images/fayyad/kitchenware.jpg");
 }
 
 .paper3 .paperText {
@@ -55,7 +55,6 @@
   text-decoration: none;
   transition: 0.5s ease-in-out;
 }
-
 
 .linkShope:hover {
   opacity: 1;
@@ -86,7 +85,7 @@
 }
 
 .linkShope::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -112,7 +111,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 770px) and (max-width: 991px) {
   .paper1,
   .paper2,
   .paper3 {
@@ -121,7 +120,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .container {
     flex-direction: column;
     margin: 0;

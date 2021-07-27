@@ -119,17 +119,6 @@ function Header() {
                     </a>
                   </Link>
                 </li>
-                {/* <li>
-                  <Link href="/products/discountsList">
-                    <a
-                      className={`${
-                        scrollState === "top" ? styles.link : styles.linkScroll
-                      }`}
-                    >
-                      Discounts
-                    </a>
-                  </Link>
-                </li> */}
                 <li>
                   <Link href="/contact">
                     <a
@@ -176,7 +165,6 @@ function Header() {
                   </>
                 )}
               </ul>
-
               <div style={{ marginRight: "1rem" }}>
                 <Badge badgeContent={cart.itemsCount} color="error">
                   <Link href="/products/shoppingCart">
