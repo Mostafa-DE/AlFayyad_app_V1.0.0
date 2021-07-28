@@ -80,7 +80,7 @@ function Register() {
                             onChange={handleChangeEmail}
                             fullWidth
                             variant="standard"
-                            label="Email Adress"
+                            label="Email Address"
                             validators={["required"]}
                             errorMessages={["Please Enter A Valid Email !!"]}
                           />

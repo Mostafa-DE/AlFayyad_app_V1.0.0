@@ -19,6 +19,7 @@ export const CartProvider = ({ children }) => {
   };
   const addToCart = (product) => {
     const { items = [] } = cart;
+    console.log(items);
     const productIndex = items.findIndex((item) => item.id === product.id);
     if (productIndex === -1) {
       items.push({
@@ -29,8 +30,9 @@ export const CartProvider = ({ children }) => {
       items[productIndex].qty++;
     }
     const total = calculateCartTotal(items);
-    console.log(total);
+
     setCart({ items, ...total });
+    console.log(total);
   };
 
   const removeFromCart = (product) => {

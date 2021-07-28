@@ -89,9 +89,11 @@ function ShoppingCart() {
           <p className={styles.totalP}>total amount:</p>
           <p className={styles.priceP}> {totalAmount} JD</p>
         </div>
-        <button className={styles.checkOutBtn}>
-          Check Out <i className="fas fa-credit-card"></i>
-        </button>
+        <Link href="/payment/paymentMethodOptions">
+          <button className={styles.checkOutBtn}>
+            Check Out <i className="fas fa-credit-card"></i>
+          </button>
+        </Link>
       </div>
     </Layout>
   );

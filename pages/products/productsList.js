@@ -11,10 +11,9 @@ export default function productsList({ products }) {
     <Layout title="Products List">
       <ShowPhotoProductsList />
       <h1 className={styles.h1Text}>
-        Products List{" "}
+        Products List
         <span>
-          {" "}
-          <AiOutlineLine />{" "}
+          <AiOutlineLine />
         </span>
       </h1>
       <div className={styles.cardsProductsList}>

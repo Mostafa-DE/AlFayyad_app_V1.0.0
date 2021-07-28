@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
 .navbar {
   padding-bottom: 2rem;
 }
@@ -101,8 +102,10 @@
 /*------Logo (AlFayyad Store)-------*/
 .logo {
   text-transform: uppercase;
+  letter-spacing: 2px;
   color: #000;
   font-weight: 800;
+  font-family: "Bree Serif", serif;
 }
 
 .logo:hover {

@@ -11,10 +11,9 @@ function searchPage({ products }) {
   return (
     <Layout title="Products List">
       <h1 className={styles.h1Text}>
-        Search Results for "{router.query.term}"{" "}
+        Search Results for "{router.query.term}"
         <span>
-          {" "}
-          <AiOutlineLine />{" "}
+          <AiOutlineLine />
         </span>
       </h1>
       <div className={styles.cardsProductsList}>

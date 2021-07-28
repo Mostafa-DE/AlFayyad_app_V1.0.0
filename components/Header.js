@@ -60,8 +60,10 @@ function Header() {
               }`}
               href="/"
             >
-              AlFayyad <span className={styles.storeText}>Store</span>{" "}
-              <IoStorefrontSharp />
+              AlFayyad
+              <IoStorefrontSharp
+                style={{ marginLeft: "0.5rem", marginBottom: "0.3rem" }}
+              />
             </a>
             <div data-bs-toggle="collapse" className="navbar-toggler">
               <Badge badgeContent={cart.itemsCount} color="error">

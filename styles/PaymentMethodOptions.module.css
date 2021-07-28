@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  /* margin-top: 15rem; */
+  /* height: 30rem; */
+}
+
+.uWalletContainerImg {
+  border: 2px solid #333;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.uWalletImg {
+  border-radius: 20px;
+}
+
+.ContainerCash {
+  border: 2px solid #333;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.cashImg {
+  border-radius: 20px;
+}
+
+.h1Text {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: capitalize;
+  margin: 10rem 0 2rem 0;
+  font-family: "Otomanopee One", sans-serif;
+}
+
+.h1Text span {
+  color: #03c7ff;
+  font-size: 5rem;
+  margin-top: -2.5rem;
+}
