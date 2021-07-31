@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect, useRef } from "react";
+// import cookie from "js-cookie";
 
 export const CartContext = createContext();
 
@@ -8,6 +9,23 @@ export const CartProvider = ({ children }) => {
     itemsCount: 0,
     cartTotal: 0,
   });
+
+  /*---------Save Product Cart in localStorage-----------*/
+  const isActive = true;
+  useEffect(() => {
+    if (isActive === true) {
+      const shoppingcart = window.localStorage.getItem("cart");
+      setCart(JSON.parse(shoppingcart));
+    }
+    return () => {
+      isActive = false;
+    };
+  }, [isActive]);
+
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+  /*-----------------------X----------------------------*/
 
   const calculateCartTotal = (items) => {
     const itemsCount = items.reduce((prev, curr) => prev + curr.qty, 0);
@@ -19,7 +37,8 @@ export const CartProvider = ({ children }) => {
   };
   const addToCart = (product) => {
     const { items = [] } = cart;
-    console.log(items);
+    // console.log(items);
+
     const productIndex = items.findIndex((item) => item.id === product.id);
     if (productIndex === -1) {
       items.push({
@@ -32,7 +51,8 @@ export const CartProvider = ({ children }) => {
     const total = calculateCartTotal(items);
 
     setCart({ items, ...total });
-    console.log(total);
+
+    // console.log(total);
   };
 
   const removeFromCart = (product) => {
@@ -43,6 +63,7 @@ export const CartProvider = ({ children }) => {
     }
     const total = calculateCartTotal(items);
     setCart({ items, ...total });
+    // cookie.remove("shoppingCart");
   };
 
   const addQty = (product) => {
@@ -65,7 +86,13 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, addQty, removeQty }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        addQty,
+        removeQty,
+      }}
     >
       {children}
     </CartContext.Provider>

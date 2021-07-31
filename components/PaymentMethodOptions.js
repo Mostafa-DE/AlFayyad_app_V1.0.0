@@ -20,7 +20,6 @@ function PaymentMethodOptions() {
           <img
             className={`img-fluid ${styles.uWalletImg}`}
             src="/images/fayyad/uWallet.bmp"
-            width={600}
           />
         </div>
         <div className={styles.ContainerCash}>
@@ -28,7 +27,6 @@ function PaymentMethodOptions() {
             <img
               className={`img-fluid ${styles.cashImg}`}
               src="/images/fayyad/cash.jpg"
-              width={550}
             />
           </Link>
         </div>

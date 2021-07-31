@@ -6,6 +6,7 @@
 }
 
 .uWalletContainerImg {
+  width: 600px;
   border: 2px solid #333;
   border-radius: 20px;
   cursor: pointer;
@@ -16,6 +17,7 @@
 }
 
 .ContainerCash {
+  width: 550px;
   border: 2px solid #333;
   border-radius: 20px;
   cursor: pointer;
@@ -40,4 +42,105 @@
   color: #03c7ff;
   font-size: 5rem;
   margin-top: -2.5rem;
+}
+
+@media (max-width: 1200px) {
+  .uWalletContainerImg {
+    width: 500px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 440px;
+    height: 100%;
+  }
+
+  .h1Text {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 986px) {
+  .uWalletContainerImg {
+    width: 400px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 350px;
+    height: 100%;
+  }
+}
+
+@media (max-width: 786px) {
+  .uWalletContainerImg {
+    width: 340px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 300px;
+    height: 100%;
+  }
+}
+
+@media (max-width: 676px) {
+  .uWalletContainerImg {
+    width: 280px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 250px;
+    height: 100%;
+  }
+  .h1Text {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .uWalletContainerImg {
+    width: 220px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 195px;
+    height: 100%;
+  }
+  .h1Text {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .uWalletContainerImg {
+    width: 180px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 160px;
+    height: 100%;
+  }
+  .h1Text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .uWalletContainerImg {
+    width: 150px;
+    height: 100%;
+  }
+
+  .ContainerCash {
+    width: 130px;
+    height: 100%;
+  }
+  .h1Text {
+    font-size: 0.95rem;
+  }
 }
