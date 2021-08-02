@@ -1,6 +1,25 @@
+import { useState } from "react";
+import emailjs from "emailjs-com";
 import styles from "@/styles/SubscripeForm.module.css";
 
 function SubscripeForm() {
+  const [email, setEmail] = useState("");
+  const handleSubmit = async (evnt) => {
+    evnt.preventDefault();
+    emailjs
+      .sendForm(
+        "service_8swmbyy",
+        "template_ezya1ej",
+        evnt.target,
+        "user_tjMhMjtx9IxF7pqse8vPx"
+      )
+      .then((res) => console.log(res))
+      .then(setEmail(""))
+      .catch((err) => console.log(err));
+  };
+  const handleChange = (evnt) => {
+    setEmail(evnt.target.value);
+  };
   return (
     <div className="container mt-5">
       <div className="row">
@@ -12,28 +31,28 @@ function SubscripeForm() {
               designs, and product updates.
             </h6>
             <div className="form-group bg-white border rounded px-2 py-2 mb-2">
-              <div className="row">
+              <form className="row" onSubmit={handleSubmit}>
                 <div className="col">
-                  {" "}
                   <input
                     type="email"
                     name="email"
                     className={`${styles.formControl} pl-3 shadow-none bg-transparent border-0`}
                     placeholder="Email address"
                     required
-                  />{" "}
+                    onChange={handleChange}
+                    value={email}
+                  />
                 </div>
                 <div className="col-auto">
-                  {" "}
                   <button
                     type="submit"
                     className={`${styles.btn} btn-block ${styles.btnDark}`}
                   >
                     Get notified
-                  </button>{" "}
+                  </button>
                 </div>
-              </div>
-            </div>{" "}
+              </form>
+            </div>
             <span className={`mb-4 ${styles.textColor}`}>
               No spam, notifications only about new products, updates and
               freebies.

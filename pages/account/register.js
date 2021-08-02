@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import Register from "@/components/Register";
 function registerPage() {
   return (
-    <Layout>
+    <Layout title="Register">
       <Register />
     </Layout>
   );

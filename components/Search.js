@@ -1,15 +1,9 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import { BiSearchAlt2 } from "react-icons/bi";
-// import { TiTimes } from "react-icons/ti";
-import styles from "@/styles/Search.module.css";
+import { useState } from "react";
+import TextField from "@material-ui/core/TextField";
 
 function Search() {
   const router = useRouter();
-  const [click, setClick] = useState(false);
-  const handleClick = () => {
-    setClick(!click);
-  };
   const [term, setTerm] = useState("");
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
@@ -20,99 +14,36 @@ function Search() {
     setTerm(evnt.target.value);
   };
 
-  const [scrollState, setScrollState] = useState("top");
-  let listener = null;
-  useEffect(() => {
-    listener = document.addEventListener("scroll", () => {
-      var scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 100) {
-        if (scrollState !== "amir") {
-          setScrollState("amir");
-        }
-      } else {
-        if (scrollState !== "top") {
-          setScrollState("top");
-        }
-      }
-    });
-    return () => {
-      document.removeEventListener("scroll", listener);
-    };
-  }, [scrollState]);
-
   return (
     <div>
       <form
-        className="d-flex"
-        noValidate
-        autoComplete="off"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginLeft: "1rem",
+        }}
         onSubmit={handleSubmit}
       >
-        {click ? (
-          <div
-            className="input-group rounded mt-3"
-            style={{ maxWidth: "12.5rem" }}
-          >
-            <input
-              type="search"
-              className="form-control rounded"
-              placeholder="Search..."
-              aria-label="Search"
-              aria-describedby="search-addon"
-              onChange={handleChange}
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
-                border: "none",
-              }}
-            />
-            <button
-              type="submit"
-              className="input-group-text border-0"
-              id="search-addon"
-              style={{ background: "none" }}
-            >
-              <i className="fas fa-search"></i>
-            </button>
-          </div>
-        ) : (
-          <div
-            className={`${
-              scrollState === "top"
-                ? styles.searchIcon
-                : styles.searchIconScroll
-            }`}
-            onClick={handleClick}
-          >
-            <BiSearchAlt2 />
-          </div>
-        )}
+        <TextField
+          variant="standard"
+          label="Search"
+          onChange={handleChange}
+          value={term}
+          required
+        />
+        <button type="submit" style={{ background: "none", border: "none" }}>
+          <i
+            className="fas fa-search"
+            style={{
+              marginTop: "1.5rem",
+              marginLeft: "0.2rem",
+            }}
+          ></i>
+        </button>
       </form>
     </div>
   );
 }
 
 export default Search;
-
-{
-  /* <form onSubmit={handleSubmit}>
-<div className="input-group ">
-    <input 
-        type="text" 
-        value={term} 
-        onChange={handleChange} 
-        placeholder="Search Products"
-        className="form-control"
-        aria-label="search"
-        aria-describedby="search"
-    />
-    <button 
-        className="globalBtn"
-        type="submit"
-        id="button-addon2"
-    >
-            Search
-    </button>
-</div>
-
-</form> */
-}

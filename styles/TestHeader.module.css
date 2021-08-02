@@ -71,7 +71,7 @@
 /*--------------nav link----------------*/
 .nav {
   display: flex;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   padding-top: 1rem;
 }
 
@@ -98,7 +98,7 @@
 /* nav link when scroll down*/
 .navScroll {
   display: flex;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   padding-top: 1rem;
 }
 
@@ -131,6 +131,11 @@
 .shoppingCartIcon {
   font-size: 1.8rem;
   color: #03c7ff;
+  /* margin-top: 1rem; */
+}
+
+.badgCart {
+  margin-top: 1rem;
 }
 
 /* shopping cart when scroll down */
@@ -171,7 +176,7 @@
 }
 /*---------------X-----------------*/
 
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .nav ul {
     position: fixed;
     top: -100%;
@@ -207,6 +212,10 @@
   .nav .toogle {
     top: 0;
   }
+  .badgCart {
+    margin-top: 0;
+  }
+
   /* responsive navbar when scroll down */
   .navScroll ul {
     position: fixed;

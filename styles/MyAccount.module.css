@@ -1,0 +1,89 @@
+.main {
+  margin-top: 8rem;
+}
+
+.padding {
+  padding: 3rem;
+}
+
+.userCardFull {
+  overflow: hidden;
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border: none;
+  margin-bottom: 30px;
+}
+
+.mr0 {
+  margin-right: 0px;
+}
+
+.ml0 {
+  margin-left: 0px;
+}
+
+.userProfile {
+  border-radius: 5px 0 0 5px;
+  padding: 20px 0;
+}
+
+.bgLiteGreen {
+  background: linear-gradient(to right, #03c7ff, #d6d6d6);
+}
+
+.cardBlock {
+  padding: 2rem 0;
+}
+
+.mb25 {
+  margin-bottom: 25px;
+}
+
+.imgRadius {
+  border-radius: 5px;
+}
+
+.userProfile h6 {
+  font-size: 14px;
+}
+
+.cardBlock p {
+  line-height: 25px;
+}
+
+@media (min-width: 1400px) {
+  .cardBlock p {
+    font-size: 16px;
+  }
+}
+
+.bBDefault {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.pb5 {
+  padding-bottom: 5px !important;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mt40 {
+  margin-top: 20px;
+}
+
+.textMuted {
+  color: #919aa3 !important;
+}
+
+.fw600 {
+  font-weight: 600;
+}

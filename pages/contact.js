@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
+import ContactForm from "@/components/ContactForm";
 
 function ContactPage() {
   return (
-    <Layout>
-      <h1>Contact Page...</h1>
+    <Layout title="Contact Us">
+      <ContactForm />
     </Layout>
   );
 }

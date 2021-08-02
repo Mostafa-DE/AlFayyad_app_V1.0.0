@@ -56,7 +56,7 @@ function OrderInformationsForms() {
     }
   };
 
-  /*------------------Validation TextField-------------------*/
+  /*------------------Validation TextField phone number-------------------*/
   useEffect(() => {
     ValidatorForm.addValidationRule("isPhoneNumber", (value) => {
       if (value.length > 10 || value.length < 10) {
@@ -74,7 +74,7 @@ function OrderInformationsForms() {
       return true;
     });
   });
-  /*----------------------------X----------------------------*/
+  /*-----------------------------------X-----------------------------------*/
 
   return (
     <section style={{ marginTop: "10rem" }}>

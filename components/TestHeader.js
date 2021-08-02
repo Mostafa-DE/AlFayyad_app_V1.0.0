@@ -1,11 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "@/styles/TestHeader.module.css";
 import Link from "next/link";
+import Search from "./Search";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCloseFill } from "react-icons/ri";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { HiOutlineShoppingCart } from "react-icons/hi";
-import { AiOutlineSearch } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
 import Badge from "@material-ui/core/Badge";
 import AuthContext from "@/context/AuthContext";
@@ -76,12 +77,34 @@ function TestHeader() {
           <li>
             <Link href="/contact">contact</Link>
           </li>
+          {user ? (
+            <>
+              <li>
+                <Link href="/account/login">
+                  <a onClick={logout}>
+                    Logout <FiLogOut />
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/account/myAccount">
+                  <a>My Account</a>
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/account/login">
+                  <a>
+                    Login <FiLogIn />
+                  </a>
+                </Link>
+              </li>
+            </>
+          )}
           <li>
-            <Link href="/account/login">
-              <a>
-                Login <FiLogIn />
-              </a>
-            </Link>
+            <Search />
           </li>
           <li>
             <RiCloseFill className={styles.closeIcon} onClick={handleToogle} />
@@ -92,15 +115,22 @@ function TestHeader() {
             scrollState === "top" ? styles.navCart : styles.navCartScroll
           }`}
         >
-          <Badge badgeContent={cart.itemsCount} color="error">
+          <Badge
+            badgeContent={cart.itemsCount}
+            color="error"
+            className={styles.badgCart}
+          >
             <Link href="/products/shoppingCart">
               <HiOutlineShoppingCart className={styles.shoppingCartIcon} />
             </Link>
           </Badge>
         </div>
+
         <div>
-          <AiOutlineSearch className={styles.searchIcon} />
+          {/* <Search /> */}
+          {/* <AiOutlineSearch className={styles.searchIcon} /> */}
         </div>
+
         <div className={styles.menu} onClick={handleToogle}>
           <GiHamburgerMenu className={styles.menuIcon} />
         </div>

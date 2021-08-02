@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Link from "next/link";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useInputState from "@/Hooks/useInputState";
@@ -10,9 +11,30 @@ function Register() {
   const { register, error } = useContext(AuthContext);
   const [username, handleChangeUsername, resetUsername] = useInputState("");
   const [email, handleChangeEmail, resetEmail] = useInputState("");
+  const [phone, handleChangePhone, resetPhone] = useInputState("");
   const [password, handleChangePassword, resetPassword] = useInputState("");
   const [passwordConf, handleChangePasswordConf, resetPasswordConf] =
     useInputState("");
+
+  /*------------------Validation TextField phone number-------------------*/
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isPhoneNumber", (value) => {
+      if (value.length > 10 || value.length < 10) {
+        return false;
+      }
+      return true;
+    });
+  });
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isNumber", (value) => {
+      if (value.match(/^[A-Za-z]+$/)) {
+        return false;
+      }
+      return true;
+    });
+  });
+  /*-----------------------------------X-----------------------------------*/
 
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
@@ -31,11 +53,8 @@ function Register() {
       username,
       email,
       password,
+      phone,
     });
-    // resetUsername();
-    // resetEmail();
-    // resetPassword();
-    // resetPasswordConf();
   };
   return (
     <section style={{ marginTop: "8rem" }}>
@@ -88,6 +107,30 @@ function Register() {
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-mobile-alt fa-lg me-3 fa-fw"></i>
+                        <div className="form-outline flex-fill mb-4">
+                          <TextValidator
+                            type="text"
+                            value={phone}
+                            onChange={handleChangePhone}
+                            fullWidth
+                            variant="standard"
+                            label="Phone Number (For contact purposes)"
+                            validators={[
+                              "required",
+                              "isNumber",
+                              "isPhoneNumber",
+                            ]}
+                            errorMessages={[
+                              "Please Enter A Phone Number !!",
+                              "Phone Number Must Be A Numbers !!",
+                              "Phone Number Must Be (10 number) !!",
+                            ]}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
@@ -122,10 +165,10 @@ function Register() {
                       </div>
 
                       <div className="form-check d-flex justify-content-center mb-5">
-                        <div class="mb-3 form-check">
+                        <div className="mb-3 form-check">
                           <input
                             type="checkbox"
-                            class="form-check-input"
+                            className="form-check-input"
                             id="exampleCheck1"
                             required
                           />
