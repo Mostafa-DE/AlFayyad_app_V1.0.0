@@ -11,7 +11,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { CartContext } from "@/context/CartContext";
-// import useInputState from "@/Hooks/useInputState";
+import emailjs from "emailjs-com";
 import { API_URL } from "../config";
 
 function OrderInformationsForms() {
@@ -29,8 +29,8 @@ function OrderInformationsForms() {
     city: "",
     building: "1",
     phone: "",
-    nameOrder: "",
-    qty: items.map((item) => item.qty),
+    nameOrder: items.map((item) => item.name),
+    qty: items.map((item) => item.qty) || "1",
     amount: totalAmount,
   });
 
@@ -41,19 +41,30 @@ function OrderInformationsForms() {
 
   const handleSubmit = async (evnt) => {
     evnt.preventDefault();
-    console.log(values);
-    const res = await fetch(`${API_URL}/orders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    if (!res.ok) {
-      toast.error("Oh No, Somthing Went Wrong!!");
-    } else {
-      router.push("/products/shoppingCart");
-    }
+    // emailjs
+    //   .sendForm(
+    //     "service_8swmbyy",
+    //     "template_ezya1ej",
+    //     evnt.target,
+    //     "user_tjMhMjtx9IxF7pqse8vPx"
+    //   )
+    //   .then(() => toast.success("Great The Message Was Sent :)"))
+    //   //   .then(() => router.push("/"))
+    //   .catch((err) => console.log(err));
+    console.log(values.nameOrder);
+    // const res = await fetch(`${API_URL}/orders`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // });
+    // if (!res.ok) {
+    //   toast.error("Oh No, Somthing Went Wrong!!");
+    // }
+    // } else {
+    //   router.push("/products/shoppingCart");
+    // }
   };
 
   /*------------------Validation TextField phone number-------------------*/
@@ -72,6 +83,15 @@ function OrderInformationsForms() {
         return false;
       }
       return true;
+    });
+  });
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isLocalNumber", (value) => {
+      if (value.match("07")) {
+        return true;
+      }
+      return false;
     });
   });
   /*-----------------------------------X-----------------------------------*/
@@ -104,7 +124,7 @@ function OrderInformationsForms() {
                               onChange={handleChangeInput}
                               fullWidth
                               variant="standard"
-                              label="Email Address"
+                              label="Email Address (important)"
                               validators={["required", "isEmail"]}
                               errorMessages={[
                                 "Please Enter A Email !!",
@@ -151,7 +171,7 @@ function OrderInformationsForms() {
                           onChange={handleChangeInput}
                           fullWidth
                           variant="standard"
-                          label="Address"
+                          label="Full Address"
                           validators={["required"]}
                           errorMessages={["Please Enter An Address !!"]}
                         />
@@ -202,11 +222,13 @@ function OrderInformationsForms() {
                               "required",
                               "isNumber",
                               "isPhoneNumber",
+                              "isLocalNumber",
                             ]}
                             errorMessages={[
                               "Please Enter A Phone Number !!",
                               "Phone Number Must Be A Numbers !!",
                               "Phone Number Must Be (10 number) !!",
+                              "Phone Number Must Begin With 07",
                             ]}
                           />
                         </div>
@@ -250,6 +272,7 @@ function OrderInformationsForms() {
                       </div>
                     </ValidatorForm>
                   </div>
+
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <TableContainer>
                       <Table style={{ minWidth: "450px" }}>
@@ -275,18 +298,14 @@ function OrderInformationsForms() {
                                   style={{ borderRadius: "15px" }}
                                 />
                               </TableCell>
-                              <TableCell
-                                value={values.nameOrder}
-                                name="nameOrder"
-                                align="inherit"
-                              >
+                              <TableCell name="nameOrder" align="inherit">
                                 {item.name}
                               </TableCell>
 
                               <TableCell name="qty" align="center">
                                 {item.qty}
                               </TableCell>
-                              <TableCell align="center">
+                              <TableCell name="amount" align="center">
                                 {item.qty * item.price}
                               </TableCell>
                             </TableRow>

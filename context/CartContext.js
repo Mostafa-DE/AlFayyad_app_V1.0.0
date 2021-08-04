@@ -11,16 +11,10 @@ export const CartProvider = ({ children }) => {
   });
 
   /*---------Save Product Cart in localStorage-----------*/
-  const isActive = true;
   useEffect(() => {
-    if (isActive === true) {
-      const shoppingcart = window.localStorage.getItem("cart");
-      setCart(JSON.parse(shoppingcart));
-    }
-    return () => {
-      isActive = false;
-    };
-  }, [isActive]);
+    const shoppingcart = window.localStorage.getItem("cart");
+    setCart(JSON.parse(shoppingcart));
+  }, []);
 
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));

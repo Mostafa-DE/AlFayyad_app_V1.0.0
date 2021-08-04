@@ -136,7 +136,7 @@ function Login() {
                   name="message"
                   fullWidth
                   variant="standard"
-                  label="What's on your mind :)"
+                  label="What's on your mind 🙂"
                   validators={["required"]}
                   errorMessages={["Please let us know what's on your mind :)"]}
                 />

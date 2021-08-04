@@ -6,7 +6,7 @@ import MyAccount from "@/components/MyAccount";
 function myAccountPage({ account }) {
   console.log(account);
   return (
-    <Layout>
+    <Layout title="My Account">
       <MyAccount account={account} />
     </Layout>
   );

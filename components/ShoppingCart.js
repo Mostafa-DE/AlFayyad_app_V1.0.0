@@ -19,7 +19,7 @@ function ShoppingCart() {
   return (
     <Layout title="Shopping Cart">
       <h1 className={styles.h1Text}>
-        Shopping List
+        Cart List
         <span>
           <AiOutlineLine />
         </span>
