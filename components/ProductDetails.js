@@ -17,7 +17,7 @@ function TestProductDetails({ product }) {
         {/* <!-- Right Column --> */}
         <div className={styles.rightColumn}>
           <div className={styles.navTitle}>
-            <h4>Product Deatails</h4>
+            <h4>Product Details</h4>
             <i
               className="fas fa-heart"
               style={{ fontSize: "24px", color: "#03c7ff" }}

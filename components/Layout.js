@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Footer from "./Footer";
 import Header from "./Header";
-import TestHeader from "./TestHeader";
 import ShowPhoto from "./ShowPhoto";
 import styles from "@/styles/Layout.module.css";
 import ButtonScrollToTop from "./ButtonScrollToTop";
@@ -16,8 +15,8 @@ function Layout({ title, description, children }) {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <TestHeader />
-      {/* <Header /> */}
+      {/* <TestHeader /> */}
+      <Header />
 
       {router.pathname === "/" ? <ShowPhoto /> : null}
       <div className={styles.container}>{children}</div>

@@ -49,10 +49,10 @@ function MyApp({ Component, pageProps }) {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
-      <link
+      {/* <link
         rel="stylesheet"
         href="node_modules/mdbootstrap/css/bootstrap.min.css"
-      />
+      /> */}
       {/* <link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css" />
       <script
         type="text/javascript"

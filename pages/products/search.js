@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Link from "next/link";
 import { API_URL } from "@/config/index";
 import ProductItem from "@/components/ProductItem";
 import styles from "@/styles/Search.module.css";
@@ -16,11 +17,23 @@ function searchPage({ products }) {
           <AiOutlineLine />
         </span>
       </h1>
-      <div className={styles.cardsProductsList}>
-        {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </div>
+      {products.length === 0 ? (
+        <div className={styles.containerNotFound}>
+          <h1 className={styles.h1NotFound}>Nothing Here 😔</h1>
+          <p className={styles.pText}>
+            We can't Find That Product, Maybe it doesn't exist or out of stock
+          </p>
+          <Link href="/products/productsList">
+            <button className={styles.backBtn}>Back To Products</button>
+          </Link>
+        </div>
+      ) : (
+        <div className={styles.cardsProductsList}>
+          {products.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </Layout>
   );
 }
