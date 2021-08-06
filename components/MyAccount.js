@@ -28,7 +28,7 @@ function MyAccount({ account }) {
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
                     src="https://img.icons8.com/bubbles/100/000000/user.png"
-                    class="img-radius"
+                    className="img-radius"
                     alt="User-Profile-Image"
                   />
                   <div className="mt-3">

@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
+import DrawerCart from "@/components/DrawerCart";
 
 function discountList() {
   return (
     <Layout title="Discount Page">
-      <h1>You are in discounts page... </h1>
+      <DrawerCart />
     </Layout>
   );
 }

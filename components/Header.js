@@ -5,13 +5,12 @@ import Search from "./Search";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCloseFill } from "react-icons/ri";
 import { IoStorefrontSharp } from "react-icons/io5";
-import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiLogOut } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
-import { AiOutlineSearch } from "react-icons/ai";
 import Badge from "@material-ui/core/Badge";
 import AuthContext from "@/context/AuthContext";
 import { CartContext } from "@/context/CartContext";
+import DrawerCart from "./DrawerCart";
 
 function Header() {
   /* -----------Auth User context----------------- */
@@ -19,14 +18,17 @@ function Header() {
   /* --------------------X------------------------ */
 
   /* -----------Cart Shopping context----------------- */
-  const { cart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
 
+  /*------for close menu in small screen------*/
   const [toogle, setToogle] = useState(false);
   const handleToogle = () => {
     setToogle(!toogle);
   };
+  /*---------------------X--------------------*/
 
+  /*------------state for scroll Down navbar-----------*/
   const [scrollState, setScrollState] = useState("top");
   let listener = null;
   useEffect(() => {
@@ -46,6 +48,7 @@ function Header() {
       document.removeEventListener("scroll", listener);
     };
   }, [scrollState]);
+  /*-------------------------X------------------------*/
 
   return (
     <header
@@ -73,11 +76,6 @@ function Header() {
           <li>
             <Link href="/products/productsList">
               <a>Products</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/products/discountsList">
-              <a>Discounts</a>
             </Link>
           </li>
           <li>
@@ -123,9 +121,7 @@ function Header() {
             color="error"
             className={styles.badgCart}
           >
-            <Link href="/products/shoppingCart">
-              <HiOutlineShoppingCart className={styles.shoppingCartIcon} />
-            </Link>
+            <DrawerCart cart={cart} removeFromCart={removeFromCart} />
           </Badge>
         </div>
 

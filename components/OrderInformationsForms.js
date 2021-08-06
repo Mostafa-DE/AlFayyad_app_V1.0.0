@@ -21,6 +21,11 @@ function OrderInformationsForms() {
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
 
+  const [nameOrder, setNameOrder] = useState(
+    items.map((itemName) => itemName.name)
+  );
+  console.log(nameOrder);
+
   const [values, setValues] = useState({
     email: "",
     firstName: "",
@@ -29,7 +34,7 @@ function OrderInformationsForms() {
     city: "",
     building: "1",
     phone: "",
-    nameOrder: items.map((item) => item.name),
+    nameOrder: "",
     qty: items.map((item) => item.qty) || "1",
     amount: totalAmount,
   });
@@ -41,30 +46,30 @@ function OrderInformationsForms() {
 
   const handleSubmit = async (evnt) => {
     evnt.preventDefault();
-    // emailjs
-    //   .sendForm(
-    //     "service_8swmbyy",
-    //     "template_ezya1ej",
-    //     evnt.target,
-    //     "user_tjMhMjtx9IxF7pqse8vPx"
-    //   )
-    //   .then(() => toast.success("Great The Message Was Sent :)"))
-    //   //   .then(() => router.push("/"))
-    //   .catch((err) => console.log(err));
-    console.log(values.nameOrder);
-    // const res = await fetch(`${API_URL}/orders`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(values),
-    // });
-    // if (!res.ok) {
-    //   toast.error("Oh No, Somthing Went Wrong!!");
-    // }
-    // } else {
-    //   router.push("/products/shoppingCart");
-    // }
+    emailjs
+      .sendForm(
+        "service_8swmbyy",
+        "template_ezya1ej",
+        evnt.target,
+        "user_tjMhMjtx9IxF7pqse8vPx"
+      )
+      .then(() => toast.success("Great The Message Was Sent :)"))
+      //   .then(() => router.push("/"))
+      .catch((err) => console.log(err));
+    console.log(values);
+    //   const res = await fetch(`${API_URL}/orders`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(values),
+    //   });
+    //   if (!res.ok) {
+    //     toast.error("Oh No, Somthing Went Wrong!!");
+    //   } else {
+    //     router.push("/products/shoppingCart");
+    //   }
+    // };
   };
 
   /*------------------Validation TextField phone number-------------------*/
@@ -88,7 +93,7 @@ function OrderInformationsForms() {
 
   useEffect(() => {
     ValidatorForm.addValidationRule("isLocalNumber", (value) => {
-      if (value.match("07")) {
+      if (value.match("078") || value.match("079") || value.match("077")) {
         return true;
       }
       return false;
@@ -99,21 +104,21 @@ function OrderInformationsForms() {
   return (
     <section style={{ marginTop: "10rem" }}>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
-      <div className="container h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-12 col-xl-11">
-            <div className="card text-black" style={{ borderRadius: "25px" }}>
-              <div className="card-body p-md-5">
-                <div className="row justify-content-center">
-                  <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <div className="text-center h1  mb-5 mx-1 mx-md-4 mt-4">
-                      Shipping address
-                    </div>
+      <ValidatorForm onSubmit={handleSubmit} className="mx-1 mx-md-4">
+        <div className="container h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-lg-12 col-xl-11">
+              <div className="card text-black" style={{ borderRadius: "25px" }}>
+                <div className="card-body p-md-5">
+                  <div className="row justify-content-center">
+                    <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                      <div className="text-center h1  mb-5 mx-1 mx-md-4 mt-4">
+                        Shipping address
+                      </div>
 
-                    <ValidatorForm
-                      onSubmit={handleSubmit}
-                      className="mx-1 mx-md-4"
-                    >
+                      {/* {nameOrder.map((name) => (
+                        <input name="name" value={name} />
+                      ))} */}
                       <div className="row">
                         <div className="d-flex flex-row align-items-center">
                           <div className="form-outline flex-fill mb-3">
@@ -203,7 +208,7 @@ function OrderInformationsForms() {
                               label="Building Number"
                               validators={["isNumber"]}
                               errorMessages={["Must Be Number !!"]}
-                            ></TextValidator>
+                            />
                           </div>
                         </div>
                       </div>
@@ -228,7 +233,7 @@ function OrderInformationsForms() {
                               "Please Enter A Phone Number !!",
                               "Phone Number Must Be A Numbers !!",
                               "Phone Number Must Be (10 number) !!",
-                              "Phone Number Must Begin With 07",
+                              "Phone Number Must Begin With (078 , 079, 077)",
                             ]}
                           />
                         </div>
@@ -242,7 +247,19 @@ function OrderInformationsForms() {
                           paddingLeft: "0.5rem",
                         }}
                       >
-                        Total Amount: {totalAmount} JD
+                        Total Amount:{" "}
+                        <input
+                          value={totalAmount}
+                          name="amount"
+                          readOnly
+                          style={{
+                            border: "none",
+                            maxWidth: "4.2rem",
+                            fontWeight: "500",
+                            textAlign: "center",
+                          }}
+                        />{" "}
+                        JD
                       </div>
                       <div className="d-flex justify-content-around  ">
                         <button
@@ -270,56 +287,72 @@ function OrderInformationsForms() {
                           </a>
                         </Link>
                       </div>
-                    </ValidatorForm>
-                  </div>
+                    </div>
 
-                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                    <TableContainer>
-                      <Table style={{ minWidth: "450px" }}>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell align="left">Image</TableCell>
-                            <TableCell align="left">Product</TableCell>
+                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                      <TableContainer>
+                        <Table style={{ minWidth: "450px" }}>
+                          <TableHead>
+                            <TableRow>
+                              <TableCell align="left">Image</TableCell>
+                              <TableCell align="left">Product</TableCell>
 
-                            <TableCell align="center">QTY</TableCell>
-                            <TableCell align="center">Amount</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {items.map((item) => (
-                            <TableRow key={item.id}>
-                              <TableCell component="th" scope="row">
-                                <img
-                                  name="img"
-                                  src={item.images[0].url}
-                                  width={120}
-                                  height={100}
-                                  alt="..."
-                                  style={{ borderRadius: "15px" }}
-                                />
-                              </TableCell>
-                              <TableCell name="nameOrder" align="inherit">
-                                {item.name}
-                              </TableCell>
-
-                              <TableCell name="qty" align="center">
-                                {item.qty}
-                              </TableCell>
-                              <TableCell name="amount" align="center">
-                                {item.qty * item.price}
-                              </TableCell>
+                              <TableCell align="center">QTY</TableCell>
+                              <TableCell align="center">Amount</TableCell>
                             </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
+                          </TableHead>
+                          <TableBody>
+                            {items.map((item) => (
+                              <TableRow key={item.id}>
+                                <TableCell component="th" scope="row">
+                                  <img
+                                    name="img"
+                                    src={item.images[0].url}
+                                    width={120}
+                                    height={100}
+                                    alt="..."
+                                    style={{ borderRadius: "15px" }}
+                                  />
+                                </TableCell>
+                                <TableCell align="inherit">
+                                  <input
+                                    style={{
+                                      border: "none",
+                                    }}
+                                    readOnly
+                                    name="name"
+                                    value={item.name}
+                                  />
+                                </TableCell>
+
+                                <TableCell align="center">
+                                  <input
+                                    style={{
+                                      border: "none",
+                                      textAlign: "center",
+                                      maxWidth: "2.5rem",
+                                    }}
+                                    name="qty"
+                                    value={item.qty}
+                                    readOnly
+                                  />
+                                </TableCell>
+                                <TableCell align="center">
+                                  {item.qty * item.price}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </ValidatorForm>
     </section>
   );
 }

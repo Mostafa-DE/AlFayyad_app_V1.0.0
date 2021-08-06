@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "@/styles/ShoppingCart.module.css";
 import Layout from "./Layout";
 import { AiOutlineLine } from "react-icons/ai";
 import { CartContext } from "@/context/CartContext";
+import { FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,12 +11,30 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import Slide from "@material-ui/core/Slide";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function ShoppingCart() {
   const { cart, removeFromCart, addQty, removeQty } = useContext(CartContext);
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
+
+  const [openPaymentMethod, setPaymentMethod] = useState(false);
+
+  const handleClickOpen = () => {
+    setPaymentMethod(true);
+  };
+
+  const handleClose = () => {
+    setPaymentMethod(false);
+  };
+
   return (
     <Layout title="Shopping Cart">
       <h1 className={styles.h1Text}>
@@ -89,11 +108,54 @@ function ShoppingCart() {
           <p className={styles.totalP}>total amount:</p>
           <p className={styles.priceP}> {totalAmount} JD</p>
         </div>
-        <Link href="/payment/paymentMethodOptions">
-          <button className={styles.checkOutBtn}>
+
+        <div>
+          <button className={styles.checkOutBtn} onClick={handleClickOpen}>
             Check Out <i className="fas fa-credit-card"></i>
           </button>
-        </Link>
+
+          <Dialog
+            open={openPaymentMethod}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <FaTimes onClick={handleClose} className={styles.closeIcon} />
+
+            <DialogContent className={styles.dialogContent}>
+              <div className={styles.main}>
+                <h1 className={styles.h1TextPayment}>
+                  Please choose one of the following payment methods
+                  <span>
+                    <AiOutlineLine />
+                  </span>
+                </h1>
+                <div className={styles.container}>
+                  <div className={styles.ContainerCash}>
+                    <h4 className={styles.textImg}>Cash Payment</h4>
+                    <Link href="/payment/order">
+                      <img
+                        className={`img-fluid ${styles.cashImg}`}
+                        src="/images/fayyad/cash.jpg"
+                      />
+                    </Link>
+                  </div>
+                  <div className={styles.uWalletContainerImg}>
+                    <h4 className={styles.textImg}>Pay Through</h4>
+                    <Link href="#">
+                      <img
+                        className={`img-fluid ${styles.uWalletImg}`}
+                        src="/images/fayyad/uWallet.bmp"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
     </Layout>
   );
