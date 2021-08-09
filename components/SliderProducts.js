@@ -1,13 +1,11 @@
 import React from "react";
 import styles from "@/styles/SliderProducts.module.css";
 import RatingStar from "./RatingStar";
-import { AiOutlineHeart } from "react-icons/ai";
 import { useContext } from "react";
 import Link from "next/link";
 import { AiFillHeart } from "react-icons/ai";
-import useFavouriteProducts from "@/Hooks/useFavouriteProducts";
 import { CartContext } from "@/context/CartContext";
-import { WishContext } from "@/context/WishContext";
+import swal from "sweetalert";
 
 export const breakPoints = [
   { width: 500, itemsToShow: 1 },
@@ -17,13 +15,15 @@ export const breakPoints = [
 ];
 
 function SliderProducts({ product }) {
-  const [isHeartClicked, handleHeartClicked] = useFavouriteProducts(false);
   /* -----------Cart Shopping context----------------- */
   const { addToCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
-  /* -----------Wish List context----------------- */
-  const { addToWishList, removeFromWishList } = useContext(WishContext);
-  /* -----------------------X------------------------- */
+
+  const AddToCart = async () => {
+    await addToCart(product);
+    swal("Awesome !!", "You added this item to your cart", "success");
+  };
+
   return (
     <div className="row">
       <div className="col-md-3 col-sm-6 mt-4">
@@ -39,27 +39,9 @@ function SliderProducts({ product }) {
             ) : null}
 
             <span className={styles.productWishListLabel}>
-              {isHeartClicked === false ? (
-                <button
-                  className={styles.buttonHeart}
-                  onClick={() => addToWishList(product)}
-                >
-                  <AiOutlineHeart
-                    className={styles.heart}
-                    onClick={handleHeartClicked}
-                  />
-                </button>
-              ) : (
-                <button
-                  className={styles.buttonHeartFill}
-                  onClick={() => removeFromWishList(product)}
-                >
-                  <AiFillHeart
-                    className={styles.fillHeart}
-                    onClick={handleHeartClicked}
-                  />
-                </button>
-              )}
+              <button className={styles.buttonHeartFill}>
+                <AiFillHeart className={styles.fillHeart} />
+              </button>
             </span>
             <ul className={styles.productLinks}>
               <Link href={`/products/${product.slug}`}>
@@ -80,12 +62,7 @@ function SliderProducts({ product }) {
               ) : null}{" "}
               {product.price} JD
             </div>
-            <button
-              onClick={() => {
-                addToCart(product);
-              }}
-              className={styles.addToCart}
-            >
+            <button onClick={AddToCart} className={styles.addToCart}>
               add to cart
             </button>
           </div>

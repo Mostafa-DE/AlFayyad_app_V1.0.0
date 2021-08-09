@@ -43,6 +43,15 @@ function ShoppingCart() {
           <AiOutlineLine />
         </span>
       </h1>
+      {items.length === 0 ? (
+        <div className={styles.containerCartEmpty}>
+          <h4 className={styles.h2CartEmpty}>
+            <span>Your Cart Is Empty 😔</span> <br /> Add Some Products To Show
+            Here
+          </h4>
+          <button className={styles.continueBtn}>Continue Shopping</button>
+        </div>
+      ) : null}
       <TableContainer>
         <Table style={{ minWidth: "750px" }}>
           <TableHead>
@@ -111,7 +120,7 @@ function ShoppingCart() {
 
         <div>
           <button className={styles.checkOutBtn} onClick={handleClickOpen}>
-            Check Out <i className="fas fa-credit-card"></i>
+            Checkout <i className="fas fa-credit-card"></i>
           </button>
 
           <Dialog

@@ -73,6 +73,12 @@ export default function DrawerCart({ cart, removeFromCart }) {
               </p>
             </TableHead>
             <TableBody>
+              {items.length === 0 ? (
+                <p className={styles.cartEmpty}>
+                  <span>Your Cart Is Empty 😔</span>
+                  <br /> Add some products to show here
+                </p>
+              ) : null}
               {items.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell component="th" scope="row">

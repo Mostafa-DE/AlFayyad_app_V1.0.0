@@ -49,6 +49,8 @@ function MyApp({ Component, pageProps }) {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src="sweetalert2.all.min.js"></script>
       {/* <link
         rel="stylesheet"
         href="node_modules/mdbootstrap/css/bootstrap.min.css"

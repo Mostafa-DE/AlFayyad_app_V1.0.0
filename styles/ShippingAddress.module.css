@@ -1,0 +1,135 @@
+.main {
+  margin-top: 6rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.containerDetails {
+  max-width: 100%;
+}
+
+.shippingText {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.orderText {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.h1Shipping {
+  margin: 4rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+}
+
+.h1Shipping span {
+  color: #03c7ff;
+  font-size: 5rem;
+  margin-top: -2.5rem;
+}
+
+.h1Order {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+}
+
+.h1Order span {
+  color: #03c7ff;
+  font-size: 5rem;
+  margin-top: -2.5rem;
+}
+
+.btnCheckout {
+  padding: 0.7rem 1rem;
+  text-transform: capitalize;
+  background: linear-gradient(
+    161deg,
+    rgb(14, 14, 14) 0%,
+    rgba(150, 149, 149, 0.986) 100%
+  );
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-family: calibri;
+  letter-spacing: 1px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.returnCart {
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.returnCart:hover {
+  color: rgb(0, 0, 0);
+}
+
+.totalAmountForm {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-left: 5px solid #03c7ff;
+  padding-left: 0.5rem;
+}
+
+.inputTotalAmount {
+  border: none;
+  max-width: 4.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.nav {
+  margin-bottom: -3rem;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #03c7ff;
+  padding: 0.1rem 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+  .containerForms {
+    max-width: 100%;
+  }
+  .shippingText {
+    margin-top: 3rem;
+  }
+  .nav {
+    margin-bottom: 3rem;
+  }
+}

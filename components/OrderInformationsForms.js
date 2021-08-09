@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import styles from "@/styles/OrderInformationsForms.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
@@ -13,6 +14,14 @@ import TableRow from "@material-ui/core/TableRow";
 import { CartContext } from "@/context/CartContext";
 import emailjs from "emailjs-com";
 import { API_URL } from "../config";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import Slide from "@material-ui/core/Slide";
+import { FaTimes } from "react-icons/fa";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function OrderInformationsForms() {
   const router = useRouter();
@@ -44,18 +53,30 @@ function OrderInformationsForms() {
     setValues({ ...values, [name]: value });
   };
 
+  const [openConfirmOrder, setopenConfirmOrder] = useState(false);
+
+  const handleClickOpen = () => {
+    setopenConfirmOrder(true);
+  };
+
+  const handleClose = () => {
+    setopenConfirmOrder(false);
+  };
+
   const handleSubmit = async (evnt) => {
     evnt.preventDefault();
-    emailjs
-      .sendForm(
-        "service_8swmbyy",
-        "template_ezya1ej",
-        evnt.target,
-        "user_tjMhMjtx9IxF7pqse8vPx"
-      )
-      .then(() => toast.success("Great The Message Was Sent :)"))
-      //   .then(() => router.push("/"))
-      .catch((err) => console.log(err));
+    // emailjs
+    //   .sendForm(
+    //     "service_8swmbyy",
+    //     "template_ezya1ej",
+    //     evnt.target,
+    //     "user_tjMhMjtx9IxF7pqse8vPx"
+    //   )
+    //   .then(() => toast.success("Great The Message Was Sent :)"))
+    //     .then(() => router.push("/"))
+    //   .catch((err) => console.log(err));
+    // toast.success("Awesome Your Meassage Was Sent :)");
+    // router.push("/payment/invoiceOrder");
     console.log(values);
     //   const res = await fetch(`${API_URL}/orders`, {
     //     method: "POST",
@@ -102,23 +123,23 @@ function OrderInformationsForms() {
   /*-----------------------------------X-----------------------------------*/
 
   return (
-    <section style={{ marginTop: "10rem" }}>
+    <section>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
       <ValidatorForm onSubmit={handleSubmit} className="mx-1 mx-md-4">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-12 col-xl-11">
-              <div className="card text-black" style={{ borderRadius: "25px" }}>
-                <div className="card-body p-md-5">
+              <div className="text-black" style={{ borderRadius: "25px" }}>
+                <div className=" p-md-5">
                   <div className="row justify-content-center">
-                    <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                      <div className="text-center h1  mb-5 mx-1 mx-md-4 mt-4">
-                        Shipping address
+                    {/*--------------------Forms Order informations--------------------*/}
+                    <div
+                      className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"
+                      style={{ paddingLeft: "0", paddingRight: "2rem" }}
+                    >
+                      <div className="text-center h1  mb-5 mx-1 mx-md-4 mt-5">
+                        Shipping Address
                       </div>
-
-                      {/* {nameOrder.map((name) => (
-                        <input name="name" value={name} />
-                      ))} */}
                       <div className="row">
                         <div className="d-flex flex-row align-items-center">
                           <div className="form-outline flex-fill mb-3">
@@ -238,60 +259,114 @@ function OrderInformationsForms() {
                           />
                         </div>
                       </div>
-                      <div
-                        style={{
-                          marginBottom: "3rem",
-                          fontSize: "1.4rem",
-                          fontWeight: "600",
-                          borderLeft: "4px solid #03c7ff",
-                          paddingLeft: "0.5rem",
-                        }}
-                      >
+                      <div className={styles.totalAmountForm}>
                         Total Amount:{" "}
                         <input
                           value={totalAmount}
                           name="amount"
                           readOnly
-                          style={{
-                            border: "none",
-                            maxWidth: "4.2rem",
-                            fontWeight: "500",
-                            textAlign: "center",
-                          }}
+                          className={styles.inputTotalAmount}
                         />{" "}
                         JD
                       </div>
                       <div className="d-flex justify-content-around  ">
-                        <button
-                          type="submit"
-                          className="btn btn-primary btn-lg"
-                          style={{
-                            padding: "0.5rem 0.8rem",
-                            fontSize: "0.9rem",
-                            backgroundColor: "#03c7ff",
-                            border: "1px solid #03c7ff",
-                          }}
-                        >
-                          Continue to Shipping
+                        <button type="submit" className={styles.btnCheckout}>
+                          Checkout <i className="fas fa-credit-card"></i>
                         </button>
+
+                        {/*----------------Dialog Confirm Order----------------*/}
+                        <Dialog
+                          open={openConfirmOrder}
+                          TransitionComponent={Transition}
+                          keepMounted
+                          onClose={handleClose}
+                          aria-labelledby="alert-dialog-slide-title"
+                          aria-describedby="alert-dialog-slide-description"
+                        >
+                          <DialogContent>
+                            <div>
+                              <p className={styles.thanksText}>
+                                <span>Thank you.</span> We have received your
+                                order and will contact you as soon as possible,
+                                We hope your experience was awesome.
+                              </p>
+                              <hr />
+                            </div>
+                            <div className="col-md-6 text-right mt-4">
+                              <h4 className={styles.alfayyadText}>Al Fayyad</h4>
+                              <span className={styles.alfayyadSpan}>
+                                For European Products
+                              </span>
+                            </div>
+                            <TableContainer>
+                              <Table style={{ minWidth: "300px" }}>
+                                <TableHead>
+                                  <TableRow>
+                                    <TableCell align="left">Product</TableCell>
+
+                                    <TableCell align="center">Total</TableCell>
+                                  </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                  {items.map((item) => (
+                                    <TableRow key={item.id}>
+                                      <TableCell align="inherit">
+                                        {item.name}
+                                        <br />
+                                        {item.qty} X {item.price} JD
+                                      </TableCell>
+
+                                      <TableCell align="center">
+                                        {item.qty * item.price} JD
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                              </Table>
+                            </TableContainer>
+                            <div className={styles.totalAmount}>
+                              <span>Total Amount:</span> {totalAmount} JD
+                            </div>
+                            <div className={styles.info}>
+                              <p>
+                                <strong>Note!!</strong> <br /> Delivery fees
+                                will be added automatically
+                                <br />
+                                {"2.50 JD Inside Amman, 3.50 JD Outside Amman"}
+                              </p>
+                            </div>
+                            <div className={styles.containerBtn}>
+                              <button
+                                type="button"
+                                className={styles.btnConfirm}
+                              >
+                                Return to cart
+                              </button>
+                              <button
+                                className={styles.btnCancel}
+                                onClick={handleClose}
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                        {/*----------------------------X-----------------------------*/}
+
                         <Link href="/products/shoppingCart">
-                          <a
-                            style={{
-                              marginTop: "0.5rem",
-                              color: "#333",
-                              textDecoration: "none",
-                              textAlign: "center",
-                            }}
-                          >
-                            Return to cart
-                          </a>
+                          <a className={styles.returnCart}>Return to cart</a>
                         </Link>
                       </div>
                     </div>
+                    {/*------------------------------------X-----------------------------------*/}
 
-                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                    {/*------------------------------Details order table-------------------------------*/}
+                    <div
+                      className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+                      style={{ paddingLeft: "8rem" }}
+                    >
                       <TableContainer>
-                        <Table style={{ minWidth: "450px" }}>
+                        <Table style={{ maxWidth: "420px" }}>
                           <TableHead>
                             <TableRow>
                               <TableCell align="left">Image</TableCell>
@@ -308,8 +383,8 @@ function OrderInformationsForms() {
                                   <img
                                     name="img"
                                     src={item.images[0].url}
-                                    width={120}
-                                    height={100}
+                                    width={90}
+                                    height={70}
                                     alt="..."
                                     style={{ borderRadius: "15px" }}
                                   />
@@ -346,6 +421,7 @@ function OrderInformationsForms() {
                         </Table>
                       </TableContainer>
                     </div>
+                    {/*-------------------------------------X-------------------------------------------*/}
                   </div>
                 </div>
               </div>

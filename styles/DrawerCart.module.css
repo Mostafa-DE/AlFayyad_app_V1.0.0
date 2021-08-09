@@ -146,6 +146,23 @@
   transition: all 0.3s ease-in;
 }
 
+.cartEmpty {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  animation-name: slideInDown;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.cartEmpty span {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #03c7ff;
+}
+
 @media (max-width: 676px) {
   .h1Text {
     font-size: 1.7rem;
@@ -198,3 +215,15 @@
 }
 
 /*---------------------X-------------------*/
+
+@keyframes slideInDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
