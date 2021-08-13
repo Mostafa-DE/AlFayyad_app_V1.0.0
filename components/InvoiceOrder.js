@@ -71,27 +71,24 @@ function InvoiceOrder() {
         <hr />
       </div>
       <div className="col-md-6 text-right mt-4">
-        <h4 className={styles.alfayyadText}>Al Fayyad</h4>
-        <span className={styles.alfayyadSpan}>For European Products</span>
+        <h4 className={styles.alfayyadText}>Order Details</h4>
       </div>
       <TableContainer>
         <Table style={{ minWidth: "300px" }}>
           <TableHead>
             <TableRow>
-              <TableCell align="left">Product</TableCell>
-
+              <TableCell align="inherit">Product</TableCell>
+              <TableCell align="center">Qty</TableCell>
+              <TableCell align="center">Price</TableCell>
               <TableCell align="center">Total</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.id}>
-                <TableCell align="inherit">
-                  {item.name}
-                  <br />
-                  {item.qty} X {item.price} JD
-                </TableCell>
-
+                <TableCell align="inherit">{item.name}</TableCell>
+                <TableCell align="center">{item.qty}</TableCell>
+                <TableCell align="center">{item.price}</TableCell>
                 <TableCell align="center">{item.qty * item.price} JD</TableCell>
               </TableRow>
             ))}
@@ -110,7 +107,7 @@ function InvoiceOrder() {
           Outside Amman
         </p>
       </div>
-      <button type="button" onClick={alert} className={styles.btnConfirm}>
+      <button type="button" className={styles.btnConfirm}>
         Return to cart
       </button>
     </div>

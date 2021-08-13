@@ -11,12 +11,13 @@ import Badge from "@material-ui/core/Badge";
 import AuthContext from "@/context/AuthContext";
 import { CartContext } from "@/context/CartContext";
 import DrawerCart from "./DrawerCart";
+import Cookies from "js-cookie";
 
 function Header() {
   /* -----------Auth User context----------------- */
   const { user, logout } = useContext(AuthContext);
   /* --------------------X------------------------ */
-
+  console.log(user);
   /* -----------Cart Shopping context----------------- */
   const { cart, removeFromCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
@@ -27,7 +28,7 @@ function Header() {
     setToogle(!toogle);
   };
   /*---------------------X--------------------*/
-
+  // const [adminJWT, setAdminJWT] = useState(Cookies.get("token"));
   /*------------state for scroll Down navbar-----------*/
   const [scrollState, setScrollState] = useState("top");
   let listener = null;
@@ -70,20 +71,24 @@ function Header() {
         className={`${scrollState === "top" ? styles.nav : styles.navScroll}`}
       >
         <ul className={toogle === true ? `${styles.toogle}` : ""}>
-          <li style={{ marginRight: "-1rem" }}>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/products/productsList">
-              <a>Products</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact">contact</Link>
-          </li>
-          {user ? (
+          {user?.email === "admin@admin.com" &&
+          user?.username === "admin" &&
+          user?.id === 7 ? (
             <>
-              <li style={{ marginLeft: "-1rem" }}>
+              <li style={{ marginRight: "-1rem" }}>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/products/productsList">
+                  <a>Products</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/account/dashboard">
+                  <a>Dashboard</a>
+                </Link>
+              </li>
+              <li>
                 <Link href="/account/login">
                   <a onClick={logout}>
                     Logout <FiLogOut />
@@ -91,25 +96,59 @@ function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/account/myAccount">
-                  <a> My Account</a>
-                </Link>
+                <RiCloseFill
+                  className={styles.closeIcon}
+                  onClick={handleToogle}
+                />
               </li>
             </>
           ) : (
             <>
+              <li style={{ marginRight: "-1rem" }}>
+                <Link href="/">Home</Link>
+              </li>
               <li>
-                <Link href="/account/login">
-                  <a>
-                    Login <FiLogIn />
-                  </a>
+                <Link href="/products/productsList">
+                  <a>Products</a>
                 </Link>
+              </li>
+              <li>
+                <Link href="/contact">contact</Link>
+              </li>
+              {user ? (
+                <>
+                  <li style={{ marginLeft: "-1rem" }}>
+                    <Link href="/account/login">
+                      <a onClick={logout}>
+                        Logout <FiLogOut />
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/account/myAccount">
+                      <a> My Account</a>
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/account/login">
+                      <a>
+                        Login <FiLogIn />
+                      </a>
+                    </Link>
+                  </li>
+                </>
+              )}
+              <li>
+                <RiCloseFill
+                  className={styles.closeIcon}
+                  onClick={handleToogle}
+                />
               </li>
             </>
           )}
-          <li>
-            <RiCloseFill className={styles.closeIcon} onClick={handleToogle} />
-          </li>
         </ul>
         <div
           className={`${

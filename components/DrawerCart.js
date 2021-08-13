@@ -16,10 +16,15 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
 import { AiOutlineLine } from "react-icons/ai";
+import swal from "sweetalert";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const alertError = () => {
+  swal("Oh No !!", "Your cart is empty add some products to continue", "error");
+};
 
 export default function DrawerCart({ cart, removeFromCart }) {
   const { items = [] } = cart;
@@ -117,10 +122,15 @@ export default function DrawerCart({ cart, removeFromCart }) {
             <Link href="/products/shoppingCart">
               <button className={styles.btn}>View Cart</button>
             </Link>
-
-            <button className={styles.btn} onClick={handleClickOpen}>
-              Checkout
-            </button>
+            {items.length === 0 ? (
+              <button className={styles.btn} onClick={alertError}>
+                Checkout
+              </button>
+            ) : (
+              <button className={styles.btn} onClick={handleClickOpen}>
+                Checkout
+              </button>
+            )}
           </div>
 
           <Dialog

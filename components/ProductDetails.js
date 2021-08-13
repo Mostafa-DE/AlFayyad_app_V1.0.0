@@ -1,11 +1,19 @@
 import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
 import styles from "@/styles/ProductDetails.module.css";
+import Link from "next/link";
+import swal from "sweetalert";
 
 function TestProductDetails({ product }) {
   /* -----------Cart Shopping context----------------- */
   const { addToCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
+
+  const AddToCart = async () => {
+    await addToCart(product);
+    swal("Awesome !!", "You added this item to your cart", "success");
+  };
+
   return (
     <div className={styles.body}>
       <main className={styles.container}>
@@ -34,14 +42,13 @@ function TestProductDetails({ product }) {
           </div>
 
           {/* <!-- Product Pricing --> */}
-          <div className={styles.productPrice}>
-            <span>{product.price} JD</span>
-            <button
-              onClick={() => addToCart(product)}
-              className={styles.addToCart}
-            >
+          <div className={styles.containerBtn}>
+            <button onClick={AddToCart} className={styles.addToCart}>
               Add to cart
             </button>
+            <Link href="/products/productsList">
+              <a className={styles.linkProducts}>Return To Products List</a>
+            </Link>
           </div>
         </div>
       </main>

@@ -24,6 +24,7 @@
   color: #03c7ff;
   margin: 0;
   font-weight: 700;
+  width: 18rem;
 }
 
 .alfayyadSpan {
@@ -78,7 +79,6 @@
   padding: 0.4rem 0.8rem;
   color: #fff;
   background-color: #03c7ff;
-  /* border: 1px solid #03c7ff; */
   border-radius: 50%;
 }
 

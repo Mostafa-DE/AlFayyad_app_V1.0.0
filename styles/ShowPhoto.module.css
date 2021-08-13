@@ -78,17 +78,17 @@
 
 /*--------Woman Picture--------*/
 .sale10 {
-  color: #333;
+  color: #fff;
   font-size: 5rem;
-  margin-bottom: 30rem;
+  margin-bottom: 28rem;
   animation: slideInDown 2s;
   font-family: "Abril Fatface", cursive;
 }
 
 .watingFor {
-  color: #03c7ff;
+  color: #333;
   font-size: 4rem;
-  margin-bottom: 20.5rem;
+  margin-bottom: 22rem;
   animation: moveFromLeft 2s;
   font-family: "Abril Fatface", cursive;
 }
@@ -116,7 +116,7 @@
 .tools {
   color: #03c7ff;
   font-size: 5rem;
-  margin-bottom: 28rem;
+  margin-bottom: 26rem;
   animation: rotateIn 1.5s;
   font-family: "Abril Fatface", cursive;
 }
@@ -133,8 +133,8 @@
 
 @media only screen and (max-width: 1200px) {
   .sale10 {
-    font-size: 5rem;
-    margin-bottom: 26rem;
+    font-size: 4.5rem;
+    margin-bottom: 27rem;
   }
   .kidsAccessories {
     font-size: 4rem;
@@ -164,9 +164,22 @@
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .sale10 {
+    font-size: 4rem;
+    margin-bottom: 25rem;
+    color: #fff;
+  }
+  .watingFor {
+    font-size: 2.5rem;
+    margin-bottom: 20rem;
+    color: #03c7ff;
+  }
+}
+
 @media only screen and (max-width: 850px) {
   .sale10 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     margin-bottom: 26rem;
   }
   .manModel {
@@ -234,7 +247,7 @@
 
 @media only screen and (max-width: 850px) {
   .tools {
-    font-size: 2.2rem;
+    font-size: 3.5rem;
   }
   .everythingYouNeed {
     font-size: 2.1rem;
@@ -266,12 +279,14 @@
     margin-bottom: 21rem;
   }
   .sale10 {
-    font-size: 4rem;
+    font-size: 3.2rem;
     margin-bottom: 25rem;
+    color: #fff;
   }
   .watingFor {
     font-size: 2.5rem;
-    margin-bottom: 18rem;
+    margin-bottom: 20rem;
+    color: #03c7ff;
   }
   .btnShopeNow {
     margin-bottom: 13rem;
@@ -291,6 +306,10 @@
     font-size: 0.7rem;
     margin-bottom: 22rem;
   }
+  .tools {
+    font-size: 2.6rem;
+    margin-bottom: 27rem;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -303,10 +322,10 @@
   }
   .sale10 {
     font-size: 2.5rem;
-    margin-bottom: 22rem;
+    margin-bottom: 26rem;
   }
   .watingFor {
-    font-size: 1.7rem;
+    font-size: 2.4rem;
     margin-bottom: 20rem;
   }
   .btnShopeNow {

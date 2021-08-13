@@ -15,10 +15,6 @@ import { CartContext } from "@/context/CartContext";
 import { AiOutlineLine } from "react-icons/ai";
 import emailjs from "emailjs-com";
 import { API_URL } from "../config";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import Slide from "@material-ui/core/Slide";
-import { FaTimes } from "react-icons/fa";
 
 function ShippingAdress() {
   const router = useRouter();
@@ -26,12 +22,7 @@ function ShippingAdress() {
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
-
-  const [nameOrder, setNameOrder] = useState(
-    items.map((itemName) => itemName.name)
-  );
-  console.log(nameOrder);
-
+  // const totalAmount = cart.cartTotal;
   const [values, setValues] = useState({
     email: "",
     firstName: "",
@@ -40,9 +31,9 @@ function ShippingAdress() {
     city: "",
     building: "1",
     phone: "",
-    nameOrder: "",
-    qty: items.map((item) => item.qty) || "1",
-    amount: totalAmount,
+    // nameOrder: "",
+    // qty: items.map((item) => item.qty) || "1",
+    amount: totalAmount.toString(),
   });
 
   const handleChangeInput = (evnt) => {
@@ -52,29 +43,26 @@ function ShippingAdress() {
 
   const handleSubmit = async (evnt) => {
     evnt.preventDefault();
-    // emailjs
-    //   .sendForm(
-    //     "service_8swmbyy",
-    //     "template_ezya1ej",
-    //     evnt.target,
-    //     "user_tjMhMjtx9IxF7pqse8vPx"
-    //   )
-    //   .then(() => router.push("/payment/invoiceOrder"))
-    //   .catch((err) => console.log(err));
-    router.push("/payment/invoiceOrder");
-    //   const res = await fetch(`${API_URL}/orders`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(values),
-    //   });
-    //   if (!res.ok) {
-    //     toast.error("Oh No, Somthing Went Wrong!!");
-    //   } else {
-    //     router.push("/products/shoppingCart");
-    //   }
-    // };
+    emailjs
+      .sendForm(
+        "service_8swmbyy",
+        "template_ezya1ej",
+        evnt.target,
+        "user_tjMhMjtx9IxF7pqse8vPx"
+      )
+      .catch((err) => console.log(err));
+    const res = await fetch(`${API_URL}/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    if (!res.ok) {
+      toast.error("Oh No, Somthing Went Wrong!!");
+    } else {
+      router.push("/payment/invoiceOrder");
+    }
   };
 
   /*------------------Validation TextField phone number-------------------*/
@@ -320,7 +308,7 @@ function ShippingAdress() {
                             border: "none",
                           }}
                           readOnly
-                          name="name"
+                          name="nameOrder"
                           value={item.name}
                         />
                       </TableCell>

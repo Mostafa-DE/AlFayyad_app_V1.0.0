@@ -20,7 +20,7 @@
 }
 
 .copyRight p a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -35,4 +35,13 @@
 .copyRight p a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.link {
+  transition: all 0.2s ease-out;
+}
+
+.link:hover {
+  color: #03c7ff !important;
+  transition: all 0.3s ease-in;
 }

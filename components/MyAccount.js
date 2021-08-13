@@ -61,9 +61,9 @@ function MyAccount({ account }) {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="feather feather-instagram mr-2 icon-inline text-danger"
                     >
                       <rect
@@ -95,9 +95,9 @@ function MyAccount({ account }) {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="feather feather-facebook mr-2 icon-inline text-primary"
                     >
                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -173,7 +173,7 @@ function MyAccount({ account }) {
                 <div className="row">
                   <div className="col-sm-9">
                     <Link href="/products/productsList">
-                      <button className={styles.btn}>Back to products</button>
+                      <button className={styles.btn}>Go To Products</button>
                     </Link>
                   </div>
                 </div>

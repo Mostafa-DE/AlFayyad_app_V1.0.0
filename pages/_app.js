@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
       ></script>
 
       <script>var Alert = ReactBootstrap.Alert;</script>
-      <script src="https://unpkg.com/styled-components/dist/styled-components.min.js"></script>
+      {/* <script src="https://unpkg.com/styled-components/dist/styled-components.min.js"></script> */}
       <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
@@ -78,9 +78,7 @@ function MyApp({ Component, pageProps }) {
       ></link> */}
       <AuthProvider>
         <CartProvider>
-          <WishProvider>
-            <Component {...pageProps} />
-          </WishProvider>
+          <Component {...pageProps} />
         </CartProvider>
       </AuthProvider>
     </>

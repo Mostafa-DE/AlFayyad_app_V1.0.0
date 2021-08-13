@@ -21,7 +21,8 @@ function searchPage({ products }) {
         <div className={styles.containerNotFound}>
           <h1 className={styles.h1NotFound}>Nothing Here 😔</h1>
           <p className={styles.pText}>
-            We can't Find That Product, Maybe it doesn't exist or out of stock
+            We couldn't Find That Product, Maybe it doesn't exist or out of
+            stock
           </p>
           <Link href="/products/productsList">
             <button className={styles.backBtn}>Back To Products</button>

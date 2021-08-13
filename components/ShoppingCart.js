@@ -14,6 +14,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
+import swal from "sweetalert";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -35,6 +36,14 @@ function ShoppingCart() {
     setPaymentMethod(false);
   };
 
+  const alertError = () => {
+    swal(
+      "Oh No !!",
+      "Your cart is empty add some products to continue",
+      "error"
+    );
+  };
+
   return (
     <Layout title="Shopping Cart">
       <h1 className={styles.h1Text}>
@@ -49,7 +58,9 @@ function ShoppingCart() {
             <span>Your Cart Is Empty 😔</span> <br /> Add Some Products To Show
             Here
           </h4>
-          <button className={styles.continueBtn}>Continue Shopping</button>
+          <Link href="/products/productsList">
+            <button className={styles.continueBtn}>Continue Shopping</button>
+          </Link>
         </div>
       ) : null}
       <TableContainer>
@@ -118,10 +129,19 @@ function ShoppingCart() {
           <p className={styles.priceP}> {totalAmount} JD</p>
         </div>
 
-        <div>
+        {items.length === 0 ? (
+          <button className={styles.checkOutBtn} onClick={alertError}>
+            Checkout <i className="fas fa-credit-card"></i>
+          </button>
+        ) : (
           <button className={styles.checkOutBtn} onClick={handleClickOpen}>
             Checkout <i className="fas fa-credit-card"></i>
           </button>
+        )}
+        <div>
+          {/* <button className={styles.checkOutBtn} onClick={handleClickOpen}>
+            Checkout <i className="fas fa-credit-card"></i>
+          </button> */}
 
           <Dialog
             open={openPaymentMethod}

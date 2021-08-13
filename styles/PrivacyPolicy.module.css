@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
+.containerAllPrivacyPolicy {
+  width: 50% !important;
+  margin-top: 2rem;
+}
+
+.h1Text {
+  text-align: center;
+  margin-top: 8rem;
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+}
+
+.containerAllPrivacyPolicy h5 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.containerAllPrivacyPolicy p {
+  font-family: "Lora", serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.containerAllPrivacyPolicy li {
+  font-family: "Lora", serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.link {
+  text-decoration: none;
+  color: #03c7ff;
+}
+
+.link:hover {
+  color: #03c7ff;
+}
+
+@media (max-width: 1000px) {
+  .containerAllPrivacyPolicy {
+    width: 100% !important;
+  }
+}
