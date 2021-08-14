@@ -1,11 +1,12 @@
+import styles from "@/styles/DrawerCart.module.css";
 import React, { useState } from "react";
+import Link from "next/link";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import { AiOutlineLine } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import styles from "@/styles/DrawerCart.module.css";
 import IconButton from "@material-ui/core/IconButton";
-import { HiOutlineShoppingCart } from "react-icons/hi";
-import { FaTimes } from "react-icons/fa";
-import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -15,47 +16,51 @@ import TableRow from "@material-ui/core/TableRow";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
-import { AiOutlineLine } from "react-icons/ai";
 import swal from "sweetalert";
 
+/*------------------------transition for drawer--------------------*/
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+/*-----------------------------------X-----------------------------*/
 
+/*-------------------Alert(error) when cart list empty-------------*/
 const alertError = () => {
-  swal("Oh No !!", "Your cart is empty add some products to continue", "error");
+  swal("Oh No 😔", "Your cart is empty add some products to continue", "error");
 };
+/*----------------------------------X------------------------------*/
 
 export default function DrawerCart({ cart, removeFromCart }) {
+  /*---------------Context shopping cart------------*/
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
+  /*--------------------------X---------------------*/
 
-  console.log(cart);
+  /*---state for handle drawer cart (open/close)----*/
   const [open, setOpen] = useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(!open);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  /*------------------------X-----------------------*/
 
+  /*-----state for handle dialog payment method-----*/
   const [openPaymentMethod, setPaymentMethod] = useState(false);
-
   const handleClickOpen = () => {
     setPaymentMethod(true);
   };
-
   const handleClose = () => {
     setPaymentMethod(false);
   };
+  /*-------------------------X----------------------*/
 
   return (
     <div>
+      {/*------------------cart icon---------------*/}
       <CssBaseline />
-
       <IconButton
         aria-label="open drawer"
         edge="end"
@@ -63,19 +68,22 @@ export default function DrawerCart({ cart, removeFromCart }) {
       >
         <HiOutlineShoppingCart className={styles.shoppingCartIcon} />
       </IconButton>
+      {/*----------------------X-------------------*/}
 
       <Drawer anchor="right" open={open}>
+        {/*-----------------Close button icon------------*/}
         <div style={{ margin: "1rem 0 2rem 0" }} onClick={handleDrawerClose}>
           <IconButton onClick={handleDrawerClose}>
             <FaTimes className={styles.closeDrawer} />
           </IconButton>
         </div>
+        {/*--------------------------X-------------------*/}
+
+        {/*-------table show all product in cart list--------*/}
         <TableContainer style={{ maxWidth: "320px" }}>
           <Table style={{ minWidth: "310px" }}>
             <TableHead>
-              <p style={{ fontWeight: "700", marginLeft: "1rem" }}>
-                Shopping Cart
-              </p>
+              <p className={styles.shoppingCartText}>Shopping Cart</p>
             </TableHead>
             <TableBody>
               {items.length === 0 ? (
@@ -92,7 +100,7 @@ export default function DrawerCart({ cart, removeFromCart }) {
                       width={100}
                       height={60}
                       alt={item.name}
-                      style={{ borderRadius: "15px" }}
+                      className={styles.img}
                     />
                   </TableCell>
                   <TableCell align="inherit">
@@ -102,8 +110,7 @@ export default function DrawerCart({ cart, removeFromCart }) {
                   <TableCell>
                     <i
                       onClick={() => removeFromCart(item)}
-                      className="fas fa-trash"
-                      style={{ cursor: "pointer", color: "#03c7ff" }}
+                      className={`fas fa-trash ${styles.deleteBtn} `}
                     ></i>
                   </TableCell>
                 </TableRow>
@@ -111,13 +118,17 @@ export default function DrawerCart({ cart, removeFromCart }) {
             </TableBody>
           </Table>
         </TableContainer>
+        {/*----------------------X---------------------------*/}
 
+        {/*------------------Text total amount-----------*/}
         <div className={styles.totalAmount}>
           <p className={styles.totalP}>total:</p>
           <p className={styles.priceP}> {totalAmount} JD</p>
         </div>
+        {/*--------------------------x-------------------*/}
 
         <div>
+          {/*----------Button (view cart) & (checkout)----------*/}
           <div className={styles.containerBtn}>
             <Link href="/products/shoppingCart">
               <button className={styles.btn}>View Cart</button>
@@ -132,7 +143,9 @@ export default function DrawerCart({ cart, removeFromCart }) {
               </button>
             )}
           </div>
+          {/*----------------------------X----------------------*/}
 
+          {/*--------------- dialog for payment method-------------*/}
           <Dialog
             open={openPaymentMethod}
             TransitionComponent={Transition}
@@ -174,6 +187,7 @@ export default function DrawerCart({ cart, removeFromCart }) {
               </div>
             </DialogContent>
           </Dialog>
+          {/*-----------------------------X------------------------*/}
         </div>
       </Drawer>
     </div>

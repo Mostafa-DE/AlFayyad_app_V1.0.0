@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styles from "@/styles/InvoiceOrder.module.css";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -23,6 +24,10 @@ function InvoiceOrder() {
     showConfirmButton: false,
     timer: 3500,
   });
+
+  useEffect(() => {
+    cart = "";
+  }, []);
 
   return (
     <div className={styles.main}>
@@ -107,9 +112,11 @@ function InvoiceOrder() {
           Outside Amman
         </p>
       </div>
-      <button type="button" className={styles.btnConfirm}>
-        Return to cart
-      </button>
+      <Link href="/products/shoppingCart">
+        <button type="button" className={styles.btnConfirm}>
+          Return to cart
+        </button>
+      </Link>
     </div>
   );
 }

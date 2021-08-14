@@ -1,3 +1,4 @@
+import styles from "@/styles/Dashboard.module.css";
 import React from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -8,10 +9,14 @@ import TableRow from "@material-ui/core/TableRow";
 
 function Dashboard({ orders }) {
   return (
-    <div style={{ marginTop: "10rem" }}>
+    <div className={styles.main}>
+      {/*--------------Title All Order---------*/}
       <div className="col-md-6 text-right mt-4">
-        <h4 style={{ color: "#03c7ff", fontSize: "2rem" }}> All Orders</h4>
+        <h4 className={styles.AllOrderText}> All Orders</h4>
       </div>
+      {/*---------------------X----------------*/}
+
+      {/*------------Table show all orders for admin--------*/}
       <TableContainer>
         <Table style={{ maxWidth: "1400px" }}>
           <TableHead>
@@ -38,6 +43,7 @@ function Dashboard({ orders }) {
           </TableBody>
         </Table>
       </TableContainer>
+      {/*---------------------------X-----------------------*/}
     </div>
   );
 }

@@ -1,20 +1,21 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import emailjs from "emailjs-com";
 import styles from "@/styles/ContactForm.module.css";
+import { useEffect } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useInputState from "@/Hooks/useInputState";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import emailjs from "emailjs-com";
+import swal from "sweetalert";
 
 function Login() {
+  /*----------------------State for form---------------------*/
   const [name, handleChangeName, resetName] = useInputState("");
   const [email, handleChangeEmail, resetEmail] = useInputState("");
   const [message, handleChangeMessage, resetMessage] = useInputState("");
   const [phone, handleChangePhone, resetPhone] = useInputState("");
-  const router = useRouter();
+  /*-----------------------------X---------------------------*/
+
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
+    //send email using EmailJS
     emailjs
       .sendForm(
         "service_8swmbyy",
@@ -22,9 +23,15 @@ function Login() {
         evnt.target,
         "user_tjMhMjtx9IxF7pqse8vPx"
       )
-      .then(() => toast.success("Great The Message Was Sent :)"))
-      //   .then(() => router.push("/"))
+      .then(() =>
+        swal(
+          "we are happy that you contact us 😉",
+          "We would like to inform you that one of our employee will contact you as soon as possible. Thank you for your patience, we are willing to serve you at any time",
+          "success"
+        )
+      )
       .catch((err) => console.log(err));
+    //reset all state
     resetName();
     resetEmail();
     resetMessage();
@@ -33,6 +40,15 @@ function Login() {
 
   /*------------------Validation TextField phone number-------------------*/
   useEffect(() => {
+    ValidatorForm.addValidationRule("isPhoneNumber", (value) => {
+      if (value.length > 10 || value.length < 10) {
+        return false;
+      }
+      return true;
+    });
+  });
+
+  useEffect(() => {
     ValidatorForm.addValidationRule("isNumber", (value) => {
       if (value.match(/^[A-Za-z]+$/)) {
         return false;
@@ -40,13 +56,22 @@ function Login() {
       return true;
     });
   });
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isLocalNumber", (value) => {
+      if (value.match("078") || value.match("079") || value.match("077")) {
+        return true;
+      }
+      return false;
+    });
+  });
   /*-----------------------------------X-----------------------------------*/
 
   return (
     <section className={styles.main}>
-      <ToastContainer position="top-center" style={{ width: "30rem" }} />
       <div className={`container-fluid ${styles.hCustom}`}>
         <div className="row d-flex justify-content-center align-items-center h-100">
+          {/*-------------------image Contact----------------*/}
           <div className="col-md-9 col-lg-6 col-xl-5">
             <img
               src="/images/fayyad/contact.jpg"
@@ -54,7 +79,9 @@ function Login() {
               alt="Al_Fayyad"
             />
           </div>
+          {/*-------------------------X----------------------*/}
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            {/*---------------------social contact------------*/}
             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p className="lead fw-normal mt-3 mb-0 me-3 text-center">
                 Contact Us with
@@ -87,10 +114,11 @@ function Login() {
                 <i className="fas fa-mobile-alt"></i>
               </a>
             </div>
-
+            {/*---------------------------X-------------------*/}
             <div className={`${styles.divider} d-flex align-items-center my-4`}>
               <p className="text-center fw-bold mx-3 mb-0">Or</p>
             </div>
+            {/*---------------------Contact form--------------*/}
             <ValidatorForm onSubmit={handleSubmit}>
               <div className="form-outline mb-3 d-flex">
                 <TextValidator
@@ -105,14 +133,25 @@ function Login() {
                 />
                 <TextValidator
                   type="text"
-                  onChange={handleChangePhone}
-                  value={phone}
                   name="phone"
+                  value={phone}
+                  onChange={handleChangePhone}
+                  fullWidth
                   style={{ marginLeft: "1rem" }}
                   variant="standard"
                   label="Your Phone (Optional)"
-                  validators={["isNumber"]}
-                  errorMessages={["Phone Number Must Be A Numbers !!"]}
+                  validators={[
+                    "required",
+                    "isNumber",
+                    "isPhoneNumber",
+                    "isLocalNumber",
+                  ]}
+                  errorMessages={[
+                    "Please Enter A Phone Number !!",
+                    "Phone Number Must Be A Numbers !!",
+                    "Phone Number Must Be (10 number) !!",
+                    "Phone Number Must Begin With (078 , 079, 077)",
+                  ]}
                 />
               </div>
               <div className="form-outline mb-3">
@@ -143,21 +182,12 @@ function Login() {
               </div>
               <div className="d-flex justify-content-between align-items-center"></div>
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg"
-                  style={{
-                    paddingLeft: "2.5rem",
-                    paddingRight: "2.5rem",
-                    backgroundColor: "#03c7ff",
-                    border: "1px solid #03c7ff",
-                    borderRadius: "20px",
-                  }}
-                >
+                <button type="submit" className={styles.sendBtn}>
                   Send <i className="fas fa-paper-plane"></i>
                 </button>
               </div>
             </ValidatorForm>
+            {/*--------------------------X--------------------*/}
           </div>
         </div>
       </div>

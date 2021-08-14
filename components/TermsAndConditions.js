@@ -1,4 +1,5 @@
 import styles from "@/styles/TermsAndConditions.module.css";
+import Link from "next/link";
 
 function TermsAndConditions() {
   return (
@@ -433,6 +434,29 @@ function TermsAndConditions() {
           >
             fayyadm524@gmail.com
           </a>
+        </p>
+        <h5 className="text-uppercase">MORE POLICIES</h5>
+        <p className="text-md-start">
+          You should also read{" "}
+          <Link href="/terms-policy/privacy-policy">
+            <a className={styles.link}>Privacy Policy</a>
+          </Link>{" "}
+          &{" "}
+          <Link href="/terms-policy/sales-policies">
+            <a className={styles.link}>Sales Policies</a>
+          </Link>{" "}
+          &{" "}
+          <Link href="/terms-policy/refund-policy">
+            <a className={styles.link}>Refund Policy</a>
+          </Link>{" "}
+          &{" "}
+          <Link href="/terms-policy/cancellation-policy">
+            <a className={styles.link}>Cancellation Policy</a>
+          </Link>{" "}
+          &{" "}
+          <Link href="/terms-policy/shipping-policy">
+            <a className={styles.link}>Shipping Policy</a>
+          </Link>
         </p>
       </div>
     </>

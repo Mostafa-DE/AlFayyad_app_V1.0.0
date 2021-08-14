@@ -1,6 +1,7 @@
 import styles from "@/styles/Footer.module.css";
 import Link from "next/link";
 
+/*----------Style bootstrap--------*/
 const stylesFooter = {
   root: {
     background:
@@ -27,6 +28,7 @@ const stylesFooter = {
     textDecoration: "none",
   },
 };
+/*-----------------X---------------*/
 
 function Footer() {
   return (

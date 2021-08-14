@@ -38,7 +38,7 @@ function ShoppingCart() {
 
   const alertError = () => {
     swal(
-      "Oh No !!",
+      "Oh No 😔",
       "Your cart is empty add some products to continue",
       "error"
     );

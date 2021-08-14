@@ -17,7 +17,6 @@ function Header() {
   /* -----------Auth User context----------------- */
   const { user, logout } = useContext(AuthContext);
   /* --------------------X------------------------ */
-  console.log(user);
   /* -----------Cart Shopping context----------------- */
   const { cart, removeFromCart } = useContext(CartContext);
   /* -----------------------X------------------------- */

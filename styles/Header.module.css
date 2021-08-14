@@ -133,7 +133,7 @@
 .shoppingCartIcon {
   font-size: 1.8rem;
   color: #03c7ff;
-  margin-top: -0.3rem;
+  /* margin-top: -0.3rem; */
 }
 
 /* shopping cart when scroll down */
@@ -154,7 +154,7 @@
   display: none;
   font-size: 1.5rem;
   margin-left: 1rem;
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
 }
 /*-------------X-------------------*/
 

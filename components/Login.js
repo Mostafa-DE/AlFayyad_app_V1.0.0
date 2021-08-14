@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import styles from "@/styles/Login.module.css";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
@@ -7,6 +7,7 @@ import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 
 function Login() {
   const { login, error } = useContext(AuthContext);
@@ -17,6 +18,14 @@ function Login() {
     login({ email, password });
     resetPassword();
     resetEmail();
+  };
+
+  const alertInfo = () => {
+    swal(
+      "Hi There!!",
+      "Please note that we use cookies to keep you login for a week and it automatically log out after then, if you don't want to keep login you can hit on logout option 😉",
+      "info"
+    );
   };
 
   useEffect(() => error && toast.error(error));
@@ -84,16 +93,22 @@ function Login() {
                   <input
                     className="form-check-input me-2"
                     type="checkbox"
-                    value=""
                     id="form2Example3"
+                    checked
+                    readOnly
                   />
                   <label className="form-check-label" htmlFor="form2Example3">
-                    Remember me
+                    Remember me{" "}
+                    <i
+                      onClick={alertInfo}
+                      className={`fas fa-question ${styles.questionIcon} `}
+                    ></i>
                   </label>
                 </div>
-                <a href="#!" className="text-body">
-                  Forgot password?
-                </a>
+
+                <Link href="/forget-password">
+                  <a className="text-body">Forgot password?</a>
+                </Link>
               </div>
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button

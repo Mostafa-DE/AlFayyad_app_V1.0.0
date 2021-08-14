@@ -75,9 +75,10 @@
 }
 
 .searchIconNavbar {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-left: 0.8rem;
   cursor: pointer;
+  margin-top: 0.1rem;
 }
 
 .searchIconDialog {

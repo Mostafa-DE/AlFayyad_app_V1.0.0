@@ -57,12 +57,12 @@ function Register() {
     });
   };
   return (
-    <section style={{ marginTop: "8rem" }}>
+    <section>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
-            <div className="card text-black" style={{ borderRadius: "25px" }}>
+            <div className="card text-black" style={{ border: "none" }}>
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -107,7 +107,7 @@ function Register() {
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-mobile-alt fa-lg me-3 fa-fw"></i>
+                        <i className="fas fa-mobile-alt fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
                             type="text"
@@ -178,13 +178,18 @@ function Register() {
                           htmlFor="form2Example3"
                         >
                           I do accept the{" "}
-                          <Link href="/terms-conditions">
-                            <a style={{ color: "#03c7ff" }}>
+                          <Link href="/terms-policy/terms-conditions">
+                            <a
+                              style={{
+                                color: "#03c7ff",
+                                textDecoration: "none",
+                              }}
+                            >
                               {" "}
                               Terms & Conditions{" "}
                             </a>
                           </Link>{" "}
-                          of your site.
+                          of the site.
                         </label>
                       </div>
 
@@ -205,7 +210,11 @@ function Register() {
                       <p className="small text-center fw-bold mt-2 pt-1 mb-0">
                         Already have an account?{" "}
                         <Link href="/account/login">
-                          <a style={{ color: "#03c7ff" }}>Login</a>
+                          <a
+                            style={{ color: "#03c7ff", textDecoration: "none" }}
+                          >
+                            Login
+                          </a>
                         </Link>
                       </p>
                     </ValidatorForm>

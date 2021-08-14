@@ -13,7 +13,7 @@ function TestCardProduct({ product }) {
 
   const AddToCart = async () => {
     await addToCart(product);
-    swal("Awesome !!", "You added this item to your cart", "success");
+    swal("Awesome 😉", "This product has been added to your cart", "success");
   };
 
   return (

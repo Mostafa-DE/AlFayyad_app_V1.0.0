@@ -163,6 +163,20 @@
   color: #03c7ff;
 }
 
+.shoppingCartText {
+  font-weight: 700;
+  margin: 0 0 0 1rem;
+}
+
+.img {
+  border-radius: 15px;
+}
+
+.deleteBtn {
+  color: #03c7ff;
+  cursor: pointer;
+}
+
 @media (max-width: 676px) {
   .h1Text {
     font-size: 1.7rem;

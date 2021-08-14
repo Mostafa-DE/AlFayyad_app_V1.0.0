@@ -34,6 +34,12 @@
 .hCustom {
   height: calc(100% - 73px);
 }
+
+.questionIcon {
+  color: #03c8ff;
+  cursor: pointer;
+}
+
 @media (max-width: 450px) {
   .hCustom {
     height: 100%;

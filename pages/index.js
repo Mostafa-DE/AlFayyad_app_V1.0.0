@@ -14,7 +14,7 @@ import SubscripeForm from "@/components/SubscripeForm";
 
 function HomePage({ products }) {
   return (
-    <Layout title="AL_Fayyad Store">
+    <Layout title="AL Fayyad Store">
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
       <CategoryPhotoMd />
       <CategoryPhotoSm />

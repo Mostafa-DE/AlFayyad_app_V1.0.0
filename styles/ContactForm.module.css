@@ -27,6 +27,16 @@
 .hCustom {
   height: calc(100% - 73px);
 }
+
+.sendBtn {
+  padding: 0.5rem 2.5rem;
+  background-color: #03c7ff;
+  border: 1px solid #03c7ff;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
 @media (max-width: 450px) {
   .hCustom {
     height: 100%;
