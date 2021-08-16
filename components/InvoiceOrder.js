@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
 import styles from "@/styles/InvoiceOrder.module.css";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useContext } from "react";
+import { CartContext } from "@/context/CartContext";
 import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -8,41 +8,46 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { CartContext } from "@/context/CartContext";
 import Swal from "sweetalert2";
 
 function InvoiceOrder() {
+  /*-------------context shopping cart-----------*/
   const { cart } = useContext(CartContext);
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
+  /*----------------------X---------------------*/
 
+  /*---------alert (sweetalert) all done--------*/
   Swal.fire({
-    position: "top-center",
+    position: "center",
     icon: "success",
     title: "All done 😉 ",
     showConfirmButton: false,
     timer: 3500,
   });
-
-  useEffect(() => {
-    cart = "";
-  }, []);
+  /*-----------------------X--------------------*/
 
   return (
     <div className={styles.main}>
       <div>
+        {/*-------------------Thanks message paragraph------------------*/}
         <p className={styles.thanksText}>
           <span>Thank you.</span> We have received your order and will contact
           you as soon as possible, We hope your experience was awesome.
         </p>
+        {/*-------------------------------X-----------------------------*/}
+
         <hr />
+        {/*-------------------contact message paragraph-----------------*/}
         <div className={styles.contact48H}>
           <span>Please note</span> that you will be contacted within 48 hours
           for delivery, for assistance please feel free to contact us on each of
           the following:-
         </div>
+        {/*-------------------------------X-----------------------------*/}
 
+        {/*------------------social contact methods---------------------*/}
         <div className="d-flex flex-row align-items-center justify-content-center ">
           <a
             href="http://m.me/fayyado"
@@ -72,12 +77,17 @@ function InvoiceOrder() {
             <i className="fas fa-mobile-alt"></i>
           </a>
         </div>
-
+        {/*----------------------------X--------------------------------*/}
         <hr />
       </div>
+
+      {/*--------------------order details text---------------------*/}
       <div className="col-md-6 text-right mt-4">
         <h4 className={styles.alfayyadText}>Order Details</h4>
       </div>
+      {/*----------------------------X------------------------------*/}
+
+      {/*----------table show all product in your order-------------*/}
       <TableContainer>
         <Table style={{ minWidth: "300px" }}>
           <TableHead>
@@ -100,9 +110,15 @@ function InvoiceOrder() {
           </TableBody>
         </Table>
       </TableContainer>
+      {/*---------------------------X-------------------------------*/}
+
+      {/*----------------------total amount-------------------------*/}
       <div className={styles.totalAmount}>
         <span>Total Amount:</span> {totalAmount} JD
       </div>
+      {/*---------------------------X-------------------------------*/}
+
+      {/*----------------------delivery fees------------------------*/}
       <div className={styles.info}>
         <p>
           <strong>Reminder !!</strong> <br /> Delivery fees will be added
@@ -112,11 +128,15 @@ function InvoiceOrder() {
           Outside Amman
         </p>
       </div>
+      {/*----------------------------X------------------------------*/}
+
+      {/*-----------------return to cart button---------------------*/}
       <Link href="/products/shoppingCart">
         <button type="button" className={styles.btnConfirm}>
           Return to cart
         </button>
       </Link>
+      {/*--------------------------X--------------------------------*/}
     </div>
   );
 }

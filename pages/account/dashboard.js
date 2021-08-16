@@ -10,6 +10,7 @@ function dashboardPage({ orders }) {
   );
 }
 
+/*------------get order from strapi-------------*/
 export async function getServerSideProps() {
   const res = await fetch(`${API_URL}/orders`);
   const orders = await res.json();
@@ -19,5 +20,6 @@ export async function getServerSideProps() {
     },
   };
 }
+/*-----------------------X----------------------*/
 
 export default dashboardPage;

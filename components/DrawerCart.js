@@ -80,18 +80,15 @@ export default function DrawerCart({ cart, removeFromCart }) {
         {/*--------------------------X-------------------*/}
 
         {/*-------table show all product in cart list--------*/}
+        {items.length === 0 ? (
+          <p className={styles.cartEmpty}>
+            <span>Your Cart Is Empty 😔</span>
+            <br /> Add some products to show here
+          </p>
+        ) : null}
         <TableContainer style={{ maxWidth: "320px" }}>
           <Table style={{ minWidth: "310px" }}>
-            <TableHead>
-              <p className={styles.shoppingCartText}>Shopping Cart</p>
-            </TableHead>
             <TableBody>
-              {items.length === 0 ? (
-                <p className={styles.cartEmpty}>
-                  <span>Your Cart Is Empty 😔</span>
-                  <br /> Add some products to show here
-                </p>
-              ) : null}
               {items.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell component="th" scope="row">

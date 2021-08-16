@@ -1,6 +1,6 @@
+import styles from "@/styles/ProductDetails.module.css";
 import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
-import styles from "@/styles/ProductDetails.module.css";
 import Link from "next/link";
 import swal from "sweetalert";
 
@@ -9,30 +9,30 @@ function TestProductDetails({ product }) {
   const { addToCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
 
+  /*-----------alert when add product in cart----------*/
   const AddToCart = async () => {
     await addToCart(product);
     swal("Awesome 😉", "This product has been added to your cart", "success");
   };
+  /*------------------------X--------------------------*/
 
   return (
     <div className={styles.body}>
       <main className={styles.container}>
-        {/* <!-- Left Column / Headphones Image --> */}
+        {/*------------Left Column / product Image---------------*/}
         <div className={styles.leftColumn}>
           <img className={styles.image} src={product.images[0].url} alt="" />
         </div>
+        {/*------------------------X-----------------------------*/}
 
-        {/* <!-- Right Column --> */}
+        {/*-------------------Right Column-----------------------*/}
         <div className={styles.rightColumn}>
           <div className={styles.navTitle}>
             <h4>Product Details</h4>
-            <i
-              className="fas fa-heart"
-              style={{ fontSize: "24px", color: "#03c7ff" }}
-            ></i>
+            <i className={`fas fa-heart ${styles.heartIcon} `}></i>
           </div>
 
-          {/* <!-- Product Description -->  */}
+          {/*--------------Product Description---------------*/}
           <div className={styles.productDescription}>
             <h1>{product.name}</h1>
             <span>Description</span>
@@ -40,8 +40,9 @@ function TestProductDetails({ product }) {
             <span>Additional Information</span>
             <p>{product.additionalInfo}</p>
           </div>
+          {/*----------------------X-------------------------*/}
 
-          {/* <!-- Product Pricing --> */}
+          {/*----------------Product Pricing-----------------*/}
           <div className={styles.containerBtn}>
             <button onClick={AddToCart} className={styles.addToCart}>
               Add to cart
@@ -50,6 +51,7 @@ function TestProductDetails({ product }) {
               <a className={styles.linkProducts}>Return To Products List</a>
             </Link>
           </div>
+          {/*----------------------X-------------------------*/}
         </div>
       </main>
     </div>

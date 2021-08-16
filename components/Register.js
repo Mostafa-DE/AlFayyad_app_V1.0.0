@@ -1,20 +1,25 @@
-import { useEffect } from "react";
-import Link from "next/link";
+import styles from "@/styles/Register.module.css";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import useInputState from "@/Hooks/useInputState";
+import { useEffect } from "react";
+import { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext } from "react";
+import Link from "next/link";
+import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
 
 function Register() {
-  const { register, error } = useContext(AuthContext);
-  const [username, handleChangeUsername, resetUsername] = useInputState("");
-  const [email, handleChangeEmail, resetEmail] = useInputState("");
-  const [phone, handleChangePhone, resetPhone] = useInputState("");
-  const [password, handleChangePassword, resetPassword] = useInputState("");
-  const [passwordConf, handleChangePasswordConf, resetPasswordConf] =
-    useInputState("");
+  /*-----------context authenication-----------*/
+  const { register } = useContext(AuthContext);
+  /*---------------------X---------------------*/
+
+  /*--------------------state for input-------------------*/
+  const [username, handleChangeUsername] = useInputState("");
+  const [email, handleChangeEmail] = useInputState("");
+  const [phone, handleChangePhone] = useInputState("");
+  const [password, handleChangePassword] = useInputState("");
+  const [passwordConf, handleChangePasswordConf] = useInputState("");
+  /*---------------------------X-------------------------*/
 
   /*------------------Validation TextField phone number-------------------*/
   useEffect(() => {
@@ -39,6 +44,7 @@ function Register() {
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
 
+    /*------------validation for match password--------------*/
     if (password !== passwordConf) {
       toast.error("Passwords Don't Match, Please Try Again !!");
       return;
@@ -48,6 +54,7 @@ function Register() {
       toast.error("Password must be at least 8 character");
       return;
     }
+    /*----------------------------x--------------------------*/
 
     register({
       username,
@@ -56,6 +63,7 @@ function Register() {
       phone,
     });
   };
+
   return (
     <section>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
@@ -74,6 +82,7 @@ function Register() {
                       onSubmit={handleSubmit}
                       className="mx-1 mx-md-4"
                     >
+                      {/*-------------------input Username---------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
@@ -89,7 +98,9 @@ function Register() {
                           />
                         </div>
                       </div>
+                      {/*------------------------X-----------------------*/}
 
+                      {/*---------------input email address--------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
@@ -105,7 +116,9 @@ function Register() {
                           />
                         </div>
                       </div>
+                      {/*------------------------X-----------------------*/}
 
+                      {/*---------------input phone number---------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-mobile-alt fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
@@ -129,7 +142,9 @@ function Register() {
                           />
                         </div>
                       </div>
+                      {/*------------------------X-----------------------*/}
 
+                      {/*------------------input password----------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
@@ -145,7 +160,9 @@ function Register() {
                           />
                         </div>
                       </div>
+                      {/*------------------------X-----------------------*/}
 
+                      {/*---------------input password confirm-----------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-4">
@@ -163,7 +180,9 @@ function Register() {
                           />
                         </div>
                       </div>
+                      {/*------------------------X-----------------------*/}
 
+                      {/*--------checkBox accept terms&conditions--------*/}
                       <div className="form-check d-flex justify-content-center mb-5">
                         <div className="mb-3 form-check">
                           <input
@@ -179,46 +198,35 @@ function Register() {
                         >
                           I do accept the{" "}
                           <Link href="/terms-policy/terms-conditions">
-                            <a
-                              style={{
-                                color: "#03c7ff",
-                                textDecoration: "none",
-                              }}
-                            >
-                              {" "}
+                            <a className={styles.linkTermsAndConditions}>
                               Terms & Conditions{" "}
                             </a>
                           </Link>{" "}
                           of the site.
                         </label>
                       </div>
+                      {/*------------------------X-----------------------*/}
 
+                      {/*------------button submit the form--------------*/}
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button
-                          type="submit"
-                          className="btn btn-primary btn-lg"
-                          style={{
-                            paddingLeft: "2.5rem",
-                            paddingRight: "2.5rem",
-                            backgroundColor: "#03c7ff",
-                            border: "1px solid #03c7ff",
-                          }}
-                        >
+                        <button type="submit" className={styles.registerBtn}>
                           Register
                         </button>
                       </div>
+                      {/*------------------------X-----------------------*/}
+
+                      {/*-------------link for login page----------------*/}
                       <p className="small text-center fw-bold mt-2 pt-1 mb-0">
                         Already have an account?{" "}
                         <Link href="/account/login">
-                          <a
-                            style={{ color: "#03c7ff", textDecoration: "none" }}
-                          >
-                            Login
-                          </a>
+                          <a className={styles.linklogin}>Login</a>
                         </Link>
                       </p>
+                      {/*------------------------X-----------------------*/}
                     </ValidatorForm>
                   </div>
+
+                  {/*-------------------image register page---------------------*/}
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <img
                       src="/images/fayyad/register.jpg"
@@ -226,6 +234,7 @@ function Register() {
                       alt="Sample image"
                     />
                   </div>
+                  {/*----------------------------X------------------------------*/}
                 </div>
               </div>
             </div>

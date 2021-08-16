@@ -1,14 +1,16 @@
-import { useState } from "react";
 import styles from "@/styles/ForgetPassword.module.css";
+import { useState } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import swal from "sweetalert";
 import Link from "next/link";
 
 function ForgetPassword() {
+  /*--------------state for email input-------------*/
   const [email, setEmail] = useState("");
   const handleChangeEmail = (evnt) => {
     setEmail(evnt.target.value);
   };
+  /*-------------------------X----------------------*/
 
   const handleSubmit = () => {
     swal(

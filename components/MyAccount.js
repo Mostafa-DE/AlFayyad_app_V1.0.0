@@ -5,6 +5,7 @@ function MyAccount({ account }) {
   return (
     <div className={`container ${styles.container}`}>
       <div className={`${styles.mainBody}`}>
+        {/*------------nav on the top show user where he is---------------*/}
         <nav className="main-breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
@@ -20,9 +21,11 @@ function MyAccount({ account }) {
             </li>
           </ol>
         </nav>
+        {/*------------------------------X--------------------------------*/}
 
         <div className="row gutters-sm">
           <div className="col-md-4 mb-3">
+            {/*---------------first box show name & (hi word)-------------*/}
             <div className={`${styles.card} card`}>
               <div className={`card-body ${styles.cardBody}`}>
                 <div className="d-flex flex-column align-items-center text-center">
@@ -46,6 +49,9 @@ function MyAccount({ account }) {
                 </div>
               </div>
             </div>
+            {/*-------------------------------X---------------------------*/}
+
+            {/*----------second box show methods to contact us------------*/}
             <div className={`card mt-3 ${styles.card}`}>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item d-flex justify-content-center align-items-center flex-wrap">
@@ -122,7 +128,10 @@ function MyAccount({ account }) {
                 </li>
               </ul>
             </div>
+            {/*----------------------------X------------------------------*/}
           </div>
+
+          {/*---third box show details of user that currently logged in---*/}
           <div className="col-md-8">
             <div className={`card mb-3 ${styles.card}`}>
               <div className="card-body">
@@ -180,6 +189,7 @@ function MyAccount({ account }) {
               </div>
             </div>
           </div>
+          {/*-----------------------------X-------------------------------*/}
         </div>
       </div>
     </div>

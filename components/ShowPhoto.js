@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styles from "@/styles/ShowPhoto.module.css";
+import Link from "next/link";
 
 function ShowPhoto() {
   return (
@@ -8,6 +8,7 @@ function ShowPhoto() {
       className="carousel carousel-fade slide"
       data-bs-ride="carousel"
     >
+      {/*---control in crousol photo ( number of slides (bootstrap) )---*/}
       <div className="carousel-indicators">
         <button
           type="button"
@@ -36,10 +37,13 @@ function ShowPhoto() {
           aria-label="Slide 4"
         ></button>
       </div>
+      {/*------------------------------X--------------------------------*/}
+
       <div className="carousel-inner">
+        {/*-------------Welcome Photo---------------*/}
         <div className="carousel-item active">
           <img
-            src="./images/test/women.jpg"
+            src="./images/fayyad/women.jpg"
             className="d-block w-100"
             width={150}
             height={800}
@@ -57,7 +61,9 @@ function ShowPhoto() {
             </Link>
           </div>
         </div>
+        {/*--------------------X--------------------*/}
 
+        {/*---------new collections Photo-----------*/}
         <div className="carousel-item">
           <img
             src="./images/fayyad/man model.jpg"
@@ -78,7 +84,9 @@ function ShowPhoto() {
             </Link>
           </div>
         </div>
+        {/*--------------------X--------------------*/}
 
+        {/*---------kids accessories Photo----------*/}
         <div className="carousel-item">
           <img
             src="./images/fayyad/baby2.jpg"
@@ -99,7 +107,9 @@ function ShowPhoto() {
             </Link>
           </div>
         </div>
+        {/*--------------------X--------------------*/}
 
+        {/*--------------tools Photo----------------*/}
         <div className="carousel-item">
           <img
             src="./images/fayyad/tools_new.jpg"
@@ -120,8 +130,10 @@ function ShowPhoto() {
             </Link>
           </div>
         </div>
+        {/*--------------------X--------------------*/}
       </div>
 
+      {/*-------------button left arrow---------------*/}
       <button
         className="carousel-control-prev"
         type="button"
@@ -131,6 +143,9 @@ function ShowPhoto() {
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Previous</span>
       </button>
+      {/*----------------------X----------------------*/}
+
+      {/*-------------button right arrow--------------*/}
       <button
         className="carousel-control-next"
         type="button"
@@ -140,6 +155,7 @@ function ShowPhoto() {
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Next</span>
       </button>
+      {/*----------------------X----------------------*/}
     </div>
   );
 }

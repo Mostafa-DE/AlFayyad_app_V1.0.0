@@ -140,6 +140,15 @@
   transition: all 0.4s ease-in;
 }
 
+.imgProduct {
+  border-radius: 15px;
+}
+
+.addOrRemoveQty {
+  display: flex;
+  justify-content: center;
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;

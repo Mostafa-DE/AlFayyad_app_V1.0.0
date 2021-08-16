@@ -1,6 +1,6 @@
+import styles from "@/styles/Search.module.css";
 import React from "react";
 import { useRouter } from "next/router";
-import styles from "@/styles/Search.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import Swal from "sweetalert2";
 
@@ -20,9 +20,9 @@ function Search() {
       confirmButtonText: "Search",
       confirmButtonColor: "#03c7ff",
       cancelButtonColor: "#d33",
-      preConfirm: (data) => {
-        if (data != "") {
-          router.push(`/products/search?term=${data}`);
+      preConfirm: (term) => {
+        if (term != "") {
+          router.push(`/products/search?term=${term}`);
         } else {
           Swal.showValidationMessage("You can't leave this field empty 😔");
         }
@@ -33,10 +33,12 @@ function Search() {
 
   return (
     <div>
+      {/*------------search icon------------*/}
       <AiOutlineSearch
         className={styles.searchIconNavbar}
         onClick={alertSearch}
       />
+      {/*-----------------X-----------------*/}
     </div>
   );
 }

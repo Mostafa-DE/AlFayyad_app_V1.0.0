@@ -1,14 +1,15 @@
-import { useState, createContext, useEffect, useRef } from "react";
-// import cookie from "js-cookie";
+import { useState, createContext, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  /*---------------state for shopping cart---------------*/
   const [cart, setCart] = useState({
     items: [],
     itemsCount: 0,
     cartTotal: 0,
   });
+  /*-------------------------X---------------------------*/
 
   /*---------Save Product Cart in localStorage-----------*/
   useEffect(() => {
@@ -21,6 +22,7 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
   /*-----------------------X----------------------------*/
 
+  /*---------function for calculate cart total----------*/
   const calculateCartTotal = (items) => {
     const itemsCount = items.reduce((prev, curr) => prev + curr.qty, 0);
     const cartTotal = items.reduce(
@@ -29,10 +31,11 @@ export const CartProvider = ({ children }) => {
     );
     return { itemsCount, cartTotal };
   };
+  /*-----------------------X----------------------------*/
+
+  /*-----function for add product to shopping cart------*/
   const addToCart = (product) => {
     const { items = [] } = cart;
-    // console.log(items);
-
     const productIndex = items.findIndex((item) => item.id === product.id);
     if (productIndex === -1) {
       items.push({
@@ -43,12 +46,11 @@ export const CartProvider = ({ children }) => {
       items[productIndex].qty++;
     }
     const total = calculateCartTotal(items);
-
     setCart({ items, ...total });
-
-    // console.log(total);
   };
+  /*-----------------------X----------------------------*/
 
+  /*---function for remove product from shopping cart---*/
   const removeFromCart = (product) => {
     const { items = [] } = cart;
     const productIndex = items.findIndex((item) => item.id === product.id);
@@ -57,9 +59,10 @@ export const CartProvider = ({ children }) => {
     }
     const total = calculateCartTotal(items);
     setCart({ items, ...total });
-    // cookie.remove("shoppingCart");
   };
+  /*-----------------------X----------------------------*/
 
+  /*-------function for increase Qty in cart list-------*/
   const addQty = (product) => {
     const { items = [] } = cart;
     const productIndex = items.findIndex((item) => item.id === product.id);
@@ -67,16 +70,17 @@ export const CartProvider = ({ children }) => {
     const total = calculateCartTotal(items);
     setCart({ items, ...total });
   };
+  /*-----------------------X----------------------------*/
 
+  /*-------function for decrease Qty in cart list-------*/
   const removeQty = (product) => {
     const { items = [] } = cart;
     const productIndex = items.findIndex((item) => item.id === product.id);
-    // const checkProductQty = items.find((item) => item.qty === 0);
     items[productIndex].qty--;
-
     const total = calculateCartTotal(items);
     setCart({ items, ...total });
   };
+  /*-----------------------X----------------------------*/
 
   return (
     <CartContext.Provider

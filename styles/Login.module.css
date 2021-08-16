@@ -16,8 +16,18 @@
   transition: all 0.1s ease-in-out;
 }
 
+.loginBtn {
+  padding: 0.5rem 2.5rem;
+  background-color: #03c7ff;
+  border: 1px solid #03c7ff;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
 .linkRegister {
   color: #03c7ff;
+  text-decoration: none;
 }
 
 .linkRegister:hover {

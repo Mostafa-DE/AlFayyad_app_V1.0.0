@@ -1,28 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
 import styles from "@/styles/ShippingAddress.module.css";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ToastContainer, toast } from "react-toastify";
+import { CartContext } from "@/context/CartContext";
+import { AiOutlineLine } from "react-icons/ai";
+import { API_URL } from "../config";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { CartContext } from "@/context/CartContext";
-import { AiOutlineLine } from "react-icons/ai";
 import emailjs from "emailjs-com";
-import { API_URL } from "../config";
 
 function ShippingAdress() {
   const router = useRouter();
+
+  /*---------context shopping cart-----------*/
   const { cart } = useContext(CartContext);
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
-  // const totalAmount = cart.cartTotal;
+  /*-------------------X---------------------*/
+
+  /*-----------state for input-------------*/
   const [values, setValues] = useState({
     email: "",
     firstName: "",
@@ -31,8 +35,6 @@ function ShippingAdress() {
     city: "",
     building: "1",
     phone: "",
-    // nameOrder: "",
-    // qty: items.map((item) => item.qty) || "1",
     amount: totalAmount.toString(),
   });
 
@@ -40,9 +42,12 @@ function ShippingAdress() {
     const { name, value } = evnt.target;
     setValues({ ...values, [name]: value });
   };
+  /*------------------x--------------------*/
 
   const handleSubmit = async (evnt) => {
     evnt.preventDefault();
+
+    /*-----send email using emailJS-----*/
     emailjs
       .sendForm(
         "service_8swmbyy",
@@ -51,6 +56,9 @@ function ShippingAdress() {
         "user_tjMhMjtx9IxF7pqse8vPx"
       )
       .catch((err) => console.log(err));
+    /*----------------X-----------------*/
+
+    /*----------create order in strapi-----------*/
     const res = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: {
@@ -63,6 +71,7 @@ function ShippingAdress() {
     } else {
       router.push("/payment/invoiceOrder");
     }
+    /*---------------------X---------------------*/
   };
 
   /*------------------Validation TextField phone number-------------------*/
@@ -97,13 +106,13 @@ function ShippingAdress() {
   return (
     <div className={styles.main}>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
+
+      {/*------nav on the top show user where he is-----*/}
       <nav className={`main-breadcrumb ${styles.nav}`}>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <Link href="/">
-              <a className={styles.link} style={{ color: "#03c7ff" }}>
-                Home
-              </a>
+              <a className={styles.link}>Home</a>
             </Link>
           </li>
           <li className="breadcrumb-item text-secondary">Informations</li>
@@ -112,17 +121,22 @@ function ShippingAdress() {
           </li>
         </ol>
       </nav>
+      {/*-----------------------X-----------------------*/}
+
       <ValidatorForm onSubmit={handleSubmit} className="mx-1 mx-md-4">
         <div className={styles.container}>
           <div className={styles.containerForms}>
+            {/*-----------h1 title--------------*/}
             <h1 className={styles.h1Shipping}>
               Shipping Address
               <span>
                 <AiOutlineLine />
               </span>
             </h1>
-            {/* <div className={styles.shippingText}></div> */}
+            {/*---------------X-----------------*/}
+
             <div className="row">
+              {/*---------------input email address--------------*/}
               <div className="d-flex flex-row align-items-center">
                 <div className="form-outline flex-fill mb-3">
                   <TextValidator
@@ -141,7 +155,9 @@ function ShippingAdress() {
                   />
                 </div>
               </div>
+              {/*------------------------X-----------------------*/}
 
+              {/*----------input first name & last name----------*/}
               <div className="col d-flex justify-content-evenly">
                 <div className="mb-4">
                   <TextValidator
@@ -169,8 +185,10 @@ function ShippingAdress() {
                   />
                 </div>
               </div>
+              {/*------------------------X-----------------------*/}
             </div>
 
+            {/*------------------input address-----------------*/}
             <div className="form-outline flex-fill mb-3">
               <TextValidator
                 type="text"
@@ -184,7 +202,9 @@ function ShippingAdress() {
                 errorMessages={["Please Enter An Address !!"]}
               />
             </div>
+            {/*------------------------X-----------------------*/}
 
+            {/*-------------input city & building--------------*/}
             <div className="row">
               <div className="col d-flex">
                 <div className="form-outline flex-fill mb-3">
@@ -215,7 +235,9 @@ function ShippingAdress() {
                 </div>
               </div>
             </div>
+            {/*------------------------X-----------------------*/}
 
+            {/*--------------input phone number----------------*/}
             <div className="d-flex flex-row align-items-center">
               <div className="form-outline flex-fill mb-5">
                 <TextValidator
@@ -241,6 +263,9 @@ function ShippingAdress() {
                 />
               </div>
             </div>
+            {/*------------------------X-----------------------*/}
+
+            {/*------------------total amount------------------*/}
             <div className={styles.totalAmountForm}>
               Total Amount:{" "}
               <input
@@ -251,6 +276,9 @@ function ShippingAdress() {
               />{" "}
               JD
             </div>
+            {/*------------------------X-----------------------*/}
+
+            {/*------------------dilevery fees-----------------*/}
             <div className={styles.info}>
               <p>
                 <strong>Note!!</strong> <br /> Delivery fees will be added
@@ -260,19 +288,25 @@ function ShippingAdress() {
                 Outside Amman
               </p>
             </div>
+            {/*------------------------X-----------------------*/}
+
             <div className="d-flex justify-content-around ">
+              {/*------------------button confirm-----------------*/}
               <button type="submit" className={styles.btnCheckout}>
                 Confirm Order <i className="fas fa-credit-card"></i>
               </button>
+              {/*------------------------X------------------------*/}
+
+              {/*--------------link return to cart----------------*/}
               <Link href="/products/shoppingCart">
                 <a className={styles.returnCart}>Return to cart</a>
               </Link>
+              {/*-----------------------X-------------------------*/}
             </div>
           </div>
 
           {/*--------------------details order------------------ */}
           <div className={styles.containerDetails}>
-            {/* <div className={styles.orderText}></div> */}
             <h1 className={styles.h1Order}>
               Order Details
               <span>
@@ -295,18 +329,16 @@ function ShippingAdress() {
                       <TableCell component="th" scope="row">
                         <img
                           name="img"
+                          className={styles.imgProduct}
                           src={item.images[0].url}
                           width={90}
                           height={70}
                           alt="..."
-                          style={{ borderRadius: "15px" }}
                         />
                       </TableCell>
                       <TableCell align="inherit">
                         <input
-                          style={{
-                            border: "none",
-                          }}
+                          className={styles.inputProductName}
                           readOnly
                           name="nameOrder"
                           value={item.name}
@@ -315,11 +347,7 @@ function ShippingAdress() {
 
                       <TableCell align="center">
                         <input
-                          style={{
-                            border: "none",
-                            textAlign: "center",
-                            maxWidth: "2.5rem",
-                          }}
+                          className={styles.inputQty}
                           name="qty"
                           value={item.qty}
                           readOnly
@@ -332,6 +360,7 @@ function ShippingAdress() {
               </Table>
             </TableContainer>
           </div>
+          {/*--------------------------X-------------------------*/}
         </div>
       </ValidatorForm>
     </div>

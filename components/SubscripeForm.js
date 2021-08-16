@@ -1,15 +1,22 @@
+import styles from "@/styles/SubscripeForm.module.css";
 import { useState } from "react";
 import emailjs from "emailjs-com";
-import styles from "@/styles/SubscripeForm.module.css";
 
 function SubscripeForm() {
+  /*--------state for input email------------*/
   const [email, setEmail] = useState("");
+  const handleChange = (evnt) => {
+    setEmail(evnt.target.value);
+  };
+  /*-------------------X---------------------*/
+
+  /*--------send email using emailJS---------*/
   const handleSubmit = async (evnt) => {
     evnt.preventDefault();
     emailjs
       .sendForm(
         "service_8swmbyy",
-        "template_ezya1ej",
+        "template_b6gqepg",
         evnt.target,
         "user_tjMhMjtx9IxF7pqse8vPx"
       )
@@ -17,9 +24,8 @@ function SubscripeForm() {
       .then(setEmail(""))
       .catch((err) => console.log(err));
   };
-  const handleChange = (evnt) => {
-    setEmail(evnt.target.value);
-  };
+  /*--------------------X--------------------*/
+
   return (
     <div className="container mt-5">
       <div className="row">
@@ -30,6 +36,7 @@ function SubscripeForm() {
               Subscribe to our newsletter and never miss our latest news,
               designs, and product updates.
             </h6>
+            {/*-------------------------input email-----------------------------*/}
             <div className="form-group bg-white border rounded px-2 py-2 mb-2">
               <form className="row" onSubmit={handleSubmit}>
                 <div className="col">
@@ -53,6 +60,8 @@ function SubscripeForm() {
                 </div>
               </form>
             </div>
+            {/*------------------------------X----------------------------------*/}
+
             <span className={`mb-4 ${styles.textColor}`}>
               No spam, notifications only about new products, updates and
               freebies.
@@ -65,23 +74,3 @@ function SubscripeForm() {
 }
 
 export default SubscripeForm;
-
-{
-  /* <section className={`${styles.subscription} ${styles.bgWhite}`}>
-    <div className="container">
-        <div className="row">
-            <div className="col-lg-12">
-                <div className={`${styles.subscriptionWrapper}`}>
-                    <div className={`d-flex ${styles.subscriptionContent} justify-content-between align-items-center flex-column flex-md-row text-center text-md-left`}>
-                        <h3 className="flex-fill">Subscribe <br /> to our newsletter</h3>
-                        <form action="#" className={`row ${styles.flexFill}`}>
-                            <div className="col-lg-7 my-md-2 my-2"> <input type="email" className={`${styles.formControl} px-4 border-0 w-100 text-center text-md-left`} id="email" placeholder="Your Email" name="email" /> </div>
-                            <div className="col-lg-5 my-md-2 my-2"> <button type="submit" className={`${styles.btn} ${styles.btnPrimary} btn-lg border-0 w-100`}>Subscribe Now</button> </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> */
-}

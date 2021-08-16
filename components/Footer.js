@@ -38,6 +38,7 @@ function Footer() {
     >
       <div className="container text-center text-md-left">
         <div className="row">
+          {/*-----------------descripe about who we are--------------*/}
           <div
             className="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1"
             style={stylesFooter.white}
@@ -52,7 +53,9 @@ function Footer() {
               any time.
             </p>
           </div>
+          {/*-----------------------------X------------------------*/}
           <hr className="clearfix w-100 d-md-none" />
+          {/*--------------terms & conditions & policies-----------*/}
           <div
             className="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1"
             style={stylesFooter.white}
@@ -117,7 +120,9 @@ function Footer() {
               </li>
             </ul>
           </div>
+          {/*----------------------------X-------------------------*/}
           <hr className="clearfix w-100 d-md-none" />
+          {/*--------------------Contact methods-------------------*/}
           <div
             className="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1"
             style={stylesFooter.white}
@@ -186,7 +191,9 @@ function Footer() {
               </li>
             </ul>
           </div>
+          {/*---------------------------X--------------------------*/}
           <hr className="clearfix w-100 d-md-none" />
+          {/*--------------------Follow us social------------------*/}
           <div
             className="col-md-2 col-lg-2 text-center mx-auto my-4"
             style={stylesFooter.socialContain}
@@ -225,8 +232,10 @@ function Footer() {
               <i className="fab fa-twitter"></i>
             </a>
           </div>
+          {/*---------------------------X--------------------------*/}
         </div>
       </div>
+      {/*-----------------Copy right & reserved----------------*/}
       <div className={styles.copyRight}>
         <p>
           {" "}
@@ -234,6 +243,7 @@ function Footer() {
           <a href="https://github.com/Mostafa-DE"> Mostafa Fayyad</a>
         </p>
       </div>
+      {/*--------------------------X---------------------------*/}
     </footer>
   );
 }

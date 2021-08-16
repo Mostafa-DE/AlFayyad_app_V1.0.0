@@ -1,18 +1,21 @@
-import Link from "next/link";
+import styles from "@/styles/Login.module.css";
 import React, { useEffect } from "react";
 import { useContext } from "react";
-import styles from "@/styles/Login.module.css";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import useInputState from "@/Hooks/useInputState";
-import AuthContext from "@/context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useInputState from "@/Hooks/useInputState";
+import AuthContext from "@/context/AuthContext";
+import Link from "next/link";
 import swal from "sweetalert";
 
 function Login() {
+  /*-----------------state for input forms------------------*/
   const { login, error } = useContext(AuthContext);
   const [email, handleChangeEmail, resetEmail] = useInputState("");
   const [password, handleChangePassword, resetPassword] = useInputState("");
+  /*---------------------------X----------------------------*/
+
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
     login({ email, password });
@@ -20,6 +23,7 @@ function Login() {
     resetEmail();
   };
 
+  /*---------------sweetAlert for info cookies---------------*/
   const alertInfo = () => {
     swal(
       "Hi There!!",
@@ -27,13 +31,18 @@ function Login() {
       "info"
     );
   };
+  /*---------------------------X-----------------------------*/
 
+  /*---------------toast alert error in login----------------*/
   useEffect(() => error && toast.error(error));
+  /*---------------------------X-----------------------------*/
+
   return (
     <section className={styles.main}>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
       <div className={`container-fluid ${styles.hCustom}`}>
         <div className="row d-flex justify-content-center align-items-center h-100">
+          {/*---------------image login-----------------*/}
           <div className="col-md-9 col-lg-6 col-xl-5">
             <img
               src="/images/fayyad/login.jpg"
@@ -41,7 +50,10 @@ function Login() {
               alt="Al_Fayyad"
             />
           </div>
+          {/*--------------------X----------------------*/}
+
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            {/*----------login with social media (read only)-----------*/}
             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p className="lead fw-normal mt-3 mb-0 me-3">Sign in with</p>
               <button
@@ -58,11 +70,14 @@ function Login() {
                 <i className="fas fa-envelope"></i>
               </button>
             </div>
+            {/*--------------------------X-----------------------------*/}
 
             <div className={`${styles.divider} d-flex align-items-center my-4`}>
               <p className="text-center fw-bold mx-3 mb-0">Or</p>
             </div>
+
             <ValidatorForm onSubmit={handleSubmit}>
+              {/*-------------------all inputs-------------------*/}
               <div className="form-outline mb-3">
                 <TextValidator
                   type="email"
@@ -88,7 +103,10 @@ function Login() {
                   errorMessages={["Please Enter A Password !!"]}
                 />
               </div>
+              {/*-----------------------X------------------------*/}
+
               <div className="d-flex justify-content-between align-items-center">
+                {/*----------------ckeckbox remember me (readOnly)------------*/}
                 <div className="form-check mb-0">
                   <input
                     className="form-check-input me-2"
@@ -105,30 +123,30 @@ function Login() {
                     ></i>
                   </label>
                 </div>
+                {/*------------------------------X----------------------------*/}
 
+                {/*-------------------link forget password--------------------*/}
                 <Link href="/forget-password">
                   <a className="text-body">Forgot password?</a>
                 </Link>
+                {/*-----------------------------X-----------------------------*/}
               </div>
+
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg"
-                  style={{
-                    paddingLeft: "2.5rem",
-                    paddingRight: "2.5rem",
-                    backgroundColor: "#03c7ff",
-                    border: "1px solid #03c7ff",
-                  }}
-                >
+                {/*----------------------button login-------------------------*/}
+                <button type="submit" className={styles.loginBtn}>
                   Login
                 </button>
+                {/*----------------------------X------------------------------*/}
+
+                {/*----------------------register link------------------------*/}
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account?{" "}
                   <Link href="/account/register">
                     <a className={styles.linkRegister}>Register</a>
                   </Link>
                 </p>
+                {/*----------------------------X------------------------------*/}
               </div>
             </ValidatorForm>
           </div>

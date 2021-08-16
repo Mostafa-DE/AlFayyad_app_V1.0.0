@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
 import styles from "@/styles/ShoppingCart.module.css";
-import Layout from "./Layout";
+import React, { useContext, useState } from "react";
 import { AiOutlineLine } from "react-icons/ai";
 import { CartContext } from "@/context/CartContext";
 import { FaTimes } from "react-icons/fa";
@@ -16,18 +15,22 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
 import swal from "sweetalert";
 
+/*---------------transition for dialog payment methods-----------------*/
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+/*-----------------------------------X---------------------------------*/
 
 function ShoppingCart() {
+  /*-------------------------context shopping cart-------------------------*/
   const { cart, removeFromCart, addQty, removeQty } = useContext(CartContext);
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
+  /*-------------------------------------X---------------------------------*/
 
+  /*--------------state for dialog payment methods---------------*/
   const [openPaymentMethod, setPaymentMethod] = useState(false);
-
   const handleClickOpen = () => {
     setPaymentMethod(true);
   };
@@ -35,7 +38,9 @@ function ShoppingCart() {
   const handleClose = () => {
     setPaymentMethod(false);
   };
+  /*-------------------------------X----------------------------*/
 
+  /*---alert error when click on checkout when cart empty---*/
   const alertError = () => {
     swal(
       "Oh No 😔",
@@ -43,15 +48,18 @@ function ShoppingCart() {
       "error"
     );
   };
+  /*------------------------------X-------------------------*/
 
   return (
-    <Layout title="Shopping Cart">
+    <div>
       <h1 className={styles.h1Text}>
         Cart List
         <span>
           <AiOutlineLine />
         </span>
       </h1>
+
+      {/*----------------message text when cart empty-------------------*/}
       {items.length === 0 ? (
         <div className={styles.containerCartEmpty}>
           <h4 className={styles.h2CartEmpty}>
@@ -63,6 +71,9 @@ function ShoppingCart() {
           </Link>
         </div>
       ) : null}
+      {/*-------------------------------X-------------------------------*/}
+
+      {/*-----------------------cart list details-----------------------*/}
       <TableContainer>
         <Table style={{ minWidth: "750px" }}>
           <TableHead>
@@ -83,14 +94,14 @@ function ShoppingCart() {
                     width={175}
                     height={130}
                     alt={item.name}
-                    style={{ borderRadius: "15px" }}
+                    className={styles.imgProduct}
                   />
                 </TableCell>
                 <TableCell align="inherit">{item.name}</TableCell>
                 <TableCell align="center">{item.price} JD</TableCell>
                 <TableCell align="center">
                   {item.qty}
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div className={styles.addOrRemoveQty}>
                     {item.qty !== 1 ? (
                       <i
                         onClick={() => removeQty(item)}
@@ -123,6 +134,9 @@ function ShoppingCart() {
           </TableBody>
         </Table>
       </TableContainer>
+      {/*-------------------------------X-------------------------------*/}
+
+      {/*----------------------dialog payment methods-------------------*/}
       <div className={styles.checkOutContainer}>
         <div className={styles.totalAmount}>
           <p className={styles.totalP}>total amount:</p>
@@ -139,10 +153,6 @@ function ShoppingCart() {
           </button>
         )}
         <div>
-          {/* <button className={styles.checkOutBtn} onClick={handleClickOpen}>
-            Checkout <i className="fas fa-credit-card"></i>
-          </button> */}
-
           <Dialog
             open={openPaymentMethod}
             TransitionComponent={Transition}
@@ -186,7 +196,8 @@ function ShoppingCart() {
           </Dialog>
         </div>
       </div>
-    </Layout>
+      {/*-------------------------------X-------------------------------*/}
+    </div>
   );
 }
 

@@ -4,7 +4,6 @@ import { API_URL } from "@/config/index";
 import MyAccount from "@/components/MyAccount";
 
 function myAccountPage({ account }) {
-  // console.log(account);
   return (
     <Layout title="My Account">
       <MyAccount account={account} />
@@ -12,6 +11,7 @@ function myAccountPage({ account }) {
   );
 }
 
+/*-------get user that logged in currentlly--------*/
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
 
@@ -30,5 +30,6 @@ export async function getServerSideProps({ req }) {
     },
   };
 }
+/*-------------------------X-----------------------*/
 
 export default myAccountPage;

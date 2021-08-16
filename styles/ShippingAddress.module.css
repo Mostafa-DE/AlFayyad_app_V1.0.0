@@ -109,6 +109,7 @@
 .link {
   text-decoration: none;
   font-weight: 500;
+  color: #03c7ff;
 }
 
 .info {
@@ -117,6 +118,20 @@
   padding: 0.1rem 0.5rem;
   margin-bottom: 2rem;
   font-weight: 500;
+}
+
+.inputProductName,
+.inputQty {
+  border: none;
+}
+
+.inputQty {
+  text-align: center;
+  max-width: 2.5rem;
+}
+
+.imgProduct {
+  border-radius: 15px;
 }
 
 @media (max-width: 1200px) {

@@ -1,10 +1,11 @@
 import ShoppingCart from "@/components/ShoppingCart";
+import Layout from "@/components/Layout";
 
 function shoppingCartPage() {
   return (
-    <div>
+    <Layout title="Shopping Cart">
       <ShoppingCart />
-    </div>
+    </Layout>
   );
 }
 

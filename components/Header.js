@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
 import styles from "@/styles/Header.module.css";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Search from "./Search";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,16 +7,16 @@ import { RiCloseFill } from "react-icons/ri";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
+import { CartContext } from "@/context/CartContext";
 import Badge from "@material-ui/core/Badge";
 import AuthContext from "@/context/AuthContext";
-import { CartContext } from "@/context/CartContext";
 import DrawerCart from "./DrawerCart";
-import Cookies from "js-cookie";
 
 function Header() {
   /* -----------Auth User context----------------- */
   const { user, logout } = useContext(AuthContext);
   /* --------------------X------------------------ */
+
   /* -----------Cart Shopping context----------------- */
   const { cart, removeFromCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
@@ -27,7 +27,7 @@ function Header() {
     setToogle(!toogle);
   };
   /*---------------------X--------------------*/
-  // const [adminJWT, setAdminJWT] = useState(Cookies.get("token"));
+
   /*------------state for scroll Down navbar-----------*/
   const [scrollState, setScrollState] = useState("top");
   let listener = null;
@@ -56,6 +56,7 @@ function Header() {
         scrollState === "top" ? styles.header : styles.headerScroll
       }`}
     >
+      {/*----------------------logo alfayyad----------------------*/}
       <div
         className={`${scrollState === "top" ? styles.logo : styles.logoScroll}`}
       >
@@ -66,9 +67,12 @@ function Header() {
           />
         </a>
       </div>
+      {/*----------------------------X----------------------------*/}
+
       <nav
         className={`${scrollState === "top" ? styles.nav : styles.navScroll}`}
       >
+        {/*-------------------menu options (navbar)--------------------*/}
         <ul className={toogle === true ? `${styles.toogle}` : ""}>
           {user?.email === "admin@admin.com" &&
           user?.username === "admin" &&
@@ -149,6 +153,9 @@ function Header() {
             </>
           )}
         </ul>
+        {/*---------------------------X--------------------------------*/}
+
+        {/*-------------Drawer cart component-----------*/}
         <div
           className={`${
             scrollState === "top" ? styles.navCart : styles.navCartScroll
@@ -162,14 +169,19 @@ function Header() {
             <DrawerCart cart={cart} removeFromCart={removeFromCart} />
           </Badge>
         </div>
+        {/*-----------------------X---------------------*/}
 
+        {/*----------------Search component-------------*/}
         <div>
           <Search />
         </div>
+        {/*-----------------------X---------------------*/}
 
+        {/*---------menu icon for small screen----------*/}
         <div className={styles.menu} onClick={handleToogle}>
           <GiHamburgerMenu className={styles.menuIcon} />
         </div>
+        {/*---------------------X-----------------------*/}
       </nav>
     </header>
   );
