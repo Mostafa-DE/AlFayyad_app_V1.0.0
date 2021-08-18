@@ -43,7 +43,7 @@ function SliderProducts({ product }) {
             {/*----------------discount price---------------------*/}
             {product.discount !== null ? (
               <span className={styles.productDiscountLabel}>
-                {product.discount}
+                - {product.discount}
               </span>
             ) : null}
             {/*----------------------X----------------------------*/}

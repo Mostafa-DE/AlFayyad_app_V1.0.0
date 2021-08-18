@@ -5,11 +5,11 @@ import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 import ShowPhotoProductsList from "@/components/ShowPhotoProductsList";
 
-function productsListPage({ products }) {
+function productsListPage({ products, photos }) {
   return (
     <Layout title="Products List">
       {/*-------------crousol photo-----------------*/}
-      <ShowPhotoProductsList />
+      <ShowPhotoProductsList photos={photos} />
       {/*-------------------X-----------------------*/}
 
       {/*--------------title text-------------------*/}
@@ -32,13 +32,16 @@ function productsListPage({ products }) {
   );
 }
 
-/*-------------get product from strapi----------------*/
+/*-------------get product & photos from strapi----------------*/
 export async function getServerSideProps() {
   const res = await fetch(`${API_URL}/products`);
   const products = await res.json();
+  const resPhotos = await fetch(`${API_URL}/show-photos`);
+  const photos = await resPhotos.json();
   return {
     props: {
       products,
+      photos,
     },
   };
 }

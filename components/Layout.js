@@ -14,6 +14,8 @@ function Layout({ title, description, children }) {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/fayyad.svg" />
       </Head>
       <Header />
       {/*-----------crusor photo in home page------------*/}
@@ -31,7 +33,7 @@ function Layout({ title, description, children }) {
 Layout.defaultProps = {
   title: "AlFayyad_Home",
   description:
-    "Shopping in our page is very easy and you can find special and unique products :)",
+    "We are Al Fayyad For European Products, we provide you with the best European products at reasonable prices and high quality, we strive to serve you at any time. don't hesitate to contact us at any time.",
 };
 /*---------------------------------X--------------------------------*/
 
