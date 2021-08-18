@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 /*------h1(store overview)---------*/
 .textOverview {
@@ -59,36 +60,62 @@
 /*-----------------Fixed image--------------*/
 .fixedImage {
   width: 100%;
-  height: 30rem;
-  background-image: url("public/images/fayyad/model shopping.jpg");
+  height: 40rem;
+  background-image: url("public/images/fayyad/family.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-/*----------------------X--------------------*/
-
-/*-----------brand container image-----------*/
-.brandContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-flow: wrap;
-  align-items: center;
-  background-color: #ebf8fc;
+  transition: all ease-out;
 }
 
-.brandContainer div {
-  padding: 0.5rem;
+.containerBoxOffer {
+  background-color: #38393a57;
+  max-width: 50%;
+  position: relative;
+  left: 2rem;
+  top: 35%;
 }
 
-@media (max-width: 491px) {
-  .duroImg {
-    margin: 1rem 0 -2.5rem 0;
+.limitedOfferText {
+  padding: 1rem 0 0 1rem;
+  font-weight: 600;
+  color: #fafafa;
+  font-size: 1.3rem;
+}
+
+.containerBoxOffer h2 {
+  padding: 0 0 0 1rem;
+  margin-top: -1rem;
+  font-weight: 00;
+  color: #333;
+  font-family: "Merriweather", serif;
+}
+
+.containerBoxOffer p {
+  padding: 1rem 0 0 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fafafa;
+  margin-top: -0.8rem;
+}
+
+.btnShope {
+  margin: 0 0 1rem 1rem;
+  padding: 0.7rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid #333;
+  text-transform: uppercase;
+  color: #fff;
+  background: #333;
+}
+
+@media (max-width: 700px) {
+  .containerBoxOffer {
+    max-width: 90%;
+    left: 1rem;
   }
-
-  .bergnerImg {
-    margin: -2.5rem 0 0 0;
-  }
 }
+
 /*----------------------X--------------------*/

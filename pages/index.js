@@ -11,6 +11,7 @@ import SliderProducts from "@/components/SliderProducts";
 import Carousel from "react-elastic-carousel";
 import Link from "next/link";
 import SubscripeForm from "@/components/SubscripeForm";
+import PhotoBrand from "@/components/PhotoBrand";
 
 function HomePage({ products }) {
   return (
@@ -57,33 +58,27 @@ function HomePage({ products }) {
       {/*-------------------X-----------------*/}
 
       {/*-------------fixed photo-------------*/}
-      <div className={styles.fixedImage} />
+      <div className={styles.fixedImage}>
+        <div className={styles.containerBoxOffer}>
+          <p className={styles.limitedOfferText}>Limited Offers 10% OFF</p>
+          <h2>Week Deal</h2>
+          <p>
+            Shopping with us to find the best European products, the best prices
+            and special discounts {" :) "}
+          </p>
+          <Link href="/products/productsList">
+            <button className={styles.btnShope}>Shope Now</button>
+          </Link>
+        </div>
+      </div>
       {/*-------------------X-----------------*/}
 
       {/*------------Subscripe Form-----------*/}
       <SubscripeForm />
       {/*-------------------X-----------------*/}
 
-      {/*--------------logo brand-------------*/}
-      <div className={styles.brandContainer}>
-        <div>
-          <img src="/images/brand/ozitoLogo.png" width={250} height={80} />
-        </div>
-        <div className={styles.duroImg}>
-          <img src="/images/brand/duroLogo.png" width={190} height={100} />
-        </div>
-        <div>
-          <img src="/images/brand/lupiluLogo.png" width={300} height={200} />
-        </div>
-        <div className={styles.bergnerImg}>
-          <img
-            className="img-fluid"
-            src="/images/brand/bergnerLogo.png"
-            width={420}
-            height={85}
-          />
-        </div>
-      </div>
+      {/*------------Photos Brand-------------*/}
+      <PhotoBrand />
       {/*-------------------X-----------------*/}
     </Layout>
   );
