@@ -2,7 +2,8 @@ import styles from "@/styles/Layout.module.css";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Footer from "./Footer";
-import Header from "./Header";
+// import Header from "./Header";
+import TestHeader from "@/components/TestHeader";
 import ShowPhoto from "./ShowPhoto";
 import ButtonScrollToTop from "./ButtonScrollToTop";
 import ButtonWhatsapp from "./ButtonWhatsapp";
@@ -48,7 +49,7 @@ function Layout({ title, description, children }) {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <Header />
+      <TestHeader />
 
       {/*-----------crusor photo in home page------------*/}
       {router.pathname === "/" ? <ShowPhoto /> : null}

@@ -11,7 +11,7 @@ export default function PageNotFound() {
             className="img-fluid"
             width={500}
             height={500}
-            src="images/fayyad/404.jpg"
+            src="/images/fayyad/404.jpg"
             alt="not found image"
           />
           {/*---------------------X------------------*/}

@@ -12,7 +12,7 @@
 .shoppingCartIcon {
   font-size: 1.8rem;
   color: #03c7ff;
-  margin-top: -0.35rem;
+  margin-top: -0.2rem;
 }
 
 .totalAmount {
@@ -162,7 +162,7 @@
 
 .shoppingCartText {
   font-weight: 700;
-  margin: 0 0 0 1rem;
+  /* margin: 0 0 0 1rem; */
 }
 
 .img {

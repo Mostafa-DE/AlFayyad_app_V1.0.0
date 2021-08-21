@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+@import url("https://rsms.me/inter/inter.css");
+
+.main {
+  background: transparent;
+  color: #000;
+  opacity: 0.9;
+  padding: 0.5rem 0;
+  transition: all 0.8s;
+  box-shadow: none;
+}
+
+/*----main when scroll down------*/
+.mainScroll {
+  background: linear-gradient(
+    161deg,
+    rgb(37, 37, 37) 0%,
+    rgba(99, 99, 99, 0.986) 100%
+  );
+  color: #fff;
+  opacity: 0.85;
+  transition: all 0.8s;
+  padding: 0.3rem 0 0 0;
+}
+/*---------------X---------------*/
+
+.containerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+.logo {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: "Bree Serif", serif;
+}
+
+.logo:hover {
+  color: #000;
+}
+
+.logoIcon {
+  margin: 0 0 0.3rem 0.5rem;
+}
+
+/*---logo style when scroll down---*/
+.logoScroll {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: "Bree Serif", serif;
+}
+
+.logoScroll:hover {
+  color: #fff;
+}
+/*----------------X----------------*/
+
+.badgCart {
+  margin: 0.3rem 0.5rem 0 0;
+}
+
+.mainDrawer {
+  width: 19rem;
+}
+
+.listItemText {
+  font-size: 1.3rem;
+}
+
+.icons {
+  color: #03c7ff;
+  font-size: 1.5rem;
+  opacity: 0.4;
+}
+
+.menuText {
+  margin: 0 0 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Inter var", sans-serif;
+}
+
+.menuIcon {
+  font-size: 1.7rem;
+  margin: 0 0 0 1.5rem;
+  cursor: pointer;
+}
+
+.containerDrawerCart {
+  display: flex;
+  align-items: center;
+}
