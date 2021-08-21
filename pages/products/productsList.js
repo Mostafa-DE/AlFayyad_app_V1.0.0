@@ -3,15 +3,10 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
-import ShowPhotoProductsList from "@/components/ShowPhotoProductsList";
 
 export default function productsListPage({ products, photos }) {
   return (
     <Layout title="Products List">
-      {/*-------------crousol photo-----------------*/}
-      <ShowPhotoProductsList photos={photos} />
-      {/*-------------------X-----------------------*/}
-
       {/*--------------title text-------------------*/}
       <h1 className={styles.h1Text}>
         Products List

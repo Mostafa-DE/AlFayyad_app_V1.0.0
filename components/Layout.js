@@ -2,7 +2,6 @@ import styles from "@/styles/Layout.module.css";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Footer from "./Footer";
-// import Header from "./Header";
 import TestHeader from "@/components/TestHeader";
 import ShowPhoto from "./ShowPhoto";
 import ButtonScrollToTop from "./ButtonScrollToTop";
