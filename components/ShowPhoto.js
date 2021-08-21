@@ -56,7 +56,7 @@ function ShowPhoto() {
             <p className={styles.watingFor}>New Arrivals</p>
           </div>
           <div className="carousel-caption">
-            <Link href="/products/productsList">
+            <Link href="/products/productsList" passHref={true}>
               <button className={styles.btnShopeNow}>Shope Now</button>
             </Link>
           </div>
@@ -79,7 +79,7 @@ function ShowPhoto() {
             <p className={styles.arrivalsTextModel}>More than you think</p>
           </div>
           <div className="carousel-caption">
-            <Link href="/products/productsList">
+            <Link href="/products/productsList" passHref={true}>
               <button className={styles.btnShopeNowManModel}>Find Out</button>
             </Link>
           </div>
@@ -102,7 +102,7 @@ function ShowPhoto() {
             <p className={styles.childNeeds}>Everything your child needs</p>
           </div>
           <div className="carousel-caption">
-            <Link href="/products/productsList">
+            <Link href="/products/productsList" passHref={true}>
               <button className={styles.btnShopeNow}>Find Out</button>
             </Link>
           </div>
@@ -125,7 +125,7 @@ function ShowPhoto() {
             <p className={styles.everythingYouNeed}>Everything you need</p>
           </div>
           <div className="carousel-caption">
-            <Link href="/products/productsList">
+            <Link href="/products/productsList" passHref={true}>
               <button className={styles.btnShopeNow}>Find Out</button>
             </Link>
           </div>

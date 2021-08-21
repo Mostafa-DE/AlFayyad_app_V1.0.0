@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 .containerAllTerms {
   width: 50% !important;
-  margin-top: 2rem;
+  margin: 2rem 0 0 0;
 }
 
 .h1Text {
   text-align: center;
-  margin-top: 8rem;
+  margin: 8rem 0 0 0;
   font-family: "Roboto Slab", serif;
   font-weight: 600;
 }

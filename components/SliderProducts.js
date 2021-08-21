@@ -36,7 +36,11 @@ function SliderProducts({ product }) {
           <div className={styles.productImage}>
             {/*-----------------img product-----------------------*/}
             <a className={styles.image}>
-              <img className={styles.pic1} src={product.images[0].url} />
+              <img
+                className={styles.pic1}
+                src={product.images[0].url}
+                alt={product.name}
+              />
             </a>
             {/*----------------------X----------------------------*/}
 

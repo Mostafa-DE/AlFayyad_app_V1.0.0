@@ -42,7 +42,7 @@ function MyAccount({ account }) {
                     >
                       You look awesome today 😉
                     </p>
-                    <Link href="/products/shoppingCart">
+                    <Link href="/products/shoppingCart" passHref={true}>
                       <button className={styles.btn}>Your Cart</button>
                     </Link>
                   </div>
@@ -181,7 +181,7 @@ function MyAccount({ account }) {
                 <hr />
                 <div className="row">
                   <div className="col-sm-9">
-                    <Link href="/products/productsList">
+                    <Link href="/products/productsList" passHref={true}>
                       <button className={styles.btn}>Go To Products</button>
                     </Link>
                   </div>

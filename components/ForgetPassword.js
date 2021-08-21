@@ -12,7 +12,8 @@ function ForgetPassword() {
   };
   /*-------------------------X----------------------*/
 
-  const handleSubmit = () => {
+  const handleSubmit = (evnt) => {
+    evnt.preventDefault();
     swal(
       "Awesome 😉",
       "Check your email inbox, we sent you an email contain a recovery link",

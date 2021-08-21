@@ -2,7 +2,7 @@ import Dashboard from "@/components/Dashboard";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 
-function dashboardPage({ orders }) {
+export default function dashboardPage({ orders }) {
   return (
     <Layout title="Dashboard">
       <Dashboard key={orders.id} orders={orders} />
@@ -21,5 +21,3 @@ export async function getServerSideProps() {
   };
 }
 /*-----------------------X----------------------*/
-
-export default dashboardPage;

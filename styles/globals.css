@@ -1,3 +1,5 @@
+@import url("https://rsms.me/inter/inter.css");
+
 html,
 body {
   padding: 0;
@@ -14,6 +16,7 @@ a {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* font-family: "Inter var", sans-serif; */
 }
 
 .btn-global {
@@ -110,7 +113,6 @@ a {
   letter-spacing: 1px;
   margin: 0 0 0 0.3rem;
   border-radius: 8px;
-  /* border: 1px solid #fff; */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 /*-------------------X------------------*/

@@ -2,15 +2,13 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import ProductDetails from "@/components/ProductDetails";
 
-function ProductPage({ product }) {
+export default function ProductPage({ product }) {
   return (
-    <>
-      <Layout title="Product Overview">
-        {product.map((product) => (
-          <ProductDetails key={product.id} product={product} />
-        ))}
-      </Layout>
-    </>
+    <Layout title="Product Overview">
+      {product.map((product) => (
+        <ProductDetails key={product.id} product={product} />
+      ))}
+    </Layout>
   );
 }
 
@@ -25,5 +23,3 @@ export async function getServerSideProps({ query: { slug } }) {
   };
 }
 /*-----------------------------------X-------------------------------*/
-
-export default ProductPage;

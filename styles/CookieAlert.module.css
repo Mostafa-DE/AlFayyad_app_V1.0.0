@@ -1,0 +1,75 @@
+@import url("https://rsms.me/inter/inter.css");
+
+.cookieContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  background-color: #fafafae1;
+  color: #333;
+  font-family: "Inter var", sans-serif;
+  border-radius: 15px;
+  max-width: 20rem;
+  margin: 0 0.3rem 0.3rem 0.3rem;
+  animation-name: fadeInLeft;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.cookieContent {
+  padding: 2rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.containerBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnAgree {
+  width: 50%;
+  background-color: #000;
+  color: #fff;
+  padding: 0.7rem 0;
+  border: 1px solid #000;
+  border-bottom-right-radius: 15px;
+}
+
+.linkMore {
+  width: 50%;
+  text-align: center;
+  border-top: 1px solid #000;
+  padding: 0.7rem 0;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.linkMore:hover {
+  color: #000;
+}
+
+.textExplain {
+  text-align: center;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

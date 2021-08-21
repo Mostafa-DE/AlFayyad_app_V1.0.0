@@ -39,6 +39,15 @@ function Register() {
       return true;
     });
   });
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isGmail", (value) => {
+      if (value.match("@gmail")) {
+        return true;
+      }
+      return false;
+    });
+  });
   /*-----------------------------------X-----------------------------------*/
 
   const handleSubmit = (evnt) => {
@@ -111,8 +120,11 @@ function Register() {
                             fullWidth
                             variant="standard"
                             label="Email Address"
-                            validators={["required"]}
-                            errorMessages={["Please Enter A Valid Email !!"]}
+                            validators={["required", "isGmail"]}
+                            errorMessages={[
+                              "Please Enter A Valid Email !!",
+                              "Please Enter A { Gmail } Address !!",
+                            ]}
                           />
                         </div>
                       </div>

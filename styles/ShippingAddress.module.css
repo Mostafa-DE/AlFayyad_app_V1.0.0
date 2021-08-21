@@ -1,5 +1,5 @@
 .main {
-  margin-top: 6rem;
+  margin: 6rem 0 0 0;
 }
 
 .container {
@@ -16,14 +16,14 @@
   font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
 }
 
 .orderText {
   font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem 0;
 }
 
 .h1Shipping {
@@ -40,7 +40,7 @@
 .h1Shipping span {
   color: #03c7ff;
   font-size: 5rem;
-  margin-top: -2.5rem;
+  margin: -2.5rem 0 0 0;
 }
 
 .h1Order {
@@ -56,7 +56,7 @@
 .h1Order span {
   color: #03c7ff;
   font-size: 5rem;
-  margin-top: -2.5rem;
+  margin: -2.5rem 0 0 0;
 }
 
 .btnCheckout {
@@ -80,7 +80,7 @@
   color: #333;
   text-decoration: none;
   text-align: center;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 0 0;
 }
 
 .returnCart:hover {
@@ -88,11 +88,11 @@
 }
 
 .totalAmountForm {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
   font-size: 1.4rem;
   font-weight: 700;
   border-left: 5px solid #03c7ff;
-  padding-left: 0.5rem;
+  padding: 0 0 0 0.5rem;
 }
 
 .inputTotalAmount {
@@ -103,7 +103,7 @@
 }
 
 .nav {
-  margin-bottom: -3rem;
+  margin: 0 0 -3rem 0;
 }
 
 .link {
@@ -116,7 +116,7 @@
   background-color: #e7f3fe;
   border-left: 6px solid #03c7ff;
   padding: 0.1rem 0.5rem;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem 0;
   font-weight: 500;
 }
 
@@ -142,9 +142,9 @@
     max-width: 100%;
   }
   .shippingText {
-    margin-top: 3rem;
+    margin: 3rem 0 0 0;
   }
   .nav {
-    margin-bottom: 3rem;
+    margin: 0 0 3rem 0;
   }
 }

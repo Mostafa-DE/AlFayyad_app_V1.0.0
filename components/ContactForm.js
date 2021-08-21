@@ -65,6 +65,15 @@ function Login() {
       return false;
     });
   });
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isGmail", (value) => {
+      if (value.match("@gmail")) {
+        return true;
+      }
+      return false;
+    });
+  });
   /*-----------------------------------X-----------------------------------*/
 
   return (
@@ -139,7 +148,7 @@ function Login() {
                   fullWidth
                   style={{ marginLeft: "1rem" }}
                   variant="standard"
-                  label="Your Phone (Optional)"
+                  label="Your Phone "
                   validators={[
                     "required",
                     "isNumber",
@@ -163,8 +172,11 @@ function Login() {
                   fullWidth
                   variant="standard"
                   label="Your Email Address"
-                  validators={["required"]}
-                  errorMessages={["Please Enter Your Email !!"]}
+                  validators={["required", "isGmail"]}
+                  errorMessages={[
+                    "Please Enter A Valid Email !!",
+                    "Please Enter A { Gmail } Address !!",
+                  ]}
                 />
               </div>
               <div className="form-outline mb-3">

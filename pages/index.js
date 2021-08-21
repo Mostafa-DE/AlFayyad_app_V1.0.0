@@ -12,8 +12,9 @@ import Carousel from "react-elastic-carousel";
 import Link from "next/link";
 import SubscripeForm from "@/components/SubscripeForm";
 import PhotoBrand from "@/components/PhotoBrand";
+import CookieAlert from "@/components/CookieAlert";
 
-function HomePage({ products }) {
+export default function HomePage({ products }) {
   return (
     <Layout title="AL Fayyad Store">
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
@@ -42,12 +43,13 @@ function HomePage({ products }) {
             <SliderProducts key={product.id} product={product} />
           ))}
         </Carousel>
+        <CookieAlert />
       </div>
       {/*-------------------X-----------------*/}
 
       {/*-------button view all product-------*/}
       <div className={styles.divBtn}>
-        <Link href="/products/productsList">
+        <Link href="/products/productsList" passHref={true}>
           <a className={styles.btnProductsList}>View All Products</a>
         </Link>
       </div>
@@ -66,7 +68,7 @@ function HomePage({ products }) {
             Shopping with us to find the best European products, the best prices
             and special discounts {" :) "}
           </p>
-          <Link href="/products/productsList">
+          <Link href="/products/productsList" passHref={true}>
             <button className={styles.btnShope}>Shope Now</button>
           </Link>
         </div>
@@ -83,8 +85,6 @@ function HomePage({ products }) {
     </Layout>
   );
 }
-
-export default HomePage;
 
 /*------------------get product from starpi--------------------*/
 export async function getServerSideProps() {

@@ -12,7 +12,7 @@ function ShowPhotoProductsList({ photos }) {
             className="d-block w-100"
             src={photo.images[0].url}
             width={180}
-            height={580}
+            height={700}
             alt="First slide"
           />
         </Carousel.Item>

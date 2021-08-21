@@ -60,12 +60,14 @@ function Header() {
       <div
         className={`${scrollState === "top" ? styles.logo : styles.logoScroll}`}
       >
-        <a href="/">
-          AlFayyad
-          <IoStorefrontSharp
-            style={{ marginLeft: "0.5rem", marginBottom: "0.3rem" }}
-          />
-        </a>
+        <Link href="/">
+          <a>
+            AlFayyad
+            <IoStorefrontSharp
+              style={{ marginLeft: "0.5rem", marginBottom: "0.3rem" }}
+            />
+          </a>
+        </Link>
       </div>
       {/*----------------------------X----------------------------*/}
 

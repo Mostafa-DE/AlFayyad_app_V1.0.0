@@ -107,22 +107,6 @@ function ShippingAdress() {
     <div className={styles.main}>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
 
-      {/*------nav on the top show user where he is-----*/}
-      <nav className={`main-breadcrumb ${styles.nav}`}>
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link href="/">
-              <a className={styles.link}>Home</a>
-            </Link>
-          </li>
-          <li className="breadcrumb-item text-secondary">Informations</li>
-          <li className="breadcrumb-item text-secondary" aria-current="page">
-            Confirm Order
-          </li>
-        </ol>
-      </nav>
-      {/*-----------------------X-----------------------*/}
-
       <ValidatorForm onSubmit={handleSubmit} className="mx-1 mx-md-4">
         <div className={styles.container}>
           <div className={styles.containerForms}>
@@ -314,7 +298,7 @@ function ShippingAdress() {
               </span>
             </h1>
             <TableContainer>
-              <Table>
+              <Table style={{ minWidth: "500px" }}>
                 <TableHead>
                   <TableRow>
                     <TableCell align="left">Image</TableCell>

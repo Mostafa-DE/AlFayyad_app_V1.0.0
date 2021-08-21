@@ -22,9 +22,10 @@ function InvoiceOrder() {
   Swal.fire({
     position: "center",
     icon: "success",
-    title: "All done 😉 ",
+    title: "All Done 😉 ",
+    text: "Please check your email inbox, we sent you an invoice email.",
     showConfirmButton: false,
-    timer: 3500,
+    timer: 5000,
   });
   /*-----------------------X--------------------*/
 
@@ -131,7 +132,7 @@ function InvoiceOrder() {
       {/*----------------------------X------------------------------*/}
 
       {/*-----------------return to cart button---------------------*/}
-      <Link href="/products/shoppingCart">
+      <Link href="/products/shoppingCart" passHref={true}>
         <button type="button" className={styles.btnConfirm}>
           Return to cart
         </button>

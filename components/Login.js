@@ -9,7 +9,7 @@ import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
 import swal from "sweetalert";
 
-function Login() {
+export default function Login() {
   /*-----------------state for input forms------------------*/
   const { login, error } = useContext(AuthContext);
   const [email, handleChangeEmail, resetEmail] = useInputState("");
@@ -26,8 +26,8 @@ function Login() {
   /*---------------sweetAlert for info cookies---------------*/
   const alertInfo = () => {
     swal(
-      "Hi There!!",
-      "Please note that we use cookies to keep you login for a week and it automatically log out after then, if you don't want to keep login you can hit on logout option 😉",
+      "Hi There 👋",
+      "Please note that we use cookies to keep your log in for a week, after then and it automatically log out , if you don't want to keep your log in, you can hit on logout option from menu 😉",
       "info"
     );
   };
@@ -35,6 +35,13 @@ function Login() {
 
   /*---------------toast alert error in login----------------*/
   useEffect(() => error && toast.error(error));
+  const handleClickFacebook = () => {
+    swal(
+      "Oh no 😔 , Something went wrong please try again later Or log in manual from the form below.",
+      "",
+      "error"
+    );
+  };
   /*---------------------------X-----------------------------*/
 
   return (
@@ -58,16 +65,10 @@ function Login() {
               <p className="lead fw-normal mt-3 mb-0 me-3">Sign in with</p>
               <button
                 type="button"
+                onClick={handleClickFacebook}
                 className={`${styles.loginSocialBtn} mx-1 mt-3`}
               >
                 <i className="fab fa-facebook-f"></i>
-              </button>
-
-              <button
-                type="button"
-                className={`${styles.loginSocialBtn} mx-1 mt-3`}
-              >
-                <i className="fas fa-envelope"></i>
               </button>
             </div>
             {/*--------------------------X-----------------------------*/}
@@ -155,5 +156,3 @@ function Login() {
     </section>
   );
 }
-
-export default Login;

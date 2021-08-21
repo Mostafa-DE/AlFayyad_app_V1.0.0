@@ -30,6 +30,16 @@ const alertError = () => {
 };
 /*----------------------------------X------------------------------*/
 
+/*------------error for uWallet payment method------------*/
+const alertErrorPayment = () => {
+  swal(
+    "Sorry 😔 this option will be available soon, try with cash method.",
+    "",
+    "error"
+  );
+};
+/*------------------------------X-------------------------*/
+
 export default function DrawerCart({ cart, removeFromCart }) {
   /*---------------Context shopping cart------------*/
   const { items = [] } = cart;
@@ -127,7 +137,7 @@ export default function DrawerCart({ cart, removeFromCart }) {
         <div>
           {/*----------Button (view cart) & (checkout)----------*/}
           <div className={styles.containerBtn}>
-            <Link href="/products/shoppingCart">
+            <Link href="/products/shoppingCart" passHref={true}>
               <button className={styles.btn}>View Cart</button>
             </Link>
             {items.length === 0 ? (
@@ -164,21 +174,23 @@ export default function DrawerCart({ cart, removeFromCart }) {
                 <div className={styles.container}>
                   <div className={styles.ContainerCash}>
                     <h4 className={styles.textImg}>Cash Payment</h4>
-                    <Link href="/payment/order">
+                    <Link href="/payment/order" passHref={true}>
                       <img
                         className={`img-fluid ${styles.cashImg}`}
                         src="/images/fayyad/cash.jpg"
+                        alt="payment method"
                       />
                     </Link>
                   </div>
                   <div className={styles.uWalletContainerImg}>
                     <h4 className={styles.textImg}>Pay Through</h4>
-                    <Link href="#">
-                      <img
-                        className={`img-fluid ${styles.uWalletImg}`}
-                        src="/images/fayyad/uWallet.bmp"
-                      />
-                    </Link>
+
+                    <img
+                      className={`img-fluid ${styles.uWalletImg}`}
+                      src="/images/fayyad/uWallet.bmp"
+                      onClick={alertErrorPayment}
+                      alt="payment method"
+                    />
                   </div>
                 </div>
               </div>

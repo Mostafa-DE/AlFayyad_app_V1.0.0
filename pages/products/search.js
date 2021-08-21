@@ -7,7 +7,7 @@ import Link from "next/link";
 import ProductItem from "@/components/ProductItem";
 import qs from "qs";
 
-function searchPage({ products }) {
+export default function SearchPage({ products }) {
   const router = useRouter();
   return (
     <Layout title="Products List">
@@ -28,7 +28,7 @@ function searchPage({ products }) {
             We couldn't Find That Product, Maybe it doesn't exist or out of
             stock
           </p>
-          <Link href="/products/productsList">
+          <Link href="/products/productsList" passHref={true}>
             <button className={styles.backBtn}>Back To Products</button>
           </Link>
         </div>
@@ -64,5 +64,3 @@ export async function getServerSideProps({ query: { term } }) {
   };
 }
 /*--------------------------------X-----------------------------*/
-
-export default searchPage;

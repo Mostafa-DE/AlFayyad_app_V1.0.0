@@ -1,5 +1,5 @@
 .container {
-  margin-top: 8rem;
+  margin: 8rem 0 0 0;
 }
 
 .card {
@@ -34,7 +34,7 @@
 .phoneIcon {
   color: #03c7ff;
   font-size: 1.4rem;
-  margin-left: 0.3rem;
+  margin: 0 0 0 0.3rem;
 }
 
 .cardBody {

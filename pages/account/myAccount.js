@@ -3,7 +3,7 @@ import { parseCookies } from "@/helpers/index";
 import { API_URL } from "@/config/index";
 import MyAccount from "@/components/MyAccount";
 
-function myAccountPage({ account }) {
+export default function myAccountPage({ account }) {
   return (
     <Layout title="My Account">
       <MyAccount account={account} />
@@ -31,5 +31,3 @@ export async function getServerSideProps({ req }) {
   };
 }
 /*-------------------------X-----------------------*/
-
-export default myAccountPage;

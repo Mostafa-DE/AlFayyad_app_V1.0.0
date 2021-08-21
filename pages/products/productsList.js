@@ -5,7 +5,7 @@ import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 import ShowPhotoProductsList from "@/components/ShowPhotoProductsList";
 
-function productsListPage({ products, photos }) {
+export default function productsListPage({ products, photos }) {
   return (
     <Layout title="Products List">
       {/*-------------crousol photo-----------------*/}
@@ -46,5 +46,3 @@ export async function getServerSideProps() {
   };
 }
 /*-------------------------X--------------------------*/
-
-export default productsListPage;

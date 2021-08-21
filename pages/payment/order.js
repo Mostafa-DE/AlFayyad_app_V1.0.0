@@ -1,12 +1,10 @@
 import Layout from "@/components/Layout";
 import ShippingAdress from "@/components/ShippingAdress";
 
-function orderPage() {
+export default function orderPage() {
   return (
     <Layout title="Order Informations">
       <ShippingAdress />
     </Layout>
   );
 }
-
-export default orderPage;

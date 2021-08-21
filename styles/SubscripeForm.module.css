@@ -4,7 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  margin-top: 5rem;
+  margin: 5rem 0 0 0;
   height: 22rem;
 }
 
@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4rem;
+  padding: 4rem 0 0 0;
 }
 
 .container h6 {
@@ -68,7 +68,7 @@
   }
 
   .btnSubsecripe {
-    margin-top: 1rem;
+    margin: 1rem 0 0 0;
   }
 
   .main {

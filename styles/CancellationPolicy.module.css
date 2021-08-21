@@ -2,12 +2,12 @@
 
 .containerAllCancellationPolicy {
   width: 50% !important;
-  margin-top: 3rem;
+  margin: 3rem 0 0 0;
 }
 
 .h1Text {
   text-align: center;
-  margin-top: 8rem;
+  margin: 8rem 0 0 0;
   font-family: "Roboto Slab", serif;
   font-weight: 600;
 }

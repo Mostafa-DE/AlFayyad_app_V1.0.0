@@ -12,6 +12,7 @@ export default function PageNotFound() {
             width={500}
             height={500}
             src="images/fayyad/404.jpg"
+            alt="not found image"
           />
           {/*---------------------X------------------*/}
 
@@ -19,7 +20,7 @@ export default function PageNotFound() {
           <h5>Either something went wrong Or page doesn't exist anymore</h5>
 
           {/*--------------button go back------------*/}
-          <Link href="/">
+          <Link href="/" passHref={true}>
             <button className={styles.backBtn}>Go Back Home</button>
           </Link>
           {/*---------------------X------------------*/}

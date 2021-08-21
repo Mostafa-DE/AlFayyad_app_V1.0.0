@@ -87,12 +87,10 @@
   color: #333;
   font-weight: 800;
   transition: all 0.3s ease-in;
-  /* padding: 0 15px; */
 }
 
 .nav ul li a:hover {
   color: #03c7ff;
-  /* border-bottom: 3px solid #03c7ff; */
   transition: all 0.3s ease-out;
 }
 
@@ -119,7 +117,6 @@
 
 .navScroll ul li a:hover {
   color: #03c7ff;
-  /* border-bottom: 3px solid #03c7ff; */
   transition: all 0.3s ease-out;
 }
 /*-----------------X----------------*/
@@ -133,7 +130,6 @@
 .shoppingCartIcon {
   font-size: 1.8rem;
   color: #03c7ff;
-  /* margin-top: -0.3rem; */
 }
 
 /* shopping cart when scroll down */
@@ -144,6 +140,7 @@
 
 .shoppingCartIcon {
   font-size: 1.8rem;
+  margin-top: 2rem;
 }
 
 /*-----------------X----------------*/
@@ -204,7 +201,11 @@
     top: 0;
   }
   .badgCart {
-    margin-top: 0;
+    margin-top: 0.5rem;
+  }
+
+  .menuIcon {
+    margin-top: 0.8rem;
   }
 
   /* responsive navbar when scroll down */

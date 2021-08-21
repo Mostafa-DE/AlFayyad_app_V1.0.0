@@ -2,8 +2,10 @@ import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
+import { motion, AnimatePresence } from "framer-motion";
+import Script from "next/script";
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, router }) {
   return (
     <>
       {/*----------------------------------bootstrap 5v------------------------------------*/}
@@ -13,11 +15,11 @@ function MyApp({ Component, pageProps }) {
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
         crossOrigin="anonymous"
       />
-      <script
+      <Script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossOrigin="anonymous"
-      ></script>
+      ></Script>
       {/*----------------------------------------X-----------------------------------------*/}
 
       {/*-----------------------------------font Awesome-----------------------------------*/}
@@ -34,15 +36,15 @@ function MyApp({ Component, pageProps }) {
       {/*----------------------------------------X-----------------------------------------*/}
 
       {/*----------------------------------react dependsess--------------------------------*/}
-      <script
+      <Script
         src="https://unpkg.com/react/umd/react.production.min.js"
         crossOrigin="true"
-      ></script>
+      ></Script>
 
-      <script
+      <Script
         src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
         crossOrigin="true"
-      ></script>
+      ></Script>
       {/*----------------------------------------X-----------------------------------------*/}
 
       {/*-----------------------------------bootstrap react--------------------------------*/}
@@ -76,21 +78,34 @@ function MyApp({ Component, pageProps }) {
       {/*----------------------------------------X-----------------------------------------*/}
 
       {/*-----------------------------------sweetAlert-------------------------------------*/}
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <Script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></Script>
       {/*----------------------------------------X-----------------------------------------*/}
 
-      {/*-----------------------------------sweetAlert2------------------------------------*/}
-      {/* <script src="sweetalert2.all.min.js"></script> */}
-
-      {/*----------------------------------------X-----------------------------------------*/}
-
-      <AuthProvider>
-        <CartProvider>
-          <Component {...pageProps} />
-        </CartProvider>
-      </AuthProvider>
+      <AnimatePresence>
+        <motion.div
+          key={router.route}
+          initial="pageInitial"
+          animate="pageAnimate"
+          exit="pageExit"
+          variants={{
+            pageInitial: {
+              opacity: 0,
+            },
+            pageAnimate: {
+              opacity: 1,
+            },
+            pageExit: {
+              opacity: 0,
+            },
+          }}
+        >
+          <AuthProvider>
+            <CartProvider>
+              <Component {...pageProps} />
+            </CartProvider>
+          </AuthProvider>
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }
-
-export default MyApp;

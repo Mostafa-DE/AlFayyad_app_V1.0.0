@@ -50,6 +50,16 @@ function ShoppingCart() {
   };
   /*------------------------------X-------------------------*/
 
+  /*------------error for uWallet payment method------------*/
+  const alertErrorPayment = () => {
+    swal(
+      "Sorry 😔 this option will be available soon, try with cash method.",
+      "",
+      "error"
+    );
+  };
+  /*------------------------------X-------------------------*/
+
   return (
     <div>
       <h1 className={styles.h1Text}>
@@ -66,7 +76,7 @@ function ShoppingCart() {
             <span>Your Cart Is Empty 😔</span> <br /> Add Some Products To Show
             Here
           </h4>
-          <Link href="/products/productsList">
+          <Link href="/products/productsList" passHref={true}>
             <button className={styles.continueBtn}>Continue Shopping</button>
           </Link>
         </div>
@@ -174,21 +184,22 @@ function ShoppingCart() {
                 <div className={styles.container}>
                   <div className={styles.ContainerCash}>
                     <h4 className={styles.textImg}>Cash Payment</h4>
-                    <Link href="/payment/order">
+                    <Link href="/payment/order" passHref={true}>
                       <img
                         className={`img-fluid ${styles.cashImg}`}
                         src="/images/fayyad/cash.jpg"
+                        alt="payment photo"
                       />
                     </Link>
                   </div>
                   <div className={styles.uWalletContainerImg}>
                     <h4 className={styles.textImg}>Pay Through</h4>
-                    <Link href="#">
-                      <img
-                        className={`img-fluid ${styles.uWalletImg}`}
-                        src="/images/fayyad/uWallet.bmp"
-                      />
-                    </Link>
+                    <img
+                      className={`img-fluid ${styles.uWalletImg}`}
+                      src="/images/fayyad/uWallet.bmp"
+                      onClick={alertErrorPayment}
+                      alt="payment photo"
+                    />
                   </div>
                 </div>
               </div>

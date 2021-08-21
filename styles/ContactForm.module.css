@@ -1,12 +1,11 @@
 .main {
-  margin-top: 10rem;
+  margin: 10rem 0 0 0;
 }
 
 .contactBtns {
   padding: 0.4rem 0.8rem;
   color: #fff;
   background-color: #03c7ff;
-  /* border: 1px solid #03c7ff; */
   border-radius: 50%;
 }
 

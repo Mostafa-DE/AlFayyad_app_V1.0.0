@@ -1,12 +1,10 @@
 import Layout from "@/components/Layout";
 import ContactForm from "@/components/ContactForm";
 
-function ContactPage() {
+export default function ContactPage() {
   return (
     <Layout title="Contact Us">
       <ContactForm />
     </Layout>
   );
 }
-
-export default ContactPage;

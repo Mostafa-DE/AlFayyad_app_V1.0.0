@@ -1,28 +1,28 @@
 .buttonContainer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
 }
-  
+
 .buttonWhatsapp {
-    background-color: #25D366;
-    opacity: 0.4;
-    padding: 0.4rem 0.8rem 0.1rem 0.8rem;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    margin-right: 4.5rem;
-    color: #fff;
+  background-color: #25d366;
+  opacity: 0.4;
+  padding: 0.4rem 0.8rem 0.1rem 0.8rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 0 4.5rem 0 0;
+  color: #fff;
 }
 
 .buttonWhatsapp a {
-    color: #fff;
+  color: #fff;
 }
 
 .buttonWhatsapp a:hover {
-    color: #fff;
+  color: #fff;
 }
-  
+
 .buttonWhatsapp:hover {
-    opacity: 1;
+  opacity: 1;
 }

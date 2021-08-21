@@ -16,7 +16,7 @@
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-left: 0.4rem;
+  margin: 0 0 0 0.4rem;
 }
 
 .copyRight p a::after {
