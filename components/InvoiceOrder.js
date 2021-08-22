@@ -9,6 +9,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Swal from "sweetalert2";
+import AnimationGongrats from "./AnimationGongrats";
 
 function InvoiceOrder() {
   /*-------------context shopping cart-----------*/
@@ -22,20 +23,21 @@ function InvoiceOrder() {
   Swal.fire({
     position: "center",
     icon: "success",
-    title: "All Done 😉 ",
-    text: "Please check your email inbox, we sent you an invoice email.",
+    title: "Congrats, your order has been received 😉 ",
     showConfirmButton: false,
-    timer: 5000,
+    timer: 2000,
   });
   /*-----------------------X--------------------*/
 
   return (
     <div className={styles.main}>
+      <AnimationGongrats />
       <div>
         {/*-------------------Thanks message paragraph------------------*/}
         <p className={styles.thanksText}>
           <span>Thank you.</span> We have received your order and will contact
-          you as soon as possible, We hope your experience was awesome.
+          you as soon as possible, We hope your experience was awesome. Please
+          check your email inbox, we sent you an invoice email.
         </p>
         {/*-------------------------------X-----------------------------*/}
 

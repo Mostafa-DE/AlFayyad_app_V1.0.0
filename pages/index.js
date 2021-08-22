@@ -1,5 +1,5 @@
 import styles from "@/styles/Home.module.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { API_URL } from "@/config/index";
 import { breakPoints } from "@/components/SliderProducts";
 import { AiOutlineLine } from "react-icons/ai";
@@ -15,9 +15,19 @@ import PhotoBrand from "@/components/PhotoBrand";
 import CookieAlert from "@/components/CookieAlert";
 
 export default function HomePage({ products }) {
+  /*--------state to show alert cookie for one time----------*/
+  const [showAlertCookie, setShowAlertCookie] = useState(false);
+  useEffect(() => {
+    window.onload = () => {
+      setShowAlertCookie(true);
+    };
+  }, [showAlertCookie]);
+  /*---------------------------X------------------------------*/
+
   return (
     <Layout title="AL Fayyad Store">
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
+      {showAlertCookie === true ? <CookieAlert /> : null}
 
       {/*-----------category photo------------*/}
       <CategoryPhotoMd />
@@ -43,7 +53,6 @@ export default function HomePage({ products }) {
             <SliderProducts key={product.id} product={product} />
           ))}
         </Carousel>
-        <CookieAlert />
       </div>
       {/*-------------------X-----------------*/}
 

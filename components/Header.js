@@ -1,7 +1,5 @@
-import styles from "@/styles/TestHeader.module.css";
+import styles from "@/styles/Header.module.css";
 import React, { useState, useEffect, useContext } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Link from "next/link";
@@ -12,7 +10,6 @@ import Badge from "@material-ui/core/Badge";
 import AuthContext from "@/context/AuthContext";
 import DrawerCart from "./DrawerCart";
 import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -64,8 +61,8 @@ export default function ButtonAppBar() {
   const drawer = (
     <div>
       <List className={styles.mainDrawer}>
-        <ListItem button>
-          <Link href="/" passHref={true}>
+        <Link href="/" passHref={true}>
+          <ListItem button>
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
@@ -73,11 +70,11 @@ export default function ButtonAppBar() {
                 <span className={styles.menuText}>Home</span>
               </div>
             </ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <Link href="/products/productsList" passHref={true}>
+        <Link href="/products/productsList" passHref={true}>
+          <ListItem button>
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
@@ -85,11 +82,11 @@ export default function ButtonAppBar() {
                 <span className={styles.menuText}>Products</span>
               </div>
             </ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <Link href="/products/shoppingCart" passHref={true}>
+        <Link href="/products/shoppingCart" passHref={true}>
+          <ListItem button>
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
@@ -97,13 +94,13 @@ export default function ButtonAppBar() {
                 <span className={styles.menuText}>My Cart</span>
               </div>
             </ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
 
         {!user && (
           <>
-            <ListItem button>
-              <Link href="/account/login" passHref={true}>
+            <Link href="/account/login" passHref={true}>
+              <ListItem button>
                 <ListItemText className={styles.listItemText}>
                   {!user && (
                     <div>
@@ -113,11 +110,11 @@ export default function ButtonAppBar() {
                     </div>
                   )}
                 </ListItemText>
-              </Link>
-            </ListItem>
+              </ListItem>
+            </Link>
 
-            <ListItem button>
-              <Link href="/account/register" passHref={true}>
+            <Link href="/account/register" passHref={true}>
+              <ListItem button>
                 <ListItemText className={styles.listItemText}>
                   {!user && (
                     <div>
@@ -127,8 +124,8 @@ export default function ButtonAppBar() {
                     </div>
                   )}
                 </ListItemText>
-              </Link>
-            </ListItem>
+              </ListItem>
+            </Link>
           </>
         )}
 
@@ -143,8 +140,9 @@ export default function ButtonAppBar() {
                 </div>
               </ListItemText>
             </ListItem>
-            <ListItem button>
-              <Link href="/account/myAccount" passHref={true}>
+
+            <Link href="/account/myAccount" passHref={true}>
+              <ListItem button>
                 <ListItemText className={styles.listItemText}>
                   <div>
                     {" "}
@@ -152,13 +150,13 @@ export default function ButtonAppBar() {
                     <span className={styles.menuText}>My Account</span>
                   </div>
                 </ListItemText>
-              </Link>
-            </ListItem>
+              </ListItem>
+            </Link>
           </>
         )}
 
-        <ListItem button>
-          <Link href="/contact" passHref={true}>
+        <Link href="/contact" passHref={true}>
+          <ListItem button>
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
@@ -166,12 +164,12 @@ export default function ButtonAppBar() {
                 <span className={styles.menuText}>Contact Us</span>
               </div>
             </ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
 
         {user?.email === "admin@admin.com" && user?.username === "admin" ? (
-          <ListItem button>
-            <Link href="/account/dashboard" passHref={true}>
+          <Link href="/account/dashboard" passHref={true}>
+            <ListItem button>
               <ListItemText style={{ fontSize: "1.3rem" }}>
                 <div>
                   {" "}
@@ -179,24 +177,21 @@ export default function ButtonAppBar() {
                   <span className={styles.menuText}>Dashboard</span>
                 </div>
               </ListItemText>
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ) : null}
       </List>
-      <Divider />
-      <List></List>
     </div>
   );
   /*------------------------X-----------------------*/
 
   return (
-    <div>
-      <AppBar
-        position="fixed"
-        className={`${scrollState === "top" ? styles.main : styles.mainScroll}`}
-      >
-        <Toolbar className={styles.containerNav}>
-          <Link href="/">
+    <div
+      className={` ${scrollState === "top" ? styles.main : styles.mainScroll} `}
+    >
+      <div className={styles.containerNav}>
+        <div className={styles.logo}>
+          <Link href="/" passHref={true}>
             <a
               className={` ${
                 scrollState === "top" ? styles.logo : styles.logoScroll
@@ -205,7 +200,55 @@ export default function ButtonAppBar() {
               AlFayyad <IoStorefrontSharp className={styles.logoIcon} />
             </a>
           </Link>
+        </div>
 
+        <div className={styles.linkMenu}>
+          <ul>
+            <Link href="/" passHref={true}>
+              <li>Home</li>
+            </Link>
+
+            <Link href="/products/productsList" passHref={true}>
+              <li>Products</li>
+            </Link>
+
+            {user ? (
+              <Link href="/account/myAccount" passHref={true}>
+                <li>My Account</li>
+              </Link>
+            ) : (
+              <Link href="/account/login" passHref={true}>
+                <li>My Account</li>
+              </Link>
+            )}
+
+            {user ? (
+              <li onClick={logout}>Sign Out</li>
+            ) : (
+              <>
+                <Link href="/account/login" passHref={true}>
+                  <li>Sign In</li>
+                </Link>
+              </>
+            )}
+
+            {user?.email === "admin@admin.com" && user?.username === "admin" ? (
+              <>
+                <Link href="/account/dashboard" passHref={true}>
+                  <li>Dashboard</li>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/contact" passHref={true}>
+                  <li>Contact</li>
+                </Link>
+              </>
+            )}
+          </ul>
+        </div>
+
+        <div className={styles.navContent}>
           <div className={styles.containerDrawerCart}>
             <Badge
               badgeContent={cart.itemsCount}
@@ -215,22 +258,24 @@ export default function ButtonAppBar() {
               <DrawerCart cart={cart} removeFromCart={removeFromCart} />
             </Badge>
             <Search />
-            <MenuIcon onClick={handleDrawerOpen} className={styles.menuIcon} />
+            <MenuIcon
+              onClick={handleDrawerOpen}
+              className={styles.menuIcon}
+            />{" "}
+            <Drawer anchor="right" open={open}>
+              {/*-----------------Close button icon------------*/}{" "}
+              <div onClick={handleDrawerClose}>
+                {" "}
+                <IconButton onClick={handleDrawerClose}>
+                  <FaTimes />{" "}
+                </IconButton>{" "}
+              </div>
+              {/*--------------------------X-------------------*/}
+              {drawer}{" "}
+            </Drawer>
           </div>
-
-          <Drawer anchor="right" open={open}>
-            {/*-----------------Close button icon------------*/}
-            <div onClick={handleDrawerClose}>
-              <IconButton onClick={handleDrawerClose}>
-                <FaTimes />
-              </IconButton>
-            </div>
-            {/*--------------------------X-------------------*/}
-
-            {drawer}
-          </Drawer>
-        </Toolbar>
-      </AppBar>
+        </div>
+      </div>
     </div>
   );
 }

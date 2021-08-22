@@ -2,6 +2,20 @@ import styles from "@/styles/MyAccount.module.css";
 import Link from "next/link";
 
 function MyAccount({ account }) {
+  const WelcomeArray = [
+    " “ You look awesome today 😉 ” ",
+    " “ You look incredible today 😉 ” ",
+    " “ Stay safe 😍 ” ",
+    " “ We hope that you fine 😍 ” ",
+    " “ Be fine 🌹 ” ",
+    " “ Be Strong 🌹 ” ",
+    " “ Love the life you live, live the life you love 🌹 ”  ",
+    " “ Enjoy in every moment in your life 😉 ”  ",
+    ` “ Seize the days, ${account.username} 😉 ”  `,
+  ];
+
+  const randWords = Math.floor(Math.random() * WelcomeArray.length);
+
   return (
     <div className={`container ${styles.container}`}>
       <div className={`${styles.mainBody}`}>
@@ -40,7 +54,7 @@ function MyAccount({ account }) {
                       className="text-secondary mb-1"
                       style={{ paddingBottom: "1rem" }}
                     >
-                      You look awesome today 😉
+                      {WelcomeArray[randWords]}
                     </p>
                     <Link href="/products/shoppingCart" passHref={true}>
                       <button className={styles.btn}>Your Cart</button>

@@ -27,7 +27,7 @@ export default function Login() {
   const alertInfo = () => {
     swal(
       "Hi There 👋",
-      "Please note that we use cookies to keep your log in for a week, after then and it automatically log out , if you don't want to keep your log in, you can hit on logout option from menu 😉",
+      "Please note that we use cookies to keep your sign in for a week, after then it automatically sign out , if you don't want to keep your sign in, you can hit on sign out option from menu 😉",
       "info"
     );
   };

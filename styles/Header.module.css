@@ -2,12 +2,16 @@
 @import url("https://rsms.me/inter/inter.css");
 
 .main {
-  background: transparent;
+  background-color: transparent;
   color: #000;
   opacity: 0.9;
-  padding: 0.5rem 0;
+  padding: 1.4rem 0.5rem;
   transition: all 0.8s;
   box-shadow: none;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 }
 
 /*----main when scroll down------*/
@@ -20,15 +24,38 @@
   color: #fff;
   opacity: 0.85;
   transition: all 0.8s;
-  padding: 0.3rem 0 0 0;
+  padding: 0.7rem 0.4rem 0.8rem 0;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 }
 /*---------------X---------------*/
+
+.linkMenu ul {
+  display: flex;
+  padding: 0 10rem;
+  margin: 0;
+}
+
+.linkMenu ul li {
+  list-style: none;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  font-family: "Inter var", sans-serif;
+  font-weight: 700;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.linkMenu ul li:hover {
+  color: #03c7ff;
+  transition: all 0.3s ease-in;
+}
 
 .containerNav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  justify-items: center;
 }
 
 .logo {
@@ -36,6 +63,8 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-family: "Bree Serif", serif;
+  margin: 0 0 0 0.5rem;
+  transition: all 0.6s ease-in-out;
 }
 
 .logo:hover {
@@ -88,9 +117,20 @@
   font-size: 1.7rem;
   margin: 0 0 0 1.5rem;
   cursor: pointer;
+  display: none;
 }
 
 .containerDrawerCart {
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 1070px) {
+  .menuIcon {
+    display: block;
+  }
+
+  .linkMenu {
+    display: none;
+  }
 }
