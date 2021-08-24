@@ -28,6 +28,7 @@ function SubscripeForm() {
       "Please note that there is no spam, just we will notify you for any new updates, discounts or products.",
       "success"
     );
+    setEmail("");
   };
   /*--------------------X--------------------*/
 

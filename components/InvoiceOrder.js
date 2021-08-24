@@ -10,6 +10,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Swal from "sweetalert2";
 import AnimationGongrats from "./AnimationGongrats";
+import { ImWhatsapp } from "react-icons/im";
+import { SiMessenger } from "react-icons/si";
+import { IoMdMail } from "react-icons/io";
+import { FaMobileAlt } from "react-icons/fa";
 
 function InvoiceOrder() {
   /*-------------context shopping cart-----------*/
@@ -56,28 +60,28 @@ function InvoiceOrder() {
             href="http://m.me/fayyado"
             className={`${styles.contactBtns} mx-1 mt-3`}
           >
-            <i className="fab fa-facebook-messenger"></i>
+            <SiMessenger className={styles.socialContact} />
           </a>
 
           <a
             href="https://wa.me/message/TDOPR6Z3RHN7L1"
             className={`${styles.contactBtns} mx-1 mt-3`}
           >
-            <i className="fab fa-whatsapp"></i>
+            <ImWhatsapp className={styles.socialContact} />
           </a>
 
           <a
             href="https://mail.google.com/mail/?view=cm&source=mailto&to=fayyadm524@gmail.com"
             className={`${styles.contactBtns} mx-1 mt-3`}
           >
-            <i className="far fa-envelope"></i>
+            <IoMdMail className={styles.socialContact} />
           </a>
 
           <a
             href="tel:0787731525"
             className={`${styles.contactBtns} mx-1 mt-3`}
           >
-            <i className="fas fa-mobile-alt"></i>
+            <FaMobileAlt className={styles.socialContact} />
           </a>
         </div>
         {/*----------------------------X--------------------------------*/}
@@ -134,7 +138,7 @@ function InvoiceOrder() {
       {/*----------------------------X------------------------------*/}
 
       {/*-----------------return to cart button---------------------*/}
-      <Link href="/products/shoppingCart" passHref={true}>
+      <Link href="/products/shopping-cart" passHref={true}>
         <button type="button" className={styles.btnConfirm}>
           Return to cart
         </button>

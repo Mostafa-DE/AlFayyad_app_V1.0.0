@@ -28,7 +28,7 @@ export default function SearchPage({ products }) {
             We couldn't Find That Product, Maybe it doesn't exist or out of
             stock
           </p>
-          <Link href="/products/productsList" passHref={true}>
+          <Link href="/products/products-list" passHref={true}>
             <button className={styles.backBtn}>Back To Products</button>
           </Link>
         </div>

@@ -48,6 +48,12 @@
 .questionIcon {
   color: #03c8ff;
   cursor: pointer;
+  margin: 0 0 0.3rem 0;
+}
+
+.visiblePassword {
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 450px) {

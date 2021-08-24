@@ -42,3 +42,14 @@
   min-height: 1px;
   padding: 1rem;
 }
+
+.instaIcon {
+  color: #ff3c7d;
+  font-size: 1.4rem;
+  margin: 0 0 0 0.3rem;
+}
+
+.faceIcon {
+  color: #2d3bfd;
+  font-size: 1.6rem;
+}

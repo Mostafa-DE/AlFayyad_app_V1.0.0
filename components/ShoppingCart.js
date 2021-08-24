@@ -3,6 +3,10 @@ import React, { useContext, useState } from "react";
 import { AiOutlineLine } from "react-icons/ai";
 import { CartContext } from "@/context/CartContext";
 import { FaTimes } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+import { HiPlusSm } from "react-icons/hi";
+import { HiMinusSm } from "react-icons/hi";
+import { GiCash } from "react-icons/gi";
 import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -76,7 +80,7 @@ function ShoppingCart() {
             <span>Your Cart Is Empty 😔</span> <br /> Add Some Products To Show
             Here
           </h4>
-          <Link href="/products/productsList" passHref={true}>
+          <Link href="/products/products-list" passHref={true}>
             <button className={styles.continueBtn}>Continue Shopping</button>
           </Link>
         </div>
@@ -113,31 +117,30 @@ function ShoppingCart() {
                   {item.qty}
                   <div className={styles.addOrRemoveQty}>
                     {item.qty !== 1 ? (
-                      <i
+                      <HiMinusSm
+                        className={styles.minus}
                         onClick={() => removeQty(item)}
-                        className={`fas fa-minus ${styles.minus}`}
-                      ></i>
+                      />
                     ) : (
-                      <i
+                      <HiMinusSm
+                        className={styles.minus}
                         onClick={() => removeFromCart(item)}
-                        className={`fas fa-minus ${styles.minus}`}
-                      ></i>
+                      />
                     )}
-
-                    <i
+                    <HiPlusSm
+                      className={styles.plus}
                       onClick={() => addQty(item)}
-                      className={`fas fa-plus ${styles.plus}`}
-                    ></i>
+                    />
                   </div>
                 </TableCell>
                 <TableCell align="center">
                   {item.price.toFixed(2) * item.qty} JD
                 </TableCell>
                 <TableCell>
-                  <i
+                  <FaTrash
+                    className={styles.deleteBtn}
                     onClick={() => removeFromCart(item)}
-                    className={`fas fa-trash ${styles.deleteBtn} `}
-                  ></i>
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -155,11 +158,11 @@ function ShoppingCart() {
 
         {items.length === 0 ? (
           <button className={styles.checkOutBtn} onClick={alertError}>
-            Checkout <i className="fas fa-credit-card"></i>
+            Checkout <GiCash style={{ fontSize: "1.5rem" }} />
           </button>
         ) : (
           <button className={styles.checkOutBtn} onClick={handleClickOpen}>
-            Checkout <i className="fas fa-credit-card"></i>
+            Checkout <GiCash style={{ fontSize: "1.5rem" }} />
           </button>
         )}
         <div>

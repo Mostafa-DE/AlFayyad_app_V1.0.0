@@ -1,5 +1,6 @@
 import styles from "@/styles/ButtonWhatsapp.module.css";
 import React, { useState, useEffect } from "react";
+import { ImWhatsapp } from "react-icons/im";
 
 export default function ButtonWhatsapp() {
   const [isVisible, setIsVisisble] = useState(false);
@@ -24,7 +25,7 @@ export default function ButtonWhatsapp() {
         <div className={styles.buttonWhatsapp}>
           <a href="https://wa.me/message/TDOPR6Z3RHN7L1">
             <h4>
-              <i className="fab fa-whatsapp"></i>
+              <ImWhatsapp />
             </h4>
           </a>
         </div>

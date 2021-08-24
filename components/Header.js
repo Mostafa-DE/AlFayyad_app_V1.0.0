@@ -13,8 +13,16 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
 import { FaTimes } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { FaDollyFlatbed } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { GoSignOut } from "react-icons/go";
+import { GoSignIn } from "react-icons/go";
+import { MdAccountCircle } from "react-icons/md";
+import { IoIosContacts } from "react-icons/io";
+import { FaFileSignature } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa";
 
 export default function ButtonAppBar() {
   /* -----------Auth User context----------------- */
@@ -66,31 +74,31 @@ export default function ButtonAppBar() {
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
-                <i className={`fas fa-home ${styles.icons} `}></i>
+                <FaHome className={styles.icons} />
                 <span className={styles.menuText}>Home</span>
               </div>
             </ListItemText>
           </ListItem>
         </Link>
 
-        <Link href="/products/productsList" passHref={true}>
+        <Link href="/products/products-list" passHref={true}>
           <ListItem button>
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
-                <i className={`fas fa-dolly-flatbed ${styles.icons}`}></i>
+                <FaDollyFlatbed className={styles.icons} />
                 <span className={styles.menuText}>Products</span>
               </div>
             </ListItemText>
           </ListItem>
         </Link>
 
-        <Link href="/products/shoppingCart" passHref={true}>
+        <Link href="/products/shopping-cart" passHref={true}>
           <ListItem button>
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
-                <i className={`fas fa-shopping-cart ${styles.icons}`}></i>
+                <FaShoppingCart className={styles.icons} />
                 <span className={styles.menuText}>My Cart</span>
               </div>
             </ListItemText>
@@ -105,7 +113,7 @@ export default function ButtonAppBar() {
                   {!user && (
                     <div>
                       {" "}
-                      <i className={`fas fa-sign-in-alt ${styles.icons}`}></i>
+                      <GoSignIn className={styles.icons} />
                       <span className={styles.menuText}>Sign In</span>
                     </div>
                   )}
@@ -119,7 +127,7 @@ export default function ButtonAppBar() {
                   {!user && (
                     <div>
                       {" "}
-                      <i className={`fas fa-user-plus ${styles.icons}`}></i>
+                      <FaFileSignature className={styles.icons} />
                       <span className={styles.menuText}>Sign Up</span>
                     </div>
                   )}
@@ -135,18 +143,18 @@ export default function ButtonAppBar() {
               <ListItemText className={styles.listItemText}>
                 <div>
                   {" "}
-                  <i className={`fas fa-sign-out-alt ${styles.icons}`}></i>
+                  <GoSignOut className={styles.icons} />
                   <span className={styles.menuText}>Sign Out</span>
                 </div>
               </ListItemText>
             </ListItem>
 
-            <Link href="/account/myAccount" passHref={true}>
+            <Link href="/account/my-account" passHref={true}>
               <ListItem button>
                 <ListItemText className={styles.listItemText}>
                   <div>
                     {" "}
-                    <i className={`fas fa-user-circle ${styles.icons}`}></i>
+                    <MdAccountCircle className={styles.icons} />
                     <span className={styles.menuText}>My Account</span>
                   </div>
                 </ListItemText>
@@ -160,7 +168,7 @@ export default function ButtonAppBar() {
             <ListItemText className={styles.listItemText}>
               <div>
                 {" "}
-                <i className={`fas fa-file-signature ${styles.icons}`}></i>
+                <IoIosContacts className={styles.icons} />
                 <span className={styles.menuText}>Contact Us</span>
               </div>
             </ListItemText>
@@ -173,7 +181,7 @@ export default function ButtonAppBar() {
               <ListItemText style={{ fontSize: "1.3rem" }}>
                 <div>
                   {" "}
-                  <i className={`fas fa-clipboard-list ${styles.icons}`}></i>
+                  <FaClipboardList className={styles.icons} />
                   <span className={styles.menuText}>Dashboard</span>
                 </div>
               </ListItemText>
@@ -208,12 +216,12 @@ export default function ButtonAppBar() {
               <li>Home</li>
             </Link>
 
-            <Link href="/products/productsList" passHref={true}>
+            <Link href="/products/products-list" passHref={true}>
               <li>Products</li>
             </Link>
 
             {user ? (
-              <Link href="/account/myAccount" passHref={true}>
+              <Link href="/account/my-account" passHref={true}>
                 <li>My Account</li>
               </Link>
             ) : (
@@ -262,7 +270,7 @@ export default function ButtonAppBar() {
               onClick={handleDrawerOpen}
               className={styles.menuIcon}
             />{" "}
-            <Drawer anchor="right" open={open}>
+            <Drawer anchor="right" open={open} style={{ opacity: 0.97 }}>
               {/*-----------------Close button icon------------*/}{" "}
               <div onClick={handleDrawerClose}>
                 {" "}

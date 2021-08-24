@@ -1,10 +1,13 @@
 import styles from "@/styles/PropertiesOurShop.module.css";
+import { FaTruck } from "react-icons/fa";
+import { GiReceiveMoney } from "react-icons/gi";
+import { FaMoneyBillWave } from "react-icons/fa";
 
 function PropertiesOurShop() {
   return (
     <div className={styles.container}>
       <div className={styles.PropertiesBox}>
-        <i className={`fas fa-truck ${styles.icon} `}></i>
+        <FaTruck className={styles.icon} />
         <h3>Fast Delivery</h3>
         <p>
           Delivery within 24 hours, inside Amman. Delivery in less than 48
@@ -12,12 +15,12 @@ function PropertiesOurShop() {
         </p>
       </div>
       <div className={styles.PropertiesBox}>
-        <i className={`fas fa-hand-holding-usd ${styles.icon}`}></i>
+        <GiReceiveMoney className={styles.icon} />
         <h3>Paiement when receiving</h3>
         <p>Pay the bill after verifying that your order is correct!!</p>
       </div>
       <div className={styles.PropertiesBox}>
-        <i className={`fas fa-money-bill-alt ${styles.icon}`}></i>
+        <FaMoneyBillWave className={styles.icon} />
         <h3>Lower Prices</h3>
         <p>
           We strive to provide you with the lowest prices and the best European

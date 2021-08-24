@@ -58,7 +58,7 @@ export default function HomePage({ products }) {
 
       {/*-------button view all product-------*/}
       <div className={styles.divBtn}>
-        <Link href="/products/productsList" passHref={true}>
+        <Link href="/products/products-list" passHref={true}>
           <a className={styles.btnProductsList}>View All Products</a>
         </Link>
       </div>
@@ -77,7 +77,7 @@ export default function HomePage({ products }) {
             Shopping with us to find the best European products, the best prices
             and special discounts {" :) "}
           </p>
-          <Link href="/products/productsList" passHref={true}>
+          <Link href="/products/products-list" passHref={true}>
             <button className={styles.btnShope}>Shope Now</button>
           </Link>
         </div>

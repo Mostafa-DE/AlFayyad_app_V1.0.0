@@ -5,7 +5,7 @@ import Link from "next/link";
 function CategoryPhotoSm() {
   return (
     <div className={styles.container}>
-      <Link href="/products/productsList" passHref={true}>
+      <Link href="/products/products-list" passHref={true}>
         {/*---------Photo Tools----------*/}
         <Paper className={`${styles.paperTools}`}>
           <p className={styles.paperText}>
@@ -15,7 +15,7 @@ function CategoryPhotoSm() {
         </Paper>
         {/*--------------X----------------*/}
       </Link>
-      <Link href="/products/productsList" passHref={true}>
+      <Link href="/products/products-list" passHref={true}>
         {/*---------Photo Housecare-------*/}
         <Paper className={`${styles.paperHouse}`}>
           <p className={styles.paperText}>

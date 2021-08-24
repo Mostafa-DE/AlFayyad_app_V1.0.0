@@ -1,5 +1,5 @@
 import styles from "@/styles/Login.module.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,6 +8,11 @@ import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
 import swal from "sweetalert";
+import { ImFacebook } from "react-icons/im";
+import { FaQuestion } from "react-icons/fa";
+import { GoSignIn } from "react-icons/go";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 export default function Login() {
   /*-----------------state for input forms------------------*/
@@ -44,6 +49,13 @@ export default function Login() {
   };
   /*---------------------------X-----------------------------*/
 
+  /*------------------state for show password and hide---------------------*/
+  const [visiblePasswrod, setVisiblePasswrod] = useState(false);
+  const handleVisiblePassword = () => {
+    setVisiblePasswrod(!visiblePasswrod);
+  };
+  /*-----------------------------------X-----------------------------------*/
+
   return (
     <section className={styles.main}>
       <ToastContainer position="top-center" style={{ width: "30rem" }} />
@@ -68,7 +80,9 @@ export default function Login() {
                 onClick={handleClickFacebook}
                 className={`${styles.loginSocialBtn} mx-1 mt-3`}
               >
-                <i className="fab fa-facebook-f"></i>
+                <ImFacebook
+                  style={{ margin: "0 0 0.2rem 0", fontSize: "1.1rem" }}
+                />
               </button>
             </div>
             {/*--------------------------X-----------------------------*/}
@@ -86,23 +100,36 @@ export default function Login() {
                   value={email}
                   fullWidth
                   variant="standard"
-                  label="Email Adress"
+                  label="Email Address"
                   validators={["required"]}
                   errorMessages={["Please Enter A Valid Email !!"]}
                 />
               </div>
 
-              <div className="form-outline mb-3">
-                <TextValidator
-                  type="password"
-                  onChange={handleChangePassword}
-                  value={password}
-                  fullWidth
-                  variant="standard"
-                  label="Password"
-                  validators={["required"]}
-                  errorMessages={["Please Enter A Password !!"]}
-                />
+              <div className="d-flex flex-row align-items-center mb-4">
+                <div className="form-outline flex-fill mb-4">
+                  <TextValidator
+                    type={visiblePasswrod === true ? "text" : "password"}
+                    value={password}
+                    onChange={handleChangePassword}
+                    fullWidth
+                    variant="standard"
+                    label="Password"
+                    validators={["required"]}
+                    errorMessages={["Please Enter A Password !!"]}
+                  />
+                </div>
+                {visiblePasswrod === true ? (
+                  <AiFillEye
+                    className={styles.visiblePassword}
+                    onClick={handleVisiblePassword}
+                  />
+                ) : (
+                  <AiFillEyeInvisible
+                    onClick={handleVisiblePassword}
+                    className={styles.visiblePassword}
+                  />
+                )}
               </div>
               {/*-----------------------X------------------------*/}
 
@@ -118,10 +145,10 @@ export default function Login() {
                   />
                   <label className="form-check-label" htmlFor="form2Example3">
                     Remember me{" "}
-                    <i
+                    <FaQuestion
                       onClick={alertInfo}
-                      className={`fas fa-question ${styles.questionIcon} `}
-                    ></i>
+                      className={styles.questionIcon}
+                    />
                   </label>
                 </div>
                 {/*------------------------------X----------------------------*/}
@@ -136,7 +163,7 @@ export default function Login() {
               <div className="text-center text-lg-start mt-4 pt-2">
                 {/*----------------------button login-------------------------*/}
                 <button type="submit" className={styles.loginBtn}>
-                  Login
+                  Login <GoSignIn />
                 </button>
                 {/*----------------------------X------------------------------*/}
 

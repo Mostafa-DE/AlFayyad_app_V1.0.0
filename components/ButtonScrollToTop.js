@@ -1,5 +1,6 @@
 import styles from "@/styles/ButtonScrollToTop.module.css";
 import React, { useState, useEffect } from "react";
+import { FaChevronUp } from "react-icons/fa";
 
 function ButtonScrollToTop() {
   const [isVisible, setIsVisisble] = useState(false);
@@ -20,7 +21,7 @@ function ButtonScrollToTop() {
         setIsVisisble(false);
       }
     };
-    window.addEventListener("scroll", handleVisibility);
+    window.addEventListener("scroll", handleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", handleVisibility);
   });
   /*-------------------------------X----------------------------------*/
@@ -30,7 +31,7 @@ function ButtonScrollToTop() {
       {isVisible && (
         <div onClick={scrollToTop} className={styles.buttonScrollToTop}>
           <h4>
-            <i className="fas fa-chevron-up"></i>
+            <FaChevronUp />
           </h4>
         </div>
       )}

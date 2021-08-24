@@ -1,5 +1,14 @@
 import styles from "@/styles/Footer.module.css";
 import Link from "next/link";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaMobileAlt } from "react-icons/fa";
+import { ImWhatsapp } from "react-icons/im";
+import { SiMessenger } from "react-icons/si";
+import { IoMailSharp } from "react-icons/io5";
+import { FaFacebookF } from "react-icons/fa";
+import { SiInstagram } from "react-icons/si";
+import { FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 /*----------Style bootstrap--------*/
 const stylesFooter = {
@@ -47,10 +56,10 @@ function Footer() {
               Who We Are ??
             </h5>
             <p>
-              We are Al Fayyad For European Products, we provide you with the
-              best European products at reasonable prices and high quality, we
-              strive to serve you at any time. don't hesitate to contact us at
-              any time.
+              Al Fayyad For European Products, we provide you with the best
+              European products at reasonable prices and high quality, we strive
+              to serve you at any time. don't hesitate to contact us at any
+              time.
             </p>
           </div>
           {/*-----------------------------X------------------------*/}
@@ -131,7 +140,7 @@ function Footer() {
             <ul className="list-unstyled">
               <li>
                 <p style={stylesFooter.contact}>
-                  <i className="fas fa-map-marker-alt"></i>{" "}
+                  <FaMapMarkerAlt className={styles.socialContact} />{" "}
                   <a
                     className={styles.link}
                     href="#"
@@ -143,7 +152,7 @@ function Footer() {
               </li>
               <li>
                 <p>
-                  <i className="fas fa-mobile-alt"></i>{" "}
+                  <FaMobileAlt className={styles.socialContact} />{" "}
                   <a
                     className={styles.link}
                     href="tel:0787731525"
@@ -155,7 +164,7 @@ function Footer() {
               </li>
               <li>
                 <p>
-                  <i className="fab fa-whatsapp"></i>{" "}
+                  <ImWhatsapp className={styles.socialContact} />{" "}
                   <a
                     className={styles.link}
                     href="https://wa.me/message/TDOPR6Z3RHN7L1"
@@ -167,7 +176,7 @@ function Footer() {
               </li>
               <li>
                 <p>
-                  <i className="fab fa-facebook-messenger"></i>{" "}
+                  <SiMessenger className={styles.socialContact} />{" "}
                   <a
                     className={styles.link}
                     href="http://m.me/fayyado"
@@ -179,7 +188,7 @@ function Footer() {
               </li>
               <li>
                 <p>
-                  <i className="fas fa-envelope"></i>{" "}
+                  <IoMailSharp className={styles.socialContact} />{" "}
                   <a
                     className={styles.link}
                     href="https://mail.google.com/mail/?view=cm&source=mailto&to=fayyadm524@gmail.com"
@@ -205,7 +214,7 @@ function Footer() {
               className={`btn-floating btn-fb ${styles.link} `}
               style={stylesFooter.social}
             >
-              <i className="fab fa-facebook-f"></i>
+              <FaFacebookF />
             </a>
             <a
               href="https://www.instagram.com/fayyado1/"
@@ -213,7 +222,7 @@ function Footer() {
               className={`btn-floating btn-tw ${styles.link} `}
               style={stylesFooter.social}
             >
-              <i className="fab fa-instagram"></i>
+              <SiInstagram />
             </a>
             <a
               href="https://github.com/Mostafa-DE"
@@ -221,7 +230,7 @@ function Footer() {
               className={`btn-floating btn-gplus ${styles.link} `}
               style={stylesFooter.social}
             >
-              <i className="fab fa-github"></i>
+              <FaGithub />
             </a>
             <a
               href="https://twitter.com/login"
@@ -229,7 +238,7 @@ function Footer() {
               className={`btn-floating btn-dribbble ${styles.link} `}
               style={stylesFooter.social}
             >
-              <i className="fab fa-twitter"></i>
+              <FaTwitter />
             </a>
           </div>
           {/*---------------------------X--------------------------*/}

@@ -36,6 +36,11 @@
   color: #fff;
 }
 
+.socialContact {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.1rem;
+}
+
 @media (max-width: 450px) {
   .hCustom {
     height: 100%;

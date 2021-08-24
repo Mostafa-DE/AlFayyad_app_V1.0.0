@@ -45,3 +45,8 @@
   color: #03c7ff !important;
   transition: all 0.3s ease-in;
 }
+
+.socialContact {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.1rem;
+}

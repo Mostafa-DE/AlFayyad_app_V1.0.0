@@ -172,6 +172,7 @@
 .deleteBtn {
   color: #03c7ff;
   cursor: pointer;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 676px) {

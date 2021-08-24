@@ -21,7 +21,6 @@ function AnimationGongrats() {
   return (
     <div>
       <Confetti
-        tweenDuration={7000}
         recycle={false}
         numberOfPieces={2000}
         width={width}

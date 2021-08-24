@@ -183,7 +183,7 @@ function TestProductDetails({ product }) {
             <button onClick={AddToCart} className={styles.addToCart}>
               Add to cart <HiShoppingCart className={styles.cartIcon} />
             </button>
-            <Link href="/products/productsList">
+            <Link href="/products/products-list">
               <a className={styles.linkProducts}>Return To Products List</a>
             </Link>
           </div>

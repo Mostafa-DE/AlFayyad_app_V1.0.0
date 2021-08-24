@@ -1,3 +1,4 @@
+import { AiFillStar } from "react-icons/ai";
 const styles = {
   color: "orange",
   marginTop: "1rem",
@@ -6,11 +7,11 @@ const styles = {
 function RatingStar() {
   return (
     <div className="rating">
-      <i className="fas fa-star" style={styles}></i>
-      <i className="fas fa-star" style={styles}></i>
-      <i className="fas fa-star" style={styles}></i>
-      <i className="fas fa-star" style={styles}></i>
-      <i className="fas fa-star" style={styles}></i>
+      <AiFillStar style={styles} />
+      <AiFillStar style={styles} />
+      <AiFillStar style={styles} />
+      <AiFillStar style={styles} />
+      <AiFillStar style={styles} />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { AiOutlineLine } from "react-icons/ai";
 import { FaTimes } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,7 +12,6 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -115,10 +115,10 @@ export default function DrawerCart({ cart, removeFromCart }) {
                   </TableCell>
 
                   <TableCell>
-                    <i
+                    <FaTrash
                       onClick={() => removeFromCart(item)}
-                      className={`fas fa-trash ${styles.deleteBtn} `}
-                    ></i>
+                      className={styles.deleteBtn}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
@@ -137,7 +137,7 @@ export default function DrawerCart({ cart, removeFromCart }) {
         <div>
           {/*----------Button (view cart) & (checkout)----------*/}
           <div className={styles.containerBtn}>
-            <Link href="/products/shoppingCart" passHref={true}>
+            <Link href="/products/shopping-cart" passHref={true}>
               <button className={styles.btn}>View Cart</button>
             </Link>
             {items.length === 0 ? (

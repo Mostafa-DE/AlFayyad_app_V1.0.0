@@ -5,6 +5,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ToastContainer, toast } from "react-toastify";
 import { CartContext } from "@/context/CartContext";
 import { AiOutlineLine } from "react-icons/ai";
+import { GiCash } from "react-icons/gi";
 import { API_URL } from "../config";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
@@ -16,7 +17,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import emailjs from "emailjs-com";
 
-function ShippingAdress() {
+function ShippingAdress({ account }) {
   const router = useRouter();
 
   /*---------context shopping cart-----------*/
@@ -28,13 +29,13 @@ function ShippingAdress() {
 
   /*-----------state for input-------------*/
   const [values, setValues] = useState({
-    email: "",
+    email: `${account.email === undefined ? "" : account.email}`,
     firstName: "",
     lastName: "",
     address: "",
     city: "",
     building: "1",
-    phone: "",
+    phone: `${account.phone === undefined ? "" : `0${account.phone}`}`,
     amount: totalAmount.toString(),
   });
 
@@ -69,7 +70,7 @@ function ShippingAdress() {
     if (!res.ok) {
       toast.error("Oh No, Somthing Went Wrong!!");
     } else {
-      router.push("/payment/invoiceOrder");
+      router.push("/payment/invoice-order");
     }
     /*---------------------X---------------------*/
   };
@@ -277,12 +278,12 @@ function ShippingAdress() {
             <div className="d-flex justify-content-around ">
               {/*------------------button confirm-----------------*/}
               <button type="submit" className={styles.btnCheckout}>
-                Confirm Order <i className="fas fa-credit-card"></i>
+                Confirm Order <GiCash style={{ fontSize: "1.5rem" }} />
               </button>
               {/*------------------------X------------------------*/}
 
               {/*--------------link return to cart----------------*/}
-              <Link href="/products/shoppingCart">
+              <Link href="/products/shopping-cart">
                 <a className={styles.returnCart}>Return to cart</a>
               </Link>
               {/*-----------------------X-------------------------*/}

@@ -6,6 +6,7 @@ import { CartContext } from "@/context/CartContext";
 import RatingStar from "./RatingStar";
 import Link from "next/link";
 import swal from "sweetalert";
+import { FaCartPlus } from "react-icons/fa";
 
 /*----------break point for responsive slider----------*/
 export const breakPoints = [
@@ -47,7 +48,7 @@ function SliderProducts({ product }) {
             {/*----------------discount price---------------------*/}
             {product.discount !== null ? (
               <span className={styles.productDiscountLabel}>
-                - {product.discount}
+                - {product.discount}%
               </span>
             ) : null}
             {/*----------------------X----------------------------*/}
@@ -63,7 +64,7 @@ function SliderProducts({ product }) {
             {/*---------------quickview button--------------------*/}
             <ul className={styles.productLinks}>
               <Link href={`/products/${product.slug}`}>
-                <a className={styles.QuickViewBtn}>Qiuckview</a>
+                <a className={styles.QuickViewBtn}>View Details</a>
               </Link>
             </ul>
             {/*----------------------X----------------------------*/}
@@ -95,7 +96,10 @@ function SliderProducts({ product }) {
 
             {/*--------------button add to cart-------------------*/}
             <button onClick={AddToCart} className={styles.addToCart}>
-              add to cart
+              add to cart{" "}
+              <FaCartPlus
+                style={{ fontSize: "1.1rem", margin: "0 0 0.2rem 0" }}
+              />
             </button>
             {/*----------------------X----------------------------*/}
           </div>

@@ -12,3 +12,29 @@
   font-size: 1.2rem;
   color: #fff;
 }
+
+.h1Text {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 8rem 0 2rem 0;
+  font-family: "Otomanopee One", sans-serif;
+}
+
+.h1Text span {
+  color: #03c7ff;
+  font-size: 5rem;
+  margin: -2.5rem 0 0 0;
+}
+
+.registerIcons {
+  font-size: 1.5rem;
+  margin: 0 0.6rem 0 0;
+}
+
+.visiblePassword {
+  font-size: 1.5rem;
+  cursor: pointer;
+}

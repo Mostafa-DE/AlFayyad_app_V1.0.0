@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
     if (res.ok) {
       setUser(data.user);
-      router.push("/account/myAccount");
+      router.push("/account/my-account");
     } else {
       setError(data.message);
       setError(null);
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
     if (res.ok) {
       setUser(data.user);
-      router.push("/account/myAccount");
+      router.push("/account/my-account");
     } else {
       setError(data.message);
       setError(null);

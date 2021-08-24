@@ -1,17 +1,33 @@
 import styles from "@/styles/Register.module.css";
+import { useState } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { useEffect } from "react";
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
+import { AiOutlineLine } from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
+import { FaMobileAlt } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import swal from "sweetalert";
 
 function Register() {
+  const router = useRouter();
   /*-----------context authenication-----------*/
-  const { register } = useContext(AuthContext);
+  const { register, error } = useContext(AuthContext);
   /*---------------------X---------------------*/
+
+  useEffect(() => {
+    error && toast.error(error);
+  });
 
   /*--------------------state for input-------------------*/
   const [username, handleChangeUsername] = useInputState("");
@@ -41,8 +57,8 @@ function Register() {
   });
 
   useEffect(() => {
-    ValidatorForm.addValidationRule("isGmail", (value) => {
-      if (value.match("@gmail")) {
+    ValidatorForm.addValidationRule("isLocalNumber", (value) => {
+      if (value.match("078") || value.match("079") || value.match("077")) {
         return true;
       }
       return false;
@@ -50,17 +66,57 @@ function Register() {
   });
   /*-----------------------------------X-----------------------------------*/
 
+  /*----------------------------show info alert----------------------------*/
+  useEffect(() => {
+    if (router.pathname === "/account/register") {
+      const timer = setTimeout(() => {
+        swal({
+          title: "Hi There 👋",
+          text: "Please make sure to enter a valid email and a valid phone, because we will contact you through them, any mistake may lead to delay or cancellation of orders.",
+          icon: "warning",
+        }).then(() => {
+          swal({
+            title: "Almost Finish ",
+            text: "Please make sure enter a password greater than 8 character  and contain at least one number.",
+            icon: "warning",
+          });
+        });
+      }, 1000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, []);
+  /*-----------------------------------X-----------------------------------*/
+
+  /*------------------state for show password and hide---------------------*/
+  const [visiblePasswrod, setVisiblePasswrod] = useState(false);
+  const handleVisiblePassword = () => {
+    setVisiblePasswrod(!visiblePasswrod);
+  };
+  /*-----------------------------------X-----------------------------------*/
+
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
 
-    /*------------validation for match password--------------*/
+    /*----------------validation password--------------------*/
     if (password !== passwordConf) {
       toast.error("Passwords Don't Match, Please Try Again !!");
       return;
     }
 
     if (password.length < 8) {
-      toast.error("Password must be at least 8 character");
+      toast.error("Password must be at least 8 character !!");
+      return;
+    }
+
+    if (password.search(/[a-z]/i) === -1) {
+      toast.error("Password must contain at least one letter !!");
+      return;
+    }
+
+    if (password.search(/[0-9]/) === -1) {
+      toast.error("Password must contain at least one number !!");
       return;
     }
     /*----------------------------x--------------------------*/
@@ -83,8 +139,13 @@ function Register() {
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Sign up
+                    <p
+                      className={` ${styles.h1Text} text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4`}
+                    >
+                      Sign Up
+                      <span>
+                        <AiOutlineLine />
+                      </span>
                     </p>
 
                     <ValidatorForm
@@ -93,7 +154,7 @@ function Register() {
                     >
                       {/*-------------------input Username---------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <FaUserAlt className={styles.registerIcons} />
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
                             type="text"
@@ -111,7 +172,7 @@ function Register() {
 
                       {/*---------------input email address--------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <IoMail className={styles.registerIcons} />
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
                             type="email"
@@ -120,11 +181,8 @@ function Register() {
                             fullWidth
                             variant="standard"
                             label="Email Address"
-                            validators={["required", "isGmail"]}
-                            errorMessages={[
-                              "Please Enter A Valid Email !!",
-                              "Please Enter A { Gmail } Address !!",
-                            ]}
+                            validators={["required"]}
+                            errorMessages={["Please Enter A Valid Email !!"]}
                           />
                         </div>
                       </div>
@@ -132,7 +190,7 @@ function Register() {
 
                       {/*---------------input phone number---------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-mobile-alt fa-lg me-3 fa-fw"></i>
+                        <FaMobileAlt className={styles.registerIcons} />
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
                             type="text"
@@ -145,11 +203,13 @@ function Register() {
                               "required",
                               "isNumber",
                               "isPhoneNumber",
+                              "isLocalNumber",
                             ]}
                             errorMessages={[
                               "Please Enter A Phone Number !!",
                               "Phone Number Must Be A Numbers !!",
                               "Phone Number Must Be (10 number) !!",
+                              "Phone Number Must Begin With (078 , 079, 077)",
                             ]}
                           />
                         </div>
@@ -158,10 +218,12 @@ function Register() {
 
                       {/*------------------input password----------------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <FaLock className={styles.registerIcons} />
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
-                            type="password"
+                            type={
+                              visiblePasswrod === true ? "text" : "password"
+                            }
                             value={password}
                             onChange={handleChangePassword}
                             fullWidth
@@ -171,15 +233,28 @@ function Register() {
                             errorMessages={["Please Enter A Password !!"]}
                           />
                         </div>
+                        {visiblePasswrod === true ? (
+                          <AiFillEye
+                            className={styles.visiblePassword}
+                            onClick={handleVisiblePassword}
+                          />
+                        ) : (
+                          <AiFillEyeInvisible
+                            onClick={handleVisiblePassword}
+                            className={styles.visiblePassword}
+                          />
+                        )}
                       </div>
                       {/*------------------------X-----------------------*/}
 
                       {/*---------------input password confirm-----------*/}
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <FaKey className={styles.registerIcons} />
                         <div className="form-outline flex-fill mb-4">
                           <TextValidator
-                            type="password"
+                            type={
+                              visiblePasswrod === true ? "text" : "password"
+                            }
                             value={passwordConf}
                             onChange={handleChangePasswordConf}
                             fullWidth
@@ -191,6 +266,17 @@ function Register() {
                             ]}
                           />
                         </div>
+                        {visiblePasswrod === true ? (
+                          <AiFillEye
+                            onClick={handleVisiblePassword}
+                            className={styles.visiblePassword}
+                          />
+                        ) : (
+                          <AiFillEyeInvisible
+                            onClick={handleVisiblePassword}
+                            className={styles.visiblePassword}
+                          />
+                        )}
                       </div>
                       {/*------------------------X-----------------------*/}
 
@@ -229,7 +315,7 @@ function Register() {
 
                       {/*-------------link for login page----------------*/}
                       <p className="small text-center fw-bold mt-2 pt-1 mb-0">
-                        Already have an account?{" "}
+                        Already have an account ?{" "}
                         <Link href="/account/login">
                           <a className={styles.linklogin}>Login</a>
                         </Link>

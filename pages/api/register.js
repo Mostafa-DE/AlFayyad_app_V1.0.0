@@ -31,11 +31,11 @@ export default async (req, res) => {
       );
       /*----------X-----------*/
       res.status(200).json({ user: data.user });
-      return;
     } else {
-      res
-        .status(data.statusCode)
-        .json({ message: "Email or password invalid, Please try again !!" });
+      res.status(data.statusCode).json({
+        message:
+          "Invalid username try again with another username, or maybe email already exist !!",
+      });
     }
     res.status(200).json({});
   } else {

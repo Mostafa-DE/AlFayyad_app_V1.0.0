@@ -22,19 +22,6 @@ export default function MyApp({ Component, pageProps, router }) {
       ></Script>
       {/*----------------------------------------X-----------------------------------------*/}
 
-      {/*-----------------------------------font Awesome-----------------------------------*/}
-      <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-        crossOrigin="anonymous"
-      ></link>
-      <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-      />
-      {/*----------------------------------------X-----------------------------------------*/}
-
       {/*----------------------------------react dependsess--------------------------------*/}
       <Script
         src="https://unpkg.com/react/umd/react.production.min.js"

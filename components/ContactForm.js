@@ -1,21 +1,43 @@
 import styles from "@/styles/ContactForm.module.css";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useInputState from "@/Hooks/useInputState";
 import emailjs from "emailjs-com";
 import swal from "sweetalert";
+import { SiMessenger } from "react-icons/si";
+import { ImWhatsapp } from "react-icons/im";
+import { FiMail } from "react-icons/fi";
+import { FaMobileAlt } from "react-icons/fa";
+import { RiSendPlaneFill } from "react-icons/ri";
 
-function Login() {
+function Login({ account }) {
   /*----------------------State for form---------------------*/
-  const [name, handleChangeName, resetName] = useInputState("");
-  const [email, handleChangeEmail, resetEmail] = useInputState("");
+  const [name, setName] = useState(
+    `${account.username === undefined ? "" : account.username}`
+  );
+  const handleChangeName = (evnt) => {
+    setName(evnt.target.value);
+  };
+  const [email, setEmail] = useState(
+    `${account.email === undefined ? "" : account.email}`
+  );
+  const handleChangeEmail = (evnt) => {
+    setEmail(evnt.target.value);
+  };
+
   const [message, handleChangeMessage, resetMessage] = useInputState("");
-  const [phone, handleChangePhone, resetPhone] = useInputState("");
+
+  const [phone, setPhone] = useState(
+    `${account.phone === undefined ? "" : `0${account.phone}`}`
+  );
+  const handleChangePhone = (evnt) => {
+    setPhone(evnt.target.value);
+  };
   /*-----------------------------X---------------------------*/
 
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
-    //send email using EmailJS
+    /*------------send email using EmailJS------------*/
     emailjs
       .sendForm(
         "service_8swmbyy",
@@ -31,47 +53,37 @@ function Login() {
         )
       )
       .catch((err) => console.log(err));
-    //reset all state
-    resetName();
-    resetEmail();
+    /*-----------------------X------------------------*/
+
+    /*---------------reset all state------------------*/
     resetMessage();
-    resetPhone();
+    setPhone("");
+    setName("");
+    setEmail("");
+    /*-----------------------X------------------------*/
   };
 
   /*------------------Validation TextField phone number-------------------*/
   useEffect(() => {
     ValidatorForm.addValidationRule("isPhoneNumber", (value) => {
-      if (value.length > 10 || value.length < 10) {
-        return false;
+      if (value) {
+        if (value.length > 10 || value?.length < 10) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        return true;
       }
-      return true;
     });
   });
 
   useEffect(() => {
     ValidatorForm.addValidationRule("isNumber", (value) => {
-      if (value.match(/^[A-Za-z]+$/)) {
+      if (value?.match(/^[A-Za-z]+$/)) {
         return false;
       }
       return true;
-    });
-  });
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isLocalNumber", (value) => {
-      if (value.match("078") || value.match("079") || value.match("077")) {
-        return true;
-      }
-      return false;
-    });
-  });
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isGmail", (value) => {
-      if (value.match("@gmail")) {
-        return true;
-      }
-      return false;
     });
   });
   /*-----------------------------------X-----------------------------------*/
@@ -99,28 +111,28 @@ function Login() {
                 href="http://m.me/fayyado"
                 className={`${styles.contactBtns} mx-1 mt-3`}
               >
-                <i className="fab fa-facebook-messenger"></i>
+                <SiMessenger className={styles.socialContact} />
               </a>
 
               <a
                 href="https://wa.me/message/TDOPR6Z3RHN7L1"
                 className={`${styles.contactBtns} mx-1 mt-3`}
               >
-                <i className="fab fa-whatsapp"></i>
+                <ImWhatsapp className={styles.socialContact} />
               </a>
 
               <a
                 href="https://mail.google.com/mail/?view=cm&source=mailto&to=fayyadm524@gmail.com"
                 className={`${styles.contactBtns} mx-1 mt-3`}
               >
-                <i className="far fa-envelope"></i>
+                <FiMail className={styles.socialContact} />
               </a>
 
               <a
                 href="tel:0787731525"
                 className={`${styles.contactBtns} mx-1 mt-3`}
               >
-                <i className="fas fa-mobile-alt"></i>
+                <FaMobileAlt className={styles.socialContact} />
               </a>
             </div>
             {/*---------------------------X-------------------*/}
@@ -148,18 +160,11 @@ function Login() {
                   fullWidth
                   style={{ marginLeft: "1rem" }}
                   variant="standard"
-                  label="Your Phone "
-                  validators={[
-                    "required",
-                    "isNumber",
-                    "isPhoneNumber",
-                    "isLocalNumber",
-                  ]}
+                  label="Your Phone"
+                  validators={["isNumber", "isPhoneNumber"]}
                   errorMessages={[
-                    "Please Enter A Phone Number !!",
                     "Phone Number Must Be A Numbers !!",
                     "Phone Number Must Be (10 number) !!",
-                    "Phone Number Must Begin With (078 , 079, 077)",
                   ]}
                 />
               </div>
@@ -172,11 +177,8 @@ function Login() {
                   fullWidth
                   variant="standard"
                   label="Your Email Address"
-                  validators={["required", "isGmail"]}
-                  errorMessages={[
-                    "Please Enter A Valid Email !!",
-                    "Please Enter A { Gmail } Address !!",
-                  ]}
+                  validators={["required"]}
+                  errorMessages={["Please Enter A Valid Email !!"]}
                 />
               </div>
               <div className="form-outline mb-3">
@@ -195,7 +197,7 @@ function Login() {
               <div className="d-flex justify-content-between align-items-center"></div>
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button type="submit" className={styles.sendBtn}>
-                  Send <i className="fas fa-paper-plane"></i>
+                  Send <RiSendPlaneFill style={{ fontSize: "1.6rem" }} />
                 </button>
               </div>
             </ValidatorForm>
