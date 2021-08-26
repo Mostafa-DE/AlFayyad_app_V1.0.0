@@ -4,8 +4,6 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
@@ -26,7 +24,7 @@ function Register() {
   /*---------------------X---------------------*/
 
   useEffect(() => {
-    error && toast.error(error);
+    error && swal(error, "", "error");
   });
 
   /*--------------------state for input-------------------*/
@@ -101,22 +99,22 @@ function Register() {
 
     /*----------------validation password--------------------*/
     if (password !== passwordConf) {
-      toast.error("Passwords Don't Match, Please Try Again !!");
+      swal("Passwords Don't Match, Please Try Again !!", "", "error");
       return;
     }
 
     if (password.length < 8) {
-      toast.error("Password must be at least 8 character !!");
+      swal("Password must be at least 8 character !!", "", "error");
       return;
     }
 
     if (password.search(/[a-z]/i) === -1) {
-      toast.error("Password must contain at least one letter !!");
+      swal("Password must contain at least one letter !!", "", "error");
       return;
     }
 
     if (password.search(/[0-9]/) === -1) {
-      toast.error("Password must contain at least one number !!");
+      swal("Password must contain at least one number !!", "", "error");
       return;
     }
     /*----------------------------x--------------------------*/
@@ -131,7 +129,6 @@ function Register() {
 
   return (
     <section>
-      <ToastContainer position="top-center" style={{ width: "30rem" }} />
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">

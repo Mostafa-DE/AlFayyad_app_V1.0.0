@@ -112,7 +112,7 @@ function ShowPhoto() {
         {/*--------------tools Photo----------------*/}
         <div className="carousel-item">
           <img
-            src="./images/fayyad/tools_new.jpg"
+            src="./images/fayyad/tool2.jpg"
             className="d-block w-100"
             width={100}
             height={800}

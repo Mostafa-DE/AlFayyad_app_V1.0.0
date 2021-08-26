@@ -64,7 +64,7 @@ function SliderProducts({ product }) {
             {/*---------------quickview button--------------------*/}
             <ul className={styles.productLinks}>
               <Link href={`/products/${product.slug}`}>
-                <a className={styles.QuickViewBtn}>View Details</a>
+                <a className={styles.QuickViewBtn}>Quickview</a>
               </Link>
             </ul>
             {/*----------------------X----------------------------*/}

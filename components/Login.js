@@ -39,7 +39,8 @@ export default function Login() {
   /*---------------------------X-----------------------------*/
 
   /*---------------toast alert error in login----------------*/
-  useEffect(() => error && toast.error(error));
+  useEffect(() => error && swal(error, "", "error"));
+
   const handleClickFacebook = () => {
     swal(
       "Oh no 😔 , Something went wrong please try again later Or log in manual from the form below.",

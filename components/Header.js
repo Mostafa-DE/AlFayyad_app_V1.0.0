@@ -259,7 +259,7 @@ export default function ButtonAppBar() {
         <div className={styles.navContent}>
           <div className={styles.containerDrawerCart}>
             <Badge
-              badgeContent={cart.itemsCount}
+              badgeContent={cart.itemsCount ? cart.itemsCount : null}
               color="error"
               className={styles.badgCart}
             >
