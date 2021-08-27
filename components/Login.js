@@ -2,8 +2,6 @@ import styles from "@/styles/Login.module.css";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
@@ -59,7 +57,6 @@ export default function Login() {
 
   return (
     <section className={styles.main}>
-      <ToastContainer position="top-center" style={{ width: "30rem" }} />
       <div className={`container-fluid ${styles.hCustom}`}>
         <div className="row d-flex justify-content-center align-items-center h-100">
           {/*---------------image login-----------------*/}
