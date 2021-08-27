@@ -1,8 +1,6 @@
 import styles from "@/styles/Register.module.css";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { useEffect } from "react";
-import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useInputState from "@/Hooks/useInputState";
@@ -69,12 +67,12 @@ function Register() {
     if (router.pathname === "/account/register") {
       const timer = setTimeout(() => {
         swal({
-          title: "Hi There 👋",
+          title: "Hi there 👋, quick note",
           text: "Please make sure to enter a valid email and a valid phone, because we will contact you through them, any mistake may lead to delay or cancellation of orders.",
           icon: "warning",
         }).then(() => {
           swal({
-            title: "Almost Finish ",
+            title: "Password Validations ",
             text: "Please make sure enter a password greater than 8 character  and contain at least one number.",
             icon: "warning",
           });
@@ -84,7 +82,8 @@ function Register() {
         clearTimeout(timer);
       };
     }
-  }, []);
+  }, [router.pathname]);
+
   /*-----------------------------------X-----------------------------------*/
 
   /*------------------state for show password and hide---------------------*/

@@ -35,8 +35,9 @@ export default function ButtonAppBar() {
 
   /*------------state for scroll Down navbar-----------*/
   const [scrollState, setScrollState] = useState("top");
-  let listener = null;
+
   useEffect(() => {
+    let listener = null;
     listener = document.addEventListener("scroll", () => {
       var scrolled = document.scrollingElement.scrollTop;
       if (scrolled >= 100) {
@@ -259,9 +260,7 @@ export default function ButtonAppBar() {
         <div className={styles.navContent}>
           <div className={styles.containerDrawerCart}>
             <Badge
-              badgeContent={
-                cart.itemsCount.length !== null ? cart.itemsCount : 0
-              }
+              badgeContent={cart.itemsCount}
               color="error"
               className={styles.badgCart}
             >

@@ -12,6 +12,7 @@ import { useEffect } from "react";
 function Layout({ title, description, children }) {
   const router = useRouter();
 
+  /*---------n progress to show prgress for each click--------*/
   useEffect(() => {
     const onRouterChangeStart = () => {
       NProgress.start();
@@ -31,7 +32,8 @@ function Layout({ title, description, children }) {
       router.events.off("routeChangeComplete", onRouteChangeComplete);
       router.events.off("routeChangeError", onRouteChangeError);
     };
-  }, []);
+  });
+  /*-----------------------------x----------------------------*/
 
   return (
     <div>

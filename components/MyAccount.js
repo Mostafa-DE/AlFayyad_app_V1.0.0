@@ -16,8 +16,9 @@ function MyAccount({ account }) {
     " “ Enjoy in every moment in your life 😉 ”  ",
     ` “ Seize the days, ${account.username} 😉 ”  `,
   ];
-
-  const randWords = Math.floor(Math.random() * WelcomeArray.length);
+  const randWord = Math.floor(Math.random() * WelcomeArray.length);
+  const words = WelcomeArray[randWord];
+  console.log(words);
 
   return (
     <div className={`container ${styles.container}`}>
@@ -57,7 +58,7 @@ function MyAccount({ account }) {
                       className="text-secondary mb-1"
                       style={{ paddingBottom: "1rem" }}
                     >
-                      {WelcomeArray[randWords]}
+                      {words}
                     </p>
                     <Link href="/products/shopping-cart" passHref={true}>
                       <button className={styles.btn}>
