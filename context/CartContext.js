@@ -5,23 +5,31 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   /*---------------state for shopping cart---------------*/
 
-  const [cart, setCart] = useState({
+  const initialCart = {
     items: [],
     itemsCount: 0,
     cartTotal: 0,
-  });
+  };
+
+  const [cart, setCart] = useState(initialCart);
   /*-------------------------X---------------------------*/
 
   /*---------Save Product Cart in localStorage-----------*/
 
   useEffect(() => {
+    try {
+      const shoppingcart = window.localStorage.getItem("cart");
+      setCart(JSON.parse(shoppingcart));
+    } catch (err) {
+      console.log(err);
+      return initialCart;
+    }
+  }, []);
+
+  useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  useEffect(() => {
-    const shoppingcart = window.localStorage.getItem("cart");
-    setCart(JSON.parse(shoppingcart));
-  }, []);
   /*-----------------------X----------------------------*/
 
   /*---------function for calculate cart total----------*/
