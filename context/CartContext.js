@@ -16,9 +16,11 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     const shoppingcart = window.localStorage.getItem("cart");
+    /*this condition very important, if you don't put it you may face some problem with rendering the app*/
     if (shoppingcart !== null) {
       setCart(JSON.parse(shoppingcart));
     }
+    /*--------------------------------------------------X------------------------------------------------*/
   }, []);
 
   useEffect(() => {
