@@ -259,7 +259,11 @@ export default function ButtonAppBar() {
 
         <div className={styles.navContent}>
           <div className={styles.containerDrawerCart}>
-            <Badge badgeContent={0} color="error" className={styles.badgCart}>
+            <Badge
+              badgeContent={cart.itemsCount}
+              color="error"
+              className={styles.badgCart}
+            >
               <DrawerCart cart={cart} removeFromCart={removeFromCart} />
             </Badge>
             <Search />

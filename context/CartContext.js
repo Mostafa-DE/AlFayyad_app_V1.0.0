@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
   /*---------------state for shopping cart---------------*/
   const [cart, setCart] = useState({
     items: [],
-    // itemsCount: 0,
+    itemsCount: 0,
     cartTotal: 0,
   });
   /*-------------------------X---------------------------*/
@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
 
   /*---------function for calculate cart total----------*/
   const calculateCartTotal = (items) => {
-    // const itemsCount = items.reduce((prev, curr) => prev + curr.qty, 0);
+    const itemsCount = items.reduce((prev, curr) => prev + curr.qty, 0);
     const cartTotal = items.reduce(
       (prev, curr) => prev + curr.qty * curr.price,
       0
