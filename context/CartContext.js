@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
       (prev, curr) => prev + curr.qty * curr.price,
       0
     );
-    return { cartTotal };
+    return { itemsCount, cartTotal };
   };
   /*-----------------------X----------------------------*/
 
