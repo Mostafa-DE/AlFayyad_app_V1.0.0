@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   /*---------------state for shopping cart---------------*/
+
   const [cart, setCart] = useState({
     items: [],
     itemsCount: 0,
@@ -12,14 +13,15 @@ export const CartProvider = ({ children }) => {
   /*-------------------------X---------------------------*/
 
   /*---------Save Product Cart in localStorage-----------*/
-  // useEffect(() => {
-  //   const shoppingcart = window.localStorage.getItem("cart");
-  //   setCart(JSON.parse(shoppingcart));
-  // }, []);
 
-  // useEffect(() => {
-  //   window.localStorage.setItem("cart", JSON.stringify(cart));
-  // }, [cart]);
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    const shoppingcart = window.localStorage.getItem("cart");
+    setCart(JSON.parse(shoppingcart));
+  }, []);
   /*-----------------------X----------------------------*/
 
   /*---------function for calculate cart total----------*/
