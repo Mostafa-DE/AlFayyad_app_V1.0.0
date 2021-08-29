@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 
 export default function shoppingCartPage() {
   return (
-    <Layout title="Shopping Cart">
+    <Layout title="Your Shopping Cart | Al Fayyad Store">
       <ShoppingCart />
     </Layout>
   );

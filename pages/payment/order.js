@@ -5,7 +5,7 @@ import { API_URL } from "@/config/index";
 
 export default function orderPage({ account }) {
   return (
-    <Layout title="Order Informations">
+    <Layout title="Shipping Information | Al Fayyad Store">
       <ShippingAdress account={account} />
     </Layout>
   );

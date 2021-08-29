@@ -41,6 +41,7 @@ function Layout({ title, description, children }) {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#03c7ff" />
         <link rel="icon" href="/fayyad.svg" />
         <link
           rel="stylesheet"
@@ -66,9 +67,9 @@ function Layout({ title, description, children }) {
 
 /*------------default title in case i forget to add title-----------*/
 Layout.defaultProps = {
-  title: "AlFayyad_Home",
+  title: "Al Fayyad Store | Shop Online For Electronics, Tools, Gifts & More",
   description:
-    "We are Al Fayyad For European Products, we provide you with the best European products at reasonable prices and high quality, we strive to serve you at any time. don't hesitate to contact us at any time.",
+    "Al Fayyad Store | Shop Online for Electronics, Toys, Beauty, Tools & More. Exclusive Products. Same Day Delivery. Cash on Delivery.",
 };
 /*---------------------------------X--------------------------------*/
 

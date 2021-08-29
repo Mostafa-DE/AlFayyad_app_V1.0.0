@@ -187,7 +187,7 @@ export default function DrawerCart({ cart, removeFromCart }) {
 
                     <img
                       className={`img-fluid ${styles.uWalletImg}`}
-                      src="/images/fayyad/uWallet.bmp"
+                      src="/images/fayyad/uWallet.jpg"
                       onClick={alertErrorPayment}
                       alt="payment method"
                     />

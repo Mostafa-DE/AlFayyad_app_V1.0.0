@@ -4,7 +4,7 @@ import ProductDetails from "@/components/ProductDetails";
 
 export default function ProductPage({ product }) {
   return (
-    <Layout title="Product Overview">
+    <Layout title="Product Details | Al Fayyad Store">
       {product.map((product) => (
         <ProductDetails key={product.id} product={product} />
       ))}

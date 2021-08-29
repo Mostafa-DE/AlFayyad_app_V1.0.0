@@ -5,7 +5,7 @@ import { API_URL } from "@/config/index";
 
 export default function ContactPage({ account }) {
   return (
-    <Layout title="Contact Us">
+    <Layout title="Contact Us | Al Fayyad Store">
       <ContactForm account={account} />
     </Layout>
   );

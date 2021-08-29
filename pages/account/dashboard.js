@@ -4,7 +4,7 @@ import { API_URL } from "@/config/index";
 
 export default function dashboardPage({ orders }) {
   return (
-    <Layout title="Dashboard">
+    <Layout title="All Orders | Al Fayyad Store">
       <Dashboard key={orders.id} orders={orders} />
     </Layout>
   );

@@ -5,7 +5,7 @@ import MyAccount from "@/components/MyAccount";
 
 export default function myAccountPage({ account }) {
   return (
-    <Layout title="My Account">
+    <Layout title="Your Account Details | Al Fayyad Store">
       <MyAccount account={account} />
     </Layout>
   );

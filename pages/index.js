@@ -25,7 +25,7 @@ export default function HomePage({ products }) {
   /*---------------------------X------------------------------*/
 
   return (
-    <Layout title="AL Fayyad Store">
+    <Layout title="Al Fayyad Store | Shop Online For Electronics, Tools, Gifts & More">
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
       {showAlertCookie === true ? <CookieAlert /> : null}
 

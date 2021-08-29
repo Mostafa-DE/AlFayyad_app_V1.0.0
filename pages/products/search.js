@@ -10,7 +10,7 @@ import qs from "qs";
 export default function SearchPage({ products }) {
   const router = useRouter();
   return (
-    <Layout title="Products List">
+    <Layout title="Search Results | Al Fayyad Store">
       {/*---------------title text----------------*/}
       <h1 className={styles.h1Text}>
         Search Results for "{router.query.term}"

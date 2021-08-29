@@ -199,7 +199,7 @@ function ShoppingCart() {
                     <h4 className={styles.textImg}>Pay Through</h4>
                     <img
                       className={`img-fluid ${styles.uWalletImg}`}
-                      src="/images/fayyad/uWallet.bmp"
+                      src="/images/fayyad/uWallet.jpg"
                       onClick={alertErrorPayment}
                       alt="payment photo"
                     />

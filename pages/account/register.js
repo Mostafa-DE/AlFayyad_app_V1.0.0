@@ -3,7 +3,7 @@ import Register from "@/components/Register";
 
 export default function registerPage() {
   return (
-    <Layout title="Register">
+    <Layout title="Account__Register | Al Fayyad Store">
       <Register />
     </Layout>
   );
