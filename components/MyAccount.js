@@ -18,7 +18,6 @@ function MyAccount({ account }) {
   ];
   const randWord = Math.floor(Math.random() * WelcomeArray.length);
   const words = WelcomeArray[randWord];
-  console.log(words);
 
   return (
     <div className={`container ${styles.container}`}>

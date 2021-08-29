@@ -29,7 +29,6 @@ const loginApi = async (req, res) => {
       );
       /*----------X-----------*/
       res.status(200).json({ user: data.user });
-      return;
     } else {
       res
         .status(data.statusCode)
