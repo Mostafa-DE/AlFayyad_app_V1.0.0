@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
   /*---------------state for shopping cart---------------*/
   const [cart, setCart] = useState({
     items: [],
-    itemsCount: 0,
+    // itemsCount: 0,
     cartTotal: 0,
   });
   /*-------------------------X---------------------------*/
