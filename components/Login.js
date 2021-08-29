@@ -41,7 +41,7 @@ export default function Login() {
 
   const handleClickFacebook = () => {
     swal(
-      "Oh no 😔 , Something went wrong please try again later Or log in manual from the form below.",
+      "Oh no 😔 , Something went wrong please try again later Or sign in manual from the form below.",
       "",
       "error"
     );

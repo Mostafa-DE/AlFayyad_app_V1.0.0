@@ -57,7 +57,7 @@ function ShowPhoto() {
           </div>
           <div className="carousel-caption">
             <Link href="/products/products-list" passHref={true}>
-              <button className={styles.btnShopeNow}>Shope Now</button>
+              <button className={styles.btnShopeNow}>Shop Now</button>
             </Link>
           </div>
         </div>

@@ -72,8 +72,8 @@ function Register() {
           icon: "warning",
         }).then(() => {
           swal({
-            title: "Password Validations ",
-            text: "Please make sure enter a password greater than 8 character  and contain at least one number.",
+            title: "Validations ",
+            text: "Please make sure enter a unique username like (mostafa01) and email not used before and you must enter a password greater than 8 character  and contain at least one number.",
             icon: "warning",
           });
         });

@@ -11,7 +11,7 @@ function CategoryPhotoSm() {
           <p className={styles.paperText}>
             Tools & more <span>Find out</span>
           </p>
-          <a className={styles.linkShope}>Shope Now</a>
+          <a className={styles.linkShope}>Shop Now</a>
         </Paper>
         {/*--------------X----------------*/}
       </Link>
@@ -22,7 +22,7 @@ function CategoryPhotoSm() {
             Housecare <span>Find out</span>
           </p>
           <a href="#" className={styles.linkShope}>
-            Shope Now
+            Shop Now
           </a>
         </Paper>
         {/*----------------X--------------*/}

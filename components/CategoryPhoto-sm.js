@@ -11,7 +11,7 @@ function CategoryPhotoSm() {
           <p className={styles.paperText}>
             Kids Accessories <span>Find out</span>
           </p>
-          <a className={styles.linkShope}>Shope Now</a>
+          <a className={styles.linkShope}>Shop Now</a>
         </Paper>
         {/*------------------------X----------------------*/}
       </Link>
@@ -23,7 +23,7 @@ function CategoryPhotoSm() {
             Personal Care <span>Find out</span>
           </p>
           <a href="#" className={styles.linkShope}>
-            Shope Now
+            Shop Now
           </a>
         </Paper>
         {/*------------------------X----------------------*/}
@@ -35,7 +35,7 @@ function CategoryPhotoSm() {
             Kitchenware<span>Find out</span>
           </p>
           <a href="#" className={styles.linkShope}>
-            Shope Now
+            Shop Now
           </a>
         </Paper>
         {/*-----------------------X-----------------------*/}

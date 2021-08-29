@@ -78,7 +78,7 @@ export default function HomePage({ products }) {
             and special discounts {" :) "}
           </p>
           <Link href="/products/products-list" passHref={true}>
-            <button className={styles.btnShope}>Shope Now</button>
+            <button className={styles.btnShope}>Shop Now</button>
           </Link>
         </div>
       </div>
