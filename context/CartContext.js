@@ -24,12 +24,12 @@ export const CartProvider = ({ children }) => {
 
   /*---------function for calculate cart total----------*/
   const calculateCartTotal = (items) => {
-    const itemsCount = items.reduce((prev, curr) => prev + curr.qty, 0);
+    // const itemsCount = items.reduce((prev, curr) => prev + curr.qty, 0);
     const cartTotal = items.reduce(
       (prev, curr) => prev + curr.qty * curr.price,
       0
     );
-    return { itemsCount, cartTotal };
+    return { cartTotal };
   };
   /*-----------------------X----------------------------*/
 
