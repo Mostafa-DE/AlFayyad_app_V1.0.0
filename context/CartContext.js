@@ -12,14 +12,14 @@ export const CartProvider = ({ children }) => {
   /*-------------------------X---------------------------*/
 
   /*---------Save Product Cart in localStorage-----------*/
-  useEffect(() => {
-    const shoppingcart = window.localStorage.getItem("cart");
-    setCart(JSON.parse(shoppingcart));
-  }, []);
+  // useEffect(() => {
+  //   const shoppingcart = window.localStorage.getItem("cart");
+  //   setCart(JSON.parse(shoppingcart));
+  // }, []);
 
-  useEffect(() => {
-    window.localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   window.localStorage.setItem("cart", JSON.stringify(cart));
+  // }, [cart]);
   /*-----------------------X----------------------------*/
 
   /*---------function for calculate cart total----------*/
