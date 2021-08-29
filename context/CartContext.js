@@ -16,15 +16,15 @@ export const CartProvider = ({ children }) => {
 
   /*---------Save Product Cart in localStorage-----------*/
 
-  useEffect(() => {
-    try {
-      const shoppingcart = window.localStorage.getItem("cart");
-      setCart(JSON.parse(shoppingcart));
-    } catch (err) {
-      console.log(err);
-      return initialCart;
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     const shoppingcart = window.localStorage.getItem("cart");
+  //     setCart(JSON.parse(shoppingcart));
+  //   } catch (err) {
+  //     console.log(err);
+  //     return initialCart;
+  //   }
+  // }, []);
 
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
