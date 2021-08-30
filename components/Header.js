@@ -13,9 +13,7 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+
 import { FaTimes } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaDollyFlatbed } from "react-icons/fa";
@@ -26,6 +24,20 @@ import { MdAccountCircle } from "react-icons/md";
 import { IoIosContacts } from "react-icons/io";
 import { FaFileSignature } from "react-icons/fa";
 import { FaClipboardList } from "react-icons/fa";
+import { BsTools } from "react-icons/bs";
+import { FaWarehouse } from "react-icons/fa";
+import { FaChild } from "react-icons/fa";
+import { GiBeamsAura } from "react-icons/gi";
+import { MdKitchen } from "react-icons/md";
+import { GiStarFormation } from "react-icons/gi";
+
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+
+import Collapse from "@material-ui/core/Collapse";
+
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import StarBorder from "@material-ui/icons/StarBorder";
 
 export default function ButtonAppBar() {
   /* -----------Auth User context----------------- */
@@ -69,6 +81,14 @@ export default function ButtonAppBar() {
   };
   /*------------------------X-----------------------*/
 
+  /*----------state for products category-----------*/
+  const [openCategory, setOpenCategory] = useState(true);
+
+  const handleOpenCategory = () => {
+    setOpenCategory(!openCategory);
+  };
+  /*------------------------X------------------------*/
+
   /*-----------all items (link) in drawer (Menu)------------*/
   const drawer = (
     <div>
@@ -85,17 +105,64 @@ export default function ButtonAppBar() {
           </ListItem>
         </Link>
 
-        <Link href="/products/products-list" passHref={true}>
-          <ListItem button>
-            <ListItemText className={styles.listItemText}>
-              <div>
-                {" "}
-                <FaDollyFlatbed className={styles.icons} />
-                <span className={styles.menuText}>Products</span>
-              </div>
-            </ListItemText>
-          </ListItem>
-        </Link>
+        {/*--------------------Products Category---------------------*/}
+        <ListItem button onClick={handleOpenCategory}>
+          <ListItemIcon>
+            <GiStarFormation className={styles.icons} />
+            <span className={styles.menuText}>Products</span>
+          </ListItemIcon>
+
+          {openCategory ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openCategory} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link href="/category/tools">
+              <ListItem button>
+                <ListItemIcon>
+                  <BsTools className={styles.icons} />
+                  <span className={styles.menuText}>Tools & Equipment</span>
+                </ListItemIcon>
+              </ListItem>
+            </Link>
+
+            <Link href="/products/products-list">
+              <ListItem button>
+                <ListItemIcon>
+                  <FaWarehouse className={styles.icons} />
+                  <span className={styles.menuText}>Housecare</span>
+                </ListItemIcon>
+              </ListItem>
+            </Link>
+
+            <Link href="/products/products-list">
+              <ListItem button>
+                <ListItemIcon>
+                  <FaChild className={styles.icons} />
+                  <span className={styles.menuText}>Kids Accessories</span>
+                </ListItemIcon>
+              </ListItem>
+            </Link>
+
+            <Link href="/products/products-list">
+              <ListItem button>
+                <ListItemIcon>
+                  <GiBeamsAura className={styles.icons} />
+                  <span className={styles.menuText}>Personal Care</span>
+                </ListItemIcon>
+              </ListItem>
+            </Link>
+
+            <Link href="/products/products-list">
+              <ListItem button>
+                <ListItemIcon>
+                  <MdKitchen className={styles.icons} />
+                  <span className={styles.menuText}>Kitchenware</span>
+                </ListItemIcon>
+              </ListItem>
+            </Link>
+          </List>
+        </Collapse>
+        {/*----------------------------X-----------------------------*/}
 
         <Link href="/products/shopping-cart" passHref={true}>
           <ListItem button>
