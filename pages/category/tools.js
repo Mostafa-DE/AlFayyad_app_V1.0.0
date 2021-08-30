@@ -1,15 +1,15 @@
-import styles from "@/styles/ProductsList.module.css";
+import styles from "@/styles/ToolsProducts.module.css";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 
-export default function productsListPage({ products }) {
+export default function toolsPage({ toolsProducts }) {
   return (
-    <Layout title="All Products | Al Fayyad Store">
+    <Layout title="Tools & Equipment | Al Fayyad Store">
       {/*--------------title text-------------------*/}
       <h1 className={styles.h1Text}>
-        Products List
+        Tools & Equipment
         <span>
           <AiOutlineLine />
         </span>
@@ -18,7 +18,7 @@ export default function productsListPage({ products }) {
 
       {/*----------rendering all products-----------*/}
       <div className={styles.cardsProductsList}>
-        {products.map((product) => (
+        {toolsProducts.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
@@ -29,11 +29,11 @@ export default function productsListPage({ products }) {
 
 /*-------------get product & photos from strapi----------------*/
 export async function getServerSideProps() {
-  const res = await fetch(`${API_URL}/products`);
-  const products = await res.json();
+  const res = await fetch(`${API_URL}/tools`);
+  const toolsProducts = await res.json();
   return {
     props: {
-      products,
+      toolsProducts,
     },
   };
 }

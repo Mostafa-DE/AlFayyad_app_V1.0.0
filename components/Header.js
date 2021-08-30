@@ -13,6 +13,9 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { FaTimes } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaDollyFlatbed } from "react-icons/fa";
@@ -218,7 +221,18 @@ export default function ButtonAppBar() {
             </Link>
 
             <Link href="/products/products-list" passHref={true}>
-              <li>Products</li>
+              <li>
+                <div className={styles.dropDown}>
+                  <button className={styles.dropBtn}>Products</button>
+                  <div className={styles.dropDownContent}>
+                    <Link href="/category/tools">Tools & Equipment</Link>
+                    <Link href="/products/products-list">Housecare</Link>
+                    <Link href="/products/products-list">Kids Accessories</Link>
+                    <Link href="/products/products-list">Personal Care</Link>
+                    <Link href="/products/products-list">Kitchenware</Link>
+                  </div>
+                </div>
+              </li>
             </Link>
 
             {user ? (

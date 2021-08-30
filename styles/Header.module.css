@@ -126,6 +126,52 @@
   align-items: center;
 }
 
+/*-----dropDown button styles------*/
+.dropBtn {
+  background-color: transparent;
+  color: #03c7ff;
+  font-weight: 800;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.dropDown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropDownContent {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: all 0.1s ease-out;
+}
+
+.dropDownContent a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  letter-spacing: 0.5px;
+}
+
+.dropDownContent a:hover {
+  background-color: #f1f1f1;
+  color: #03c7ff;
+  transition: all 0.1s ease-in;
+}
+
+.dropDown:hover .dropDownContent {
+  display: block;
+}
+
+/*----------------X----------------*/
+
 @media (max-width: 1070px) {
   .menuIcon {
     display: block;

@@ -5,11 +5,11 @@ import Link from "next/link";
 function CategoryPhotoSm() {
   return (
     <div className={styles.container}>
-      <Link href="/products/products-list" passHref={true}>
+      <Link href="/category/tools" passHref={true}>
         {/*---------Photo Tools----------*/}
         <Paper className={`${styles.paperTools}`}>
           <p className={styles.paperText}>
-            Tools & more <span>Find out</span>
+            Tools & Equipment <span>Find out</span>
           </p>
           <a className={styles.linkShope}>Shop Now</a>
         </Paper>
