@@ -102,7 +102,7 @@ function ShowPhoto() {
             <p className={styles.childNeeds}>Everything your child needs</p>
           </div>
           <div className="carousel-caption">
-            <Link href="/products/products-list" passHref={true}>
+            <Link href="/category/kids" passHref={true}>
               <button className={styles.btnShopeNow}>Find Out</button>
             </Link>
           </div>
@@ -125,7 +125,7 @@ function ShowPhoto() {
             <p className={styles.everythingYouNeed}>Everything you need</p>
           </div>
           <div className="carousel-caption">
-            <Link href="/products/products-list" passHref={true}>
+            <Link href="/category/tools" passHref={true}>
               <button className={styles.btnShopeNow}>Find Out</button>
             </Link>
           </div>

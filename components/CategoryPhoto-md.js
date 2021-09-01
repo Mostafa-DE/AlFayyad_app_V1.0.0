@@ -15,11 +15,11 @@ function CategoryPhotoSm() {
         </Paper>
         {/*--------------X----------------*/}
       </Link>
-      <Link href="/products/products-list" passHref={true}>
+      <Link href="/category/houseware" passHref={true}>
         {/*---------Photo Housecare-------*/}
         <Paper className={`${styles.paperHouse}`}>
           <p className={styles.paperText}>
-            Housecare <span>Find out</span>
+            Houseware <span>Find out</span>
           </p>
           <a href="#" className={styles.linkShope}>
             Shop Now

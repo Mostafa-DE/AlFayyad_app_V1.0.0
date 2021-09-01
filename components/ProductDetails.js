@@ -170,15 +170,17 @@ function TestProductDetails({ product }) {
               </tbody>
             </table>
           </div>
-
-          <div className="table-responsive mb-2">
-            <div>
-              <h4 className={styles.additionalInfoText}>
-                Additional Informations
-              </h4>
+          {product.additionalInfo ? (
+            <div className="table-responsive mb-2">
+              <div>
+                <h4 className={styles.additionalInfoText}>
+                  Additional Informations
+                </h4>
+              </div>
+              <p className="pt-1">{product.additionalInfo}</p>
             </div>
-            <p className="pt-1">{product.additionalInfo}</p>
-          </div>
+          ) : null}
+
           <div className={styles.containerBtn}>
             <button onClick={AddToCart} className={styles.addToCart}>
               Add to cart <HiShoppingCart className={styles.cartIcon} />

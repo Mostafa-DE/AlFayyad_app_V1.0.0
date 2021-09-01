@@ -16,7 +16,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import { FaTimes } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
-import { FaDollyFlatbed } from "react-icons/fa";
+
 import { FaShoppingCart } from "react-icons/fa";
 import { GoSignOut } from "react-icons/go";
 import { GoSignIn } from "react-icons/go";
@@ -37,7 +37,6 @@ import Collapse from "@material-ui/core/Collapse";
 
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
 
 export default function ButtonAppBar() {
   /* -----------Auth User context----------------- */
@@ -116,7 +115,7 @@ export default function ButtonAppBar() {
         </ListItem>
         <Collapse in={openCategory} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <Link href="/category/tools">
+            <Link href="/category/tools" passHref={true}>
               <ListItem button>
                 <ListItemIcon>
                   <BsTools className={styles.icons} />
@@ -125,7 +124,7 @@ export default function ButtonAppBar() {
               </ListItem>
             </Link>
 
-            <Link href="/products/products-list">
+            <Link href="/category/houseware" passHref={true}>
               <ListItem button>
                 <ListItemIcon>
                   <FaWarehouse className={styles.icons} />
@@ -134,7 +133,7 @@ export default function ButtonAppBar() {
               </ListItem>
             </Link>
 
-            <Link href="/products/products-list">
+            <Link href="/category/kids" passHref={true}>
               <ListItem button>
                 <ListItemIcon>
                   <FaChild className={styles.icons} />
@@ -143,7 +142,7 @@ export default function ButtonAppBar() {
               </ListItem>
             </Link>
 
-            <Link href="/products/products-list">
+            <Link href="/category/personal-care" passHref={true}>
               <ListItem button>
                 <ListItemIcon>
                   <GiBeamsAura className={styles.icons} />
@@ -152,7 +151,7 @@ export default function ButtonAppBar() {
               </ListItem>
             </Link>
 
-            <Link href="/products/products-list">
+            <Link href="/category/houseware" passHref={true}>
               <ListItem button>
                 <ListItemIcon>
                   <MdKitchen className={styles.icons} />
@@ -292,11 +291,21 @@ export default function ButtonAppBar() {
                 <div className={styles.dropDown}>
                   <button className={styles.dropBtn}>Products</button>
                   <div className={styles.dropDownContent}>
-                    <Link href="/category/tools">Tools & Equipment</Link>
-                    <Link href="/products/products-list">Housecare</Link>
-                    <Link href="/products/products-list">Kids Accessories</Link>
-                    <Link href="/products/products-list">Personal Care</Link>
-                    <Link href="/products/products-list">Kitchenware</Link>
+                    <Link href="/category/tools" passHref={true}>
+                      Tools & Equipment
+                    </Link>
+                    <Link href="/category/houseware" passHref={true}>
+                      Houseware
+                    </Link>
+                    <Link href="/category/kids" passHref={true}>
+                      Kids Accessories
+                    </Link>
+                    <Link href="/category/personal-care" passHref={true}>
+                      Personal Care
+                    </Link>
+                    <Link href="/category/houseware" passHref={true}>
+                      Kitchenware
+                    </Link>
                   </div>
                 </div>
               </li>
