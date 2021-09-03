@@ -1,16 +1,69 @@
 import styles from "@/styles/ContactForm.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useInputState from "@/Hooks/useInputState";
 import emailjs from "emailjs-com";
 import swal from "sweetalert";
+import { LanguageContext } from "@/context/LanguageContext";
 import { SiMessenger } from "react-icons/si";
 import { ImWhatsapp } from "react-icons/im";
 import { FiMail } from "react-icons/fi";
 import { FaMobileAlt } from "react-icons/fa";
 import { RiSendPlaneFill } from "react-icons/ri";
 
+const languageWords = {
+  english: {
+    emailLanguage: "Email Address",
+    nameLanguage: "Full Name",
+    phoneLanguage: "Phone Number",
+    messageLanguage: "What's on your mind 🙂",
+    titleLanguge: "Contact Us with",
+    sendLanguge: "Send",
+    EmailValidationRequiredLanguage: "Please Enter A Valid Email !!",
+    IsEmailValidationLanguage:
+      "Email must contain ( @ ) and end with ( .com ) ",
+    NameValidationLanguge: "Please Enter Your Name !!",
+    MessageValidationLanguge: "Please let us know what's on your mind 🙂",
+    PhoneValidationIsNumberLanguage: "Phone Number Must Be A Numbers!!",
+    PhoneValidationIsPhoneNumberLanguage: "Phone Number Must Be (10 number) !!",
+  },
+  arabic: {
+    emailLanguage: "البريد الإلكتروني",
+    nameLanguage: "الإسم الكامل",
+    phoneLanguage: "رقم الهاتف",
+    messageLanguage: "اخبرنا كيف نستطيع مساعدتك 🙂 ؟؟",
+    titleLanguge: "تواصل معنا ",
+    sendLanguge: "ارسال",
+    EmailValidationRequiredLanguage: "!! الرجاء إدخال بريد إلكتروني",
+    IsEmailValidationLanguage:
+      " ( .com ) البريد الإلكتروني يجب أن يحتوي على ( @ ) وينتهي ب ",
+    NameValidationLanguage: "!! الرجاء إدخال إسمك الكامل",
+    MessageValidationLanguge:
+      "🙂 يرجى إخبارنا بالطريقة التي يمكننا مساعدتك بها",
+    PhoneValidationIsNumberLanguage: "!! رقم الهاتف يجب أن يكون من أرقام فقط",
+    PhoneValidationIsPhoneNumberLanguage:
+      "!! رقم الهاتف يجب أن يتكون من 10 أرقام فقط",
+  },
+};
+
 function Login({ account }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    emailLanguage,
+    nameLanguage,
+    phoneLanguage,
+    messageLanguage,
+    titleLanguge,
+    sendLanguge,
+    EmailValidationRequiredLanguage,
+    IsEmailValidationLanguage,
+    NameValidationLanguage,
+    MessageValidationLanguge,
+    PhoneValidationIsNumberLanguage,
+    PhoneValidationIsPhoneNumberLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
   /*----------------------State for form---------------------*/
   const [name, setName] = useState(
     `${account.username === undefined ? "" : account.username}`
@@ -86,6 +139,15 @@ function Login({ account }) {
       return true;
     });
   });
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isEmail", (value) => {
+      if (value.match(".com") && value.match("@")) {
+        return true;
+      }
+      return false;
+    });
+  });
   /*-----------------------------------X-----------------------------------*/
 
   return (
@@ -105,7 +167,7 @@ function Login({ account }) {
             {/*---------------------social contact------------*/}
             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p className="lead fw-normal mt-3 mb-0 me-3 text-center">
-                Contact Us with
+                {titleLanguge}
               </p>
               <a
                 href="http://m.me/fayyado"
@@ -148,9 +210,9 @@ function Login({ account }) {
                   value={name}
                   name="name"
                   variant="standard"
-                  label="Your Name"
+                  label={nameLanguage}
                   validators={["required"]}
-                  errorMessages={["Please Enter Your Name !!"]}
+                  errorMessages={[NameValidationLanguage]}
                 />
                 <TextValidator
                   type="text"
@@ -160,11 +222,11 @@ function Login({ account }) {
                   fullWidth
                   style={{ marginLeft: "1rem" }}
                   variant="standard"
-                  label="Your Phone"
+                  label={phoneLanguage}
                   validators={["isNumber", "isPhoneNumber"]}
                   errorMessages={[
-                    "Phone Number Must Be A Numbers !!",
-                    "Phone Number Must Be (10 number) !!",
+                    PhoneValidationIsNumberLanguage,
+                    PhoneValidationIsPhoneNumberLanguage,
                   ]}
                 />
               </div>
@@ -176,9 +238,12 @@ function Login({ account }) {
                   name="email"
                   fullWidth
                   variant="standard"
-                  label="Your Email Address"
-                  validators={["required"]}
-                  errorMessages={["Please Enter A Valid Email !!"]}
+                  label={emailLanguage}
+                  validators={["required", "isEmail"]}
+                  errorMessages={[
+                    EmailValidationRequiredLanguage,
+                    IsEmailValidationLanguage,
+                  ]}
                 />
               </div>
               <div className="form-outline mb-3">
@@ -189,15 +254,16 @@ function Login({ account }) {
                   name="message"
                   fullWidth
                   variant="standard"
-                  label="What's on your mind 🙂"
+                  label={messageLanguage}
                   validators={["required"]}
-                  errorMessages={["Please let us know what's on your mind :)"]}
+                  errorMessages={[MessageValidationLanguge]}
                 />
               </div>
               <div className="d-flex justify-content-between align-items-center"></div>
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button type="submit" className={styles.sendBtn}>
-                  Send <RiSendPlaneFill style={{ fontSize: "1.6rem" }} />
+                  {sendLanguge}{" "}
+                  <RiSendPlaneFill style={{ fontSize: "1.6rem" }} />
                 </button>
               </div>
             </ValidatorForm>

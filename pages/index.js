@@ -1,8 +1,9 @@
 import styles from "@/styles/Home.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { API_URL } from "@/config/index";
 import { breakPoints } from "@/components/SliderProducts";
 import { AiOutlineLine } from "react-icons/ai";
+import { LanguageContext } from "@/context/LanguageContext";
 import Layout from "@/components/Layout";
 import PropertiesOurShop from "@/components/PropertiesOurShop";
 import CategoryPhotoMd from "@/components/CategoryPhoto-md";
@@ -14,7 +15,40 @@ import SubscripeForm from "@/components/SubscripeForm";
 import PhotoBrand from "@/components/PhotoBrand";
 import CookieAlert from "@/components/CookieAlert";
 
+const languageWords = {
+  english: {
+    ProductsViewLanguage: "Products Overview",
+    ViewAllProductsLanguage: "View All Products",
+    TitleOfferLanguage: "Limited Offers 50% OFF",
+    TitleDealLanguage: "Seize the opportunity now",
+    TextDescriptionLanguage:
+      "Shopping with us to find the best European products, the best prices and special discounts :)",
+    shopButtonLanguage: "Shop Now",
+  },
+  arabic: {
+    ProductsViewLanguage: "نظرة عامة على المنتجات",
+    ViewAllProductsLanguage: "مشاهدة جميع المنتجات",
+    TitleOfferLanguage: "خصومات تصل إلى %50 ",
+    TitleDealLanguage: "إغتنم الفرصة الآن",
+    TextDescriptionLanguage:
+      "تسوق معنا للعثور على أفضل المنتجات الأوروبية وأفضل الأسعار والخصومات المميزة",
+    shopButtonLanguage: "تسوق الآن",
+  },
+};
+
 export default function HomePage({ products }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    ProductsViewLanguage,
+    ViewAllProductsLanguage,
+    TitleOfferLanguage,
+    TitleDealLanguage,
+    TextDescriptionLanguage,
+    shopButtonLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*--------state to show alert cookie for one time----------*/
   const [showAlertCookie, setShowAlertCookie] = useState(false);
   useEffect(() => {
@@ -36,7 +70,7 @@ export default function HomePage({ products }) {
 
       {/*-----------slider products-----------*/}
       <h1 className={styles.textOverview}>
-        Store Overview
+        {ProductsViewLanguage}
         <span>
           <AiOutlineLine />
         </span>
@@ -59,7 +93,7 @@ export default function HomePage({ products }) {
       {/*-------button view all product-------*/}
       <div className={styles.divBtn}>
         <Link href="/products/products-list" passHref={true}>
-          <a className={styles.btnProductsList}>View All Products</a>
+          <a className={styles.btnProductsList}> {ViewAllProductsLanguage} </a>
         </Link>
       </div>
       {/*-------------------X-----------------*/}
@@ -71,14 +105,11 @@ export default function HomePage({ products }) {
       {/*-------------fixed photo-------------*/}
       <div className={styles.fixedImage}>
         <div className={styles.containerBoxOffer}>
-          <p className={styles.limitedOfferText}>Limited Offers 10% OFF</p>
-          <h2>Week Deal</h2>
-          <p>
-            Shopping with us to find the best European products, the best prices
-            and special discounts {" :) "}
-          </p>
+          <p className={styles.limitedOfferText}> {TitleOfferLanguage} </p>
+          <h2> {TitleDealLanguage} </h2>
+          <p>{TextDescriptionLanguage}</p>
           <Link href="/products/products-list" passHref={true}>
-            <button className={styles.btnShope}>Shop Now</button>
+            <button className={styles.btnShope}> {shopButtonLanguage} </button>
           </Link>
         </div>
       </div>

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import ShowPhoto from "./ShowPhoto";
 import ButtonScrollToTop from "./ButtonScrollToTop";
 import ButtonWhatsapp from "./ButtonWhatsapp";
+import ButtonTranslate from "./ButtonTranslate";
 import NProgress from "nprogress";
 import { useEffect } from "react";
 
@@ -61,6 +62,7 @@ function Layout({ title, description, children }) {
       <Footer />
       <ButtonWhatsapp />
       <ButtonScrollToTop />
+      <ButtonTranslate />
     </div>
   );
 }

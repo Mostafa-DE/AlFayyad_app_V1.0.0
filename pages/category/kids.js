@@ -1,15 +1,31 @@
 import styles from "@/styles/Kids.module.css";
 import Layout from "@/components/Layout";
+import { useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
 import { API_URL } from "@/config/index";
 import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 
+const languageWords = {
+  english: {
+    TitlePageLanguage: "Kids Accessories",
+  },
+  arabic: {
+    TitlePageLanguage: "إكسسوارات الأطفال",
+  },
+};
+
 export default function KidsPage({ kidsProducts }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const { TitlePageLanguage } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   return (
     <Layout title="Kids Accessories | Al Fayyad Store">
       {/*--------------title text-------------------*/}
       <h1 className={styles.h1Text}>
-        Kids Accessories
+        {TitlePageLanguage}
         <span>
           <AiOutlineLine />
         </span>

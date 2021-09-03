@@ -80,6 +80,9 @@
   .inputEmail {
     width: 20rem;
   }
+  .main {
+    height: 28rem;
+  }
 }
 
 @media (max-width: 355px) {

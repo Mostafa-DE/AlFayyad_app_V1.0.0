@@ -1,7 +1,8 @@
 import styles from "@/styles/DrawerCart.module.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { LanguageContext } from "@/context/LanguageContext";
 import { AiOutlineLine } from "react-icons/ai";
 import { FaTimes } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
@@ -18,34 +19,78 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
 import swal from "sweetalert";
 
+const languageWords = {
+  english: {
+    TextEmptyCartLanguage: "Your Cart Is Empty 😔",
+    TextAddProductsLanguage: "Add Some Products To Show Here",
+    ViewCartBtnLanguage: "View Cart",
+    CheckoutBtnLanguage: "Checkout",
+    TitleAlertCheckoutLanguage: "Oh No 😔",
+    TextAlertCheckoutLanguage:
+      "Your cart is empty add some products to continue",
+    TitlePaymentMethodsLanguage:
+      "Please Choose One Of The Following Payment Methods",
+    TextAlertUwalletLanguage:
+      "Sorry 😔 this option will be available soon, try with cash method.",
+    CashPaymentLanguage: "Cash Payment",
+    ThroughPaymentLanguage: "Pay Through",
+  },
+  arabic: {
+    TextEmptyCartLanguage: "😔 عربة التسوق الخاصة بك فارغة",
+    TextAddProductsLanguage: "أضف بعض المنتجات لتظهر هنا",
+    ViewCartBtnLanguage: "عربة التسوق",
+    CheckoutBtnLanguage: "اطلب الآن",
+    TitleAlertCheckoutLanguage: "😔 نعتذر",
+    TextAlertCheckoutLanguage:
+      "عربة التسوق الخاصة بك فارغة أضف بعض المنتجات للمتابعة",
+    TitlePaymentMethodsLanguage: "الرجاء اختيار إحدى طرق الدفع التالية",
+    TextAlertUwalletLanguage:
+      "عذراً 😔 ، سيتوفر هذا الخيار قريبًا ، جرب الطريقة النقدية",
+    CashPaymentLanguage: "الدفع نقداً",
+    ThroughPaymentLanguage: "الدفع من خلال",
+  },
+};
+
 /*------------------------transition for drawer--------------------*/
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 /*-----------------------------------X-----------------------------*/
 
-/*-------------------Alert(error) when cart list empty-------------*/
-const alertError = () => {
-  swal("Oh No 😔", "Your cart is empty add some products to continue", "error");
-};
-/*----------------------------------X------------------------------*/
-
-/*------------error for uWallet payment method------------*/
-const alertErrorPayment = () => {
-  swal(
-    "Sorry 😔 this option will be available soon, try with cash method.",
-    "",
-    "error"
-  );
-};
-/*------------------------------X-------------------------*/
-
 export default function DrawerCart({ cart, removeFromCart }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    TextEmptyCartLanguage,
+    TextAddProductsLanguage,
+    ViewCartBtnLanguage,
+    CheckoutBtnLanguage,
+    TitleAlertCheckoutLanguage,
+    TextAlertCheckoutLanguage,
+    TitlePaymentMethodsLanguage,
+    TextAlertUwalletLanguage,
+    CashPaymentLanguage,
+    ThroughPaymentLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*---------------Context shopping cart------------*/
   const { items = [] } = cart;
   const cartTotal = cart.cartTotal;
   const totalAmount = cartTotal.toFixed(2);
   /*--------------------------X---------------------*/
+
+  /*-------------------Alert(error) when cart list empty-------------*/
+  const alertError = () => {
+    swal(TitleAlertCheckoutLanguage, TextAlertCheckoutLanguage, "error");
+  };
+  /*----------------------------------X------------------------------*/
+
+  /*------------error for uWallet payment method------------*/
+  const alertErrorPayment = () => {
+    swal(TextAlertUwalletLanguage, "", "error");
+  };
+  /*------------------------------X-------------------------*/
 
   /*---state for handle drawer cart (open/close)----*/
   const [open, setOpen] = useState(false);
@@ -92,8 +137,8 @@ export default function DrawerCart({ cart, removeFromCart }) {
         {/*-------table show all product in cart list--------*/}
         {items.length === 0 ? (
           <p className={styles.cartEmpty}>
-            <span>Your Cart Is Empty 😔</span>
-            <br /> Add some products to show here
+            <span> {TextEmptyCartLanguage} </span>
+            <br /> {TextAddProductsLanguage}
           </p>
         ) : null}
         <TableContainer style={{ maxWidth: "320px" }}>
@@ -138,15 +183,15 @@ export default function DrawerCart({ cart, removeFromCart }) {
           {/*----------Button (view cart) & (checkout)----------*/}
           <div className={styles.containerBtn}>
             <Link href="/products/shopping-cart" passHref={true}>
-              <button className={styles.btn}>View Cart</button>
+              <button className={styles.btn}> {ViewCartBtnLanguage} </button>
             </Link>
             {items.length === 0 ? (
               <button className={styles.btn} onClick={alertError}>
-                Checkout
+                {CheckoutBtnLanguage}
               </button>
             ) : (
               <button className={styles.btn} onClick={handleClickOpen}>
-                Checkout
+                {CheckoutBtnLanguage}
               </button>
             )}
           </div>
@@ -166,14 +211,14 @@ export default function DrawerCart({ cart, removeFromCart }) {
             <DialogContent className={styles.dialogContent}>
               <div className={styles.main}>
                 <h1 className={styles.h1Text}>
-                  Please choose one of the following payment methods
+                  {TitlePaymentMethodsLanguage}
                   <span>
                     <AiOutlineLine />
                   </span>
                 </h1>
                 <div className={styles.container}>
                   <div className={styles.ContainerCash}>
-                    <h4 className={styles.textImg}>Cash Payment</h4>
+                    <h4 className={styles.textImg}> {CashPaymentLanguage} </h4>
                     <Link href="/payment/order" passHref={true}>
                       <img
                         className={`img-fluid ${styles.cashImg}`}
@@ -183,7 +228,10 @@ export default function DrawerCart({ cart, removeFromCart }) {
                     </Link>
                   </div>
                   <div className={styles.uWalletContainerImg}>
-                    <h4 className={styles.textImg}>Pay Through</h4>
+                    <h4 className={styles.textImg}>
+                      {" "}
+                      {ThroughPaymentLanguage}{" "}
+                    </h4>
 
                     <img
                       className={`img-fluid ${styles.uWalletImg}`}

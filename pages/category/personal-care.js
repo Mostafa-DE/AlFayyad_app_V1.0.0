@@ -1,15 +1,31 @@
 import styles from "@/styles/personalCare.module.css";
 import Layout from "@/components/Layout";
+import { useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
 import { API_URL } from "@/config/index";
 import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 
-export default function personalCarePage({ personalCareProducts }) {
+const languageWords = {
+  english: {
+    TitlePageLanguage: "Personal Care",
+  },
+  arabic: {
+    TitlePageLanguage: "العناية الشخصية",
+  },
+};
+
+export default function PersonalCarePage({ personalCareProducts }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const { TitlePageLanguage } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   return (
     <Layout title="Personal Care | Al Fayyad Store">
       {/*--------------title text-------------------*/}
       <h1 className={styles.h1Text}>
-        Personal Care
+        {TitlePageLanguage}
         <span>
           <AiOutlineLine />
         </span>

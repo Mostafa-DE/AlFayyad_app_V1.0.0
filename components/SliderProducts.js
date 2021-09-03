@@ -1,12 +1,27 @@
 import styles from "@/styles/SliderProducts.module.css";
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { CartContext } from "@/context/CartContext";
 import RatingStar from "./RatingStar";
 import Link from "next/link";
 import swal from "sweetalert";
 import { FaCartPlus } from "react-icons/fa";
+import { LanguageContext } from "@/context/LanguageContext";
+
+const languageWords = {
+  english: {
+    QuickViewBtnLanguage: "Quickview",
+    AddToCartBtnLanguage: "Add To Cart",
+    AlertTitleAddedToCartLanguage: "Awesome 😉",
+    AlertTextAddedToCartLanguage: "This product has been added to your cart",
+  },
+  arabic: {
+    QuickViewBtnLanguage: "التفاصيل",
+    AddToCartBtnLanguage: "أضف إلى السلة",
+    AlertTitleAddedToCartLanguage: "😉 رائع",
+    AlertTextAddedToCartLanguage: "تم إضافة العنصر إلى سلة التسوق الخاصة بك",
+  },
+};
 
 /*----------break point for responsive slider----------*/
 export const breakPoints = [
@@ -18,6 +33,16 @@ export const breakPoints = [
 /*-------------------------X---------------------------*/
 
 function SliderProducts({ product }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    QuickViewBtnLanguage,
+    AddToCartBtnLanguage,
+    AlertTitleAddedToCartLanguage,
+    AlertTextAddedToCartLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /* -----------Cart Shopping context----------------- */
   const { addToCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
@@ -25,7 +50,11 @@ function SliderProducts({ product }) {
   /*----------alert when add product to cart-----------*/
   const AddToCart = async () => {
     await addToCart(product);
-    swal("Awesome 😉", "This product has been added to your cart", "success");
+    swal(
+      AlertTitleAddedToCartLanguage,
+      AlertTextAddedToCartLanguage,
+      "success"
+    );
   };
   /*-------------------------X-------------------------*/
 
@@ -64,7 +93,7 @@ function SliderProducts({ product }) {
             {/*---------------quickview button--------------------*/}
             <ul className={styles.productLinks}>
               <Link href={`/products/${product.slug}`}>
-                <a className={styles.QuickViewBtn}>Quickview</a>
+                <a className={styles.QuickViewBtn}> {QuickViewBtnLanguage} </a>
               </Link>
             </ul>
             {/*----------------------X----------------------------*/}
@@ -96,7 +125,7 @@ function SliderProducts({ product }) {
 
             {/*--------------button add to cart-------------------*/}
             <button onClick={AddToCart} className={styles.addToCart}>
-              add to cart{" "}
+              {AddToCartBtnLanguage}{" "}
               <FaCartPlus
                 style={{ fontSize: "1.1rem", margin: "0 0 0.2rem 0" }}
               />

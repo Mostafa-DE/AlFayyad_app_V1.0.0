@@ -1,7 +1,35 @@
 import styles from "@/styles/CookieAlert.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
+
+const languageWords = {
+  english: {
+    QuestionLanguage: "Do you like cookies ??",
+    TextDescriptionLanguage:
+      "We use cookies in this store to ensure you get the best experience on our store.",
+    AgreeBtnLanguage: "I Agree",
+    LearnMoreBtnLanguage: "Learn More",
+  },
+  arabic: {
+    QuestionLanguage: "؟؟ Cookies هل تحب ال",
+    TextDescriptionLanguage:
+      "نحن نستخدم ملفات تعريف الارتباط في هذا المتجر لضمان حصولك على أفضل تجربة في متجرنا",
+    AgreeBtnLanguage: "موافق",
+    LearnMoreBtnLanguage: "إفرأ المزيد",
+  },
+};
 
 function CookieAlert() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    QuestionLanguage,
+    TextDescriptionLanguage,
+    AgreeBtnLanguage,
+    LearnMoreBtnLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   const [isCookieShow, setisCookieShow] = useState(true);
   const handleCloseCookieShow = () => {
     setisCookieShow(false);
@@ -17,21 +45,18 @@ function CookieAlert() {
               alt="cookie image"
               width={80}
             />
-            <h6 className={styles.title}>Do you like cookies ??</h6>
-            <p className={styles.textExplain}>
-              We use cookies in this store to ensure you get the best experience
-              on our store.
-            </p>
+            <h6 className={styles.title}> {QuestionLanguage} </h6>
+            <p className={styles.textExplain}>{TextDescriptionLanguage}</p>
           </div>
           <div className={styles.containerBtns}>
             <a
               href="https://www.allaboutcookies.org/"
               className={styles.linkMore}
             >
-              Learn More
+              {LearnMoreBtnLanguage}
             </a>
             <button className={styles.btnAgree} onClick={handleCloseCookieShow}>
-              I Agree
+              {AgreeBtnLanguage}
             </button>
           </div>
         </div>

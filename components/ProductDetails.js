@@ -1,11 +1,49 @@
 import styles from "@/styles/ProductDetails.module.css";
 import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import Link from "next/link";
 import swal from "sweetalert";
 import { HiShoppingCart } from "react-icons/hi";
 
+const languageWords = {
+  english: {
+    DescriptionLanguage: "Description",
+    DimensionsLanguage: "Dimensions",
+    WeightLanguage: "Weight",
+    AdditionalInformationsLanguage: "Additional Informations",
+    AddToCartBtnLanguage: "Add To Cart",
+    ReturnProductsBtnLanguage: "Return To Products List",
+    AlertTitleAddedToCartLanguage: "Awesome 😉",
+    AlertTextAddedToCartLanguage: "This product has been added to your cart",
+  },
+  arabic: {
+    DescriptionLanguage: "الوصف",
+    DimensionsLanguage: "الأبعاد",
+    WeightLanguage: "الوزن",
+    AdditionalInformationsLanguage: "معلومات إضافية",
+    AddToCartBtnLanguage: "أضف إلى السلة",
+    ReturnProductsBtnLanguage: "الرجوع إلى المنتجات",
+    AlertTitleAddedToCartLanguage: "😉 رائع",
+    AlertTextAddedToCartLanguage: "تم إضافة العنصر إلى سلة التسوق الخاصة بك",
+  },
+};
+
 function TestProductDetails({ product }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    DescriptionLanguage,
+    DimensionsLanguage,
+    WeightLanguage,
+    AdditionalInformationsLanguage,
+    AddToCartBtnLanguage,
+    ReturnProductsBtnLanguage,
+    AlertTitleAddedToCartLanguage,
+    AlertTextAddedToCartLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /* -----------Cart Shopping context----------------- */
   const { addToCart } = useContext(CartContext);
   /* -----------------------X------------------------- */
@@ -13,7 +51,11 @@ function TestProductDetails({ product }) {
   /*-----------alert when add product in cart----------*/
   const AddToCart = async () => {
     await addToCart(product);
-    swal("Awesome 😉", "This product has been added to your cart", "success");
+    swal(
+      AlertTitleAddedToCartLanguage,
+      AlertTextAddedToCartLanguage,
+      "success"
+    );
   };
   /*------------------------X--------------------------*/
 
@@ -91,7 +133,7 @@ function TestProductDetails({ product }) {
                         ) : null}
                         {/*--------------------X--------------------*/}
 
-                        {/*--------------fourth Photo----------------*/}
+                        {/*--------------fifth Photo----------------*/}
                         {product.images[4] ? (
                           <div className="carousel-item">
                             <img
@@ -145,7 +187,7 @@ function TestProductDetails({ product }) {
           </div>
         </div>
         <div className="col-md-6">
-          <h4 className={styles.descriptionText}>Description</h4>
+          <h4 className={styles.descriptionText}> {DescriptionLanguage} </h4>
           <p className="">{product.description}</p>
           <div className="table-responsive" style={{ margin: "0 0 1.5rem 0" }}>
             <table className="table table-sm table-borderless mb-0">
@@ -153,7 +195,7 @@ function TestProductDetails({ product }) {
                 {product.dimension ? (
                   <tr>
                     <th className="pl-0 w-25" scope="row">
-                      <strong>Dimensions</strong>
+                      <strong> {DimensionsLanguage} </strong>
                     </th>
                     <td>{product.dimension}</td>
                   </tr>
@@ -162,7 +204,7 @@ function TestProductDetails({ product }) {
                 {product.weight ? (
                   <tr>
                     <th className="pl-0 w-25" scope="row">
-                      <strong>Weight</strong>
+                      <strong> {WeightLanguage} </strong>
                     </th>
                     <td>{product.weight}</td>
                   </tr>
@@ -174,7 +216,7 @@ function TestProductDetails({ product }) {
             <div className="table-responsive mb-2">
               <div>
                 <h4 className={styles.additionalInfoText}>
-                  Additional Informations
+                  {AdditionalInformationsLanguage}
                 </h4>
               </div>
               <p className="pt-1">{product.additionalInfo}</p>
@@ -183,10 +225,14 @@ function TestProductDetails({ product }) {
 
           <div className={styles.containerBtn}>
             <button onClick={AddToCart} className={styles.addToCart}>
-              Add to cart <HiShoppingCart className={styles.cartIcon} />
+              {AddToCartBtnLanguage}{" "}
+              <HiShoppingCart className={styles.cartIcon} />
             </button>
             <Link href="/products/products-list">
-              <a className={styles.linkProducts}>Return To Products List</a>
+              <a className={styles.linkProducts}>
+                {" "}
+                {ReturnProductsBtnLanguage}{" "}
+              </a>
             </Link>
           </div>
         </div>

@@ -1,0 +1,33 @@
+.buttonContainer {
+  position: fixed;
+  bottom: 78%;
+  right: 0;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonTranslate {
+  background-color: #03c7ff;
+  transform: rotate(-90deg) translate(0px, 30px);
+  padding: 0.2rem 0.3rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: #fff;
+}
+
+.imagesArabic {
+  width: 20px;
+  height: 20px;
+  margin: 0 0.1rem 0.15rem 0;
+}
+
+.ArabicText {
+  padding: 0 0 0 0.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: cursive;
+}
+
+.iconTranslate {
+  font-size: 2rem;
+}

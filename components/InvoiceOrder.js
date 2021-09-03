@@ -1,6 +1,7 @@
 import styles from "@/styles/InvoiceOrder.module.css";
 import React, { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import Link from "next/link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -15,7 +16,67 @@ import { SiMessenger } from "react-icons/si";
 import { IoMdMail } from "react-icons/io";
 import { FaMobileAlt } from "react-icons/fa";
 
+const languageWords = {
+  english: {
+    ThankYouLanguage: "Thank you.",
+    ReceivedOrderTextLanguage:
+      "We have received your order and will contact you as soon as possible, We hope your experience was awesome. Please check your email inbox, we sent you an invoice email.",
+    PleaaseNoteLanguage: "Please note",
+    ContactMethodsLanguage:
+      "that you will be contacted within 48 hours for delivery, for assistance please feel free to contact us on each of the following:-",
+    OrderDetailsLanguage: "Order Details",
+    NameTableLanguage: "Name",
+    QtyTableLanguage: "QTY",
+    PriceTableLanguage: "Price",
+    TotalTableLanguage: "Total",
+    ReminderLanguage: "Reminder !!",
+    DeliveryFeesLanguage:
+      "Delivery fees will be added automatically 2.50 JD Inside Amman, 4 JD Outside Amman",
+    ReturnToCartBtnLanguage: "Return To Cart",
+    TotalAmountLanguage: "Total Amount:",
+    AlertOrderReceivedLanguage:
+      "Congrats, your order has been received successfully 😉",
+  },
+  arabic: {
+    ThankYouLanguage: "شكراً لك",
+    ReceivedOrderTextLanguage:
+      "لقد تلقينا طلبك وسنتصل بك في أقرب وقت ممكن ، ونأمل أن تكون تجربتك رائعة. يرجى التحقق من صندوق البريد الإلكتروني الخاص بك ، لقد أرسلنا لك فاتورة بالبريد الإلكتروني",
+    PleaaseNoteLanguage: "يرجى الإنتباه ",
+    ContactMethodsLanguage:
+      "أنه سيتم الاتصال بك في غضون 48 ساعة للتوصيل ، للحصول على المساعدة ، لا تتردد في الاتصال بنا على كل مما يلي",
+    OrderDetailsLanguage: "معلومات الطلب",
+    NameTableLanguage: "الإسم",
+    QtyTableLanguage: "الكمية",
+    PriceTableLanguage: "السعر",
+    TotalTableLanguage: "المجموع",
+    ReminderLanguage: "!! تذكير",
+    DeliveryFeesLanguage:
+      "تضاف رسوم التوصيل تلقائيا 2.50 دينار داخل عمان و 4 دينار خارج عمان",
+    ReturnToCartBtnLanguage: "العودة إلى السلة",
+    AlertOrderReceivedLanguage: "😉 تهانينا لقد تم إستلام طلبك بنجاح",
+  },
+};
+
 function InvoiceOrder() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    ThankYouLanguage,
+    ReceivedOrderTextLanguage,
+    PleaaseNoteLanguage,
+    ContactMethodsLanguage,
+    OrderDetailsLanguage,
+    NameTableLanguage,
+    QtyTableLanguage,
+    PriceTableLanguage,
+    TotalTableLanguage,
+    ReminderLanguage,
+    DeliveryFeesLanguage,
+    ReturnToCartBtnLanguage,
+    AlertOrderReceivedLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*-------------context shopping cart-----------*/
   const { cart } = useContext(CartContext);
   const { items = [] } = cart;
@@ -27,9 +88,9 @@ function InvoiceOrder() {
   Swal.fire({
     position: "center",
     icon: "success",
-    title: "Congrats, your order has been received 😉 ",
+    title: AlertOrderReceivedLanguage,
     showConfirmButton: false,
-    timer: 2000,
+    timer: 2500,
   });
   /*-----------------------X--------------------*/
 
@@ -39,18 +100,14 @@ function InvoiceOrder() {
       <div>
         {/*-------------------Thanks message paragraph------------------*/}
         <p className={styles.thanksText}>
-          <span>Thank you.</span> We have received your order and will contact
-          you as soon as possible, We hope your experience was awesome. Please
-          check your email inbox, we sent you an invoice email.
+          <span> {ThankYouLanguage} </span> {ReceivedOrderTextLanguage}
         </p>
         {/*-------------------------------X-----------------------------*/}
 
         <hr />
         {/*-------------------contact message paragraph-----------------*/}
         <div className={styles.contact48H}>
-          <span>Please note</span> that you will be contacted within 48 hours
-          for delivery, for assistance please feel free to contact us on each of
-          the following:-
+          <span> {PleaaseNoteLanguage} </span> {ContactMethodsLanguage}
         </div>
         {/*-------------------------------X-----------------------------*/}
 
@@ -90,7 +147,7 @@ function InvoiceOrder() {
 
       {/*--------------------order details text---------------------*/}
       <div className="col-md-6 text-right mt-4">
-        <h4 className={styles.alfayyadText}>Order Details</h4>
+        <h4 className={styles.alfayyadText}> {OrderDetailsLanguage} </h4>
       </div>
       {/*----------------------------X------------------------------*/}
 
@@ -99,10 +156,10 @@ function InvoiceOrder() {
         <Table style={{ minWidth: "300px" }}>
           <TableHead>
             <TableRow>
-              <TableCell align="inherit">Product</TableCell>
-              <TableCell align="center">Qty</TableCell>
-              <TableCell align="center">Price</TableCell>
-              <TableCell align="center">Total</TableCell>
+              <TableCell align="inherit"> {NameTableLanguage} </TableCell>
+              <TableCell align="center"> {QtyTableLanguage} </TableCell>
+              <TableCell align="center"> {PriceTableLanguage} </TableCell>
+              <TableCell align="center"> {TotalTableLanguage} </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -128,11 +185,7 @@ function InvoiceOrder() {
       {/*----------------------delivery fees------------------------*/}
       <div className={styles.info}>
         <p>
-          <strong>Reminder !!</strong> <br /> Delivery fees will be added
-          automatically
-          <br />
-          <strong>2.50 JD</strong> Inside Amman, <strong>3.50 JD</strong>{" "}
-          Outside Amman
+          <strong> {ReminderLanguage} </strong> <br /> {DeliveryFeesLanguage}
         </p>
       </div>
       {/*----------------------------X------------------------------*/}
@@ -140,7 +193,7 @@ function InvoiceOrder() {
       {/*-----------------return to cart button---------------------*/}
       <Link href="/products/shopping-cart" passHref={true}>
         <button type="button" className={styles.btnConfirm}>
-          Return to cart
+          {ReturnToCartBtnLanguage}
         </button>
       </Link>
       {/*--------------------------X--------------------------------*/}

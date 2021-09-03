@@ -6,6 +6,7 @@ import Link from "next/link";
 import Search from "./Search";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { CartContext } from "@/context/CartContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import Badge from "@material-ui/core/Badge";
 import AuthContext from "@/context/AuthContext";
 import DrawerCart from "./DrawerCart";
@@ -38,7 +39,65 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
+const languageWords = {
+  english: {
+    NavHomeLanguage: "Home",
+    NavProductsLanguage: "Products",
+    NavMyAccountLanguage: "My Account",
+    NavSignInLanguage: "Sign In",
+    NavSignOutLanguage: "Sign Out",
+    NavSignUpLanguage: "Sign Up",
+    NavDashboardLanguage: "Dashboard",
+    NavContactLanguage: "Contact",
+    CategoryToolsLanguage: "Tools & Equipment",
+    CategoryHousewareLanguage: "Houseware",
+    CategoryKidsLanguage: "Kids Accessories",
+    CategoryPersonalLanguage: "Personal Care",
+    CategoryKitchenwareLanguage: "Kitchenware",
+    DrawerCategoryLanguage: "Product Categories",
+    DrawerContactUsLanguage: "Contact Us",
+  },
+  arabic: {
+    NavHomeLanguage: "الرئيسية",
+    NavProductsLanguage: "المنتجات",
+    NavMyAccountLanguage: "حسابي",
+    NavSignInLanguage: "دخول",
+    NavSignOutLanguage: "خروج",
+    NavSignUpLanguage: "تسجيل",
+    NavDashboardLanguage: "الطلبات",
+    NavContactLanguage: "اتصل بنا",
+    CategoryToolsLanguage: "الأدوات و المعدات الصناعية",
+    CategoryHousewareLanguage: "الأدوات المنزلية",
+    CategoryKidsLanguage: "إكسسوارات الأطفال",
+    CategoryPersonalLanguage: "العناية الشخصية",
+    CategoryKitchenwareLanguage: "أدوات المطبخ",
+    DrawerCategoryLanguage: "أقسام المنتجات",
+    DrawerContactUsLanguage: "اتصل بنا",
+  },
+};
+
 export default function ButtonAppBar() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    NavHomeLanguage,
+    NavProductsLanguage,
+    NavMyAccountLanguage,
+    NavSignInLanguage,
+    NavSignOutLanguage,
+    NavSignUpLanguage,
+    NavDashboardLanguage,
+    NavContactLanguage,
+    CategoryToolsLanguage,
+    CategoryHousewareLanguage,
+    CategoryKidsLanguage,
+    CategoryPersonalLanguage,
+    CategoryKitchenwareLanguage,
+    DrawerCategoryLanguage,
+    DrawerContactUsLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /* -----------Auth User context----------------- */
   const { user, logout } = useContext(AuthContext);
   /* --------------------X------------------------ */
@@ -98,7 +157,7 @@ export default function ButtonAppBar() {
               <div>
                 {" "}
                 <FaHome className={styles.icons} />
-                <span className={styles.menuText}>Home</span>
+                <span className={styles.menuText}> {NavHomeLanguage} </span>
               </div>
             </ListItemText>
           </ListItem>
@@ -108,7 +167,7 @@ export default function ButtonAppBar() {
         <ListItem button onClick={handleOpenCategory}>
           <ListItemIcon>
             <GiStarFormation className={styles.icons} />
-            <span className={styles.menuText}>Products</span>
+            <span className={styles.menuText}> {DrawerCategoryLanguage} </span>
           </ListItemIcon>
 
           {openCategory ? <ExpandLess /> : <ExpandMore />}
@@ -119,7 +178,10 @@ export default function ButtonAppBar() {
               <ListItem button>
                 <ListItemIcon>
                   <BsTools className={styles.icons} />
-                  <span className={styles.menuText}>Tools & Equipment</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {CategoryToolsLanguage}{" "}
+                  </span>
                 </ListItemIcon>
               </ListItem>
             </Link>
@@ -128,7 +190,10 @@ export default function ButtonAppBar() {
               <ListItem button>
                 <ListItemIcon>
                   <FaWarehouse className={styles.icons} />
-                  <span className={styles.menuText}>Housecare</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {CategoryHousewareLanguage}{" "}
+                  </span>
                 </ListItemIcon>
               </ListItem>
             </Link>
@@ -137,7 +202,10 @@ export default function ButtonAppBar() {
               <ListItem button>
                 <ListItemIcon>
                   <FaChild className={styles.icons} />
-                  <span className={styles.menuText}>Kids Accessories</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {CategoryKidsLanguage}{" "}
+                  </span>
                 </ListItemIcon>
               </ListItem>
             </Link>
@@ -146,7 +214,10 @@ export default function ButtonAppBar() {
               <ListItem button>
                 <ListItemIcon>
                   <GiBeamsAura className={styles.icons} />
-                  <span className={styles.menuText}>Personal Care</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {CategoryPersonalLanguage}{" "}
+                  </span>
                 </ListItemIcon>
               </ListItem>
             </Link>
@@ -155,7 +226,10 @@ export default function ButtonAppBar() {
               <ListItem button>
                 <ListItemIcon>
                   <MdKitchen className={styles.icons} />
-                  <span className={styles.menuText}>Kitchenware</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {CategoryKitchenwareLanguage}{" "}
+                  </span>
                 </ListItemIcon>
               </ListItem>
             </Link>
@@ -169,7 +243,10 @@ export default function ButtonAppBar() {
               <div>
                 {" "}
                 <FaShoppingCart className={styles.icons} />
-                <span className={styles.menuText}>My Cart</span>
+                <span className={styles.menuText}>
+                  {" "}
+                  {NavMyAccountLanguage}{" "}
+                </span>
               </div>
             </ListItemText>
           </ListItem>
@@ -184,7 +261,10 @@ export default function ButtonAppBar() {
                     <div>
                       {" "}
                       <GoSignIn className={styles.icons} />
-                      <span className={styles.menuText}>Sign In</span>
+                      <span className={styles.menuText}>
+                        {" "}
+                        {NavSignInLanguage}{" "}
+                      </span>
                     </div>
                   )}
                 </ListItemText>
@@ -198,7 +278,10 @@ export default function ButtonAppBar() {
                     <div>
                       {" "}
                       <FaFileSignature className={styles.icons} />
-                      <span className={styles.menuText}>Sign Up</span>
+                      <span className={styles.menuText}>
+                        {" "}
+                        {NavSignUpLanguage}{" "}
+                      </span>
                     </div>
                   )}
                 </ListItemText>
@@ -214,7 +297,10 @@ export default function ButtonAppBar() {
                 <div>
                   {" "}
                   <GoSignOut className={styles.icons} />
-                  <span className={styles.menuText}>Sign Out</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {NavSignOutLanguage}{" "}
+                  </span>
                 </div>
               </ListItemText>
             </ListItem>
@@ -225,7 +311,10 @@ export default function ButtonAppBar() {
                   <div>
                     {" "}
                     <MdAccountCircle className={styles.icons} />
-                    <span className={styles.menuText}>My Account</span>
+                    <span className={styles.menuText}>
+                      {" "}
+                      {NavMyAccountLanguage}{" "}
+                    </span>
                   </div>
                 </ListItemText>
               </ListItem>
@@ -239,7 +328,10 @@ export default function ButtonAppBar() {
               <div>
                 {" "}
                 <IoIosContacts className={styles.icons} />
-                <span className={styles.menuText}>Contact Us</span>
+                <span className={styles.menuText}>
+                  {" "}
+                  {DrawerContactUsLanguage}{" "}
+                </span>
               </div>
             </ListItemText>
           </ListItem>
@@ -252,7 +344,10 @@ export default function ButtonAppBar() {
                 <div>
                   {" "}
                   <FaClipboardList className={styles.icons} />
-                  <span className={styles.menuText}>Dashboard</span>
+                  <span className={styles.menuText}>
+                    {" "}
+                    {NavDashboardLanguage}{" "}
+                  </span>
                 </div>
               </ListItemText>
             </ListItem>
@@ -283,28 +378,31 @@ export default function ButtonAppBar() {
         <div className={styles.linkMenu}>
           <ul>
             <Link href="/" passHref={true}>
-              <li>Home</li>
+              <li> {NavHomeLanguage} </li>
             </Link>
 
             <Link href="/products/products-list" passHref={true}>
               <li>
                 <div className={styles.dropDown}>
-                  <button className={styles.dropBtn}>Products</button>
+                  <button className={styles.dropBtn}>
+                    {" "}
+                    {NavProductsLanguage}{" "}
+                  </button>
                   <div className={styles.dropDownContent}>
                     <Link href="/category/tools" passHref={true}>
-                      Tools & Equipment
+                      {CategoryToolsLanguage}
                     </Link>
                     <Link href="/category/houseware" passHref={true}>
-                      Houseware
+                      {CategoryHousewareLanguage}
                     </Link>
                     <Link href="/category/kids" passHref={true}>
-                      Kids Accessories
+                      {CategoryKidsLanguage}
                     </Link>
                     <Link href="/category/personal-care" passHref={true}>
-                      Personal Care
+                      {CategoryPersonalLanguage}
                     </Link>
                     <Link href="/category/houseware" passHref={true}>
-                      Kitchenware
+                      {CategoryKitchenwareLanguage}
                     </Link>
                   </div>
                 </div>
@@ -313,20 +411,20 @@ export default function ButtonAppBar() {
 
             {user ? (
               <Link href="/account/my-account" passHref={true}>
-                <li>My Account</li>
+                <li> {NavMyAccountLanguage} </li>
               </Link>
             ) : (
               <Link href="/account/login" passHref={true}>
-                <li>My Account</li>
+                <li> {NavMyAccountLanguage} </li>
               </Link>
             )}
 
             {user ? (
-              <li onClick={logout}>Sign Out</li>
+              <li onClick={logout}> {NavSignOutLanguage} </li>
             ) : (
               <>
                 <Link href="/account/login" passHref={true}>
-                  <li>Sign In</li>
+                  <li> {NavSignInLanguage} </li>
                 </Link>
               </>
             )}
@@ -334,13 +432,13 @@ export default function ButtonAppBar() {
             {user?.email === "admin@admin.com" && user?.username === "admin" ? (
               <>
                 <Link href="/account/dashboard" passHref={true}>
-                  <li>Dashboard</li>
+                  <li> {NavDashboardLanguage} </li>
                 </Link>
               </>
             ) : (
               <>
                 <Link href="/contact" passHref={true}>
-                  <li>Contact</li>
+                  <li> {NavContactLanguage} </li>
                 </Link>
               </>
             )}

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import useInputState from "@/Hooks/useInputState";
 import AuthContext from "@/context/AuthContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import { AiOutlineLine } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
@@ -12,11 +13,131 @@ import { FaMobileAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
 import { AiFillEye } from "react-icons/ai";
+import { FaFileSignature } from "react-icons/fa";
+
 import { AiFillEyeInvisible } from "react-icons/ai";
 import swal from "sweetalert";
 
+const languageWords = {
+  english: {
+    TitleLanguage: "Sign Up",
+    UsernameLanguage: "Username",
+    EmailLanguage: "Email Address",
+    PhoneLanguage: "Phone Number (For contact purposes)",
+    PasswordLanguage: "Password",
+    PasswordConfirmLanguage: "Confirm Password",
+    IdoAcceptLanguage: "I do accept the",
+    TermsLanguage: "Terms & Conditions",
+    ThisSiteLanguage: "of this site.",
+    RegisterLanguage: "Sign Up",
+    HaveAccountLanguage: "Already have an account ?",
+    LoginLanguage: "Sign In",
+    TitleAlertInfoLanguage: "Hi there 👋, quick note",
+    TextAlertInfoNoteLanguage:
+      "Please make sure to enter a valid email and a valid phone, because we will contact you through them, any mistake may lead to delay or cancellation of orders.",
+    TitleAlertValidationsLanguage: "Validations",
+    TextAlertValidationsLanguage:
+      "Please make sure enter a unique username like (mostafa01) and email not used before and you must enter a password greater than 8 character and contain at least one number.",
+    PhoneValidationRequiredLanguage: "Please Enter A Phone Number !!",
+    PhoneValidationIsNumberLanguage: "Phone Number Must Be A Numbers!!",
+    PhoneValidationIsPhoneNumberLanguage: "Phone Number Must Be (10 number) !!",
+    PhoneValidationIsLocalNumberLanguage:
+      "Phone Number Must Begin With (078 , 079, 077)",
+    EmailValidationRequiredLanguage: "Please Enter A Email !!",
+    IsEmailValidationLanguage:
+      "Email must contain ( @ ) and end with ( .com ) ",
+    PasswordValidationLanguage: "Please Enter A Password !!",
+    PasswordConfirmValidationLanguage:
+      "Please Retype A Password (Must Be Match) !!",
+    UsernameValidationLanguage: "Please Enter A Username !!",
+    MatchPasswordValidationLanguge:
+      "Passwords Don't Match, Please Try Again !!",
+    ShortPasswordValidationLanguge: "Password must be at least 8 character !!",
+    ContainLettersPasswordValidationLanguge:
+      "Password must contain at least one letter !!",
+    ContainNumbersPasswordValidationLanguge:
+      "Password must contain at least one Number !!",
+  },
+  arabic: {
+    TitleLanguage: "إنشاء حساب",
+    UsernameLanguage: "إسم المستخدم",
+    EmailLanguage: "البريد الإلكتروني",
+    PhoneLanguage: "رقم الهاتف",
+    PasswordLanguage: "الرقم السري",
+    PasswordConfirmLanguage: "تأكيد الرقم السري",
+    IdoAcceptLanguage: "أنا أوافق على",
+    TermsLanguage: "شروط و أحكام",
+    ThisSiteLanguage: "هذا الموقع",
+    RegisterLanguage: "إنشاء",
+    HaveAccountLanguage: "لديك حساب بالفعل؟",
+    LoginLanguage: "تسجيل الدخول",
+    TitleAlertInfoLanguage: "مرحباً 👋 ملاحظة سريعة",
+    TextAlertInfoNoteLanguage:
+      "يرجى التأكد من إدخال بريد إلكتروني صالح وهاتف صالح ، لأننا سنتصل بك من خلالهم ، وأي خطأ قد يؤدي إلى تأخير أو إلغاء الطلبات",
+    TitleAlertValidationsLanguage: "التحقق من الصحة",
+    TextAlertValidationsLanguage:
+      "يرجى التأكد من إدخال اسم مستخدم (فريد) والبريد الإلكتروني غير المستخدم من قبل ويجب إدخال كلمة مرور أكبر من 8 أحرف وتحتوي على رقم واحد على الأقل",
+    PhoneValidationRequiredLanguage: "!! الرجاء إدخال رقم هاتف",
+    PhoneValidationIsNumberLanguage: "!! رقم الهاتف يجب أن يكون من أرقام فقط",
+    PhoneValidationIsPhoneNumberLanguage:
+      "!! رقم الهاتف يجب أن يتكون من 10 أرقام فقط",
+    PhoneValidationIsLocalNumberLanguage:
+      "(078 , 079, 077) رقم الهاتف يجب أن يبدأ ب",
+    EmailValidationRequiredLanguage: "!! الرجاء إدخال بريد إلكتروني",
+    IsEmailValidationLanguage:
+      " ( .com ) البريد الإلكتروني يجب أن يحتوي على ( @ ) وينتهي ب ",
+    PasswordValidationLanguage: "!! يرجى إدخال كلمة مرور",
+    PasswordConfirmValidationLanguage: "!! يرجى إعادة كتابة كلمة المرور",
+    UsernameValidationLanguage: "!! يرجى إدخال إسم مستخدم",
+    MatchPasswordValidationLanguge:
+      "كلمات المرور غير متابطقة يرجى إعادة المحاولة",
+    ShortPasswordValidationLanguge: "كلمة المرور يجب أن تكون على الأقل 8 خانات",
+    ContainLettersPasswordValidationLanguge:
+      "كلمة المرور يجب أن تحتوي على الأقل حرف واحد",
+    ContainNumbersPasswordValidationLanguge:
+      "كلمة المرور يجب أن تحتوي على الأقل رقم واحد",
+  },
+};
+
 function Register() {
   const router = useRouter();
+
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    TitleLanguage,
+    UsernameLanguage,
+    EmailLanguage,
+    PhoneLanguage,
+    PasswordLanguage,
+    PasswordConfirmLanguage,
+    IdoAcceptLanguage,
+    TermsLanguage,
+    ThisSiteLanguage,
+    RegisterLanguage,
+    HaveAccountLanguage,
+    LoginLanguage,
+    TitleAlertInfoLanguage,
+    TextAlertInfoNoteLanguage,
+    TitleAlertValidationsLanguage,
+    TextAlertValidationsLanguage,
+
+    PhoneValidationRequiredLanguage,
+    PhoneValidationIsNumberLanguage,
+    PhoneValidationIsPhoneNumberLanguage,
+    PhoneValidationIsLocalNumberLanguage,
+    EmailValidationRequiredLanguage,
+    IsEmailValidationLanguage,
+    PasswordValidationLanguage,
+    PasswordConfirmValidationLanguage,
+    UsernameValidationLanguage,
+    MatchPasswordValidationLanguge,
+    ShortPasswordValidationLanguge,
+    ContainLettersPasswordValidationLanguge,
+    ContainNumbersPasswordValidationLanguge,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*-----------context authenication-----------*/
   const { register, error } = useContext(AuthContext);
   /*---------------------X---------------------*/
@@ -60,6 +181,14 @@ function Register() {
       return false;
     });
   });
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isEmail", (value) => {
+      if (value.match(".com") && value.match("@")) {
+        return true;
+      }
+      return false;
+    });
+  });
   /*-----------------------------------X-----------------------------------*/
 
   /*----------------------------show info alert----------------------------*/
@@ -67,13 +196,13 @@ function Register() {
     if (router.pathname === "/account/register") {
       const timer = setTimeout(() => {
         swal({
-          title: "Hi there 👋, quick note",
-          text: "Please make sure to enter a valid email and a valid phone, because we will contact you through them, any mistake may lead to delay or cancellation of orders.",
+          title: TitleAlertInfoLanguage,
+          text: TextAlertInfoNoteLanguage,
           icon: "warning",
         }).then(() => {
           swal({
-            title: "Validations ",
-            text: "Please make sure enter a unique username like (mostafa01) and email not used before and you must enter a password greater than 8 character  and contain at least one number.",
+            title: TitleAlertValidationsLanguage,
+            text: TextAlertValidationsLanguage,
             icon: "warning",
           });
         });
@@ -98,22 +227,22 @@ function Register() {
 
     /*----------------validation password--------------------*/
     if (password !== passwordConf) {
-      swal("Passwords Don't Match, Please Try Again !!", "", "error");
+      swal(MatchPasswordValidationLanguge, "", "error");
       return;
     }
 
     if (password.length < 8) {
-      swal("Password must be at least 8 character !!", "", "error");
+      swal(ShortPasswordValidationLanguge, "", "error");
       return;
     }
 
     if (password.search(/[a-z]/i) === -1) {
-      swal("Password must contain at least one letter !!", "", "error");
+      swal(ContainLettersPasswordValidationLanguge, "", "error");
       return;
     }
 
     if (password.search(/[0-9]/) === -1) {
-      swal("Password must contain at least one number !!", "", "error");
+      swal(ContainNumbersPasswordValidationLanguge, "", "error");
       return;
     }
     /*----------------------------x--------------------------*/
@@ -138,7 +267,7 @@ function Register() {
                     <p
                       className={` ${styles.h1Text} text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4`}
                     >
-                      Sign Up
+                      {TitleLanguage}
                       <span>
                         <AiOutlineLine />
                       </span>
@@ -158,9 +287,9 @@ function Register() {
                             onChange={handleChangeUsername}
                             fullWidth
                             variant="standard"
-                            label="Username"
+                            label={UsernameLanguage}
                             validators={["required"]}
-                            errorMessages={["Please Enter A Username !!"]}
+                            errorMessages={[UsernameValidationLanguage]}
                           />
                         </div>
                       </div>
@@ -176,9 +305,12 @@ function Register() {
                             onChange={handleChangeEmail}
                             fullWidth
                             variant="standard"
-                            label="Email Address"
-                            validators={["required"]}
-                            errorMessages={["Please Enter A Valid Email !!"]}
+                            label={EmailLanguage}
+                            validators={["required", "isEmail"]}
+                            errorMessages={[
+                              EmailValidationRequiredLanguage,
+                              IsEmailValidationLanguage,
+                            ]}
                           />
                         </div>
                       </div>
@@ -194,7 +326,7 @@ function Register() {
                             onChange={handleChangePhone}
                             fullWidth
                             variant="standard"
-                            label="Phone Number (For contact purposes)"
+                            label={PhoneLanguage}
                             validators={[
                               "required",
                               "isNumber",
@@ -202,10 +334,10 @@ function Register() {
                               "isLocalNumber",
                             ]}
                             errorMessages={[
-                              "Please Enter A Phone Number !!",
-                              "Phone Number Must Be A Numbers !!",
-                              "Phone Number Must Be (10 number) !!",
-                              "Phone Number Must Begin With (078 , 079, 077)",
+                              PhoneValidationRequiredLanguage,
+                              PhoneValidationIsNumberLanguage,
+                              PhoneValidationIsPhoneNumberLanguage,
+                              PhoneValidationIsLocalNumberLanguage,
                             ]}
                           />
                         </div>
@@ -224,9 +356,9 @@ function Register() {
                             onChange={handleChangePassword}
                             fullWidth
                             variant="standard"
-                            label="Password"
+                            label={PasswordLanguage}
                             validators={["required"]}
-                            errorMessages={["Please Enter A Password !!"]}
+                            errorMessages={[PasswordValidationLanguage]}
                           />
                         </div>
                         {visiblePasswrod === true ? (
@@ -255,11 +387,9 @@ function Register() {
                             onChange={handleChangePasswordConf}
                             fullWidth
                             variant="standard"
-                            label="Confirm Password"
+                            label={PasswordConfirmLanguage}
                             validators={["required"]}
-                            errorMessages={[
-                              "Please Retype A Password (Must Be Match) !!",
-                            ]}
+                            errorMessages={[PasswordConfirmValidationLanguage]}
                           />
                         </div>
                         {visiblePasswrod === true ? (
@@ -290,13 +420,13 @@ function Register() {
                           className="form-check-label"
                           htmlFor="form2Example3"
                         >
-                          I do accept the{" "}
+                          {IdoAcceptLanguage}{" "}
                           <Link href="/terms-policy/terms-conditions">
                             <a className={styles.linkTermsAndConditions}>
-                              Terms & Conditions{" "}
+                              {TermsLanguage}{" "}
                             </a>
                           </Link>{" "}
-                          of the site.
+                          {ThisSiteLanguage}
                         </label>
                       </div>
                       {/*------------------------X-----------------------*/}
@@ -304,16 +434,17 @@ function Register() {
                       {/*------------button submit the form--------------*/}
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button type="submit" className={styles.registerBtn}>
-                          Register
+                          {RegisterLanguage}{" "}
+                          <FaFileSignature className={styles.icons} />
                         </button>
                       </div>
                       {/*------------------------X-----------------------*/}
 
                       {/*-------------link for login page----------------*/}
                       <p className="small text-center fw-bold mt-2 pt-1 mb-0">
-                        Already have an account ?{" "}
+                        {HaveAccountLanguage}{" "}
                         <Link href="/account/login">
-                          <a className={styles.linklogin}>Login</a>
+                          <a className={styles.linklogin}> {LoginLanguage} </a>
                         </Link>
                       </p>
                       {/*------------------------X-----------------------*/}

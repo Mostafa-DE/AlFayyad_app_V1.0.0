@@ -1,15 +1,31 @@
 import styles from "@/styles/ToolsProducts.module.css";
 import Layout from "@/components/Layout";
+import { useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
 import { API_URL } from "@/config/index";
 import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 
-export default function toolsPage({ toolsProducts }) {
+const languageWords = {
+  english: {
+    TitlePageLanguage: "Tools & Equipment",
+  },
+  arabic: {
+    TitlePageLanguage: "الأدوات والمعدات الصناعية",
+  },
+};
+
+export default function ToolsPage({ toolsProducts }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const { TitlePageLanguage } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   return (
     <Layout title="Tools & Equipment | Al Fayyad Store">
       {/*--------------title text-------------------*/}
       <h1 className={styles.h1Text}>
-        Tools & Equipment
+        {TitlePageLanguage}
         <span>
           <AiOutlineLine />
         </span>

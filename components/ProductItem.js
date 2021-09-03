@@ -2,12 +2,38 @@ import styles from "@/styles/ProductItem.module.css";
 import { useContext } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { CartContext } from "@/context/CartContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import RatingStar from "./RatingStar";
 import Link from "next/link";
 import swal from "sweetalert";
 import { FaCartPlus } from "react-icons/fa";
 
+const languageWords = {
+  english: {
+    QuickviewBtnLanguage: "Quickview",
+    AddToCartBtnLanguage: "Add To Cart",
+    AlertTitleAddedToCartLanguage: "Awesome 😉",
+    AlertTextAddedToCartLanguage: "This product has been added to your cart",
+  },
+  arabic: {
+    QuickviewBtnLanguage: "التفاصيل",
+    AddToCartBtnLanguage: "أضف إلى السلة",
+    AlertTitleAddedToCartLanguage: "😉 رائع",
+    AlertTextAddedToCartLanguage: "تم إضافة العنصر إلى سلة التسوق الخاصة بك",
+  },
+};
+
 function TestCardProduct({ product }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    QuickviewBtnLanguage,
+    AddToCartBtnLanguage,
+    AlertTitleAddedToCartLanguage,
+    AlertTextAddedToCartLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*------------Cart Shopping context------------------*/
   const { addToCart } = useContext(CartContext);
   /*------------------------X--------------------------*/
@@ -15,7 +41,11 @@ function TestCardProduct({ product }) {
   /*----------alert when add product to cart-----------*/
   const AddToCart = async () => {
     await addToCart(product);
-    swal("Awesome 😉", "This product has been added to your cart", "success");
+    swal(
+      AlertTitleAddedToCartLanguage,
+      AlertTextAddedToCartLanguage,
+      "success"
+    );
   };
   /*------------------------X--------------------------*/
 
@@ -53,7 +83,7 @@ function TestCardProduct({ product }) {
             {/*---------details about product----------*/}
             <ul className={styles.productLinks}>
               <Link href={`/products/${product.slug}`}>
-                <a className={styles.QuickViewBtn}>Quickview</a>
+                <a className={styles.QuickViewBtn}> {QuickviewBtnLanguage} </a>
               </Link>
             </ul>
             {/*-------------------X--------------------*/}
@@ -83,7 +113,7 @@ function TestCardProduct({ product }) {
 
             {/*-------------add button-----------------*/}
             <button onClick={AddToCart} className={styles.addToCart}>
-              add to cart{" "}
+              {AddToCartBtnLanguage}{" "}
               <FaCartPlus
                 style={{ fontSize: "1.1rem", margin: "0 0 0.2rem 0" }}
               />

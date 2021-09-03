@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ToastContainer, toast } from "react-toastify";
 import { CartContext } from "@/context/CartContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import { AiOutlineLine } from "react-icons/ai";
 import { GiCash } from "react-icons/gi";
 import { API_URL } from "../config";
@@ -17,8 +18,109 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import emailjs from "emailjs-com";
 
+const languageWords = {
+  english: {
+    TitleShippingAddressLanguage: "Shipping Address",
+    EmailLanguage: "Email Address (important)",
+    FirstNameLanguage: "First Name",
+    LastNameLanguage: "Last Name",
+    FullAddressLanguage: "Full Address",
+    CityLanguage: "City",
+    BuildingNumberLanguage: "Building Number",
+    PhoneNumberLanguage: "Phone Number (important)",
+    OrderDetailsLanguage: "Order Details",
+    ImageTableLanguage: "Image",
+    NameTableLanguage: "Name",
+    QtyTableLanguage: "QTY",
+    PriceTableLanguage: "Price",
+    TitleNoteLanguage: "Note!!",
+    TextNoteLanguage:
+      "Delivery fees will be added automatically 2.50 JD Inside Amman, 4 JD Outside Amman",
+    ConfirmOrderLanguage: "Confirm Order",
+    ReturnCartLanguage: "Return to cart",
+    EmailValidationRequiredLanguage: "Please Enter A Email !!",
+    IsEmailValidationLanguage:
+      "Email must contain ( @ ) and end with ( .com ) ",
+    FirstNameValidationLanguage: "Please Enter A First Name !!",
+    LastNameValidationLanguage: "Please Enter A Last Name !!",
+    AddressValidationLanguage: "Please Enter An Address !!",
+    CityValidationLanguage: "Please Enter A City !!",
+    PhoneValidationRequiredLanguage: "Please Enter A Phone Number !!",
+    PhoneValidationIsNumberLanguage: "Phone Number Must Be A Numbers!!",
+    PhoneValidationIsPhoneNumberLanguage: "Phone Number Must Be (10 number) !!",
+    PhoneValidationIsLocalNumberLanguage:
+      "Phone Number Must Begin With (078 , 079, 077)",
+  },
+  arabic: {
+    TitleShippingAddressLanguage: "معلومات التوصيل",
+    EmailLanguage: "البريد الإلكتروني ( مهم جداً )",
+    FirstNameLanguage: "الإسم الأول",
+    LastNameLanguage: "إسم العائلة",
+    FullAddressLanguage: "العنوان كامل",
+    CityLanguage: "المحافظة",
+    BuildingNumberLanguage: "رقم العمارة",
+    PhoneNumberLanguage: "رقم الهاتف ( مهم جداً )",
+    OrderDetailsLanguage: "معلومات الطلب",
+    ImageTableLanguage: "الصورة",
+    NameTableLanguage: "الإسم",
+    QtyTableLanguage: "الكمية",
+    PriceTableLanguage: "السعر",
+    TitleNoteLanguage: "!!ملاحظة",
+    TextNoteLanguage:
+      "أجور التوصيل سيتم إضافتها بشكل تلقائي, 2.50 داخل عمان و 4 دنانير خارج عمان",
+    ConfirmOrderLanguage: "تأكيد الطلب",
+    ReturnCartLanguage: "العودة إلى العربة",
+    EmailValidationRequiredLanguage: "!! الرجاء إدخال بريد إلكتروني",
+    IsEmailValidationLanguage:
+      " ( .com ) البريد الإلكتروني يجب أن يحتوي على ( @ ) وينتهي ب ",
+    FirstNameValidationLanguage: "!! الرجاء إدخال الإسم الأول",
+    LastNameValidationLanguage: "!! الرجاء إدخال إسم العائلة",
+    AddressValidationLanguage: "!! الرجاء إدخال عنوانك الكامل",
+    CityValidationLanguage: "!! الرجاء إدخال إسم المحافظة",
+    PhoneValidationRequiredLanguage: "!! الرجاء إدخال رقم هاتف",
+    PhoneValidationIsNumberLanguage: "!! رقم الهاتف يجب أن يكون من أرقام فقط",
+    PhoneValidationIsPhoneNumberLanguage:
+      "!! رقم الهاتف يجب أن يتكون من 10 أرقام فقط",
+    PhoneValidationIsLocalNumberLanguage:
+      "(078 , 079, 077) رقم الهاتف يجب أن يبدأ ب",
+  },
+};
+
 function ShippingAdress({ account }) {
   const router = useRouter();
+
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    TitleShippingAddressLanguage,
+    EmailLanguage,
+    FirstNameLanguage,
+    LastNameLanguage,
+    FullAddressLanguage,
+    CityLanguage,
+    BuildingNumberLanguage,
+    PhoneNumberLanguage,
+    OrderDetailsLanguage,
+    ImageTableLanguage,
+    NameTableLanguage,
+    QtyTableLanguage,
+    PriceTableLanguage,
+    TitleNoteLanguage,
+    TextNoteLanguage,
+    ConfirmOrderLanguage,
+    ReturnCartLanguage,
+    EmailValidationRequiredLanguage,
+    IsEmailValidationLanguage,
+    FirstNameValidationLanguage,
+    LastNameValidationLanguage,
+    AddressValidationLanguage,
+    CityValidationLanguage,
+    PhoneValidationRequiredLanguage,
+    PhoneValidationIsNumberLanguage,
+    PhoneValidationIsPhoneNumberLanguage,
+    PhoneValidationIsLocalNumberLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
 
   /*---------context shopping cart-----------*/
   const { cart } = useContext(CartContext);
@@ -95,6 +197,15 @@ function ShippingAdress({ account }) {
   });
 
   useEffect(() => {
+    ValidatorForm.addValidationRule("isEmail", (value) => {
+      if (value.match(".com") && value.match("@")) {
+        return true;
+      }
+      return false;
+    });
+  });
+
+  useEffect(() => {
     ValidatorForm.addValidationRule("isLocalNumber", (value) => {
       if (value.match("078") || value.match("079") || value.match("077")) {
         return true;
@@ -113,7 +224,7 @@ function ShippingAdress({ account }) {
           <div className={styles.containerForms}>
             {/*-----------h1 title--------------*/}
             <h1 className={styles.h1Shipping}>
-              Shipping Address
+              {TitleShippingAddressLanguage}
               <span>
                 <AiOutlineLine />
               </span>
@@ -131,11 +242,11 @@ function ShippingAdress({ account }) {
                     onChange={handleChangeInput}
                     fullWidth
                     variant="standard"
-                    label="Email Address (important)"
+                    label={EmailLanguage}
                     validators={["required", "isEmail"]}
                     errorMessages={[
-                      "Please Enter A Email !!",
-                      "The Email Is Invalid !!",
+                      EmailValidationRequiredLanguage,
+                      IsEmailValidationLanguage,
                     ]}
                   />
                 </div>
@@ -151,9 +262,9 @@ function ShippingAdress({ account }) {
                     value={values.firstName}
                     onChange={handleChangeInput}
                     variant="standard"
-                    label="First Name"
+                    label={FirstNameLanguage}
                     validators={["required"]}
-                    errorMessages={["Please Enter A First Name !!"]}
+                    errorMessages={[FirstNameValidationLanguage]}
                   />
                 </div>
 
@@ -164,9 +275,9 @@ function ShippingAdress({ account }) {
                     value={values.lastName}
                     onChange={handleChangeInput}
                     variant="standard"
-                    label="Last Name"
+                    label={LastNameLanguage}
                     validators={["required"]}
-                    errorMessages={["Please Enter A Last Name !!"]}
+                    errorMessages={[LastNameValidationLanguage]}
                   />
                 </div>
               </div>
@@ -182,9 +293,9 @@ function ShippingAdress({ account }) {
                 onChange={handleChangeInput}
                 fullWidth
                 variant="standard"
-                label="Full Address"
+                label={FullAddressLanguage}
                 validators={["required"]}
-                errorMessages={["Please Enter An Address !!"]}
+                errorMessages={[AddressValidationLanguage]}
               />
             </div>
             {/*------------------------X-----------------------*/}
@@ -200,9 +311,9 @@ function ShippingAdress({ account }) {
                     onChange={handleChangeInput}
                     fullWidth
                     variant="standard"
-                    label="City"
+                    label={CityLanguage}
                     validators={["required"]}
-                    errorMessages={["Please Enter A City !!"]}
+                    errorMessages={[CityValidationLanguage]}
                   />
                 </div>
 
@@ -213,7 +324,7 @@ function ShippingAdress({ account }) {
                     value={values.building}
                     onChange={handleChangeInput}
                     variant="standard"
-                    label="Building Number"
+                    label={BuildingNumberLanguage}
                     validators={["isNumber"]}
                     errorMessages={["Must Be Number !!"]}
                   />
@@ -232,7 +343,7 @@ function ShippingAdress({ account }) {
                   onChange={handleChangeInput}
                   fullWidth
                   variant="standard"
-                  label="Phone Number (important)"
+                  label={PhoneNumberLanguage}
                   validators={[
                     "required",
                     "isNumber",
@@ -240,10 +351,10 @@ function ShippingAdress({ account }) {
                     "isLocalNumber",
                   ]}
                   errorMessages={[
-                    "Please Enter A Phone Number !!",
-                    "Phone Number Must Be A Numbers !!",
-                    "Phone Number Must Be (10 number) !!",
-                    "Phone Number Must Begin With (078 , 079, 077)",
+                    PhoneValidationRequiredLanguage,
+                    PhoneValidationIsNumberLanguage,
+                    PhoneValidationIsPhoneNumberLanguage,
+                    PhoneValidationIsLocalNumberLanguage,
                   ]}
                 />
               </div>
@@ -266,11 +377,8 @@ function ShippingAdress({ account }) {
             {/*------------------dilevery fees-----------------*/}
             <div className={styles.info}>
               <p>
-                <strong>Note!!</strong> <br /> Delivery fees will be added
-                automatically
+                <strong> {TitleNoteLanguage} </strong> <br /> {TextNoteLanguage}
                 <br />
-                <strong>2.50 JD</strong> Inside Amman, <strong>3.50 JD</strong>{" "}
-                Outside Amman
               </p>
             </div>
             {/*------------------------X-----------------------*/}
@@ -278,13 +386,13 @@ function ShippingAdress({ account }) {
             <div className="d-flex justify-content-around ">
               {/*------------------button confirm-----------------*/}
               <button type="submit" className={styles.btnCheckout}>
-                Confirm Order <GiCash style={{ fontSize: "1.5rem" }} />
+                {ConfirmOrderLanguage} <GiCash style={{ fontSize: "1.5rem" }} />
               </button>
               {/*------------------------X------------------------*/}
 
               {/*--------------link return to cart----------------*/}
               <Link href="/products/shopping-cart">
-                <a className={styles.returnCart}>Return to cart</a>
+                <a className={styles.returnCart}> {ReturnCartLanguage} </a>
               </Link>
               {/*-----------------------X-------------------------*/}
             </div>
@@ -293,7 +401,7 @@ function ShippingAdress({ account }) {
           {/*--------------------details order------------------ */}
           <div className={styles.containerDetails}>
             <h1 className={styles.h1Order}>
-              Order Details
+              {OrderDetailsLanguage}
               <span>
                 <AiOutlineLine />
               </span>
@@ -302,10 +410,10 @@ function ShippingAdress({ account }) {
               <Table style={{ minWidth: "500px" }}>
                 <TableHead>
                   <TableRow>
-                    <TableCell align="left">Image</TableCell>
-                    <TableCell align="left">Product</TableCell>
-                    <TableCell align="center">Qty</TableCell>
-                    <TableCell align="center">Price</TableCell>
+                    <TableCell align="left"> {ImageTableLanguage} </TableCell>
+                    <TableCell align="left"> {NameTableLanguage} </TableCell>
+                    <TableCell align="center"> {QtyTableLanguage} </TableCell>
+                    <TableCell align="center"> {PriceTableLanguage} </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

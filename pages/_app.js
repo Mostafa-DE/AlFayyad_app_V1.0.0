@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Script from "next/script";
 
@@ -65,7 +66,9 @@ export default function MyApp({ Component, pageProps, router }) {
         >
           <AuthProvider>
             <CartProvider>
-              <Component {...pageProps} />
+              <LanguageProvider>
+                <Component {...pageProps} />
+              </LanguageProvider>
             </CartProvider>
           </AuthProvider>
         </motion.div>

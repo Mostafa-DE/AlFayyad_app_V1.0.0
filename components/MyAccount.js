@@ -1,10 +1,67 @@
 import styles from "@/styles/MyAccount.module.css";
 import Link from "next/link";
+import { useContext } from "react";
 import { SiInstagram } from "react-icons/si";
 import { FiFacebook } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
+import { LanguageContext } from "@/context/LanguageContext";
+
+const languageWords = {
+  english: {
+    HomeLanguage: "Home",
+    AccountLanguage: "Account",
+    MyAccountLanguage: "My Account",
+    HiUsernameLanguage: "Hi 👋 ",
+    TextCartLanguage: "Your Cart",
+    FollowLanguage: "Follow Us",
+    UsernameLanguage: "Username",
+    EmailLanguage: "Email",
+    PhoneLanguage: "Phone",
+    StatusLanguage: "Status",
+    ActiveLanguage: "Active",
+    AddressLanguage: "Address",
+    LocationLanguage: "Jordan/Amman...",
+    ProductsLanguage: "Go To Products",
+  },
+  arabic: {
+    HomeLanguage: "الرئيسية",
+    AccountLanguage: "الحسابات",
+    MyAccountLanguage: "حسابي",
+    HiUsernameLanguage: " 👋 مرحباً ",
+    TextCartLanguage: "عربتك التسوق",
+    FollowLanguage: "تابعنا عبر",
+    UsernameLanguage: "إسم المستخدم",
+    EmailLanguage: "البريد الإلكتروني",
+    PhoneLanguage: "الهاتف",
+    StatusLanguage: "الحالة",
+    ActiveLanguage: "نشط",
+    AddressLanguage: "الموقع",
+    LocationLanguage: "...الأردن/عمان",
+    ProductsLanguage: "قائمة المنتجات",
+  },
+};
 
 function MyAccount({ account }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    HiUsernameLanguage,
+    TextCartLanguage,
+    FollowLanguage,
+    UsernameLanguage,
+    EmailLanguage,
+    PhoneLanguage,
+    StatusLanguage,
+    AddressLanguage,
+    LocationLanguage,
+    ProductsLanguage,
+    HomeLanguage,
+    AccountLanguage,
+    MyAccountLanguage,
+    ActiveLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   const WelcomeArray = [
     " “ You look awesome today 😉 ” ",
     " “ You look incredible today 😉 ” ",
@@ -28,13 +85,16 @@ function MyAccount({ account }) {
             <li className="breadcrumb-item">
               <Link href="/">
                 <a className={styles.link} style={{ color: "#03c7ff" }}>
-                  Home
+                  {HomeLanguage}
                 </a>
               </Link>
             </li>
-            <li className="breadcrumb-item text-secondary">Account</li>
+            <li className="breadcrumb-item text-secondary">
+              {" "}
+              {AccountLanguage}{" "}
+            </li>
             <li className="breadcrumb-item active" aria-current="page">
-              My Account
+              {MyAccountLanguage}
             </li>
           </ol>
         </nav>
@@ -52,7 +112,17 @@ function MyAccount({ account }) {
                     alt="User-Profile-Image"
                   />
                   <div className="mt-3">
-                    <h4> Hi 👋, {account.username}</h4>
+                    <h4>
+                      {language === "arabic" ? (
+                        <>
+                          {account.username} ,{HiUsernameLanguage}
+                        </>
+                      ) : (
+                        <>
+                          {HiUsernameLanguage}, {account.username}
+                        </>
+                      )}
+                    </h4>
                     <p
                       className="text-secondary mb-1"
                       style={{ paddingBottom: "1rem" }}
@@ -61,7 +131,7 @@ function MyAccount({ account }) {
                     </p>
                     <Link href="/products/shopping-cart" passHref={true}>
                       <button className={styles.btn}>
-                        Your Cart <FaShoppingCart />
+                        {TextCartLanguage} <FaShoppingCart />
                       </button>
                     </Link>
                   </div>
@@ -74,7 +144,7 @@ function MyAccount({ account }) {
             <div className={`card mt-3 ${styles.card}`}>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item d-flex justify-content-center align-items-center flex-wrap">
-                  <h6 className="mb-0">Follow Us</h6>
+                  <h6 className="mb-0"> {FollowLanguage} </h6>
                 </li>
 
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -112,7 +182,7 @@ function MyAccount({ account }) {
               <div className="card-body">
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Username</h6>
+                    <h6 className="mb-0"> {UsernameLanguage} </h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
                     {account.username}
@@ -121,14 +191,14 @@ function MyAccount({ account }) {
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Email</h6>
+                    <h6 className="mb-0"> {EmailLanguage} </h6>
                   </div>
                   <div className="col-sm-9 text-secondary">{account.email}</div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Phone</h6>
+                    <h6 className="mb-0"> {PhoneLanguage} </h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
                     0{account.phone}
@@ -137,27 +207,33 @@ function MyAccount({ account }) {
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Status</h6>
+                    <h6 className="mb-0">{StatusLanguage}</h6>
                   </div>
                   <div
                     className="col-sm-9 text-success"
                     style={{ fontWeight: "700" }}
                   >
-                    Active
+                    {ActiveLanguage}
                   </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Address</h6>
+                    <h6 className="mb-0"> {AddressLanguage} </h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">Jordan/Amman..</div>
+                  <div className="col-sm-9 text-secondary">
+                    {" "}
+                    {LocationLanguage}{" "}
+                  </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-9">
                     <Link href="/products/products-list" passHref={true}>
-                      <button className={styles.btn}>Go To Products</button>
+                      <button className={styles.btn}>
+                        {" "}
+                        {ProductsLanguage}{" "}
+                      </button>
                     </Link>
                   </div>
                 </div>

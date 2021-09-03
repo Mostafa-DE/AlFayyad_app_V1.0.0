@@ -1,9 +1,35 @@
 import styles from "@/styles/SubscripeForm.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import emailjs from "emailjs-com";
 import swal from "sweetalert";
+import { LanguageContext } from "@/context/LanguageContext";
+
+const languageWords = {
+  english: {
+    TitleNewsletterLanguage: "JOIN OUR NEWSLETTER",
+    TextSubscribeLanguage: "Subscribe To Get Updated With New Offers",
+    emailLanguage: "Enter An Email Address",
+    GetNotifiedLanguage: "Get Notified",
+  },
+  arabic: {
+    TitleNewsletterLanguage: "إشترك معنا الآن",
+    TextSubscribeLanguage: "اشترك للحصول على آخر الأخبار و العروض الجديدة",
+    emailLanguage: "ادخل عنوان البريد الإلكتروني",
+    GetNotifiedLanguage: "الحصول على إخطار",
+  },
+};
 
 function SubscripeForm() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    TitleNewsletterLanguage,
+    TextSubscribeLanguage,
+    emailLanguage,
+    GetNotifiedLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*--------state for input email------------*/
   const [email, setEmail] = useState("");
   const handleChange = (evnt) => {
@@ -35,21 +61,21 @@ function SubscripeForm() {
   return (
     <div className={styles.main}>
       <div className={styles.container}>
-        <h6> JOIN OUR NEWSLETTER </h6>
-        <h1>Subscribe to get Updated with new offers</h1>
+        <h6> {TitleNewsletterLanguage} </h6>
+        <h1> {TextSubscribeLanguage} </h1>
         <form onSubmit={handleSubmit}>
           <div className={styles.containerEmail}>
             <input
               className={styles.inputEmail}
               type="email"
               name="email"
-              placeholder="Enter Email Address"
+              placeholder={emailLanguage}
               value={email}
               onChange={handleChange}
               required
             />
             <button className={styles.btnSubsecripe} type="submit">
-              Get Notified
+              {GetNotifiedLanguage}
             </button>
           </div>
         </form>

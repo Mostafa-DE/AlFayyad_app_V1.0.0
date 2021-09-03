@@ -2,6 +2,7 @@ import styles from "@/styles/ShoppingCart.module.css";
 import React, { useContext, useState } from "react";
 import { AiOutlineLine } from "react-icons/ai";
 import { CartContext } from "@/context/CartContext";
+import { LanguageContext } from "@/context/LanguageContext";
 import { FaTimes } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { HiPlusSm } from "react-icons/hi";
@@ -19,6 +20,50 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
 import swal from "sweetalert";
 
+const languageWords = {
+  english: {
+    TitleCartListLanguage: "Cart List",
+    EmptyCartLanguage: "Your Cart Is Empty 😔",
+    AddProductsLanguage: "Add Some Products To Show Here",
+    ContinueBtnLanguage: "Continue Shopping",
+    TitleImageTable: "Image",
+    TitleNameTable: "Name",
+    TitlePriceTable: "Price",
+    TitleQtyTable: "QTY",
+    TitleAmountTable: "Amount",
+    CheckoutBtnLanguage: "Checkout",
+    TitlePaymentMethodsLanguage:
+      "Please Choose One Of The Following Payment Methods",
+    CashPaymentLanguage: "Cash Payment",
+    ThroughPaymentLanguage: "Pay Through",
+    TitleAlertCheckoutLanguage: "Oh No 😔",
+    TextAlertCheckoutLanguage:
+      "Your cart is empty add some products to continue",
+    TextAlertUwalletLanguage:
+      "Sorry 😔 this option will be available soon, try with cash method.",
+  },
+  arabic: {
+    TitleCartListLanguage: "عربة التسوق",
+    EmptyCartLanguage: "😔 عربة التسوق الخاصة بك فارغة",
+    AddProductsLanguage: "أضف بعض المنتجات لتظهر هنا",
+    ContinueBtnLanguage: "مواصلة التسوق",
+    TitleImageTable: "الصورة",
+    TitleNameTable: "الإسم",
+    TitlePriceTable: "السعر",
+    TitleQtyTable: "الكمية",
+    TitleAmountTable: "المجموع",
+    CheckoutBtnLanguage: "اطلب الآن",
+    TitlePaymentMethodsLanguage: "الرجاء اختيار إحدى طرق الدفع التالية",
+    CashPaymentLanguage: "الدفع نقداً",
+    ThroughPaymentLanguage: "الدفع من خلال",
+    TitleAlertCheckoutLanguage: "😔 نعتذر",
+    TextAlertCheckoutLanguage:
+      "عربة التسوق الخاصة بك فارغة أضف بعض المنتجات للمتابعة",
+    TextAlertUwalletLanguage:
+      "عذراً 😔 ، سيتوفر هذا الخيار قريبًا ، جرب الطريقة النقدية",
+  },
+};
+
 /*---------------transition for dialog payment methods-----------------*/
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,6 +71,28 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 /*-----------------------------------X---------------------------------*/
 
 function ShoppingCart() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    TitleCartListLanguage,
+    EmptyCartLanguage,
+    AddProductsLanguage,
+    ContinueBtnLanguage,
+    TitleImageTable,
+    TitleNameTable,
+    TitlePriceTable,
+    TitleQtyTable,
+    TitleAmountTable,
+    CheckoutBtnLanguage,
+    TitlePaymentMethodsLanguage,
+    CashPaymentLanguage,
+    ThroughPaymentLanguage,
+    TitleAlertCheckoutLanguage,
+    TextAlertCheckoutLanguage,
+    TextAlertUwalletLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   /*-------------------------context shopping cart-------------------------*/
   const { cart, removeFromCart, addQty, removeQty } = useContext(CartContext);
   const { items = [] } = cart;
@@ -46,42 +113,36 @@ function ShoppingCart() {
 
   /*---alert error when click on checkout when cart empty---*/
   const alertError = () => {
-    swal(
-      "Oh No 😔",
-      "Your cart is empty add some products to continue",
-      "error"
-    );
+    swal(TitleAlertCheckoutLanguage, TextAlertCheckoutLanguage, "error");
   };
   /*------------------------------X-------------------------*/
 
   /*------------error for uWallet payment method------------*/
   const alertErrorPayment = () => {
-    swal(
-      "Sorry 😔 this option will be available soon, try with cash method.",
-      "",
-      "error"
-    );
+    swal(TextAlertUwalletLanguage, "", "error");
   };
   /*------------------------------X-------------------------*/
 
   return (
     <div>
       <h1 className={styles.h1Text}>
-        Cart List
+        {TitleCartListLanguage}
         <span>
           <AiOutlineLine />
         </span>
       </h1>
-
       {/*----------------message text when cart empty-------------------*/}
       {items.length === 0 ? (
         <div className={styles.containerCartEmpty}>
           <h4 className={styles.h2CartEmpty}>
-            <span>Your Cart Is Empty 😔</span> <br /> Add Some Products To Show
-            Here
+            <span>{EmptyCartLanguage}</span> <br />
+            <br /> {AddProductsLanguage}
           </h4>
           <Link href="/products/products-list" passHref={true}>
-            <button className={styles.continueBtn}>Continue Shopping</button>
+            <button className={styles.continueBtn}>
+              {" "}
+              {ContinueBtnLanguage}{" "}
+            </button>
           </Link>
         </div>
       ) : null}
@@ -92,11 +153,11 @@ function ShoppingCart() {
         <Table style={{ minWidth: "750px" }}>
           <TableHead>
             <TableRow>
-              <TableCell align="center">Image</TableCell>
-              <TableCell align="inherit">Product</TableCell>
-              <TableCell align="center">Price</TableCell>
-              <TableCell align="center">QTY</TableCell>
-              <TableCell align="center">Amount</TableCell>
+              <TableCell align="left"> {TitleImageTable} </TableCell>
+              <TableCell align="inherit"> {TitleNameTable} </TableCell>
+              <TableCell align="center"> {TitlePriceTable} </TableCell>
+              <TableCell align="center"> {TitleQtyTable} </TableCell>
+              <TableCell align="center"> {TitleAmountTable} </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -148,7 +209,6 @@ function ShoppingCart() {
         </Table>
       </TableContainer>
       {/*-------------------------------X-------------------------------*/}
-
       {/*----------------------dialog payment methods-------------------*/}
       <div className={styles.checkOutContainer}>
         <div className={styles.totalAmount}>
@@ -158,11 +218,11 @@ function ShoppingCart() {
 
         {items.length === 0 ? (
           <button className={styles.checkOutBtn} onClick={alertError}>
-            Checkout <GiCash style={{ fontSize: "1.5rem" }} />
+            {CheckoutBtnLanguage} <GiCash style={{ fontSize: "1.5rem" }} />
           </button>
         ) : (
           <button className={styles.checkOutBtn} onClick={handleClickOpen}>
-            Checkout <GiCash style={{ fontSize: "1.5rem" }} />
+            {CheckoutBtnLanguage} <GiCash style={{ fontSize: "1.5rem" }} />
           </button>
         )}
         <div>
@@ -179,14 +239,14 @@ function ShoppingCart() {
             <DialogContent className={styles.dialogContent}>
               <div className={styles.main}>
                 <h1 className={styles.h1TextPayment}>
-                  Please choose one of the following payment methods
+                  {TitlePaymentMethodsLanguage}
                   <span>
                     <AiOutlineLine />
                   </span>
                 </h1>
                 <div className={styles.container}>
                   <div className={styles.ContainerCash}>
-                    <h4 className={styles.textImg}>Cash Payment</h4>
+                    <h4 className={styles.textImg}> {CashPaymentLanguage} </h4>
                     <Link href="/payment/order" passHref={true}>
                       <img
                         className={`img-fluid ${styles.cashImg}`}
@@ -196,7 +256,10 @@ function ShoppingCart() {
                     </Link>
                   </div>
                   <div className={styles.uWalletContainerImg}>
-                    <h4 className={styles.textImg}>Pay Through</h4>
+                    <h4 className={styles.textImg}>
+                      {" "}
+                      {ThroughPaymentLanguage}{" "}
+                    </h4>
                     <img
                       className={`img-fluid ${styles.uWalletImg}`}
                       src="/images/fayyad/uWallet.jpg"

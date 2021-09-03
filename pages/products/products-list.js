@@ -1,15 +1,31 @@
 import styles from "@/styles/ProductsList.module.css";
 import Layout from "@/components/Layout";
+import { useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
 import { API_URL } from "@/config/index";
 import { AiOutlineLine } from "react-icons/ai";
 import ProductItem from "@/components/ProductItem";
 
-export default function productsListPage({ products }) {
+const languageWords = {
+  english: {
+    TitlePageLanguage: "Products List",
+  },
+  arabic: {
+    TitlePageLanguage: "قائمة المنتجات",
+  },
+};
+
+export default function ProductsListPage({ products }) {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const { TitlePageLanguage } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   return (
     <Layout title="All Products | Al Fayyad Store">
       {/*--------------title text-------------------*/}
       <h1 className={styles.h1Text}>
-        Products List
+        {TitlePageLanguage}
         <span>
           <AiOutlineLine />
         </span>

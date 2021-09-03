@@ -1,17 +1,43 @@
 import styles from "@/styles/CategoryPhoto-md.module.css";
 import Paper from "@material-ui/core/Paper";
 import Link from "next/link";
+import { LanguageContext } from "@/context/LanguageContext";
+import { useContext } from "react";
+
+const languageWords = {
+  english: {
+    titleToolsLanguage: "Tools & Equipment",
+    titleHousewareLanguage: "Houseware",
+    textFindLanguge: "Find Out",
+    shopButtonLanguage: "Shop Now",
+  },
+  arabic: {
+    titleToolsLanguage: "معدات و أدوات صناعية",
+    titleHousewareLanguage: "أدوات منزلية",
+    textFindLanguge: "اكتشف الآن",
+    shopButtonLanguage: "تسوق الآن",
+  },
+};
 
 function CategoryPhotoSm() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    titleToolsLanguage,
+    shopButtonLanguage,
+    textFindLanguge,
+    titleHousewareLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
   return (
     <div className={styles.container}>
       <Link href="/category/tools" passHref={true}>
         {/*---------Photo Tools----------*/}
         <Paper className={`${styles.paperTools}`}>
           <p className={styles.paperText}>
-            Tools & Equipment <span>Find out</span>
+            {titleToolsLanguage} <span> {textFindLanguge} </span>
           </p>
-          <a className={styles.linkShope}>Shop Now</a>
+          <a className={styles.linkShope}>{shopButtonLanguage}</a>
         </Paper>
         {/*--------------X----------------*/}
       </Link>
@@ -19,10 +45,10 @@ function CategoryPhotoSm() {
         {/*---------Photo Housecare-------*/}
         <Paper className={`${styles.paperHouse}`}>
           <p className={styles.paperText}>
-            Houseware <span>Find out</span>
+            {titleHousewareLanguage} <span> {textFindLanguge} </span>
           </p>
           <a href="#" className={styles.linkShope}>
-            Shop Now
+            {shopButtonLanguage}
           </a>
         </Paper>
         {/*----------------X--------------*/}

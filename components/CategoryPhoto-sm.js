@@ -1,17 +1,47 @@
 import styles from "@/styles/CategoryPhoto-sm.module.css";
 import Paper from "@material-ui/core/Paper";
 import Link from "next/link";
+import { LanguageContext } from "@/context/LanguageContext";
+import { useContext } from "react";
+
+const languageWords = {
+  english: {
+    titleKidsLanguage: "Kids Accessories",
+    titlePersonalLanguage: "Personal Care",
+    titleKitchenLanguage: "Kitchenware",
+    textFindLanguge: "Find Out",
+    shopButtonLanguage: "Shop Now",
+  },
+  arabic: {
+    titleKidsLanguage: " إكسسوارات أطفال ",
+    titlePersonalLanguage: "عناية شخصية",
+    titleKitchenLanguage: "مستلزمات مطبخ",
+    textFindLanguge: "اكتشف الآن",
+    shopButtonLanguage: "تسوق الآن",
+  },
+};
 
 function CategoryPhotoSm() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    titleKidsLanguage,
+    titlePersonalLanguage,
+    titleKitchenLanguage,
+    textFindLanguge,
+    shopButtonLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   return (
     <div className={styles.container}>
       <Link href="/category/kids" passHref={true}>
         {/*-------------------Photo Kids-----------------*/}
         <Paper className={`${styles.paper1}`}>
           <p className={styles.paperText}>
-            Kids Accessories <span>Find out</span>
+            {titleKidsLanguage} <span> {textFindLanguge} </span>
           </p>
-          <a className={styles.linkShope}>Shop Now</a>
+          <a className={styles.linkShope}> {shopButtonLanguage} </a>
         </Paper>
         {/*------------------------X----------------------*/}
       </Link>
@@ -20,10 +50,10 @@ function CategoryPhotoSm() {
         <Paper className={`${styles.paper2}`}>
           <p className={styles.paperText}>
             {" "}
-            Personal Care <span>Find out</span>
+            {titlePersonalLanguage} <span> {textFindLanguge} </span>
           </p>
           <a href="#" className={styles.linkShope}>
-            Shop Now
+            {shopButtonLanguage}
           </a>
         </Paper>
         {/*------------------------X----------------------*/}
@@ -32,10 +62,11 @@ function CategoryPhotoSm() {
         {/*---------------Photo Kitchenware---------------*/}
         <Paper className={`${styles.paper3}`}>
           <p className={styles.paperText}>
-            Kitchenware<span>Find out</span>
+            {titleKitchenLanguage}
+            <span> {textFindLanguge} </span>
           </p>
           <a href="#" className={styles.linkShope}>
-            Shop Now
+            {shopButtonLanguage}
           </a>
         </Paper>
         {/*-----------------------X-----------------------*/}
