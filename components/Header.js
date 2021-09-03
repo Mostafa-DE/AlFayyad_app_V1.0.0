@@ -56,6 +56,7 @@ const languageWords = {
     CategoryKitchenwareLanguage: "Kitchenware",
     DrawerCategoryLanguage: "Product Categories",
     DrawerContactUsLanguage: "Contact Us",
+    DrawerShoppingCartLanguage: "Shopping Cart",
   },
   arabic: {
     NavHomeLanguage: "الرئيسية",
@@ -73,6 +74,7 @@ const languageWords = {
     CategoryKitchenwareLanguage: "أدوات المطبخ",
     DrawerCategoryLanguage: "أقسام المنتجات",
     DrawerContactUsLanguage: "اتصل بنا",
+    DrawerShoppingCartLanguage: "عربة التسوق",
   },
 };
 
