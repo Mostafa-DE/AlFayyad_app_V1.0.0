@@ -97,6 +97,7 @@ export default function ButtonAppBar() {
     CategoryKitchenwareLanguage,
     DrawerCategoryLanguage,
     DrawerContactUsLanguage,
+    DrawerShoppingCartLanguage,
   } = languageWords[language];
   /*-----------------------------X---------------------------*/
 
@@ -247,7 +248,7 @@ export default function ButtonAppBar() {
                 <FaShoppingCart className={styles.icons} />
                 <span className={styles.menuText}>
                   {" "}
-                  {NavMyAccountLanguage}{" "}
+                  {DrawerShoppingCartLanguage}{" "}
                 </span>
               </div>
             </ListItemText>
