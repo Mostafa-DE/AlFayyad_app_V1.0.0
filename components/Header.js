@@ -31,6 +31,7 @@ import { FaChild } from "react-icons/fa";
 import { GiBeamsAura } from "react-icons/gi";
 import { MdKitchen } from "react-icons/md";
 import { GiStarFormation } from "react-icons/gi";
+import { TiThListOutline } from "react-icons/ti";
 
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
@@ -49,6 +50,7 @@ const languageWords = {
     NavSignUpLanguage: "Sign Up",
     NavDashboardLanguage: "Dashboard",
     NavContactLanguage: "Contact",
+    AllProductsLanguage: "All Products",
     CategoryToolsLanguage: "Tools & Equipment",
     CategoryHousewareLanguage: "Houseware",
     CategoryKidsLanguage: "Kids Accessories",
@@ -67,6 +69,7 @@ const languageWords = {
     NavSignUpLanguage: "تسجيل",
     NavDashboardLanguage: "الطلبات",
     NavContactLanguage: "اتصل بنا",
+    AllProductsLanguage: "جميع المنتجات",
     CategoryToolsLanguage: "الأدوات و المعدات الصناعية",
     CategoryHousewareLanguage: "الأدوات المنزلية",
     CategoryKidsLanguage: "إكسسوارات الأطفال",
@@ -90,6 +93,7 @@ export default function ButtonAppBar() {
     NavSignUpLanguage,
     NavDashboardLanguage,
     NavContactLanguage,
+    AllProductsLanguage,
     CategoryToolsLanguage,
     CategoryHousewareLanguage,
     CategoryKidsLanguage,
@@ -177,6 +181,18 @@ export default function ButtonAppBar() {
         </ListItem>
         <Collapse in={openCategory} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
+            <Link href="/products/products-list" passHref={true}>
+              <ListItem button>
+                <ListItemIcon>
+                  <TiThListOutline className={styles.icons} />
+                  <span className={styles.menuText}>
+                    {" "}
+                    {AllProductsLanguage}{" "}
+                  </span>
+                </ListItemIcon>
+              </ListItem>
+            </Link>
+
             <Link href="/category/tools" passHref={true}>
               <ListItem button>
                 <ListItemIcon>
