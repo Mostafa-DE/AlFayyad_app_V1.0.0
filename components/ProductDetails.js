@@ -188,7 +188,12 @@ function TestProductDetails({ product }) {
         </div>
         <div className="col-md-6">
           <h4 className={styles.descriptionText}> {DescriptionLanguage} </h4>
-          <p className="">{product.description}</p>
+          {language === "arabic" ? (
+            <p className="text-center">{product.descriptionInArabic}</p>
+          ) : (
+            <p>{product.description}</p>
+          )}
+
           <div className="table-responsive" style={{ margin: "0 0 1.5rem 0" }}>
             <table className="table table-sm table-borderless mb-0">
               <tbody>
@@ -219,7 +224,13 @@ function TestProductDetails({ product }) {
                   {AdditionalInformationsLanguage}
                 </h4>
               </div>
-              <p className="pt-1">{product.additionalInfo}</p>
+              {language === "arabic" ? (
+                <p className="pt-1 text-center">
+                  {product.additionalInfoInArabic}
+                </p>
+              ) : (
+                <p className="pt-1">{product.additionalInfo}</p>
+              )}
             </div>
           ) : null}
 
