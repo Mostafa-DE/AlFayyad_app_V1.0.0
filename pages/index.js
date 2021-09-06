@@ -14,6 +14,7 @@ import Link from "next/link";
 import SubscripeForm from "@/components/SubscripeForm";
 import PhotoBrand from "@/components/PhotoBrand";
 import CookieAlert from "@/components/CookieAlert";
+import { useInView } from "react-intersection-observer";
 
 const languageWords = {
   english: {
@@ -58,6 +59,8 @@ export default function HomePage({ products }) {
   }, [showAlertCookie]);
   /*---------------------------X------------------------------*/
 
+  const { ref, inView } = useInView();
+
   return (
     <Layout title="Al Fayyad Store | Shop Online For Electronics, Tools, Gifts & More">
       {products.length === 0 && <h3>Sorry, No Products To Show Right Now!!</h3>}
@@ -69,7 +72,12 @@ export default function HomePage({ products }) {
       {/*-------------------X-----------------*/}
 
       {/*-----------slider products-----------*/}
-      <h1 className={styles.textOverview}>
+      <h1
+        className={`${styles.textOverview} ${
+          inView && styles.animationTextOverView
+        } `}
+        ref={ref}
+      >
         {ProductsViewLanguage}
         <span>
           <AiOutlineLine />

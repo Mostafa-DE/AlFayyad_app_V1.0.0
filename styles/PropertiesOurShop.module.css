@@ -4,6 +4,15 @@
   margin: 10rem 0 10rem 0;
 }
 
+.animation {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 .PropertiesBox {
   display: flexbox;
   flex-direction: column;
@@ -22,5 +31,18 @@
   .PropertiesBox {
     max-width: 100%;
     margin: 0 0 1.5rem 0;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
   }
 }

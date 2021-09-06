@@ -50,7 +50,7 @@ function ShowPhoto() {
             alt="..."
           />
           <div className="carousel-caption">
-            <p className={styles.sale10}>Welcome To Our Shope</p>
+            <p className={styles.sale10}>Welcome To Our Shop</p>
           </div>
           <div className="carousel-caption">
             <p className={styles.watingFor}>New Arrivals</p>

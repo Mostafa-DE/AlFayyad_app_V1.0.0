@@ -4,6 +4,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { LanguageContext } from "@/context/LanguageContext";
 import { useContext } from "react";
+import { useInView } from "react-intersection-observer";
 
 const languageWords = {
   english: {
@@ -42,19 +43,21 @@ function PropertiesOurShop() {
   } = languageWords[language];
   /*-----------------------------X---------------------------*/
 
+  const { ref, inView } = useInView();
+
   return (
-    <div className={styles.container}>
-      <div className={styles.PropertiesBox}>
+    <div className={styles.container} ref={ref}>
+      <div className={`${styles.PropertiesBox} ${inView && styles.animation}`}>
         <FaTruck className={styles.icon} />
         <h3> {deliveryLanguage} </h3>
         <p>{TextDeliveryLanguage}</p>
       </div>
-      <div className={styles.PropertiesBox}>
+      <div className={`${styles.PropertiesBox} ${inView && styles.animation}`}>
         <GiReceiveMoney className={styles.icon} />
         <h3> {paymentLanguage} </h3>
         <p> {TextPaymentLanguage} </p>
       </div>
-      <div className={styles.PropertiesBox}>
+      <div className={`${styles.PropertiesBox} ${inView && styles.animation}`}>
         <FaMoneyBillWave className={styles.icon} />
         <h3> {priceLanguage} </h3>
         <p>{TextPriceLanguage}</p>
