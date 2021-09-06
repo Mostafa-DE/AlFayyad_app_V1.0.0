@@ -8,24 +8,6 @@
   transition: all 1s ease;
 }
 
-.animationKids {
-  animation-name: slideInLeft;
-  animation-duration: 1.3s;
-  animation-fill-mode: both;
-}
-
-.animationPersonal {
-  animation-name: slideInUp;
-  animation-duration: 1.3s;
-  animation-fill-mode: both;
-}
-
-.animationKitchenware {
-  animation-name: slideInRight;
-  animation-duration: 1.3s;
-  animation-fill-mode: both;
-}
-
 .paper1,
 .paper2,
 .paper3 {
@@ -170,35 +152,5 @@
   .paper2:hover .linkShope,
   .paper3:hover .linkShope {
     opacity: 0;
-  }
-}
-
-@keyframes slideInLeft {
-  0% {
-    transform: translateX(-100%);
-    visibility: visible;
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInUp {
-  0% {
-    transform: translateY(100%);
-    visibility: visible;
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    transform: translateX(100%);
-    visibility: visible;
-  }
-  100% {
-    transform: translateX(0);
   }
 }

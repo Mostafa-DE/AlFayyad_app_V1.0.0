@@ -8,12 +8,6 @@
   transition: all 1s ease;
 }
 
-.animation {
-  animation-name: slideInRight;
-  animation-duration: 1.3s;
-  animation-fill-mode: both;
-}
-
 .paperTools,
 .paperHouse {
   width: 100%;
@@ -144,15 +138,5 @@
   .paperTools:hover .linkShope,
   .paperHouse:hover .linkShope {
     opacity: 0;
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    transform: translateX(100%);
-    visibility: visible;
-  }
-  100% {
-    transform: translateX(0);
   }
 }
