@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300&display=swap");
+
+.mainContainer {
+  background-image: url("public/images/fayyad/model signUp.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.signUpText {
+  text-align: center;
+  padding: 1rem 0 0.5rem 0;
+  color: #fff;
+  font-family: "Azeret Mono", monospace;
+}
+
+.descriptionText {
+  padding: 0 0.8rem 4rem 0.8rem;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+}
+
+.containerBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 3.5rem 0;
+}
+
+.signUpBtn {
+  margin: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: none;
+  border: 1px solid #03c7ff;
+  background-color: #03c7ff;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 700;
+  transition: all 0.4s ease-in;
+}
+
+.signUpBtn:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  transition: all 0.4s ease-out;
+}
+
+.RemindMeBtn {
+  margin: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: none;
+  border: 1px solid #03c7ff;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 700;
+  transition: all 0.4s ease-in;
+}
+
+.RemindMeBtn:hover {
+  background-color: #03c7ff;
+  color: #fafafa;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease-out;
+}
+
+@media (max-width: 500px) {
+  .signUpText {
+    color: #333;
+  }
+}
+
+@media (max-width: 408px) {
+  .containerBtns {
+    flex-direction: column;
+  }
+}

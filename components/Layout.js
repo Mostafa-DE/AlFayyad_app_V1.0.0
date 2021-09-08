@@ -7,8 +7,9 @@ import ShowPhoto from "./ShowPhoto";
 import ButtonScrollToTop from "./ButtonScrollToTop";
 import ButtonWhatsapp from "./ButtonWhatsapp";
 import ButtonTranslate from "./ButtonTranslate";
+import LoginDialogRemember from "./LoginDialogRemember";
 import NProgress from "nprogress";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Layout({ title, description, children }) {
   const router = useRouter();
@@ -36,6 +37,15 @@ function Layout({ title, description, children }) {
   });
   /*-----------------------------x----------------------------*/
 
+  /*--------Show alert Sign Up now if there is no user--------*/
+  const [showAlertSignUp, setShowAlertSignUp] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowAlertSignUp(true);
+    }, 60000);
+  });
+  /*-----------------------------x----------------------------*/
+
   return (
     <div>
       <Head>
@@ -53,16 +63,15 @@ function Layout({ title, description, children }) {
         />
       </Head>
       <Header />
-
       {/*-----------crusor photo in home page------------*/}
       {router.pathname === "/" ? <ShowPhoto /> : null}
       {/*------------------------X-----------------------*/}
       <div className={styles.container}>{children}</div>
-
       <Footer />
       <ButtonWhatsapp />
       <ButtonScrollToTop />
       <ButtonTranslate />
+      {showAlertSignUp === true ? <LoginDialogRemember /> : null}
     </div>
   );
 }
