@@ -30,8 +30,7 @@ const languageWords = {
     TextAlertInfoLanguage:
       "Please note that we use cookies to keep your sign in for a week, after then it automatically sign out , if you don't want to keep your sign in, you can hit on sign out option from menu 😉",
     EmailValidationRequiredLanguage: "Please Enter A Email !!",
-    IsEmailValidationLanguage:
-      "Email must contain ( @ ) and end with ( .com ) ",
+
     PasswordValidationLanguage: "Please Enter A Password !!",
   },
   arabic: {
@@ -50,8 +49,6 @@ const languageWords = {
     TextAlertInfoLanguage:
       "يرجى ملاحظة أننا نستخدم ملفات تعريف الارتباط للاحتفاظ بتسجيل الدخول الخاص بك لمدة أسبوع ، وبعد ذلك يتم تسجيل الخروج تلقائيًا ، إذا كنت لا تريد الاحتفاظ بتسجيل الدخول ، فيمكنك الضغط على خيار تسجيل الخروج من القائمة",
     EmailValidationRequiredLanguage: "!! الرجاء إدخال بريد إلكتروني",
-    IsEmailValidationLanguage:
-      " ( .com ) البريد الإلكتروني يجب أن يحتوي على ( @ ) وينتهي ب ",
     PasswordValidationLanguage: "يرجى إدخال كلمة المرور",
   },
 };
@@ -73,7 +70,6 @@ export default function Login() {
     TitleAlertInfoLanguage,
     TextAlertInfoLanguage,
     EmailValidationRequiredLanguage,
-    IsEmailValidationLanguage,
     PasswordValidationLanguage,
   } = languageWords[language];
   /*-----------------------------X---------------------------*/
@@ -111,15 +107,6 @@ export default function Login() {
     setVisiblePasswrod(!visiblePasswrod);
   };
   /*-----------------------------------X-----------------------------------*/
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isEmail", (value) => {
-      if (value.match(".com") && value.match("@")) {
-        return true;
-      }
-      return false;
-    });
-  });
 
   return (
     <section className={styles.main}>
@@ -191,11 +178,8 @@ export default function Login() {
                   fullWidth
                   variant="standard"
                   label={EmailLanguage}
-                  validators={["required", "isEmail"]}
-                  errorMessages={[
-                    EmailValidationRequiredLanguage,
-                    IsEmailValidationLanguage,
-                  ]}
+                  validators={["required"]}
+                  errorMessages={[EmailValidationRequiredLanguage]}
                 />
               </div>
 

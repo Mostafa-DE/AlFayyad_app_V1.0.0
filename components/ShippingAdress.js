@@ -39,8 +39,6 @@ const languageWords = {
     ConfirmOrderLanguage: "Confirm Order",
     ReturnCartLanguage: "Return to cart",
     EmailValidationRequiredLanguage: "Please Enter A Email !!",
-    IsEmailValidationLanguage:
-      "Email must contain ( @ ) and end with ( .com ) ",
     FirstNameValidationLanguage: "Please Enter A First Name !!",
     LastNameValidationLanguage: "Please Enter A Last Name !!",
     AddressValidationLanguage: "Please Enter An Address !!",
@@ -71,8 +69,6 @@ const languageWords = {
     ConfirmOrderLanguage: "تأكيد الطلب",
     ReturnCartLanguage: "العودة إلى العربة",
     EmailValidationRequiredLanguage: "!! الرجاء إدخال بريد إلكتروني",
-    IsEmailValidationLanguage:
-      " ( .com ) البريد الإلكتروني يجب أن يحتوي على ( @ ) وينتهي ب ",
     FirstNameValidationLanguage: "!! الرجاء إدخال الإسم الأول",
     LastNameValidationLanguage: "!! الرجاء إدخال إسم العائلة",
     AddressValidationLanguage: "!! الرجاء إدخال عنوانك الكامل",
@@ -86,7 +82,7 @@ const languageWords = {
   },
 };
 
-function ShippingAdress({ account }) {
+export default function ShippingAdress({ account, token }) {
   const router = useRouter();
 
   /*----------------------context language-------------------*/
@@ -138,7 +134,7 @@ function ShippingAdress({ account }) {
     city: "",
     building: "1",
     phone: `${account.phone === undefined ? "" : `0${account.phone}`}`,
-    amount: totalAmount.toString(),
+    amount: totalAmount,
   });
 
   const handleChangeInput = (evnt) => {
@@ -162,10 +158,12 @@ function ShippingAdress({ account }) {
     /*----------------X-----------------*/
 
     /*----------create order in strapi-----------*/
+
     const res = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
@@ -174,6 +172,7 @@ function ShippingAdress({ account }) {
     } else {
       router.push("/payment/invoice-order");
     }
+
     /*---------------------X---------------------*/
   };
 
@@ -193,15 +192,6 @@ function ShippingAdress({ account }) {
         return false;
       }
       return true;
-    });
-  });
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isEmail", (value) => {
-      if (value.match(".com") && value.match("@")) {
-        return true;
-      }
-      return false;
     });
   });
 
@@ -236,18 +226,15 @@ function ShippingAdress({ account }) {
               <div className="d-flex flex-row align-items-center">
                 <div className="form-outline flex-fill mb-3">
                   <TextValidator
-                    type="text"
+                    type="email"
                     name="email"
                     value={values.email}
                     onChange={handleChangeInput}
                     fullWidth
                     variant="standard"
                     label={EmailLanguage}
-                    validators={["required", "isEmail"]}
-                    errorMessages={[
-                      EmailValidationRequiredLanguage,
-                      IsEmailValidationLanguage,
-                    ]}
+                    validators={["required"]}
+                    errorMessages={[EmailValidationRequiredLanguage]}
                   />
                 </div>
               </div>
@@ -459,5 +446,3 @@ function ShippingAdress({ account }) {
     </div>
   );
 }
-
-export default ShippingAdress;

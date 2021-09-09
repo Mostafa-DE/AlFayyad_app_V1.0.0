@@ -1,5 +1,5 @@
 import styles from "@/styles/InvoiceOrder.module.css";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CartContext } from "@/context/CartContext";
 import { LanguageContext } from "@/context/LanguageContext";
 import Link from "next/link";
@@ -93,6 +93,12 @@ function InvoiceOrder() {
     timer: 2500,
   });
   /*-----------------------X--------------------*/
+
+  useEffect(() => {
+    setInterval(() => {
+      window.localStorage.removeItem("cart");
+    }, 5000);
+  }, []);
 
   return (
     <div className={styles.main}>

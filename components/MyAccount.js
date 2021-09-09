@@ -13,6 +13,7 @@ const languageWords = {
     MyAccountLanguage: "My Account",
     HiUsernameLanguage: "Hi 👋 ",
     TextCartLanguage: "Your Cart",
+    TextDashboardLanguage: "Orders History",
     FollowLanguage: "Follow Us",
     UsernameLanguage: "Username",
     EmailLanguage: "Email",
@@ -28,7 +29,8 @@ const languageWords = {
     AccountLanguage: "الحسابات",
     MyAccountLanguage: "حسابي",
     HiUsernameLanguage: " 👋 مرحباً ",
-    TextCartLanguage: "عربتك التسوق",
+    TextCartLanguage: "عربة التسوق",
+    TextDashboardLanguage: "سجل الطلبات",
     FollowLanguage: "تابعنا عبر",
     UsernameLanguage: "إسم المستخدم",
     EmailLanguage: "البريد الإلكتروني",
@@ -47,6 +49,7 @@ function MyAccount({ account }) {
   const {
     HiUsernameLanguage,
     TextCartLanguage,
+    TextDashboardLanguage,
     FollowLanguage,
     UsernameLanguage,
     EmailLanguage,
@@ -129,11 +132,18 @@ function MyAccount({ account }) {
                     >
                       {words}
                     </p>
-                    <Link href="/products/shopping-cart" passHref={true}>
-                      <button className={styles.btn}>
-                        {TextCartLanguage} <FaShoppingCart />
-                      </button>
-                    </Link>
+                    <div className={styles.cartAndDashboardBtns}>
+                      <Link href="/dashboard-client" passHref={true}>
+                        <button className={styles.dashboardBtn}>
+                          {TextDashboardLanguage}
+                        </button>
+                      </Link>
+                      <Link href="/products/shopping-cart" passHref={true}>
+                        <button className={styles.cartBtn}>
+                          {TextCartLanguage} <FaShoppingCart />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -230,7 +240,7 @@ function MyAccount({ account }) {
                 <div className="row">
                   <div className="col-sm-9">
                     <Link href="/products/products-list" passHref={true}>
-                      <button className={styles.btn}>
+                      <button className={styles.ProductsBtn}>
                         {" "}
                         {ProductsLanguage}{" "}
                       </button>

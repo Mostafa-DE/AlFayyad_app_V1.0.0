@@ -1,5 +1,7 @@
 import styles from "@/styles/Footer.module.css";
 import Link from "next/link";
+import { useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaMobileAlt } from "react-icons/fa";
 import { ImWhatsapp } from "react-icons/im";
@@ -39,7 +41,66 @@ const stylesFooter = {
 };
 /*-----------------X---------------*/
 
+const languageWords = {
+  english: {
+    WhoWeAreQuestionLanguage: "WHO WE ARE ??",
+    TextWhoWeAreLanguage:
+      "Al Fayyad For European Products, we provide you with the best European products at reasonable prices and high quality, we strive to serve you at any time. don't hesitate to contact us at any time.",
+    TitlePoliciesLanguage: "ALFAYYAD POLICIES",
+    TermsAndConditionsLanguage: "Terms & Conditions",
+    PrivacyPolicyLanguage: "Privacy Policy",
+    SalesPoliciesLanguage: "Sales Policies",
+    RefundPolicyLanguage: "Refund Policy",
+    CancellationPolicyLanguage: "Cancellation Policy",
+    ShippingPolicyLanguage: "Shipping Policy",
+    TitleContactUs: "CONTACT US",
+    TextAddressLanguage: "Joradn, Amman, online store",
+    TextMassengerLanguage: "AlFayyad For European Products",
+    TitleFollowUsLanguage: "FOLLOW US",
+    MadeByMostafaLanguage: "Mostafa Fayyad",
+  },
+  arabic: {
+    WhoWeAreQuestionLanguage: "من نحن ؟؟؟",
+    TextWhoWeAreLanguage:
+      "الفياض للمنتجات الأوروبية نوفر لك أفضل المنتجات الأوروبية بأسعار مناسبة وجودة عالية ، ونسعى جاهدين لخدمتك في أي وقت. لا تتردد في الاتصال بنا في أي وقت",
+    TitlePoliciesLanguage: "سياسات الفياض",
+    TermsAndConditionsLanguage: "الأحكام والشروط",
+    PrivacyPolicyLanguage: "سياسة خاصة",
+    SalesPoliciesLanguage: "سياسة المبيعات",
+    RefundPolicyLanguage: "سياسة الاسترجاع",
+    CancellationPolicyLanguage: "سياسة الإلغاء",
+    ShippingPolicyLanguage: "سياسة الشحن",
+    TitleContactUs: "إتصل بنا",
+    TextAddressLanguage: "الأردن , عمان , متجر على الانترنت",
+    TextMassengerLanguage: "الفياض للمنتجات الأوروبية",
+    TitleFollowUsLanguage: "تابعنا",
+    TextCopyRightLanguage: "حقوق النشر والنسخ محفوظة للفياض || صنع بواسطة ",
+    MadeByMostafaLanguage: "مصطفى فياض",
+  },
+};
+
 function Footer() {
+  /*----------------------context language-------------------*/
+  const { language } = useContext(LanguageContext);
+  const {
+    WhoWeAreQuestionLanguage,
+    TextWhoWeAreLanguage,
+    TitlePoliciesLanguage,
+    TermsAndConditionsLanguage,
+    PrivacyPolicyLanguage,
+    SalesPoliciesLanguage,
+    RefundPolicyLanguage,
+    CancellationPolicyLanguage,
+    ShippingPolicyLanguage,
+    TitleContactUs,
+    TextAddressLanguage,
+    TextMassengerLanguage,
+    TitleFollowUsLanguage,
+    TextCopyRightLanguage,
+    MadeByMostafaLanguage,
+  } = languageWords[language];
+  /*-----------------------------X---------------------------*/
+
   return (
     <footer
       className="page-footer font-small mdb-color lighten-3 py-3 pt-4 bg-light"
@@ -53,14 +114,9 @@ function Footer() {
             style={stylesFooter.white}
           >
             <h5 className="font-weight-bold text-uppercase mb-4">
-              Who We Are ??
+              {WhoWeAreQuestionLanguage}
             </h5>
-            <p>
-              Al Fayyad For European Products, we provide you with the best
-              European products at reasonable prices and high quality, we strive
-              to serve you at any time. don't hesitate to contact us at any
-              time.
-            </p>
+            <p>{TextWhoWeAreLanguage}</p>
           </div>
           {/*-----------------------------X------------------------*/}
           <hr className="clearfix w-100 d-md-none" />
@@ -70,14 +126,14 @@ function Footer() {
             style={stylesFooter.white}
           >
             <h5 className="font-weight-bold text-uppercase mb-4">
-              ALFAYYAD Policies
+              {TitlePoliciesLanguage}
             </h5>
             <ul className="list-unstyled">
               <li>
                 <p>
                   <Link href="/terms-policy/terms-conditions">
                     <a className={styles.link} style={stylesFooter.about}>
-                      Terms & Conditions
+                      {TermsAndConditionsLanguage}
                     </a>
                   </Link>
                 </p>
@@ -86,7 +142,7 @@ function Footer() {
                 <p>
                   <Link href="/terms-policy/privacy-policy">
                     <a className={styles.link} style={stylesFooter.about}>
-                      Privacy Policy
+                      {PrivacyPolicyLanguage}
                     </a>
                   </Link>
                 </p>
@@ -95,7 +151,7 @@ function Footer() {
                 <p>
                   <Link href="/terms-policy/sales-policies">
                     <a className={styles.link} style={stylesFooter.about}>
-                      Sales Policies
+                      {SalesPoliciesLanguage}
                     </a>
                   </Link>
                 </p>
@@ -104,7 +160,7 @@ function Footer() {
                 <p>
                   <Link href="/terms-policy/refund-policy">
                     <a className={styles.link} style={stylesFooter.about}>
-                      Refund Policy
+                      {RefundPolicyLanguage}
                     </a>
                   </Link>
                 </p>
@@ -113,7 +169,7 @@ function Footer() {
                 <p>
                   <Link href="/terms-policy/cancellation-policy">
                     <a className={styles.link} style={stylesFooter.about}>
-                      Cancellation Policy
+                      {CancellationPolicyLanguage}
                     </a>
                   </Link>
                 </p>
@@ -122,7 +178,7 @@ function Footer() {
                 <p>
                   <Link href="/terms-policy/shipping-policy">
                     <a className={styles.link} style={stylesFooter.about}>
-                      Shipping Policy
+                      {ShippingPolicyLanguage}
                     </a>
                   </Link>
                 </p>
@@ -136,7 +192,10 @@ function Footer() {
             className="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1"
             style={stylesFooter.white}
           >
-            <h5 className="font-weight-bold text-uppercase mb-4">contact us</h5>
+            <h5 className="font-weight-bold text-uppercase mb-4">
+              {" "}
+              {TitleContactUs}{" "}
+            </h5>
             <ul className="list-unstyled">
               <li>
                 <p style={stylesFooter.contact}>
@@ -146,7 +205,7 @@ function Footer() {
                     href="#"
                     style={stylesFooter.contact}
                   >
-                    Joradn, Amman, online store
+                    {TextAddressLanguage}
                   </a>
                 </p>
               </li>
@@ -182,7 +241,7 @@ function Footer() {
                     href="http://m.me/fayyado"
                     style={stylesFooter.contact}
                   >
-                    AlFayyad for european products
+                    {TextMassengerLanguage}
                   </a>
                 </p>
               </li>
@@ -207,7 +266,10 @@ function Footer() {
             className="col-md-2 col-lg-2 text-center mx-auto my-4"
             style={stylesFooter.socialContain}
           >
-            <h5 className="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+            <h5 className="font-weight-bold text-uppercase mb-4">
+              {" "}
+              {TitleFollowUsLanguage}{" "}
+            </h5>
             <a
               href="https://web.facebook.com/fayyado"
               type="button"
@@ -245,13 +307,28 @@ function Footer() {
         </div>
       </div>
       {/*-----------------Copy right & reserved----------------*/}
-      <div className={styles.copyRight}>
-        <p>
-          {" "}
-          Copyright &copy; AlFayyad All rights reserved || Made By
-          <a href="https://github.com/Mostafa-DE"> Mostafa Fayyad</a>
-        </p>
-      </div>
+      {language === "arabic" ? (
+        <div className={styles.copyRight}>
+          <p>
+            <a href="https://github.com/Mostafa-DE">
+              {" "}
+              {MadeByMostafaLanguage}{" "}
+            </a>{" "}
+            {TextCopyRightLanguage}
+          </p>
+        </div>
+      ) : (
+        <div className={styles.copyRight}>
+          <p>
+            Copyright &copy; AlFayyad All rights reserved || Made By
+            <a href="https://github.com/Mostafa-DE">
+              {" "}
+              {MadeByMostafaLanguage}{" "}
+            </a>{" "}
+          </p>
+        </div>
+      )}
+
       {/*--------------------------X---------------------------*/}
     </footer>
   );
