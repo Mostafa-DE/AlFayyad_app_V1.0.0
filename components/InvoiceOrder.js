@@ -94,12 +94,6 @@ function InvoiceOrder() {
   });
   /*-----------------------X--------------------*/
 
-  useEffect(() => {
-    setInterval(() => {
-      window.localStorage.removeItem("cart");
-    }, 5000);
-  }, []);
-
   return (
     <div className={styles.main}>
       <AnimationGongrats />
