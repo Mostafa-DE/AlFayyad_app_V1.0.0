@@ -42,7 +42,7 @@ function Layout({ title, description, children }) {
   useEffect(() => {
     setTimeout(() => {
       setShowAlertSignUp(true);
-    }, 60000);
+    }, 100000);
   });
   /*-----------------------------x----------------------------*/
 
