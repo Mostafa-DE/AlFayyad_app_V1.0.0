@@ -147,14 +147,14 @@ export default function ShippingAdress({account, token}) {
         evnt.preventDefault();
 
         /*-----send email using emailJS-----*/
-        // emailjs
-        //     .sendForm(
-        //         "service_8swmbyy",
-        //         "template_ezya1ej",
-        //         evnt.target,
-        //         "user_tjMhMjtx9IxF7pqse8vPx"
-        //     )
-        //     .catch((err) => console.log(err));
+        emailjs
+            .sendForm(
+                "service_8swmbyy",
+                "template_ezya1ej",
+                evnt.target,
+                "user_tjMhMjtx9IxF7pqse8vPx"
+            )
+            .catch((err) => console.log(err));
         /*----------------X-----------------*/
 
         /*----------create order in strapi-----------*/
