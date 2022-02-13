@@ -12,7 +12,7 @@ export default function orderPage({ account, token }) {
 }
 
 export async function getServerSideProps({ req }) {
-  let { token } = parseCookies(req);
+  let { token = null } = parseCookies(req);
 
   const res = await fetch(`${API_URL}/users/me`, {
     method: "GET",
@@ -22,10 +22,6 @@ export async function getServerSideProps({ req }) {
   });
 
   const account = await res.json();
-  if (token === undefined) {
-    token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMxMjI2MDY2LCJleHAiOjE2MzM4MTgwNjZ9.hLyB9ceI7BjivZaneNd2GGbpgfGSWQ224cfBbzzylPs";
-  }
   return {
     props: {
       account,
